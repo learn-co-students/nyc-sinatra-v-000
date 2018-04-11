@@ -11,28 +11,38 @@ class FiguresController < ApplicationController
 
     post '/figures' do
 
-      binding.pry
-      title = Title.find_by(id: params["figure"]["title_ids"])
-      figure = Figure.find_or_create_by(name: params["figure_name"])
+      @figure = Figure.create(params["figure"])
+      #figure = Figure.find_or_create_by(name: params["figure_name"])
 
-      figure.titles << title
-
+      title_params = params["title"]["name"]
       landmark_params = params["landmark"]
 
-      if !landmark_params.empty?
-          landmark = Landmark.create(params["landmark"])
-          figure.landmarks << landmark
+      if !title_params.empty?
+        title = Title.create(params["title"])
+        @figure.titles << title
       end
-      figure.save
 
+      if !landmark_params.empty?
+          landmark = Landmark.create(landmark_params)
+          @figure.landmarks << landmark
+      end
+      @figure.save
 
-      redirect "/figures/#{figure.id}" #moves to route GET '/figures/name'
+      #WANTED <Title id: 31, name: "Mr. President">]
+      #CODE IS GIVIGIN <Title:0x000000046c96f8 id: 32, name: "Name">]
+
+      redirect "/figures/#{@figure.id}" #moves to route GET '/figures/name'
     end
 
     get '/figures/:id' do
 
-      @figure = Figure.find_by_slug(params["slug"])
       erb :'figures/show'
+    end
+
+    get '/figures' do
+      @figures = Figure.all
+
+      erb :'figures/all'
     end
 
 end
