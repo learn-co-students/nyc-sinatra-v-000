@@ -11,6 +11,7 @@ class FiguresController < ApplicationController
 
     post '/figures' do
 
+      binding.pry
       title = Title.find_by(id: params["figure"]["title_ids"])
       figure = Figure.find_or_create_by(name: params["figure_name"])
 
