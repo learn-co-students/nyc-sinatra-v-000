@@ -24,6 +24,7 @@ class FiguresController < ApplicationController
       end
       figure.save
 
+
       redirect "/figures/#{figure.id}" #moves to route GET '/figures/name'
     end
 
