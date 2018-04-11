@@ -1,24 +1,41 @@
 <h2>Create a New Historical Figure!</h2>
-<form action="/figures/show" method="POST">
-  <label>Figure Name:</label>
-  <input type="text" name="figure[name]" id="figure[title_ids][]" value="Name">
+<form action="/figures" method="POST">
+  <label>New Figure:</label>
+  <input type="text" name="figure_name" id="figure_name" value="Name">
   <br></br>
 
-  <label>Landmark:</label>
+  <label>Existing Historical Figures:</label>
+  <%@all_figures.each do |figure|%>
+      <input type="checkbox" name="figure[name]" id="figure[name]" value="<%=figure.name%>">
+        <%=figure.name%>
+      </input>
+  <%end%>
+  <br></br>
+
+  <label>New Landmark:</label>
+    <input type="text" name="landmark[name]" id="landmark_name">
+    <input type="text" name="landmark[year_completed]" id="landmark_year_completed">
+    <br></br>
+
+  <label>Existing Landmarks:</label>
   <%@landmarks.each do |landmark|%>
-      <input type="checkbox" name="landmark[name]" id="figure[landmark_ids][]" value="<%=landmark.name%>">
+      <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=landmark.id%>" value="<%=landmark.name%>">
         <%=landmark.name%>
       </input>
   <%end%>
   <br></br>
 
-  <label>Title:</label>
+  <label>New Title:</label>
+    <input type="text" name="title[name]" id="title_name" value="Name">
+  <br></br>
+
+  <label>Existing Titles:</label>
   <%@titles.each do |title|%>
-      <input type="checkbox" name="title[name]" id="title[name]" value="<%=title.name%>">
+      <input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id%>" value="<%=title.id%>">
         <%=title.name %>
       </input>
   <%end%>
   <br></br>
 
-  <input type="submit" name="submit" id="submit" value="Submit">
+  <input type="submit" name="submit" id="submit" value="Create New Figure">
 </form>
