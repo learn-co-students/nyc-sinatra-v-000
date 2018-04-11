@@ -36,6 +36,8 @@ class FiguresController < ApplicationController
 
     get '/figures/:id' do
 
+      @figure = Figure.find_by(id: params["id"])
+
       erb :'figures/show'
     end
 
@@ -43,6 +45,25 @@ class FiguresController < ApplicationController
       @figures = Figure.all
 
       erb :'figures/all'
+    end
+
+
+    get '/figures/:id/edit' do
+      @figure = Figure.find_by(id: params["id"])
+
+      erb :'figures/edit'
+    end
+
+    patch '/figures/:id' do
+
+      @figure = Figure.find_by(id: params["id"])
+      @figure.name = params["figure"]["name"]
+
+      # landmark = Landmark.find_or_create_by(name: params["landmark"]["name"])
+      # @figure.landmarks = landmark
+
+
+      redirect "/figures/:id"
     end
 
 end
