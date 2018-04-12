@@ -34,7 +34,7 @@ class FiguresController < ApplicationController
     redirect to "/figures/#{@figure.id}"
   end
 
-  post '/figures/:id' do
+  patch '/figures/:id' do
     @figure = Figure.find(params[:id])
     @figure.update(params[:figure])
 
