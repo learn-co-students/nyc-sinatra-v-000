@@ -14,3 +14,7 @@ gem 'rack-test'
 gem 'sinatra-twitter-bootstrap', :require => 'sinatra/twitter-bootstrap'
 gem 'capybara'
 gem 'require_all'
+
+# group :development do
+#   gem "tux"
+# end
