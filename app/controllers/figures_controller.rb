@@ -28,7 +28,7 @@ class FiguresController < ApplicationController
       end
       @figure.save
 
-      redirect to "/figures/#{ @figure.id }" #moves to route GET '/figures/:id'
+      redirect to "/figures/#{@figure.id}" #moves to route GET '/figures/:id'
     end
 
     get '/figures/:id' do
@@ -51,15 +51,14 @@ class FiguresController < ApplicationController
     end
 
     patch '/figures/:id' do
-
-      @figure = Figure.find_by(id: params["id"])
+      @figure = Figure.find(params["id"])
       @figure.name = params["figure"]["name"]
 
       # landmark = Landmark.find_or_create_by(name: params["landmark"]["name"])
       # @figure.landmarks = landmark
 
 
-      redirect "/figures/:id"
+      redirect to "/figures/#{@figure.id}"
     end
 
 end
