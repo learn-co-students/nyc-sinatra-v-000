@@ -85,6 +85,10 @@ Now, use the `has_many`, `belongs_to` and `has_many, :through` macros to set up 
 
 **Make sure to migrate your test database by running `rake db:migrate SINATRA_ENV=test`**
 
+#### Seed data
+
+After your Active Record models have been properly defined, you can load the seed data by running `rake db:seed`.
+
 ### Views and Controllers
 
 You should create a Landmarks Controller and a Figures Controller. This lab is test-driven and will also require you to think outside the box to get things working. 
