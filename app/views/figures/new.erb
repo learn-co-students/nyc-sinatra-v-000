@@ -5,15 +5,20 @@
   <br></br>
 
     <label><h4>Create New Landmark:</h4></label>
-    <label>Name:</label><input type="text" name="landmark[name]" id="new_landmark">
-    <label>Year:</label><input type="text" name="landmark[year_completed]">
+    <label>Name:</label>
+    <input type="text" name="landmark[name]" id="new_landmark">
+    <label>Year:</label>
+    <input type="text" name="landmark[year_completed]">
     <br></br>
 
   <label><h4>Landmarks</h4></label>
   <%@landmarks.each do |landmark|%>
+      <label><%=landmark.name%></label>
       <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=landmark.id%>" value="<%=landmark.id%>">
-      <%=landmark.name%>
       <br></br>
+
+      <%=landmark.name%>
+      <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=landmark.id%>" value="<%=landmark.id%>">
   <%end%>
   <br></br>
 
@@ -23,8 +28,8 @@
 
   <label><h4>Existing Titles</h4></label>
   <%@titles.each do |title|%>
+      <label><%=title.name %></label>
       <input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id%>" value="<%=title.id%>">
-      <%=title.name %>
       <br></br>
   <%end%>
   <br></br>

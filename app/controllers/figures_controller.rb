@@ -28,9 +28,6 @@ class FiguresController < ApplicationController
       end
       @figure.save
 
-      #WANTED <Title id: 31, name: "Mr. President">]
-      #CODE IS GIVIGIN <Title:0x000000046c96f8 id: 32, name: "Name">]
-
       redirect "/figures/#{@figure.id}" #moves to route GET '/figures/name'
     end
 
@@ -46,7 +43,6 @@ class FiguresController < ApplicationController
 
       erb :'figures/all'
     end
-
 
     get '/figures/:id/edit' do
       @figure = Figure.find_by(id: params["id"])
