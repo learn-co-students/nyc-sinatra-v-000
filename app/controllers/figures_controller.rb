@@ -54,9 +54,14 @@ class FiguresController < ApplicationController
       @figure = Figure.find(params["id"])
       @figure.name = params["figure"]["name"]
 
-      # landmark = Landmark.find_or_create_by(name: params["landmark"]["name"])
-      # @figure.landmarks = landmark
-
+      @figure.landmarks.each do |landmark|
+        if landmark.figure_id == params["id"].to_i
+          old_landmark = Landmark.find_by(figure_id: params["id"])
+          old_landmark.name = params["landmark"]["name"]
+          old_landmark.save
+        end
+      end #each iteration
+      @figure.save
 
       redirect to "/figures/#{@figure.id}"
     end
