@@ -1,0 +1,7 @@
+<h2>See all Figures Below</h2>
+
+<ol>
+  <%@figures.each do |figure| %>
+  <li><a href="/figures/<%=figure.id%>"> <%=figure.name%> </a> </li><br></br>
+  <%end%>
+</ol>
