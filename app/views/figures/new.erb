@@ -2,6 +2,7 @@
 
 <form action='/figures' method='POST'>
   <label> Figure Name </label>
+<<<<<<< HEAD
   <input type="text" id="figure_name" name="figure[name]"></br>
   <label> Figure Titles</label> </br>
   <% Title.all.each do |title| %>
@@ -15,5 +16,12 @@
   <input type="text" id="new_title" name="title[name]"></br>
   <label> New Landmark</label> </br>
   <input type="text" id="new_landmark" name="landmark[name]"></br>
+=======
+  <input type="text" id="figure[name]" name="Figure Name"></br>
+  <input type="text" id="figure[title_ids][]" name="Title ID"></br>
+  <input type="text" id="figure[landmark_ids][]" name="Landmark ID"></br>
+  <input type="text" id="landmark[name]" name="Landmark Name"></br>
+  <input type="text" id="title[name]" name="Title Name"></br>
+>>>>>>> 21f51051223ed7f7d5e11903c06939d19d18188f
   <input type="submit" value="Create New Figure">
 </form>
