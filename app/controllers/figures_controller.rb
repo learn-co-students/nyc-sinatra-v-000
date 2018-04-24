@@ -15,8 +15,9 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
+    @figure=Figure.create(params[:figure])
     binding.pry
-    @figure=Figure.create(name: params[figure[name]])
+    @figure.titles=params[:title_ids]
     binding.pry
     redirect("/figure/#{@figure.slug}")
   end
