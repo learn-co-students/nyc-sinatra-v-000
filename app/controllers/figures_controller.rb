@@ -14,4 +14,11 @@ class FiguresController < ApplicationController
     erb :'figures/show'
   end
 
+  post '/figures' do
+    binding.pry
+    @figure=Figure.create(name: params[figure[name]])
+    binding.pry
+    redirect("/figure/#{@figure.slug}")
+  end
+
 end
