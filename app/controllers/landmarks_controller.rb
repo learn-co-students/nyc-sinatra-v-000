@@ -9,9 +9,26 @@ class LandmarksController < ApplicationController
     erb :'landmarks/new'
   end
 
-  get '/landmarks/:slug' do
-    @landmark=Landmark.find_by_slug(params[:slug])
+  get '/landmarks/:id' do
+    @landmark=Landmark.find_by(params[:id])
     erb :'landmarks/show'
+  end
+
+  post '/landmarks' do
+    @landmark=Landmark.create(params[:landmark])
+    redirect("/figure/#{@landmark.id}")
+  end
+
+  get '/landmarks/:id/edit' do
+    @landmark=Landmark.find_by(params[:id])
+  erb :'landmarks/edit'
+  end
+
+  patch '/landmarks/:id' do
+    @landmark=Landmark.find_by(params[:id])
+    @landmark.update(params[:landmark])
+    @landmark.save
+  redirect("/landmarks/#{@landmark.id}")
   end
 
 end

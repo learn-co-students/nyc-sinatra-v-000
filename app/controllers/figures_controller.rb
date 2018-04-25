@@ -9,8 +9,8 @@ class FiguresController < ApplicationController
     erb :'figures/new'
   end
 
-  get '/figures/:slug' do
-    @figure=Figure.find_by_slug(params[:slug])
+  get '/figures/:id' do
+    @figure=Figure.find_by(params[:id])
     erb :'figures/show'
   end
 
@@ -21,7 +21,19 @@ class FiguresController < ApplicationController
     #@figure.landmarks=params[:figure][:landmark_ids]
     #@figure.title=Title.find_or_create_by(params[:title])
     #@figure.landmark=Landmark.find_or_create_by(params[:landmark])
-    redirect("/figure/#{@figure.slug}")
+    redirect("/figure/#{@figure.id}")
+  end
+
+  get '/figures/:id/edit' do
+    @figure=Figure.find_by(params[:id])
+  erb :'figures/edit'
+  end
+
+  patch '/figures/:id' do
+    @figure=Figure.find_by(params[:id])
+    @figure.update(params[:figure])
+    @figure.save
+  redirect("/figures/#{@figure.id}")
   end
 
 end
