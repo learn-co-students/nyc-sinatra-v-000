@@ -16,7 +16,23 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     @figure=Figure.create(params[:figure])
+    if params[:landmark]["name"] != ""
+      @landmark=Landmark.create(params[:landmark])
+      #@landmark.figure=@figure
+      binding.pry
+    end
+    if params[:title]["name"] != ""
+      @title=Title.create(params[:title])
+      FigureTitle.create(title_id: @title.id, figure_id: @figure.id)
+    end
     #binding.pry
+    params[:figure]["title_ids"].each do |id|
+      FigureTitle.create(title_id: id, figure_id: @figure.id)
+    end
+    params[:figure]["landmark_ids"].each do |id|
+      Landmark.find(id).figure=@figure
+    end
+
     #@figure.titles=params[:figure][:title_ids]
     #@figure.landmarks=params[:figure][:landmark_ids]
     #@figure.title=Title.find_or_create_by(params[:title])

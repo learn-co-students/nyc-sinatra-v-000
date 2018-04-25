@@ -4,12 +4,4 @@ class Figure < ActiveRecord::Base
   has_many :titles, through: :figure_titles
   has_many :landmarks
 
-  def slug
-    name.downcase.gsub(" ","-")
-  end
-
-  def self.find_by_slug(slug)
-    Figure.all.find{|figure| figure.slug == slug}
-  end
-
 end
