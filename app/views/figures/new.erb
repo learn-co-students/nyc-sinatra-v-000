@@ -6,18 +6,20 @@
 
   <p> Choose an Existing Title </p>
   <% Title.all.each do |title| %>
-    <input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id%>" value="<%title.id%>"><%=title.name%>
+    <input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id%>" value="<%=title.id%>"><%=title.name%>
   <% end %>
   </br>
-  <label> Or Create a New Title </label>
-    <input type="text" name="title[name]" id="new_title">
 
   <p> Choose an Existing Landmark </p>
   <% Landmark.all.each do |landmark| %>
-    <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=landmark.id%>" value="<%landmark.id%>"><%=landmark.name%>
+    <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=landmark.id%>" value="<%=landmark.id%>"><%=landmark.name%>
   <% end %>
   </br>
-  <label> Or Create a New Landmark </label>
+</br>
+  <label> Or Create a New Title </label>
+    <input type="text" name="title[name]" id="new_title">
+
+   <label> Or a New Landmark </label>
     <input type="text" name="landmark[name]" id="new_landmark">
   </br>
   </br>
