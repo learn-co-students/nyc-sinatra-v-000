@@ -36,7 +36,7 @@ end
 end
 
 post '/figures/show' do
-  binding.pry
+  # binding.pry
   @figure = Figure.new(params[:figure])
 
 
@@ -56,24 +56,25 @@ end
 
    @figure.titles << @title
 
-
-  # if params[:title]
-
   @figure.save
   redirect "/figures/#{@figure.id}"
 end
 
 get '/figures/:id/edit' do
-  #@song = Song.find_by_slug(params[:slug])
+
   @figure = Figure.find(params[:id])
   erb :'/figures/edit'
 end
 
 patch '/figures/:id' do
-
+ # binding.pry
   @figure = Figure.find(params[:id])
 
+  @landmark = Landmark.new(params[:landmark])
+
+  @figure.landmarks << @landmark
   @figure.update(params[:figure])
+  # binding.pry
   redirect to :"/figures/#{@figure.id}"
 end
 

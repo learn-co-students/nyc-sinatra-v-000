@@ -17,7 +17,7 @@
     Figure Title:
     <%Title.all.each do |title| %>
     <label for="title_<%=Title.first.id %>"><%= title.name %></label>
-    <input type="checkbox" name="figure[title_ids][] " value="<%=title.id%>" id="title_<%=Title.first.id%>">
+    <input type="checkbox" name="figure[title_ids][]" value="<%=title.id%>" id="title_<%=Title.first.id%>"/>
     <%end%>
 
     or create a new title:
