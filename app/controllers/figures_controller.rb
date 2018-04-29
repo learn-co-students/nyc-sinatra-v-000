@@ -36,7 +36,7 @@ end
 end
 
 post '/figures/show' do
-  # binding.pry
+  binding.pry
   @figure = Figure.new(params[:figure])
 
 
@@ -48,14 +48,6 @@ end
   @figure.landmarks << @landmark
 
 
-
-
-
-
-
-  # @landmark = Landmark.new(params[:landmark])
-  #  @figure.landmarks << @landmark
-  #
     if @title
       @figure.title_ids << @title.id
     else

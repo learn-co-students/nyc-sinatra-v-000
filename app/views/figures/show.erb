@@ -1,14 +1,15 @@
 <h1><%= @figure.name %></h1>
 
-Figure:  <a href="/figures/<%= @figure.id %>"><%= @figure.name %><br></a>
-<%@figure.landmarks.each do |landmark| %>
+Figure:  <a href="/figures/<%= @figure.id %>"><%= @figure.name %></a> <br>
+Landmarks: <%@figure.landmarks.each do |landmark| %>
   <%= landmark.name %>
-<% end %>
+<% end %> <br>
 
-<%@figure.titles.each do |title| %>
+Titles: <%@figure.titles.each do |title| %>
   <%= title.name %>
-<% end %>
+<% end %> <br> <br>
 <a href="/figures/<%=@figure.id %>/edit">Edit</a>
+<br>
 
 <form class="" action="/figures/<%=@figure.id %>" method="post">
 <input type="hidden" name="_method" value="delete">
