@@ -36,24 +36,39 @@ end
 end
 
 post '/figures/show' do
-  # using figure[:name] & landmark[:name]
-      #{"figure"=>{"name"=>"Prince"}, "landmark"=>{"name"=>"Paisley Park"}, "title"=>{"name"=>"His Purpleness"}}
+  # binding.pry
   @figure = Figure.new(params[:figure])
+
+
+  if @figure.landmarks.include?(Landmark.find_by(params[:landmark]))
+    @figure.landmark = Landmark.find(params[:landmark])
+  else
   @landmark = Landmark.new(params[:landmark])
+end
   @figure.landmarks << @landmark
 
-   if @title
-     @figure.title_ids << @title.id
-   else
-  @title = Title.create(params[:title])
-  end
 
-  @figure.titles << @title
+
+
+
+
+
+  # @landmark = Landmark.new(params[:landmark])
+  #  @figure.landmarks << @landmark
+  #
+    if @title
+      @figure.title_ids << @title.id
+    else
+   @title = Title.create(params[:title])
+   end
+
+   @figure.titles << @title
+
+
+  # if params[:title]
 
   @figure.save
-
-  #  binding.pry
-  redirect "/figures/show/#{@figure.id}"
+  redirect "/figures/#{@figure.id}"
 end
 
 get '/figures/:id/edit' do
@@ -62,9 +77,11 @@ get '/figures/:id/edit' do
   erb :'/figures/edit'
 end
 
-patch '/figures/show/:id' do
+patch '/figures/:id' do
+
   @figure = Figure.find(params[:id])
-  @figure = Figure.update(params[:figure])
+
+  @figure.update(params[:figure])
   redirect to :"/figures/#{@figure.id}"
 end
 

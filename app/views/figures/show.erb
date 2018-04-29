@@ -1,6 +1,13 @@
 <h1><%= @figure.name %></h1>
 
 Figure:  <a href="/figures/<%= @figure.id %>"><%= @figure.name %><br></a>
+<%@figure.landmarks.each do |landmark| %>
+  <%= landmark.name %>
+<% end %>
+
+<%@figure.titles.each do |title| %>
+  <%= title.name %>
+<% end %>
 <a href="/figures/<%=@figure.id %>/edit">Edit</a>
 
 <form class="" action="/figures/<%=@figure.id %>" method="post">
