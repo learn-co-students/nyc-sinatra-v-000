@@ -1,0 +1,11 @@
+<h1>Listing all Landmarks</h1>
+
+<% if @landmarks.length == 0 %>
+"Not working!!!"
+<% end %>
+
+<ol>
+<% @landmarks.each do |landmark| %>
+  <li><a href="/landmarks/<%= landmark.id %>"><%= landmark.name %></a> completed in: <strong><%=landmark.year_completed%></strong></li>
+<% end %>
+</ol>
