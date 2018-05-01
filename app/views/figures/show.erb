@@ -1,0 +1,10 @@
+<h2>Figure: <%=@figure.name%></h2>
+
+<h2>Figure Landmarks:</h2>
+<% @figure.landmarks.each do |landmark|%>
+  <%= landmark.name%>
+<% end %>
+
+<% if @figure.landmarks.length == 0 %>
+"Landmarks - Not working!"
+<% end %>
