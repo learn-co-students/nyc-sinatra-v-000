@@ -16,13 +16,24 @@ class FiguresController < ApplicationController
     erb :'figures/show'
   end
 
+  post '/figures/:id' do
+    @figure = Figure.find(params[:id])
+    @figure = @figure.edit_figure(params)
+    erb :'figures/show'
+  end
+
+  get '/figures/:id/edit' do
+    @figure = Figure.find(params[:id])
+    erb :'figures/edit'
+  end
+
   post '/figures' do
     #Create the Figure
     @figure = Figure.create(name: params[:figure][:name])
 
     #Associate titles
     if !!params[:figure][:title_ids]
-      params[:figure][:title_ids].keys.each do |title_id|
+      params[:figure][:title_ids][0].keys.each do |title_id|
         @figure.titles << Title.find(title_id)
       end
     end
@@ -30,7 +41,7 @@ class FiguresController < ApplicationController
 
     #Associate landmarks
     if !!params[:figure][:landmark_ids]
-      params[:figure][:landmark_ids].keys.each do |landmark_id|
+      params[:figure][:landmark_ids][0].keys.each do |landmark_id|
         @figure.landmarks << Landmark.find(landmark_id)
       end
     end

@@ -1,0 +1,38 @@
+<h1>Use this form to Edit a figure!</h1>
+
+<p>Current Info:</p>
+<p>Name: <%= @figure.name %></p>
+<p>Titles:</p>
+<% @figure.titles.each do |title| %>
+  <ul>
+    <li><%= title.name %></li>
+  </ul>
+<% end %>
+<p>Landmarks:</p>
+<% @figure.landmarks.each do |lm| %>
+  <ul>
+    <li><%= lm.name %></li>
+  </ul>
+<% end %>
+
+<h2>New Info:</h2>
+<form action="/figures/<%= @figure.id %>" method="post">
+
+  <p>Figure's New Name: <input type="text" name="figure[name]" id="figure_name"></p>
+
+  <h4>Choose this Figure's titles:</h4>
+  <% Title.all.each do |title| %>
+    <input type="checkbox" name="figure[title_ids][][<%= title.id %>]" id="title_<%= title.id %>"> <%= title.name %> </input>
+    <br>
+  <% end %>
+  <p>-or- provide your own new title: <input type="text" name="title[name]" id="new_title"></p>
+
+  <h4>Choose the landmarks associated with this Figure:</h4>
+  <% Landmark.all.each do |landmark| %>
+    <input type="checkbox" name="figure[landmark_ids][][<%= landmark.id %>]" id="landmark_<%= landmark.id %>"> <%= landmark.name %> </input>
+    <br>
+  <% end %>
+  <p>-or- provide your own new landmark: <input type="text" name="landmark[name]" id="new_landmark"></p>
+
+  <input type="submit" name="submit" value="Edit Figure" id="Edit Figure">
+</form>
