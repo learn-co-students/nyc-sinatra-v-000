@@ -10,6 +10,13 @@ class FiguresController < ApplicationController
     erb :'figures/new'
   end
 
+  get '/figures/:id' do
+
+    @figure = Figure.find(params[:id])
+    erb :'figures/show'
+  end
+
+
   post '/figures' do
     puts params
 #binding.pry
@@ -26,7 +33,7 @@ class FiguresController < ApplicationController
     end
 
     @figure.save
-  #  binding.pry
+    redirect
   end
 
 end
