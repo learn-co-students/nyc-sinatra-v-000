@@ -3,11 +3,19 @@
   <form action="/figures" method="POST">
   <input type="text" name="figure[name]" id="figure_name" placeholder="Figure Name"><br>
   <input type="text" name="landmark[name]" id="figure[landmark_ids][]"placeholder="Landmark Name"><br>
+  <hr>
+
+
+  <h3>Select a title</h3>
+  <% Title.all.each do |title| %>
+  <label><%= title.name %></label>
+  <input type="checkbox" id="title_<%=title.id%>" name="figure[title_ids][]" value="<%= title.id %>"><br>
+  <% end %>
+
+
+
+  <h3>Create a Title</h3>
   <input type="text" name="title[name]"id="figure[title_ids][]" placeholder="Figure Title"><br>
 
-
-
-
-
-  <input type="submit" value="Create Figure">
+  <input type="submit" value="Create New Figure">
 </form>
