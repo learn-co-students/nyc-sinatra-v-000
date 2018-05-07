@@ -12,11 +12,18 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     puts params
-
-    @figure = Figure.create(name: params["figure"]["name"])
-  #  if @title = Title.find(params[:title]).empty?
-    @title = Title.find_or_create_by(name: params["title"]["name"])
+#binding.pry
+    @figure = Figure.create(params["figure"])
+    if !params["title"]["name"].empty?
+    @title = Title.create(params[:title][:name])
+    @figure.titles << @title
+    end
+    if  !params["figure"]["name"].empty?
+      @landmark = Landmark.create(params[:landmark])
+      @figure.landmarks << @landmark
+    end
+    @figure.save
     #binding.pry
-
   end
+
 end
