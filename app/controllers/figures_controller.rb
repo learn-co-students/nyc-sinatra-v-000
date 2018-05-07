@@ -8,7 +8,7 @@ class FiguresController < ApplicationController
     puts params
 
     @figure = Figure.create(name: params["figure"]["name"])
-    @title = Title.create(name: params["title"]["name"])
+    @title = Title.find_or_create_by(name: params["title"]["name"])
     binding.pry
   end
 end
