@@ -1,0 +1,7 @@
+index
+
+<%Landmark.all.each do |landmark|%><br></br>
+<a href='/landmarks/<%=landmark.id%>'><%=landmark.name%></a></br>
+<%=landmark.year_completed%></br>
+<%#binding.pry%>
+<%end%>
