@@ -1,0 +1,24 @@
+<%= @figure.name %>
+<h1>Update figure</h1>
+
+<form action="/figures/<%=@figure.id%>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+
+
+  <br>
+  <label for="name">Figure Name</label>
+  <input type="text" name="figure[name]" id="figure_name" value="<%=@figure.name%>">
+
+  <label for="title">Title</label>
+  <input type="text" name="figure[title_ids][]" value="<%= @figure.titles.name %>" id="figure[title_ids]">
+
+  <label for="landmark">Landmark</label>
+  <input type="text" name="figure[landmark_ids][]" value="<%= @figure.landmarks.name %>" id="new_landmark">
+
+
+
+  <input type="submit" value="Edit Figure">
+
+
+
+</form>
