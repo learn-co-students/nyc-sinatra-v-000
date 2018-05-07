@@ -1,6 +1,6 @@
 class CreateTitlesTable < ActiveRecord::Migration[5.1]
   def change
-    create_table :figures do |t|
+    create_table :titles do |t|
       t.string :name
     end
   end
