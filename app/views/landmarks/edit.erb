@@ -1,4 +1,9 @@
 <form action="/landmarks" method="post">
-  <input type="text" name="" value="patch">
-  
+  <h2>Name:</h2>
+<p><input type="text" id='name' name="landmark[name]" value="<%= @landmark.name%>"></p>
+<h2>Year Completed:</h2>
+<p><input type="text" id='year_completed' name="landmark[year_completed]" value="<%= @landmark.year_completed%>"></p>
+<p><input type="submit" value="Edit Landmark"></p>
+
+
 </form>
