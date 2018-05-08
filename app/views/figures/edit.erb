@@ -2,10 +2,22 @@
 <form action="/figures/<%=@figure.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
   <h2>Name:</h2>
-  <% binding.pry %>
   <input type="text" id="figure_name" name="figure[name]" value="<%= @figure.name %>">
-  <h2>Title:</h2>
-  <input type="text" id="new_landmark" name="figure[title_ids]" >
+  <h2>Edit Landmarks:</h2>
+  <% Landmark.all.each do |l| %>
+  <label><%= l.name %></label>
+  <input type="checkbox" name="figure[landmark_ids][]" value="<%= l.id %>" id="<%= l.name %>" <%='checked' if @figure.landmarks.include?(l) %>>
+<% end %>
+<label>Add New:</label>
+<input type="text" id="new_landmark" name="landmark[name]"><br></br>
+
+  <h2>Edit Titles:</h2>
+ <% Title.all.each do |t| %>
+    <br><%= t.name %>
+<input type="checkbox" name="figure[title_ids][]" value="<%= t.id %>" id="<%= t.name %>" <%='checked' if @figure.titles.include?(t) %>>
+  <% end %></br>
+  <h2>New Title:</h2>
+  <input type="text" id="new_title" name="figure[title]" >
   <p></p>
   <input type="submit" value="Edit Figure">
 </form>
