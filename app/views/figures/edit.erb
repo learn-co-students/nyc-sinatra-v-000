@@ -17,7 +17,7 @@
 <input type="checkbox" name="figure[title_ids][]" value="<%= t.id %>" id="<%= t.name %>" <%='checked' if @figure.titles.include?(t) %>>
   <% end %></br>
   <h2>New Title:</h2>
-  <input type="text" id="new_title" name="figure[title]" >
+  <input type="text" id="new_title" name="[title][name]" >
   <p></p>
   <input type="submit" value="Edit Figure">
 </form>

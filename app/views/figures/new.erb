@@ -3,16 +3,16 @@
 <h2>Name:<input type="text" id="figure_name" name="figure[name]"></h2>
 <h2>Titles</h2>
 <% Title.all.each do |t| %>
-<input type="checkbox" name="figure[title_ids][]" id="title_<%=t.id%>"><%= t.name%></input>
+<input type="checkbox" name="figure[title_ids][]" value="<%=t.id%>" id="title_<%=t.id%>"><%= t.name%></input>
 <% end %>
 <h2>Create New Titles:</h2>
 <input type="text" name="title[name]" id="new_title" >
 <h2>Landmarks</h2>
 <% Landmark.all.each do |l| %>
-<input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=l.id%>"><%= l.name%></input>
+<input type="checkbox" value="<%=l.id%>" name="figure[landmark_ids][]" id="landmark_<%=l.id%>"><%= l.name%></input>
 <% end %>
 <h2>Create New Landmark:</h2>
 <p>Name: <input type="text" name="landmark[name]" id="new_landmark"></p>
-<p>Year: <input type="text" name="landmark[year_completed]" id="year"></p>
+<p>Year: <input type="text" name="landmark[year_completed]" ></p>
 <p><input type="submit" value="Create New Figure"></p>
 </form>
