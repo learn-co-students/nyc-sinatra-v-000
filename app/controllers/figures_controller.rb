@@ -9,9 +9,13 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-    binding.pry
     @figure = Figure.create(params[:figure])
-    @figure.titles = Title.find_or_create_by(params[:title])
+    if !params[:title].nil?
+      @figure.titles << Title.create(params[:title])
+    end
+    if !params[:landmark].nil?
+      @figure.landmarks << Landmark.create(params[:landmark])
+    end
     @figure.save
     redirect "figures/#{@figure.id}"
   end
