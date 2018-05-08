@@ -9,10 +9,10 @@
 <input type="text" name="title[name]" id="new_title" >
 <h2>Landmarks</h2>
 <% Landmark.all.each do |l| %>
-<input type="checkbox" name="landmark[name]" id="landmark"><%= l.name%></input>
+<input type="checkbox" name="figure[landmark_ids][]" id="landmark"><%= l.name%></input>
 <% end %>
 <h2>Create New Landmark:</h2>
-<p>Name: <input type="text" name="figure[landmark_ids][]" id="new_landmark"></p>
-<p>Year: <input type="text" name="figure[landmark_ids][]" id="year"></p>
+<p>Name: <input type="text" name="landmark[name]" id="new_landmark"></p>
+<p>Year: <input type="text" name="landmark[year_completed]" id="year"></p>
 <p><input type="submit" value="Create New Figure"></p>
 </form>

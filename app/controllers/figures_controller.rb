@@ -9,7 +9,10 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
+    binding.pry
     @figure = Figure.create(params[:figure])
+    @figure.titles = Title.find_or_create_by(params[:title])
+    @figure.save
     redirect "figures/#{@figure.id}"
   end
 
