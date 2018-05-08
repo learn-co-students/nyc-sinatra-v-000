@@ -1,0 +1,23 @@
+<!-- figures/show -->
+
+<h1><%=@figure.name%></h1>
+
+<h2><%=@figure.name%>'s Titles:</h2>
+  <ul>
+    <% @figure.titles.each do |t| %>
+      <li><a href="/titles/<%=t.id%>"><%=t.name%></a></li>
+    <% end %>
+  </ul>
+<br>
+
+<h2><%=@figure.name%>'s Landmarks:</h2>
+  <ul>
+    <% @figure.landmarks.each do |lm| %>
+      <li><a href="/landmarks/<%=lm.id%>"><%=lm.name%></a></li>
+    <% end %>
+  </ul>
+<br>
+
+<form action="/figures/<%=@figure.id%>/edit" method="get">
+  <input type="submit" name="Edit This Figure" id="Edit This Figure" value="Edit This Figure">
+</form>
