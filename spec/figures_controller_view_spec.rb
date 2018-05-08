@@ -34,7 +34,9 @@ describe FiguresController do
     figure = Figure.last
     expect(Figure.all.count).to eq(3)
     expect(figure.name).to eq("Doctor Who")
+
     expect(figure.titles).to include(Title.first)
+
   end
 
   it "allows you to create a new figure with a landmark" do
