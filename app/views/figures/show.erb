@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h2>Show a figure page</h2>
+	<%=@figure.name%>
+	<%@figure.landmarks.each do |landmark| %>
+	<h2><%=landmark.name%></h2>
+	<%end%>
+
+</body>
+</html>
