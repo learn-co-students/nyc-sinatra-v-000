@@ -21,21 +21,20 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     #new figure
-    binding.pry
     @figure= Figure.create(name: params[:figure][:name])
     #assign existing landmarks to figure
-    params[:figure][:landmark_ids].each {|landmark| @figure.landmarks << landmark}
+    params[:figure][:landmark_ids].each {|landmark| @figure.landmarks << Landmark.find_by_id(landmark)}
     #create new landmark
     if !params[:landmark].empty?
       @landmark = Landmark.create(params[:landmark])
       @figure.landmarks << @landmark
     end
     #assign existing titles
-    params[:figure][:title_ids].each {|title| @figure.titles << title}
+    params[:figure][:title_ids].each {|title| @figure.titles << Title.find_by_id(title)}
     #create new titles
     if !params[:title].empty?
       @title = Title.create(name: params[:title][:name])
-      @figure.titles << @titles
+      @figure.titles << @title
     end
   end
 
