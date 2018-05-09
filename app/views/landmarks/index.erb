@@ -1,0 +1,8 @@
+<h1>Landmarks</h1>
+
+<ol>
+<%@landmarks.each do |landmark|%>
+  <li><%=landmark.name%>(<%=landmark.year_completed%>)</li>
+  <br>
+<%end%>
+</ol>
