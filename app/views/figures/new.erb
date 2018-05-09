@@ -1,7 +1,7 @@
 <h1> Create a new figure</h1>
 <br></br>
 
-<form action='/figures' method='POST'>
+<form>
   <label>Name:</label>
   <br></br>
   <input type='text' name='figure[name]' id="name">
@@ -9,12 +9,12 @@
   <label>Choose landmarks:</label>
   <br></br>
   <%@landmarks.each do |landmark|%>
-    <input type='checkbox' name='figure[landmarks][]' id='<%=landmark.id%>' value='<%=landmark.id'><%=landmark.name%>
+    <input type='checkbox' name='figure[landmarks][]' id='<%=landmark.id%>'><%=landmark.name%>
     <br></br>
     <%end%>
     <label>Create new landmark:</label><br></br>
     <label>Name:</label>
-    <input type='text' name="figure[new_landmark][name]" id="landmark_name">
+    <input type='text' name='figure[new_landmark][name]' id='landmark_name'>
 
     <br></br>
 
