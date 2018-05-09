@@ -9,7 +9,7 @@
   <label>Choose landmarks:</label>
   <br></br>
   <%@landmarks.each do |landmark|%>
-    <input type='checkbox' name='figure[landmark_ids][]' id='<%=landmark.id%>' value='<%=landmark.id%>'><%=landmark.name%>
+    <input type='checkbox' name='figure[landmark_ids][]' id='landmark_<%=landmark.id%>' value='<%=landmark.id%>'><%=landmark.name%>
     <br></br>
     <%end%>
     <label>Create new landmark:</label><br></br>
@@ -26,12 +26,12 @@
   <label>Choose titles:</label>
   <br></br>
   <%@titles.each do |title|%>
-    <input type='checkbox' name='figure[title_ids][]' id='<%=title.id%>' value='<%=title.id%>'><%=title.name%>
+    <input type='checkbox' name='figure[title_ids][]' id='title_<%=title.id%>' value='<%=title.id%>'><%=title.name%>
     <br></br>
     <%end%>
     <label>Create new title:</label>
-    <input type='text' name='title[name]' id='title_name'>
+    <input type='text' name='title[name]' id='new_title'>
 
     <br></br>
-  <input type='submit' id='Create Figure'>
+  <input type='submit' id='Create New Figure'>
 </form>
