@@ -3,7 +3,7 @@ class CreateLandmarks < ActiveRecord::Migration[4.2]
     create_table :landmarks do |t|
       t.string :name
       t.string :figure_id
-      t.string :year_created
+      t.string :year_completed
     end
   end
 end
