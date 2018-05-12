@@ -1,0 +1,13 @@
+<h1>All Figures</h1>
+
+
+  <% if @figures.empty? %>
+  There are no figures saved yet!
+  <% else %>
+  <ul>
+  <% @figures.each do |f| %>
+  <li><%= f.name %></li>
+  <% end %>
+  </ul>
+
+<%end%>
