@@ -27,14 +27,12 @@ class FiguresController < ApplicationController
      end
 
      @figure.save
-     binding.pry
-
-     redirect to "/figures/#{@figure.id}"
+     redirect to "/figures/#{@figure.id}" #for redirecting to another route
   end
 
   get '/figures/:id' do
     @figure = Figure.find(params[:id])
-    redirect to '/figures/show'
+    erb :'/figures/show'
   end
 
 end
