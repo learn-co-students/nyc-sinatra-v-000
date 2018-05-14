@@ -40,8 +40,8 @@ class FiguresController < ApplicationController
     erb :'/figures/edit'
   end
 
-  patch '/figures/:id' do
-    @figure = Figure.create(:name => params[:figure][:name])
+  patch '/figures/:id' do #edits the figure after filling out edit form
+    @figure = Figure.find(:name => params[:id])
     @title = Title.find_by(:name => params[:figure][:title_ids])
     @landmark = Landmark.find_by(:name => params[:figure][:landmark_ids])
 
@@ -58,12 +58,7 @@ class FiguresController < ApplicationController
      end
 
      @figure.save
-
      redirect to "/figures/#{@figure.id}" #for redirecting to another route
-  end
-
-  get 'figures/:id' do
-    #find the post by id?
   end
 
 end
