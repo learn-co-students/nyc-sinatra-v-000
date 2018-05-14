@@ -41,7 +41,7 @@ class FiguresController < ApplicationController
   end
 
   patch '/figures/:id' do #edits the figure after filling out edit form
-    @figure = Figure.find(:name => params[:id])
+    @figure = Figure.find(:name => params[:id]) #update name
     @title = Title.find_by(:name => params[:figure][:title_ids])
     @landmark = Landmark.find_by(:name => params[:figure][:landmark_ids])
 
