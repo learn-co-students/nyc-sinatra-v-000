@@ -41,7 +41,9 @@ class FiguresController < ApplicationController
   end
 
   patch '/figures/:id' do #edits the figure after filling out edit form
+    #it's telling me it can't find figure with the id number
     @figure = Figure.find(:name => params[:id]) #update name
+    @figure.name = params[:figure][:name]
     @title = Title.find_by(:name => params[:figure][:title_ids])
     @landmark = Landmark.find_by(:name => params[:figure][:landmark_ids])
 
