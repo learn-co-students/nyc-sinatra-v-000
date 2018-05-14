@@ -1,3 +1,9 @@
 <h1><%= @figure.name %></h1>
 
-This is the most interesting figure in NYC and it has a lot of history. 
+This is the most interesting figure in NYC and it has a lot of history.
+
+<p>
+<form action="/figures/<%=@figure.id%>/edit" method='POST'>
+  <input type='submit' value='Edit Figure'>
+</form>
+</p>

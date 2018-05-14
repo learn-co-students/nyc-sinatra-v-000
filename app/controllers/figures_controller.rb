@@ -42,6 +42,11 @@ class FiguresController < ApplicationController
 
   patch '/figures/:id' do
     redirect to '/figures/show'
+    #create a new figure
+  end
+
+  get 'figures/:id' do
+    #find the post by id?
   end
 
 end
