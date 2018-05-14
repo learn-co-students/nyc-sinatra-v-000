@@ -9,8 +9,8 @@
   <!-- Choose the figure's different titles/create new -->
   <p><label>Titles</label>
   <% Title.all.each do |t| %>
-    <input type="checkbox" name="figure[title_ids][]" id="title_<%= "#{t.id}"%>" <%='checked' if @figure.titles.include?(t) %>>
-    <label for="title_<%= "#{t.id}"%>"><%= t.name %></label>
+    <input type="checkbox" name="figure[title_ids][]" id="title_<%=t.id%>" value="<%=t.id%>" <%='checked' if @figure.titles.include?(t) %>>
+    <label for="title_<%=t.id%>"><%= t.name %></label>
   <% end %> </p>
 
   <p><label>Create new title</label>
@@ -19,8 +19,8 @@
   <!-- Choose the figure's different landmarks/create new -->
   <p><label>Landmarks</label>
   <% Landmark.all.each do |l| %>
-    <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%= "#{l.id}"%>" <%='checked' if @figure.landmarks.include?(l) %>>
-    <label for="landmark_<%= "#{l.id}"%>"><%= l.name %></label>
+    <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=l.id%>" value="<%=l.id%>" <%='checked' if @figure.landmarks.include?(l) %>>
+    <label for="landmark_<%=l.id%>"><%= l.name %></label>
   <% end %> </p>
 
   <label>Create a new landmark</label>

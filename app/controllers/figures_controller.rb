@@ -47,6 +47,9 @@ class FiguresController < ApplicationController
     @title = Title.find_by(:name => params[:figure][:title_ids])
     @landmark = Landmark.find_by(:name => params[:figure][:landmark_ids])
 
+    # only if textbox is filled in -> create new title/landmark
+    # if checked box, add title/landmark to figure
+
      if @title.nil? #can use find_or_create_by !!!!???
        @figure.titles << Title.create(:name => params[:title][:name])
      else
