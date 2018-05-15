@@ -8,8 +8,14 @@ class FiguresController < ApplicationController
     erb :'/figures/new'
   end
 
-  post '/figures' do
-    @figure = Figure.create(params)
+  get '/figures/:id' do
+    @figure = Figure.find(params[:id])
     erb :'/figures/show'
+  end
+
+  post '/figures' do
+    binding.pry
+    @figure = Figure.create(name: params[:figure])
+    redirect :'/figures/#{@figure.id}'
   end
 end
