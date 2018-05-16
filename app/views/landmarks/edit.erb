@@ -1,0 +1,16 @@
+<h1>Edit a Landmark</h1> <!--JUST BELONGS TO A FIGURE -->
+
+<!-- Enter the landmark's name -->
+<form action="/landmarks/<%=@landmark.id%>" method='POST'>
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <label>Landmark Name</label>
+  <input type='text' name='landmark[name]' id='name' value='<%= @landmark.name %>'>
+
+  <label>Year Completed</label>
+  <input type='text' name='landmark[year_completed]' id='year_completed' value='<%= @landmark.year_completed.to_s %>'>
+
+
+
+  <p><input type='submit' value='Edit Landmark'></p>
+
+</form>
