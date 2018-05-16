@@ -45,16 +45,16 @@ class FiguresController < ApplicationController
     @figure = Figure.find(params[:id])
     @figure.update(params[:figure])
 
-    if !params[:title][:name].empty?
-      @figure.titles << Title.create(:name => params[:title][:name])
-    end
+    # if !params[:title][:name].empty?
+    #   @figure.titles << Title.create(:name => params[:title][:name])
+    # end
+    #
+    # if !params[:landmark][:name].empty?
+    #   @figure.landmarks << Landmark.create(:name => params[:landmark][:name])
+    # end
 
-    if !params[:landmark][:name].empty?
-      @figure.landmarks << Landmark.create(:name => params[:landmark][:name])
-    end
-
-    # @figure.titles << Title.create(:name => params[:title][:name]) unless params[:figure][:title].nil?
-    # @figure.landmarks << Landmark.create(:name => params[:landmark][:name]) unless params[:figure][:landmark].nil?
+    @figure.titles << Title.create(:name => params[:title][:name]) unless params[:title][:name].empty?
+    @figure.landmarks << Landmark.create(:name => params[:landmark][:name]) unless params[:landmark][:name].empty?
 
     @figure.save
     redirect to "/figures/#{@figure.id}" #for redirecting to another route

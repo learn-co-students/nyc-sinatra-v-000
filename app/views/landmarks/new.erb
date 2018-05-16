@@ -9,11 +9,6 @@
   <input type='text' name='landmark[year_completed]' id='landmark_year_completed'>
 
 
-  <!-- Choose the landmarks's different titles/create new -->
-  <p><label>Landmarks</label>
-  <% Landmark.all.each do |l| %>
-    <input type="checkbox" name="figure[landmark_ids][]" value="<%= l.name %>" id="landmark_<%= "#{l.id}"%>">
-  <% end %> </p>
 
   <p><input type='submit' value='Create New Landmark'></p>
 </form>
