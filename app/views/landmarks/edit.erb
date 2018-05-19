@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add new landmark</title>
+  </head>
+  <body>
+    <h1>Add a new landmark</h1>
+    <form class="form" action="/landmarks/<%=@landmark.id%>" method="post">
+      <input type="hidden" name="_method" value="patch">
+
+      <input type="text" id="name" name="landmark[name]" value="<%=@landmark.name%>">
+      <input type="text" id="year_completed" name="landmark[year_completed]" value="<%=@landmark.year_completed%>">
+
+      <br></br>
+      Figure:
+      <%@figures.each do |figure|%>
+        <li><input type="radio" id="figure_<%=figure.id%>" name="landmark[figure_id]" value="<%=figure.id%>" <%='checked' if @landmark.figure == figure%>> <%=figure.name%></li>
+      <%end%>
+      Or Create new Figure: <input type="text" id="new_figure" name="figure[name]" placeholder="New figure name">
+      <br></br>
+
+      <br></br>
+      <input type="submit" value="Edit Landmark">
+    </form>
+  </body>
+</html>
