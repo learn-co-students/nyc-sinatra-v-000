@@ -19,12 +19,8 @@ class FiguresController < ApplicationController
     # puts "FigureP = #{figure_params} || TitleP = #{title_params} || LandmarkP = #{landmark_params}"
 
     @figure = Figure.create(name: figure_params[:name])
-    # puts "figure = #{@figure.name}"
-    # puts "Current titles : #{@figure.titles.count}"
-    # puts "Current landmarks : #{@figure.landmarks.count}"
 
     # Find Titles and add to Figure's titles
-    # puts "figure_params[:title_ids] : #{figure_params["title_ids"]}"
     if figure_params.has_key?(:title_ids) && !figure_params[:title_ids].empty?
       figure_params["title_ids"].each { |id| @figure.titles << Title.find(id) }
       # puts "Add titles : #{@figure.titles.count}"
@@ -38,7 +34,6 @@ class FiguresController < ApplicationController
     end
 
     # Find Landmarks and add to Figure's landmarks
-    # puts "figure_params[:landmark_ids] : #{figure_params["landmark_ids"]}"
     if figure_params.has_key?(:landmark_ids) && !figure_params[:landmark_ids].empty?
       figure_params["landmark_ids"].each { |id| @figure.landmarks << Landmark.find(id) }
       # puts "Add landmarks : #{@figure.landmarks.count}"
