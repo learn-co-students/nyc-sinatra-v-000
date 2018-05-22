@@ -9,17 +9,17 @@ class FiguresController < ApplicationController
   end
 
   get '/figures/:id' do
-    @figure = Figure.find_by_id(params[:id])
+    @figure = Figure.find(params[:id])
     erb :'/figures/show'
   end
 
   get '/figures/:id/edit' do
-    @figure = Figure.find_by_id(params[:id])
+    @figure = Figure.find(params[:id])
     erb :'/figures/edit'
   end
 
   post '/figures' do
-    @figure = Figure.create(params[:figure])
+    @figure = Figure.create(params["figure"])
     #binding.pry
     if !params[:title][:name].empty?
       @figure.titles << Title.create(params[:title])
@@ -29,6 +29,20 @@ class FiguresController < ApplicationController
     end
     @figure.save
     #binding.pry
-    redirect :"/figures/#{@figure.id}"
+    redirect "/figures/#{@figure.id}"
+  end
+
+  post '/figures/:id' do
+    @figure = Figure.find(params[:id])
+    @figure.update(params[:figure])
+
+    if !params[:title][:name].empty?
+      @figure.titles << Title.create(params[:title])
+    end
+    if !params[:landmark][:name].empty?
+      @figure.landmarks << Landmark.create(params[:landmark])
+    end
+    @figure.save
+    redirect "/figures/#{@figure.id}"
   end
 end
