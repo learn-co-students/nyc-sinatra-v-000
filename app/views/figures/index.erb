@@ -1,0 +1,13 @@
+<html> 
+
+<header> Figures Index</header>
+<body>
+      <%@figures.each do |figure| %>
+      <p><a href="/figures/<%= figure.id %>"><%= figure.name %></a></p> 
+      <%end%>
+      
+  
+</body>
+</html>
+
+
