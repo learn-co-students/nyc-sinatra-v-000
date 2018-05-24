@@ -1,0 +1,24 @@
+
+  
+  <!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @figure.name %></title>
+  </head>
+ 
+ 
+  <body>
+    <h2><%= @figure.name %></h2> </br>
+    <h2>Titles:</h2>
+    <% @figure.titles.each do |title| %>
+      <p><%= title.name %></p>
+    <% end %>
+    <br></br>
+    <h2>Landmarks:</h2></br>
+    <% @figure.landmarks.each do |landmark| %>
+      <p><%= landmark.name %></p>
+    <% end %>
+  
+  </body>
+
+</html>
