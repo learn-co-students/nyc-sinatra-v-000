@@ -1,12 +1,19 @@
 class LandmarksController < ApplicationController
 
+  # create related
+  get '/landmarks/new' do
+    erb :'landmarks/new'
+  end
+
+  post '/landmarks' do
+    @landmark = Landmark.create(params[:landmark])
+    erb :'landmarks/show'
+  end
+
+  # retrieve
   get '/landmarks' do
     @landmarks = Landmark.all
     erb :'landmarks/index'
-  end
-
-  get '/landmarks/new' do
-    erb :'landmarks/new'
   end
 
   get '/landmarks/:id' do
@@ -14,14 +21,10 @@ class LandmarksController < ApplicationController
     erb :'landmarks/show'
   end
 
+  # update related
   get '/landmarks/:id/edit' do
     @landmark = Landmark.find(params[:id])
     erb :'landmarks/edit'
-  end
-
-  post '/landmarks' do
-    @landmark = Landmark.create(params[:landmark])
-    erb :'landmarks/show'
   end
 
   patch '/landmarks/:id' do

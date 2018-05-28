@@ -1,26 +1,41 @@
 class FiguresController < ApplicationController
 
-  get '/figures' do
-    @figures = Figure.all
-    erb :'figures/index'
-  end
-
+  # Create related
   get '/figures/new' do
     @titles = Title.all
     @landmarks = Landmark.all
     erb :'figures/new'
   end
 
-  get '/figures/:id/edit' do
-    @figure = Figure.find(params[:id])
-    @titles = Title.all
-    @landmarks = Landmark.all
-    erb :'figures/edit'
+  post '/figures' do
+    @figure = Figure.new(params[:figure])
+    if params[:landmark][:name]
+      @figure.landmarks << Landmark.new(params[:landmark])
+    end
+    if params[:title][:name]
+      @figure.titles << Title.new(params[:title])
+    end
+    @figure.save
+    erb :'figures/show'
+  end
+
+  # Retrieve
+  get '/figures' do
+    @figures = Figure.all
+    erb :'figures/index'
   end
 
   get '/figures/:id' do
     @figure = Figure.find(params[:id])
     erb :'figures/show'
+  end
+
+  # update related
+  get '/figures/:id/edit' do
+    @figure = Figure.find(params[:id])
+    @titles = Title.all
+    @landmarks = Landmark.all
+    erb :'figures/edit'
   end
 
   patch '/figures/:id' do
@@ -36,15 +51,4 @@ class FiguresController < ApplicationController
       redirect :"/figures/#{@figure.id}"
   end
 
-  post '/figures' do
-    @figure = Figure.new(params[:figure])
-    if params[:landmark][:name]
-      @figure.landmarks << Landmark.new(params[:landmark])
-    end
-    if params[:title][:name]
-      @figure.titles << Title.new(params[:title])
-    end
-    @figure.save
-    erb :'figures/show'
-  end
 end
