@@ -1,0 +1,6 @@
+<h1>List of Figures</h1>
+
+<% @figures.each.with_index do |fig, i| %>
+  <% index = i + 1 %>
+  <%= "#{index}. #{fig.name}" %>
+<% end %>
