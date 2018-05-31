@@ -1,0 +1,8 @@
+<h1>Ye Olde Landmarks</h1>
+<br>
+<% Landmark.all.each do |ldmk| %>
+  <h4><a href="/landmarks/<%= ldmk.id %>" style="color: black;"><%= ldmk.name %></a></h4>
+    <ul style="list-style-type: none;">
+      <li>Year Completed: <%= ldmk.year_completed%> </li>
+    </ul>
+<% end %>

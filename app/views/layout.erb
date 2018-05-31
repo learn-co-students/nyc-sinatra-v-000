@@ -29,9 +29,66 @@
         Q7  `'^""~`   _yQQM'         `"FQ
         F;         _yQQQQF              Q
   -->
+  
+    <title>Ye Olde Webbsite</title>
+    <!-- couldn't get link tag to work properly -->
+    <link href="<%= url('/public/stylesheets/style.css') %>" rel="stylesheet" type="text/css" >
+    <style>
+      
+/* button styling */
+button {
+  background: #ddd;
+}
+
+/* th, table styling */
+table, th {
+  max-width: 100%;
+  padding: 5px;
+  text-align: center; 
+  border: 1px solid black;
+}
+
+/* navbar styling */
+#navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#navbar ul li {
+  float: left;
+  background: #ddd;
+  border: 1px solid black;
+}
+
+#navbar ul li a {
+  display: inline-block;
+  padding: 8px;
+  color: black;
+  text-decoration: none;
+}
+
+#navbar li a:hover {
+  background-color: #111;
+  color: white;
+}
+
+.clearfix:after {
+  content: '.';
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+  line-height: 0;
+}
+    </style>
+    
   </head>
   <body>
+    <%= erb :'layouts/_header' %>
     <%= yield %>
+    <br><br><br>
+    <%= erb :'layouts/_footer' %>
   </body>
 
 </html>

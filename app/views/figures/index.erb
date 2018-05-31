@@ -1,0 +1,11 @@
+<h1>Ye Olde Figures</h1>
+<br>
+<% Figure.all.each do |fig| %>
+  <ul>
+    <li>
+      <h4>
+        <a href="/figures/<%= fig.id %>" style="color: black;"><%= fig.name %></a>
+      </h4>
+    </li>
+  </ul>
+<% end %>
