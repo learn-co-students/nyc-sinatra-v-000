@@ -1,13 +1,25 @@
 
-<form  action="/figures/new" method="post">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> New Form</title>
+  </head>
+  <body>
 
-  <input type="text" name="figure_name">
-  <input type="text" name="figure title name" >
-  <input type="text" name="figure landmark_ids" >
-  <input type="text" name="figure landmark_name" >
-  <input type="text" name="title_ name" >
 
-</form>
+   <form  action="/figures/new" method="post">
+
+    <input type="text" name="figure_name">
+    <input type="text" name="figure title name" >
+    <input type="text" name="figure landmark_ids" >
+    <input type="text" name="figure landmark_name" >
+    <input type="text" name="title_ name" >
+
+  </form>
+
+
+</body>
+</html>
 <!-- # visit '/figures/new'
 # expect(page.body).to include('<form')
 # expect(page.body).to include('figure[name]')
@@ -16,7 +28,7 @@
 # expect(page.body).to include('landmark[name]')
 # expect(page.body).to include('title[name]') -->
 
-<!-- 
-How you test for your work...
+
+<!-- How you test for your work...
 
 rspec spec/figures_controller_view_spec.rb -->
