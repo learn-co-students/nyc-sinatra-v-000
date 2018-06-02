@@ -19,22 +19,20 @@ class FiguresController < ApplicationController
  post '/figure' do
 #create a new artist
 #need a flash message...
-binding.pry
 
-     @figure = Figure.create(name: params[:Name])   # This is where we set the name for song/ it want us to pass in an hash.
-     @figure.title = Title.find_or_create_by(name: params["Artist Name"])
+     @figure = Figure.create(name: params[:figure_name])   # This is where we set the name for song/ it want us to pass in an hash.
+     @figure.titles << Title.find_or_create_by(params[:title])  # shovel in Title into figure.titles to be used in the views folder
+     @figure.landmarks << Landmark.find_or_create_by(params[:landmark])
+     @figure.save
 
-     @figure.genre_ids = params["genres"]
-     @figure.savefigure
-
-   redirect to ("/figures/#{@figure.id}")  # "/songs/that-one-with-the-guitar"
+   redirect to ("/figure/#{@figure.id}")  # "/figure/[name of newly created figure]
 end
 
 
  get '/figure/:id' do
       @figure = Figure.find_by_id(params[:id])  # slug helps to find by name instaed of ID
       # model name followed by a method
-      erb :'/figures/show'
+      erb :'/figure/show'
  end
 
 
