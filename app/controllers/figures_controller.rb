@@ -6,7 +6,7 @@ class FiguresController < ApplicationController
        erb :'/figures/index'
      end
 
-  get '/figures/new' do
+  get '/figure/new' do
        @figures = Figure.all
        @titles  = Title.all
        @landmarks = Landmark.all
@@ -16,7 +16,7 @@ class FiguresController < ApplicationController
  # :note type .... rspec spec/models ... TO pass the test by session
 
 
- post '/figures' do
+ post '/figure' do
 #create a new artist
 #need a flash message...
 binding.pry

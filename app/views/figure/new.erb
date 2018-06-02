@@ -1,5 +1,5 @@
 
-<form  action="/figures/new" method="post">
+<form  action="/figure" method="post">
 
   <h3>Name <input type="text" name="figure_name"></h3>
 
@@ -9,21 +9,18 @@
     <!-- we give check box ids so when checked, it can be tracked -->
     <ul><%=title.name%>
     <input type="checkbox" id="<%=title.name%>" name="title[]" value="<%=title.id%>">
-  </input>
-  </ul>
-  <%end%>
+    </input>
+    </ul>
+    <%end%>
 
 
  <h2> LandMark</h2>
     <%@landmarks.each do |landmark|%>
     <ul><%=landmark.name%>
     <input type="checkbox" name="landmark[]" value="<%=landmark.id%>" id="<%=landmark.name%>">
-  </input>
-  </ul>
-  <%end%>
-
-
-
+     </input>
+     </ul>
+     <%end%>
 
   <h3>Create New Landmark</h3>
    <h3>Name: <input type="text" name=""> Year: <input type="text" name="">
