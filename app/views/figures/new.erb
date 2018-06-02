@@ -7,8 +7,9 @@
 
   <%@titles.each do |title|%>
     <!-- we give check box ids so when checked, it can be tracked -->
+
     <ul><%=title.name%>
-    <input type="checkbox" id="<%=title.name%>" name="title[]" value="<%=title.id%>">
+    <input type="checkbox" id="<%=title.name%>" name="figure[title_ids][]" value="<%=title.id%>">
     </input>
     </ul>
     <%end%>
@@ -17,13 +18,13 @@
  <h2> LandMark</h2>
     <%@landmarks.each do |landmark|%>
     <ul><%=landmark.name%>
-    <input type="checkbox" name="landmark[]" value="<%=landmark.id%>" id="<%=landmark.name%>">
+    <input type="checkbox" name="figure[landmark_ids][]" value="<%=landmark.id%>" id="<%=landmark.name%>">
      </input>
      </ul>
      <%end%>
 
   <h3>Create New Landmark</h3>
-   <h3>Name: <input type="text" name=""> Year: <input type="text" name="">
+   <h3>Name: <input type="text" name="landmark[name]"> Year: <input type="text" name="">
     </h3>
     <input type="submit" value="create New Figure">
 

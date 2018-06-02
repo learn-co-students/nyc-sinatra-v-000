@@ -16,11 +16,10 @@ class FiguresController < ApplicationController
 
 
  post '/figures' do
-#create a new artist
-#need a flash message...
+ binding.pry
      @figure = Figure.create(name: params[:figure_name])   # This is where we set the name for song/ it want us to pass in an hash.
-     @figure.titles << Title.find_or_create_by(params[:title])  # shovel in Title into figure.titles to be used in the views folder
-     @figure.landmarks << Landmark.find_or_create_by(params[:landmark])
+     @figure.titles << Title.find_or_create_by(title: params[:title])  # shovel in Title into figure.titles to be used in the views folder
+     @figure.landmarks << Landmark.find_or_create_by(landmark: params[:landmark])
      @figure.save
 
    redirect to ("/figures/#{@figure.id}")  # "/figure/[name of newly created figure]
@@ -28,14 +27,15 @@ end
 
 
  get '/figures/:id' do
-      @figure = Figure.find_by_id(params[:id])  # slug helps to find by name instaed of ID
+      @figure = Figure.find_by_id(name: params[:id])  # slug helps to find by name instaed of ID
       # model name followed by a method
       erb :'/figures/show'
  end
 
    get '/figures/:id/edit' do
-       @figure = Figure.find_by_id(params[:id])
+       @figure = Figure.find_by_id(name: params[:id])
       #  slug helps to find by name instaed of ID
+      binding.pry
        erb :'figures/edit'
     end
 

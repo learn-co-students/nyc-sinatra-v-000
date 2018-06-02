@@ -7,16 +7,21 @@
   <input type="hidden" name="_method" value="PATCH">
 
       <label for="name">Name</label>
-      <input type="text" name="<%=@figure.name%>" id="<%=@figure.id%>" value="<%= @figure.name %>">
+      <input type="text" name="figure[name]" id="<%@figure.id%>" value="<%= @figure.name %>">
 
       <h3>titles</h3>
       <!-- it hitting the binding.pry -->
+
       <%binding.pry%>
 
-      <!-- <label for="artist_name">Artist Name </label>
+      <%Landmark.all.each do |landmark|%>
+      <label for="Land_mark">Land Name </label>
      <!-- changing a song's artist -->
-      <input type="text" name="title[name]" value="<%= @figure.title.name %>" id="figure_name">
+       <input type="text" name="title[name]" value="<%= @figure.landmarks.name %>" id="figure.landmarks.id">
 
+      <%end%>
+
+      <input type="submit" name="">
 
 
 </form>
