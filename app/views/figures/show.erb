@@ -1,0 +1,20 @@
+<h1>Ye Olde Figures</h1>
+<br>
+<h3><%= @figure.name %></h3>
+<h4>Titles associated with this figure</h4>
+<% @figure.titles.each do |title| %>
+  <ul>
+    <li><%= title.name %></li>
+  </ul>
+<% end %>
+
+<h4>Landmarks associated with this figure</h4>
+<% @figure.landmarks.each do |ldmk| %>
+  <ul>
+    <li><a href="/landmarks/<%= ldmk.id %>"><%= ldmk.name %></a></li>
+  </ul>
+<% end %>
+<br><br>
+<form action="/figures/<%= @figure.id %>/edit" method="GET">
+  <button type='submit'>Edit Figure</button>
+</form>

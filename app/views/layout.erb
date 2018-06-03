@@ -29,9 +29,17 @@
         Q7  `'^""~`   _yQQM'         `"FQ
         F;         _yQQQQF              Q
   -->
+  
+    <title>Ye Olde Webbsite</title>
+    <!-- couldn't get link tag to work properly -->
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+    
   </head>
   <body>
+    <%= erb :'layouts/_header' %>
     <%= yield %>
+    <br><br><br>
+    <%= erb :'layouts/_footer' %>
   </body>
 
 </html>
