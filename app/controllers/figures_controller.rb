@@ -15,21 +15,6 @@ class FiguresController < ApplicationController
  # :note type .... rspec spec/models ... TO pass the test by session
 
 
- post '/figures' do
-     @figure = Figure.create(params[:figure])   # This is where we set the name for song/ it want us to pass in an hash.
-        if !params[:title][:name].empty?
-       @figure.titles << Title.create(params[:title])  # shovel in Title into figure.titles to be used in the views folder
-       end
-
-        if !params[:landmark][:name].empty?
-          @figure.landmarks << Landmark.create(params[:landmark])
-        end
-
-     @figure.save
-
-   redirect to ("/figures/#{@figure.id}")  # "/figure/[name of newly created figure]
-end
-
  get '/figures/:id' do
       @figure = Figure.find_by_id(params[:id])
       # model name followed by a method
@@ -46,17 +31,41 @@ end
 
 
 
+ post '/figures' do
+     @figure = Figure.create(params[:figure])   # This is where we set the name for song/ it want us to pass in an hash.
+        if !params[:title][:name].empty?
+       @figure.titles << Title.create(params[:title])  # shovel in Title into figure.titles to be used in the views folder
+       end
+
+        if !params[:landmark][:name].empty?
+          @figure.landmarks << Landmark.create(params[:landmark])
+        end
+
+     @figure.save
+
+   redirect to "/figures/#{@figure.id}"  # "/figure/[name of newly created figure]
+end
+
+
+
  patch "/figures/:id" do
-
-
         @figure = Figure.find(params[:id])
         @figure.update(params[:figure])
-        @figure.titles = Titles.find_or_create_by(name: params[:titles][:name])
 
-         @figure.landmarks.ids = (params[:landmark])
+        if !params[:landmark][:name].empty?
+        @figure.landmarks << Landmark.create(params[:landmark])
+      end
+      if !params[:title][:name].empty?
+        @figure.titles << Title.create(params[:title])
+      end
+
+  # :Note I can explicit with each.. but figures contains everthing already
+
+        # @figure.titles = Titles.find_or_create_by(params[:titles][:name])
+        # @figure.landmarks.ids = (params[:landmark])
         @figure.save
-        #  flash[:message] = "Successfully updated song."
-        # redirect to("/songs/#{@song.slug}")
+
+       redirect to "/figures/#{@figure.id}"
 
           # end
 
