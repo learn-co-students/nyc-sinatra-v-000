@@ -36,19 +36,25 @@ end
       erb :'/figures/show'
  end
 
-   get '/figures/:id/edit' do
+
+
+ get '/figures/:id/edit' do
        @figure = Figure.find(params[:id])
       #  slug helps to find by name instaed of ID
-       erb :'figures/edit'
-    end
+       erb :'/figures/edit'
+ end
 
- patch '/figures/:id' do
-        @figure = Figure.find_by_id(params[:id])
+
+
+ patch "/figures/:id" do
+
+
+        @figure = Figure.find(params[:id])
         @figure.update(params[:figure])
         @figure.titles = Titles.find_or_create_by(name: params[:titles][:name])
-        @figure.landmarks.ids = params[:landmark]
-        @figure.save
 
+         @figure.landmarks.ids = (params[:landmark])
+        @figure.save
         #  flash[:message] = "Successfully updated song."
         # redirect to("/songs/#{@song.slug}")
 
