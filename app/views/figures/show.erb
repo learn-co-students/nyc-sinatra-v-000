@@ -1,14 +1,12 @@
 
  <h1> <%= @figure.name %> </h1>
 
-
  <!-- #we gave the name a link in the show page -->
  <%@figure.titles.each do |figure|%>
   <a href="/titles/<%=@figure.titles.ids %>"> <%= @figure.titles.name %> </a>
   <%end%>
 
 <br>
-
  <%@figure.landmarks.each do |landmark|%>
   <a href="/landmark/<%=@figure.landmarks.ids %>"> <%= @figure.landmarks.name %> </a>
   <%end%>

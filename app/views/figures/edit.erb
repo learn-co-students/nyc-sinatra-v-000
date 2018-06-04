@@ -3,23 +3,22 @@
  <h2>Edit <%=@figure.name%></h2>
 
 <form class="" action="/figures/:id" method="post">
-
   <input type="hidden" name="_method" value="PATCH">
 
       <label for="name">Name</label>
-      <input type="text" name="figure[name]" id="<%@figure.id%>" value="<%= @figure.name %>">
+    <h3>titles</h3>
+      <%Titles.all.each do |title|%>
+          <input type="text" name="figure[name]" id="<%@figure.id%>" value="<%= @figure.name %>">
+          <input type="checkbox" id="title_<%=title.id%>" name="figure[title_ids][]" value="<%=title.id%>" <%='checked' if @figure.titles.include?(title)%>>
+     <%end%>
+          <!-- it hitting the binding.pry -->
 
-      <h3>titles</h3>
-      <!-- it hitting the binding.pry -->
 
-      <%binding.pry%>
-
-      <%Landmark.all.each do |landmark|%>
-      <label for="Land_mark">Land Name </label>
-     <!-- changing a song's artist -->
-       <input type="text" name="title[name]" value="<%= @figure.landmarks.name %>" id="figure.landmarks.id">
-
-      <%end%>
+    <%Landmark.all.each do |landmark|%>
+          <label for="Land_mark">Land Name </label>
+         <!-- changing a song's artist -->
+           <input type="text" name="title[name]" value="<%= @figure.landmarks.name %>" id="figure.landmarks.id" <%='checked' if @figure.landmarks.include?(landmark)%>>
+          <%end%>
 
       <input type="submit" name="">
 
