@@ -16,15 +16,15 @@ class FiguresController < ApplicationController
 
 
  post '/figures' do
- binding.pry
-     @figure = Figure.create(name: params[:figure_name])   # This is where we set the name for song/ it want us to pass in an hash.
-     @figure.titles << Title.find_or_create_by(title: params[:title])  # shovel in Title into figure.titles to be used in the views folder
-     @figure.landmarks << Landmark.find_or_create_by(landmark: params[:landmark])
-     @figure.save
+     @figure = Figure.create(params[:figure])   # This is where we set the name for song/ it want us to pass in an hash.
 
+        if !params[:title][:name].empty? && !params[:landmark][:name].empty?
+       @figure.titles << Title.create(title: params[:title][:name])  # shovel in Title into figure.titles to be used in the views folder
+       @figure.landmarks << Landmark.create(landmark: params[:landmark][:name])
+       end
+     @figure.save
    redirect to ("/figures/#{@figure.id}")  # "/figure/[name of newly created figure]
 end
-
 
  get '/figures/:id' do
       @figure = Figure.find_by_id(name: params[:id])  # slug helps to find by name instaed of ID
