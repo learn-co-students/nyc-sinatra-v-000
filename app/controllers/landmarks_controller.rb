@@ -35,8 +35,6 @@ class LandmarksController < ApplicationController
     @landmark = Landmark.find_by_id(params[:id])
     @landmark.update(params[:landmark]) # instead of using create
 
-    @figure.save
-
     flash[:message] = "Successfully updated Landmark."
     erb :'landmarks/show'
   end
