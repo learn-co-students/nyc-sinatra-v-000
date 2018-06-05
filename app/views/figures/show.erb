@@ -1,0 +1,21 @@
+<% if flash.has?(:message) %>
+    <%= flash[:message] %>
+<% end %>
+
+<table>
+  <th>Name</th>
+  <th>Landmark</th>
+  <th>Title</th>
+  <tr>
+    <td><a href="/figures/<%= @figure.id %>"><%= @figure.name %></a></td>
+    <td><ul>
+      <% @figure.landmarks.each do |landmark| %>
+          <li><a href="/landmarks/<%= landmark.id %>"><%= landmark.name %></a></li>
+      <% end %>
+    </ul></td>
+    <td><ul>
+      <% @figure.titles.each do |title| %>
+          <li><a href="/titles/<%= title.id %>"><%= title.name %></a></li>
+      <% end %>
+    </ul></td>
+</table>

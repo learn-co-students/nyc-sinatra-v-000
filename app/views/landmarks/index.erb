@@ -1,0 +1,6 @@
+<% @landmarks.each do |landmark| %>
+    <ul>
+      <li><a href="landmarks/<%= landmark.id %>"><%= landmark.name %></a></li>
+      <li><a href="landmarks/<%= landmark.id %>"><%= landmark.year_completed %></a></li>
+    </ul>
+<% end %>

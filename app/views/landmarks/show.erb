@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+    <%= flash[:message] %>
+<% end %>
+
 <table>
   <tr>
     <th>Name</th>
@@ -7,4 +11,4 @@
     <td><%= @landmark.name %></td>
     <td><%= @landmark.year_completed %></td>
   </tr>
-<table>
+</table>
