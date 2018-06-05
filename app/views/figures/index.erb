@@ -1,0 +1,12 @@
+<label>Figures: </label>
+
+<% Figure.all.each do |figure| %>
+  <p>
+    <a href="/figures/<%= figure.id %>"><%= figure.name %><br><br>
+  </p>
+<% end %>
+
+<br><br>
+<form action="/figures/new" method="get">
+  <input type="submit" id="forward_to_new_figure" value="New Figure">
+</form>
