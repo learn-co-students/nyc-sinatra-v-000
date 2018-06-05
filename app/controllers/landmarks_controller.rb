@@ -17,4 +17,11 @@ class LandmarksController < ApplicationController
      end
 
 
+     get '/landmarks/:id/edit' do
+        @landmark = Landmark.find(params[:id])
+      #  slug helps to find by name instaed of ID
+        erb :'/landmarks/edit'
+    end
+
+
 end
