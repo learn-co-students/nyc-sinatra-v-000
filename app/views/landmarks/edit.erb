@@ -1,22 +1,31 @@
 <form action="/landmarks/<%= @landmark.id %>" method="POST">
 
-     <input type="hidden" name="_method" value="patch">
-
-      <label>Name</label>
-
-      <label>Edit landmark: </label><b></b>
-
-      <% Landmark.all.each do |landmark| %>
-        <label><%= landmark.name %></label>
-
-      <input type="checkbox" name="landmark[:year_completed][]" value="<%=landmark.id %>" id="<%=landmark.name %>" <%='checked' if @landmark.name.include?(name) %> <br><br/>/>
-
-      <% end %>
-
-          <label>Add New:</label>
-          <input type="text" id="new_landmark" name="landmark[name]"><br></br>
+     <input type="hidden" name="_method" value="PATCH">
 
 
-          <input type="submit" value="Edit Landmark">
+          <label>Edit landmark </label>
+
+  <br>
+  <br>
+         <label>Name: </label>
+         <input type="text" name= "landmark[name]" value="<%=@landmark.name%>" />
+  <br>
+  <br>
+          <label>Year_Completed:</label>
+          <input type="text" name= "landmark[year_completed]" value="<%=@landmark.year_completed%>" />
+
+  <br>
+  <br>
+          <label>Add New Land mark:</label>
+  <br> </br>
+         LandMark Name:   <input type="text" id="name" name="landmark[name]" />
+  <br>
+  </br>
+
+         LandMark Year:  <input type="text" id="year_completed" name="landmark[year_completed]"/>
+  <br> </br>
+
+
+           <input type="submit" value="Edit Landmark">
 
 </form>

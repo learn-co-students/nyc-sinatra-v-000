@@ -2,22 +2,10 @@
 <form  action="/landmarks" method="POST">
 
 
-  <h3>Name <input type="text" name="landmark[name]" id="landmark_name"></h3>
-  
-
-  <h3>Create Landmark </h3>
-  <%@landmarks.all.each do |landmark|%>
-
-
-   <ul><%=landmark.name%>
-  <input type="checkbox" name="landmark[:figure_id][]" value="<%=landmark.id %>" id="landmark_<%=landmark.id%>"/>
-</ul>
-  <%end%>
-
-  <br> </br>
-
   <h3>Create New Landmark</h3>
-   <h3>Name: <input type="text" name="landmark[name]" id="new_landmark"></h3>
+   <h3>Name of LandMark: <input type="text" name="landmark[name]" id="landmark_name" /> </h3>
+   <h3>year_completed of LandMark: <input type="text" name="landmark[year_completed]" id="landmark_year_completed"></h3>
+
 
     <input type="submit" value="Create New Landmark">
 

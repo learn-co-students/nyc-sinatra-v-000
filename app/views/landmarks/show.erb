@@ -1,12 +1,10 @@
 
 <h1> Landmark Name: <%= @landmark.name %> </h1>
-
 <!-- #we gave the name a link in the show page -->
-
 <br> </br>
 
- <a href="/landmark/<%=@landmark.id %>"> <%=@landmark.name %> </a>
+ LandMark Name: <a href="/landmark/<%=@landmark.id %>"> <%=@landmark.name %> </a>
 
  <br> </br>
 
- <a href="/landmark/<%=@landmark.year_completed %>"><%=@landmark.year_completed%></a>
+ Year completed: <a href="/landmark/<%=@landmark.year_completed %>"><%=@landmark.year_completed%></a>
