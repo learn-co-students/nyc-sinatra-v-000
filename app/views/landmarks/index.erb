@@ -1,0 +1,7 @@
+<h2>Complete list of landmarks: </h2>
+
+<ol>
+<% @landmarks.each do |landmark|%>
+  <li><%= "#{landmark.name} || #{landmark.year_completed}" %></li>
+<% end %>
+</ol>
