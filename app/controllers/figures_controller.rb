@@ -4,7 +4,7 @@ class FiguresController < ApplicationController
 
         erb :'/figures/index'
     end
-    
+
     get '/figures/new' do
         @titles = Title.all
         @landmarks = Landmark.all
@@ -15,7 +15,7 @@ class FiguresController < ApplicationController
     get '/figures/:id' do
         @figure = Figure.find(params[:id])
 
-        "HELLO from #{@figure.name}"
+        erb :'/figures/show'
     end
 
     post '/figures' do
