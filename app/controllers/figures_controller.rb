@@ -7,11 +7,11 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     @figure = Figure.create(params[:figure])
-    if params[:title][:name]!=nil
+    if params[:title][:name]!=""
       title = Title.create(params[:title])
       @figure.titles << title
     end
-    if params[:landmark][:name]!=nil
+    if params[:landmark][:name]!=""
       new_l = Landmark.create(params[:landmark])
       @figure.landmarks << new_l
     end
@@ -26,5 +26,10 @@ class FiguresController < ApplicationController
   get '/figures/:id' do
     @figure = Figure.find_by(id: params[:id])
     erb :'/figures/show'
+  end
+
+  get '/figures/:id/edit' do
+    @figure = Figure.find_by(id: params[:id])
+    erb :'/figures/edit'
   end
 end
