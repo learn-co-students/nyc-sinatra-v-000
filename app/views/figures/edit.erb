@@ -3,10 +3,14 @@
   <label>Edit Name: </label>
   <br></br>
   <input type="text" name="figure[name]" value="<%=@figure.name%>" id="figure_name">
+  <br></br>
   <label>New landmark: </label>
   <input type="text" name="landmark[name]" id="new_landmark">
+  <br></br>
   <label>Edit title: </label>
   <%Title.all.each do |title|%>
-  <input type="checkbox" name="figure[title_ids][]" value="title.id" <%='checked' if @figure.titles.include?(title)%>><%=title.name%></input>
+  <input type="checkbox" name="figure[title_ids][]" value="<%=title.id%>" <%='checked' if @figure.titles.include?(title)%>><%=title.name%></input>
+  <br></br>
   <%end%>
+  <input type="submit" value="Edit Figure">
 </form>
