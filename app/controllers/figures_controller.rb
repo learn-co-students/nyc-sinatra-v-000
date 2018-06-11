@@ -18,7 +18,23 @@ class FiguresController < ApplicationController
         erb :'/figures/show'
     end
 
+    get '/figures/:id/edit' do
+        @figure = Figure.find(params[:id])
+        @titles = Title.all
+        @landmarks = Landmark.all
+
+        erb :'/figures/edit'
+    end
+
+    patch '/figures/:id' do
+        self.create_or_update(Figure.find(params[:id]))
+    end
+
     post '/figures' do
+        self.create_or_update(Figure.new)
+    end
+
+    def create_or_update(figure)
         titles = []
         if params[:figure][:title_ids]
             titles = params[:figure][:title_ids].collect do |t_id|
@@ -39,7 +55,6 @@ class FiguresController < ApplicationController
             landmarks << Landmark.find_or_create_by(name: params[:landmark][:name])
         end
 
-        figure = Figure.new
         figure.name = params[:figure][:name]
         figure.titles = titles
         figure.landmarks = landmarks
@@ -48,4 +63,5 @@ class FiguresController < ApplicationController
 
         redirect "/figures/#{figure.id}"
     end
+
 end

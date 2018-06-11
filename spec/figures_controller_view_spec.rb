@@ -101,7 +101,6 @@ describe FiguresController do
     expect(last_response.body).to include(@figure.name)
   end
 
-
   it "allows you to edit a single figure" do
     @original_figure = Figure.first
     visit "/figures/#{@original_figure.id}/edit"
