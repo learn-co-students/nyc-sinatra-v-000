@@ -11,4 +11,10 @@ class LandmarksController < ApplicationController
 
         redirect to "/landmarks/#{landmark.id}"
     end
+
+    get '/landmarks' do
+        @landmarks = Landmark.all
+        
+        erb :'/landmarks/index'
+    end
 end
