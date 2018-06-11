@@ -35,7 +35,6 @@ class FiguresController < ApplicationController
 
   post '/figures/:id' do
     @figure = Figure.find_by(id: params[:id])
-    binding.pry
     @figure.update(params[:figure])
     if params[:landmark][:name] != ""
       landmark = Landmark.find_or_create_by(name: params[:landmark][:name])
