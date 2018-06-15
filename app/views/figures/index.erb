@@ -1,0 +1,7 @@
+<h1>Figure Index Page</h1>
+<h3>-select a historical figure to learn more-</h3>
+
+<% @figures.each do |figure| %>
+  <a href="/figures/<%=figure.slug%>"> <%= figure.name %> </a>
+  <br></br>
+<% end %>
