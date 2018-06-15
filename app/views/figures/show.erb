@@ -1,9 +1,19 @@
-<h1>Figure Show Page</h1>
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
-  <tr>
-    <td><%= @figure.name %></td>
-  </tr>
-<table>
+<h1>Historical Figure: <%=@figure.name%></h1>
+
+<h4>Title(s): </h4>
+<br></br>
+<ul>
+  <%@figure.titles.each do |title|%>
+    <li><a href="/titles/<%=title.slug%>"> <%=title.name%> </a></li>
+  <%end%>
+</ul>
+
+<h4>Landmark(s):</h4>
+<br></br>
+<ul>
+  <%@figure.landmarks.each do |landmark|%>
+    <li><a href="/landmarks/<%=landmark.slug%>"> <%=landmark.name%> </a></li>
+  <%end%>
+</ul>
+
+<h4><a href="/figures/<%=@figure.slug%>/edit">Edit</a></h4>
