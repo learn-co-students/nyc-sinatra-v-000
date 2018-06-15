@@ -1,0 +1,17 @@
+<h1>Figure Show</h1>
+<h3>Name</h3>
+<%= @figure.name %>
+<h3>Titles</h3>
+<ul>
+  <% @figure.titles.each do |title| %>
+    <% title = Title.find(title.id) %>
+  <li><%= title.name %></li> 
+<% end %>
+</ul>
+<h3>Landmarks</h3>
+<ul>
+  <% @figure.landmarks.each do |landmark| %>
+    <% landmark = Landmark.find(landmark.id) %>
+  <li><%= landmark.name %></li> 
+<% end %>
+</ul>
