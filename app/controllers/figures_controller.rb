@@ -11,7 +11,7 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     #creates a new Figure instance if one for that name doesn't already exist
-    @figure = Figure.create(params["figure"])
+    @figure = Figure.find_or_create_by(params["figure"])
 
     #if a unique title is entered in the title textfield, a new Title instance is created/associated to @figure
     if !params[:title][:name].empty?
