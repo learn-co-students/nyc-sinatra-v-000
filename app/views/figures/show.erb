@@ -1,0 +1,29 @@
+<h1><%= @figure.name %></h1>
+
+<h3>Titles: </h3><%= @figure.titles.map {|title| title.name}.to_sentence %>
+<h3>Landmarks: </h3>
+
+  <ul>
+    <% @figure.landmarks.map do |landmark| %>
+      <li><a href="/landmarks/<%= landmark.id %>"><%=landmark.name%></a></li>
+    <% end %>
+  </ul>
+
+<p></p>
+
+<form action="/figures" method="get" style="float: left">
+  <input type="submit" name="" value="Index">
+</form>
+
+<p></p>
+
+<form action="/figures/<%= @figure.id %>/edit" method="get" style="float: left; margin: 0 10px 0 10px;">
+  <input type="submit" name="" value="Edit">
+</form>
+
+<p></p>
+
+<form method="post" action="/figures/<%= @figure.id %>/delete" style="float: left">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete">
+</form>
