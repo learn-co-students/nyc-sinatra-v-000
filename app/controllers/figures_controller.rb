@@ -1,5 +1,3 @@
-require 'pry'
-
 class FiguresController < ApplicationController
 
   get '/figures' do
@@ -13,7 +11,6 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     @figure = Figure.find_or_create_by(name: params[:figure][:name])
-    #if existing titles have been selected
     if params[:figure][:title_ids]
       params[:figure][:title_ids].each {|title| @figure.titles << Title.find(title)}
     elsif !params[:title][:name].empty?
