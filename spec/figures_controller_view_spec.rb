@@ -93,7 +93,6 @@ describe FiguresController do
   it "allows you to view form to edit a single figure" do
     @figure = Figure.first
     get "/figures/#{@figure.id}/edit"
-
     expect(last_response.status).to eq(200)
     expect(last_response.body).to include('<form')
     expect(last_response.body).to include('figure[name]')
@@ -108,7 +107,6 @@ describe FiguresController do
     fill_in :figure_name, with: "Missy"
     fill_in :new_landmark, with: "Big Tower"
     click_button "Edit Figure"
-
     expect(page.current_path).to eq("/figures/#{@original_figure.id}")
     expect(page.body).to include("Missy")
     expect(page.body).to include("Big Tower")
