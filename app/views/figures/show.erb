@@ -1,0 +1,9 @@
+<h1><%= @figure.name %></h1>
+
+<h3>Titles: </h3><%= @figure.titles.map {|title| title.name}.to_sentence %>
+<h3>Landmarks: </h3><%= @figure.landmarks.map {|landmark| landmark.name}.to_sentence %>
+
+<form action="/figures/<%= @figure.id %>/edit" method="get">
+  <input type="submit" name="" value="Edit">
+
+</form>
