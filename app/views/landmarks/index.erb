@@ -1,7 +1,9 @@
 <h1>Landmark Index Page</h1>
 <h3>-select a landmark to learn more-</h3>
 
-<% @landmarks.each do |figure| %>
+<% @landmarks.each do |landmark| %>
   <a href="/landmarks/<%=landmark.slug%>"> <%= landmark.name %> </a>
   <br></br>
 <% end %>
+
+<h3>-or click <a href="landmarks/new">here</a> to create a new landmark-</h3>

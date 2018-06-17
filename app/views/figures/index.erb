@@ -1,7 +1,9 @@
-<h1>Figure Index Page</h1>
-<h3>-select a historical figure to learn more-</h3>
+<h1>Historical Figures Index Page</h1>
+<h3>-select a historical figure below to learn more-</h3>
 
 <% @figures.each do |figure| %>
   <a href="/figures/<%=figure.slug%>"> <%= figure.name %> </a>
   <br></br>
 <% end %>
+
+<h3>-or click <a href="figures/new">here</a> to create a new historical figure-</h3>
