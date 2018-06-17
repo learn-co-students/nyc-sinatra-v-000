@@ -9,62 +9,70 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-
     @landmarks = []
-    params[:landmark].each do |l|
-      landmark = Landmark.find_by(name: l.name) || Landmark.create(l)
-      @landmarks << landmark
+    if !params[:landmark][:name].empty?
+      @landmarks << Landmark.create(name: params[:landmark][:name])
     end
-    if !params[:landmark_name].empty?
-      @landmarks << Landmark.create(name: params[:landmark_name], year: params[:landmark_year])
+    if params[:figure][:landmark_ids] != nil
+      params[:figure][:landmark_ids].each do |landmark|
+        id = landmark.gsub("landmark_","").to_i
+        @landmarks << Landmark.find(id)
+      end
     end
-
     @titles = []
-    params[:title].each do |t|
-      title = Title.find_by(name: t.name) || Title.create(t)
-      @titles << title
+    if !params[:title][:name].empty?
+      @titles << Title.create(params[:title])
     end
-    if !params[:title_name].empty?
-      @titles << Title.create(name: params[:title_name])
+    if params[:figure][:title_ids] != nil
+      params[:figure][:title_ids].each do |title|
+        id = title.gsub("title_","").to_i
+        @titles << Title.find(id)
+      end
     end
-
-    @figure = Figure.create(name: params[:figure_name], titles: "#{@titles}", landmarks: "#{@landmarks}")
-
-    redirect "/figures/#{@figure.slug}"
+    @figure = Figure.find_by(name: params[:figure][:name]) || Figure.create(name: "#{params[:figure][:name]}")
+    @figure.landmarks = @landmarks
+    @figure.titles = @titles
+    redirect "/figures/#{@figure.id}"
   end
 
-  get '/figures/:slug/edit' do
-    @figure = Figure.find_by_slug(params[:slug])
+  get '/figures/:id/edit' do
+    @figure = Figure.find("#{params[:id].to_i}")
     erb :'figures/edit'
   end
 
-  post '/figures/:slug' do
-
+  post '/figures/:id' do
+    @figure = Figure.find("#{params[:id]}")
     @landmarks = []
-    params[:landmark].each do |l|
-      landmark = Landmark.find_by(name: l.name) || Landmark.create(l)
-      @landmarks << landmark
+    if !params[:landmark][:name].empty?
+      @landmarks << Landmark.create(name: params[:landmark][:name])
     end
-    if !params[:landmark_name].empty?
-      @landmarks << Landmark.create(name: params[:landmark_name], year: params[:landmark_year])
+    if params[:figure][:landmark_ids] != nil
+      params[:figure][:landmark_ids].each do |landmark|
+        id = landmark.gsub("landmark_","").to_i
+        @landmarks << Landmark.find(id)
+      end
     end
-
     @titles = []
-    params[:title].each do |t|
-      title = Title.find_by(name: t.name) || Title.create(t)
-      @titles << title
+    if !params[:title][:name].empty?
+      @titles << Title.create(params[:title])
     end
-    if !params[:title_name].empty?
-      @titles << Title.create(name: params[:title_name])
+    if params[:figure][:title_ids] != nil
+      params[:figure][:title_ids].each do |title|
+        id = title.gsub("title_","").to_i
+        @titles << Title.find(id)
+      end
     end
-
-    @figure = Figure.update(name: params[:figure_name], titles: "#{@titles}", landmarks: "#{@landmarks}")
-
-    redirect "/figures/#{@figure.slug}"
+    @figure.update(name: "#{params[:figure][:name]}")
+    @figure.landmarks = @landmarks
+    @figure.titles = @titles
+    @figure.save
+    redirect "/figures/#{@figure.id}"
   end
 
-  get '/figures/:slug' do
-    @slug = Figure.find_by_slug(params[:slug])
+  get '/figures/:id' do
+    @titles = Title.all
+    @landmarks = Landmark.all
+    @figure = Figure.find("#{params[:id].to_i}")
     erb :'figures/show'
   end
 
