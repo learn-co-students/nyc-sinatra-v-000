@@ -1,7 +1,7 @@
 class CreateFigures < ActiveRecord::Migration
   def change
     create_table :figures do |t|
-      t.sting :name
+      t.string :name
     end
   end
 end

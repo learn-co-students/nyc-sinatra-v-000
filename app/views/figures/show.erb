@@ -1,0 +1,15 @@
+<h1><%= @slug.name %></h1>
+
+<ul>
+  <% @slug.titles.each do |i| %>
+  <li><a href="/titles/<%=i.slug%>"></a>"><h3><%= i.name %></h3></a></li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @slug.landmarks.each do |i| %>
+  <li><a href="/landmarks/<%=i.slug%>"></a>"><h3><%= i.name %></h3></a></li>
+  <% end %>
+</ul>
+
+<a href="/figures/<%=i.slug%>/edit"><input type="button" value="Edit"></a>
