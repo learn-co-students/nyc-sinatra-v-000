@@ -31,6 +31,7 @@ GEM
     daemons (1.2.6)
     diff-lcs (1.3)
     eventmachine (1.2.7)
+    eventmachine (1.2.7-x64-mingw32)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     json (1.8.6)
@@ -40,6 +41,8 @@ GEM
     minitest (5.11.3)
     mustermann (1.0.2)
     nokogiri (1.8.2)
+      mini_portile2 (~> 2.3.0)
+    nokogiri (1.8.2-x64-mingw32)
       mini_portile2 (~> 2.3.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -85,6 +88,7 @@ GEM
       sinatra (>= 1.0)
     sinatra-twitter-bootstrap (2.3.4)
     sqlite3 (1.3.13)
+    sqlite3 (1.3.13-x64-mingw32)
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -103,6 +107,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   activerecord (= 4.2.5)
@@ -121,4 +126,4 @@ DEPENDENCIES
   tux
 
 BUNDLED WITH
-   1.16.0
+   1.16.2
