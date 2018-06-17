@@ -15,7 +15,10 @@ class LandmarksController < ApplicationController
     @landmark.title_ids = params[:landmark][:title_ids]
     @landmark.figure_ids = params[:landmark][:figure_ids]
     @landmark.save
-    #still need to figure out how to add NEW titles/landmarks instead of just choosing preexisting ones
+    #should be able to select ONE historical figure, drawing from EITHER the radio boxes OR the "New Figure Name" textbox
+#not sure if I should even include Titles... i feel like those should be automatically linked through the Figures...
+#if I make it optional to add titles through the New landmark page, would that overwrite the existing Figures?
+    #should be able to select MULTIPLE titles, drawing from the checkboxes AND the "New Title Name" textboxe
     redirect to "landmarks/:slug"
   end
 
@@ -33,7 +36,7 @@ class LandmarksController < ApplicationController
     @landmark = Landmark.find_by_slug(params[:slug])
     @landmark.update(params[:landmark])
     @landmark.title_ids = params[:landmark][:title_ids]
-    
+
     @landmark.figure_ids = params[:landmark][:figure_ids]
     @landmark.save
     redirect to "landmarks/:slug"

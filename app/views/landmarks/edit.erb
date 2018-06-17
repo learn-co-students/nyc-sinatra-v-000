@@ -3,10 +3,12 @@
 <form action="/landmarks/<%=@landmark.slug%>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
 
-  <h2>Name</h2>
-  <label>Landmark Name:</label>
-  <input type="text" name="Name" value="<%= @landmark.name %>">
-
+  <h2>Name:</h2>
+  <label for="landmark_name">
+  <input type="text" name="Landmark Name" id="landmark_name" value="<%= @landmark.name %>" >
+  <h2>Year Completed:</h2>
+  <label for="landmark_year">
+  <input type="text" name="Landmark Year" id="landmark_year" value="<%= @landmark.year_completed %>" >
   <br></br>
 
   <h2><label>Figure</label></h2>

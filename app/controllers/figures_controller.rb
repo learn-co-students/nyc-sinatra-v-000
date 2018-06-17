@@ -35,6 +35,8 @@ class FiguresController < ApplicationController
     @figure.title_ids = params[:figure][:title_ids]
     @figure.landmark_ids = params[:figure][:landmark_ids]
     @figure.save
+    #should be able to select MULTIPLE titles, drawing from the checkboxes AND the "New Title Name" textbox
+    #should be able to select MULTIPLE landmarks, drawing from the checkboxes AND the "New Landmark Name"/"New Landmark Year" textboxes
     redirect to "figures/#{@figure.slug}"
   end
 
