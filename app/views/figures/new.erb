@@ -4,7 +4,7 @@
 
   <h2>Name</h2>
   <label>Figure Name:</label>
-  <input type="text" name="figure_name">
+  <input type="text" name="figure[name]">
 
   <br></br>
 
@@ -16,7 +16,7 @@
   <%end%>
 
   <label>Create a New Title:</label>
-  <input type="text" name="New Title Name">
+  <input type="text" name="title[name]">
   <br></br>
 
   <h2><label>Landmark(s)</label></h2>
@@ -29,9 +29,9 @@
   <label>Create a new landmark:</label>
   <br></br>
   <label for="landmark_name">Name:</label>
-  <input type="text" name="New Landmark Name" id="landmark_name">
+  <input type="text" name="landmark[name]" id="landmark_name">
   <label for="landmark_year">Year:</label>
-  <input type="text" name="New Landmark Year" id="landmark_year">
+  <input type="text" name="landmark[year]" id="landmark_year">
 
   <br></br>
   <input type="submit" value="Create New Figure">
