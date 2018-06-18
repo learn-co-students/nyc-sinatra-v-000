@@ -1,0 +1,11 @@
+<!-- the input's name field is how you're structuring the params hash -->
+
+<form action="/landmarks" method="POST">
+  <h1><label>Create a New Landmark</label></h1>
+  <br>
+  Name: <input type="text" name="landmark[name]" id="landmark_name">
+  <br>
+  Year Completed: <input type="number" name="landmark[year_completed]" id="landmark_year_completed">
+  <br>
+  <input type="submit" value="Create New Landmark">
+</form>
