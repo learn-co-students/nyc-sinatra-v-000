@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Landmarks</title>
+</head>
+<body>
+
+	<table>
+		<tr>
+		<th>Name</th>
+		<th>     </th>
+		<th>Year Completed</th>
+		</tr>
+		<tr>
+			<%@landmarks.each do |landmark| %>
+		<td><%=landmark.name%></td>
+		<th>     </th>
+		<td><%=landmark.year_completed%></td>
+		</tr>
+		<%end%>
+		</table>
+
+</body>
+</html>

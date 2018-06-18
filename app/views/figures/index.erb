@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Figures</title>
+</head>
+<body>
+	<table>
+		<tr>
+		<th>Name</th>
+		
+		</tr>
+		<tr>
+			<%@figures.each do |figure| %>
+		<td><%=figure.name%></td>
+		
+		</tr>
+		<%end%>
+		</table>
+
+</body>
+</html>
