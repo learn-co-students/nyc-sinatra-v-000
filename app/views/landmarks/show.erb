@@ -1,7 +1,7 @@
 <h1>Landmark Show Page</h1>
 
 <% @historical_figure = "" %>
-<% @landmark.figure ? @historical_figure = @landmark.figure : @historical_figure = "none" %>
+<% @landmark.figure ? @historical_figure = @landmark.figure.name : @historical_figure = "none" %>
 
 <table border = "1">
   <tr>

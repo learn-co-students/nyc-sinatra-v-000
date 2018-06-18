@@ -4,7 +4,7 @@
 <br></br>
 <ul>
   <%@figure.titles.each do |title|%>
-    <li><a href="/titles/<%=title.slug%>"> <%=title.name%> </a></li>
+    <li> <%=title.name%> </li>
   <%end%>
 </ul>
 
@@ -12,8 +12,8 @@
 <br></br>
 <ul>
   <%@figure.landmarks.each do |landmark|%>
-    <li><a href="/landmarks/<%=landmark.slug%>"> <%=landmark.name%> </a></li>
+    <li><a href="/landmarks/<%=landmark.id%>"> <%=landmark.name%> </a></li>
   <%end%>
 </ul>
 
-<h4><a href="/figures/<%=@figure.slug%>/edit">Edit</a></h4>
+<h4><a href="/figures/<%=@figure.id%>/edit">Edit</a></h4>

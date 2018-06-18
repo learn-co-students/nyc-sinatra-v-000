@@ -2,7 +2,7 @@
 <h3>-select a historical figure below to learn more-</h3>
 
 <% @figures.each do |figure| %>
-  <a href="/figures/<%=figure.slug%>"> <%= figure.name %> </a>
+  <a href="/figures/<%=figure.id%>"> <%= figure.name %> </a>
   <br></br>
 <% end %>
 
