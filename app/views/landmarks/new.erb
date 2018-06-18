@@ -3,37 +3,10 @@
 <form action="/landmarks" method="POST">
   <h2>Name:</h2>
   <label for="landmark_name">
-  <input type="text" name="landmark[name]" id="new_landmark">
+  <input type="text" name="landmark[name]" id="landmark_name">
   <h2>Year Completed:</h2>
-  <label for="landmark_year">
-  <input type="text" name="landmark[year_completed]" id="new_landmark_year">
-
-  <br></br>
-  <h2>Figure</h2>
-  <label>Choose from existing figures:</label>
-  <%Figure.all.each do |figure|%>
-    <br></br>
-    <label><%= figure.name %></label>
-    <input type="radio" name="landmark[figure_id]" value="<%=figure.id%>" id="<%=figure.name%>">
-  <%end%>
-
-  <br></br>
-  <label>Or create a new figure:</label>
-  <input type="text" name="New Figure Name">
-
-  <br></br>
-  <h2>Title(s)</h2>
-  <label>Choose from existing title(s):</label>
-  <%Title.all.each do |title|%>
-    <br></br>
-    <label><%= title.name %></label>
-    <input type="checkbox" name="figure[title_ids][]" value="<%=title.id%>" id="<%=title.name%>">
-  <%end%>
-
-  <br></br>
-  <label>And/or create a new title:</label>
-  <input type="text" name="New Title Name">
-  <br></br>
+  <label for="landmark_year_completed">
+  <input type="text" name="landmark[year_completed]" id="landmark_year_completed">
 
   <input type="submit" value="Create New Landmark">
 </form>

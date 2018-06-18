@@ -2,7 +2,7 @@
 <h3>-select a landmark to learn more-</h3>
 
 <% @landmarks.each do |landmark| %>
-  <a href="/landmarks/<%=landmark.slug%>"> <%= landmark.name %> </a>
+  <a href="/landmarks/<%=landmark.id%>"> <%= landmark.name %> </a>, completed in <%= landmark.year_completed %> 
   <br></br>
 <% end %>
 

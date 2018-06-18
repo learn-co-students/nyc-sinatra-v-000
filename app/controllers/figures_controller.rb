@@ -35,7 +35,6 @@ class FiguresController < ApplicationController
   end
 
   patch '/figures/:slug' do
-    binding.pry
     @figure = Figure.find_by_slug(params[:slug])
     @figure.update(params[:figure])
 
