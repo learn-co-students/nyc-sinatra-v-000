@@ -18,24 +18,22 @@ class FiguresController < ApplicationController
     if !params[:landmark][:name].empty?
       @figure.landmarks << Landmark.create(params[:landmark])
     end
-    #should be able to select MULTIPLE titles, drawing from the checkboxes AND the "New Title Name" textbox
-    #should be able to select MULTIPLE landmarks, drawing from the checkboxes AND the "landmark[name]/landmark[year]" textboxes
     @figure.save
-    redirect to "figures/#{@figure.slug}"
+    redirect to "figures/#{@figure.id}"
   end
 
-  get '/figures/:slug/edit' do
-    @figure = Figure.find_by_slug(params[:slug])
+  get '/figures/:id/edit' do
+    @figure = Figure.find(params[:id])
     erb :'/figures/edit'
   end
 
-  get '/figures/:slug' do
-    @figure = Figure.find_by_slug(params[:slug])
+  get '/figures/:id' do
+    @figure = Figure.find(params[:id])
     erb :'/figures/show'
   end
 
-  patch '/figures/:slug' do
-    @figure = Figure.find_by_slug(params[:slug])
+  patch '/figures/:id' do
+    @figure = Figure.find(params[:id])
     @figure.update(params[:figure])
 
     if !params[:title][:name].empty?
@@ -45,10 +43,9 @@ class FiguresController < ApplicationController
     if !params[:landmark][:name].empty?
       @figure.landmarks << Landmark.create(params[:landmark])
     end
-    #should be able to select MULTIPLE titles, drawing from the checkboxes AND the "New Title Name" textbox
-    #should be able to select MULTIPLE landmarks, drawing from the checkboxes AND the "landmark[name]/landmark[year]" textboxes
+
     @figure.save
-    redirect to "figures/#{@figure.slug}"
+    redirect to "figures/#{@figure.id}"
   end
 
 end
