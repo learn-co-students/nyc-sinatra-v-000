@@ -9,7 +9,7 @@ class LandmarksController < ApplicationController
     erb :'/landmarks/new'
   end
 
-  post '/landmarks/new' do
+  post '/landmarks' do
     @landmark = Landmark.create(name: params["landmark_name"])
     #add a param above to cover the year_completed of each landmark
     @landmark.title_ids = params[:landmark][:title_ids]
