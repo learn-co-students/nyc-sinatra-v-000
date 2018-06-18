@@ -9,13 +9,18 @@ class FiguresController < ApplicationController
     erb :'/figures/new'
   end
 
-  post '/figures/new' do
+  post '/figures' do
     @figure = Figure.create(name: params[:figure][:name])
-    @figure.title_ids = params[:figure][:title_ids]
-    @figure.landmark_ids = params[:figure][:landmark_ids]
-    @figure.save
+    if !params[:title][:name].empty?
+      @figure.titles << Title.create(params[:title])
+    end
+
+    if !params[:landmark][:name].empty?
+      @figure.landmarks << Landmark.create(params[:landmark])
+    end
     #should be able to select MULTIPLE titles, drawing from the checkboxes AND the "New Title Name" textbox
     #should be able to select MULTIPLE landmarks, drawing from the checkboxes AND the "landmark[name]/landmark[year]" textboxes
+    @figure.save
     redirect to "figures/#{@figure.slug}"
   end
 
