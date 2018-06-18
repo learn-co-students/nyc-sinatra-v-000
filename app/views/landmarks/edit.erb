@@ -1,0 +1,12 @@
+<!-- the input's name field is how you're structuring the params hash -->
+
+<form action="/landmarks/<%=@landmark.id%>" method="POST">
+  <input type="hidden" name="_method" id="hidden" value="PATCH">
+  <h1><label>Update a Landmark</label></h1>
+  <br>
+  Name: <input type="text" name="landmark[name]" id="name" value="<%=@landmark.name%>">
+  <br>
+  Year Completed: <input type="number" name="landmark[year_completed]" id="year_completed" value="<%=@landmark.year_completed%>">
+  <br>
+  <input type="submit" value="Edit Landmark">
+</form>
