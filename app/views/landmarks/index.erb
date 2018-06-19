@@ -1,0 +1,5 @@
+<h2>Landmarks</h2>
+
+<% @landmarks.each do |landmark| %>
+  <span class="inline-list"> &#9632; <%= landmark.name %> <%= landmark.year_completed %> </span>
+<% end %>
