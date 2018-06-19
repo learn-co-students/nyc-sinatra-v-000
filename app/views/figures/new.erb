@@ -10,7 +10,9 @@
     <input type="text" name="title[name]" value="">
     <br></br>
     <h2>Landmarks</h2>
-    <input type="checkbox" name="figure[landmark_ids][]" value="">
+    <%@landmarks.each do |landmark|%>
+    <input type="checkbox" name="figure[landmark_ids][]" value="<%=landmark.id%>" id="landmark_<%=landmark.id%>"><%=landmark.name%></input>
+    <%end%>
     <h2>Create New Landmark:</h2>
     <h3>Name:<input type="text" name="landmark[name]">  Year: <input type="text" name=""></h3>
     <input type="submit" name="submit" value="Create New Figure">
