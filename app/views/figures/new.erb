@@ -7,7 +7,7 @@
     <input type="checkbox" name="figure[title_ids][]" value="<%=title.id%>" id="title_<%=title.id%>"><%=title.name%></input>
     <%end%>
     <h2>Create New Title:</h2>
-    <input type="text" name="title[name]" value="">
+    <input type="text" name="title[name]" id="new_title">
     <br></br>
     <h2>Landmarks</h2>
     <%@landmarks.each do |landmark|%>
