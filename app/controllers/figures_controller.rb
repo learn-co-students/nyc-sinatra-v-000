@@ -5,10 +5,10 @@ class FiguresController < ApplicationController
     erb :'/figures/new'
   end
 
+
   post '/figures' do
     @figure = Figure.create(name: params[:figure][:name])
 
-#<--------------TITLES--------------->
       if !params[:title][:name].empty?
         @figure.titles << Title.create(name: params[:title][:name])
       end
@@ -18,8 +18,7 @@ class FiguresController < ApplicationController
           @figure.titles << Title.find(title_id)
         end
       end
-#<---------------------LANDMARKS------------------->
-binding.pry
+
       if !params[:landmark][:name].empty?
         @figure.landmarks << Landmark.create(name: params[:landmark][:name], year_completed: params[:landmark][:year])
       end
@@ -29,6 +28,7 @@ binding.pry
           @figure.landmarks << Landmark.find(landmark_id)
         end
       end
+      @figure.save
       erb :'/figures/show'
   end
 
