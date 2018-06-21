@@ -23,7 +23,7 @@ class FiguresController < ApplicationController
     @figure.save
 
     redirect '/figures/:id'
-  
+
   end
 
   get '/figures/:id' do

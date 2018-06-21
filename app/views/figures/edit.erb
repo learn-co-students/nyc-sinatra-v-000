@@ -13,8 +13,13 @@
 
   <h3><label for="title_name">Create New Title:</label></h3>
   <input type="text" name="title[name]" id="new_title"/>
+<<<<<<< HEAD
   
   
+=======
+
+
+>>>>>>> e453bad1413a7ed476918f288c50d4a31f01fddd
   <h3>Landmarks</h3>
   <% @landmarks.each do |landmark| %>
     <%= landmark.name %>  <input type="checkbox" name="figure[landmark_ids][]" value="<%= landmark.id %>" id="landmark_<%= landmark.id %>" <%= 'checked' if @figure.landmarks.include?(landmark) %> />
@@ -28,4 +33,8 @@
 
   <input type="submit" value="Edit Figure">
 
+<<<<<<< HEAD
 </form>
+=======
+</form>
+>>>>>>> e453bad1413a7ed476918f288c50d4a31f01fddd
