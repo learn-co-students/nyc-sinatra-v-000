@@ -3,33 +3,32 @@
 <form action="/figures" method="POST">
   <br></br>
 
-  Name: <input type="text" name="figure_name" id="figure_name">
+  Name: <input type="text" name="figure[name]" id="figure_name">
 
   <br></br>
 
 
-
-  <% @gtitles.each do |title|%>
-    Titles: <input type="checkbox" name="title[]" id="<%= title.name %>" ><%=title.name%></input>
+  <% @titles.each do |title|%>
+    Title: <input type="checkbox" name="figure[title_ids][]" id="title_<%= title.id %>" ><%=title.name%>
   <%end%>
 
   <br></br>
 
   <label>Create New Title:</label>
-    <input  type="text" name="Title Name" id="title_name"></input>
+    <input  type="text" name="title[name]" id="title.id">
   <br></br>
 
 
 
-  <% @glandmarks.each do |landmark|%>
-    Landmarks: <input type="checkbox" name="landmark[]" id="<%= landmark.name %>" ><%=landmark.name%></input>
+  <% @landmarks.each do |landmark|%>
+    Landmark: <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%= landmark.id %>" ><%=landmark.name%>
   <%end%>
 
   <br></br>
 
-  <label>Create New Landmark:</label>
-    <input  type="text" name="Landmark Name" id="landmark_name"></input>
-    <input  type="text" name="Landmark Year" id="landmark_year"></input>
+  <label>Create New Landmark:</label><br>
+    Name: <input  type="text" name="landmark[name]" id="landmark.id"></input><br>
+    Year: <input  type="text" name="landmark[year]" id="landmark.id"></input>
   <br></br>
 
 
