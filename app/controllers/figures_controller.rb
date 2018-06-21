@@ -12,12 +12,26 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-    binding.pry
     @figure = Figure.create(name: params["figure"]["name"])
-    @song.artist = Artist.find_or_create_by(name: params["Artist Name"])
-    @song.genre_ids = params["genres"]
-    @song.save
-    flash[:message] = "Successfully created song."
-    redirect "/songs/#{@song.slug}"
+    if !params["title"]["name"].empty?
+      @figure.titles << Title.create(name: params["figure"]["title_ids"])
+    end
+    if !params["landmark"]["name"].empty?
+      @figure.landmarks << Landmark.create(name: params["figure"]["landmark_ids"])
+    end
+    redirect "/figures/#{@figure.id}"
   end
+
+  get '/figures/:id' do
+    @figure = Figure.find(params[:id])
+    @figure.landmarks
+    @figure.
+    erb :'/figures/show'
+  end
+
+  get '/figures/:id/edit' do
+    @figure = Figure.find(params[:id])
+    erb :'/figures/edit'
+  end
+
 end

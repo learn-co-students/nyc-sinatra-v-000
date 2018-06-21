@@ -21,7 +21,7 @@
 
 
   <% @landmarks.each do |landmark|%>
-    Landmark: <input type="checkbox" name="figure[landmark_ids][]"
+    Landmark: <input type="checkbox" name="figure[landmark_ids][]" 
     id="landmark_<%= landmark.id %>" ><%=landmark.name%>
   <%end%>
 
