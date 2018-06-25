@@ -3,8 +3,15 @@
     <th>Name</th>
     <th>Year Completed</th>
   </tr>
+
   <tr>
-    <td><%= @landmark.name %></td>
+      <td>
+        <a href="/landmarks/<%=@landmark.id%>"><%= @landmark.name %>
+        </a>
+    </td>
+
     <td><%= @landmark.year_completed %></td>
+
   </tr>
+
 <table>

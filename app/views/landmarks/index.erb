@@ -1,0 +1,24 @@
+<h1>Index Page Landmark</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Year Completed</th>
+  </tr>
+    <% @landmarks.all.each do |landmark|%>
+  <tr>
+
+          <td>
+            <a href="/landmarks/<%=landmark.id%>"><%= landmark.name %>
+            </a>
+        </td>
+
+        <td><%= landmark.year_completed %></td>
+
+          <td>
+              <a href="/landmarks/<%=landmark.id%>/edit">Edit</a>
+          </td>
+
+
+  </tr>
+    <% end %>
+<table>
