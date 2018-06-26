@@ -3,6 +3,7 @@
     <th>Name</th>
     <th>Year Completed</th>
   </tr>
+<<<<<<< HEAD
 
   <tr>
       <td>
@@ -14,4 +15,12 @@
 
   </tr>
 
+=======
+    <% @landmarks.all.each do |landmark|%>
+  <tr>
+        <td><%= landmark.name %></td>
+        <td><%= landmark.year_completed %></td>
+  </tr>
+    <% end %>
+>>>>>>> 9c54679b442f9f17b56028f5bd3a05e7da494d3f
 <table>
