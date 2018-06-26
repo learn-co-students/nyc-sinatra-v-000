@@ -31,11 +31,15 @@ class FiguresController < ApplicationController
   end
 
   get "/figures/:id/edit" do
+    @figure = Figure.find_by_id(params[:id])
     erb :'/figures/edit'
   end
 
   patch '/figures/:id' do
     @figure = Figure.find_by_id(params[:id])
+    @figure = Figure.update(name: params["figure_name"])
+
+    @figure.save
     redirect '/figures/:id'
   end
 

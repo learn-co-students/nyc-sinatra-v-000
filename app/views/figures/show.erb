@@ -8,12 +8,12 @@
 
   <tr>
       <td>
-        <a href="/figures/<%=@figure.id%>"><%= @figure.name %>
+        <a href="/figures/<%=@figure.id%>/edit"><%= @figure.name %>
         </a>
      </td>
 
-    <td><%= @figure.titles %></td>
-    <td><%= @figure.landmarks %></td>
+    <td><%= @figure.titles.name %></td>
+    <td><%= @figure.landmarks.name %></td>
 
   </tr>
 
