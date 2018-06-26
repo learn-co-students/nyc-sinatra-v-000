@@ -5,18 +5,23 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-    #raise params.inspect
-    #binding.pry
+    puts params
     @figure = Figure.create(name: params["figure_name"])
-    if params["new_title"] != ""
-      @figure.titles << Title.create(name: params["new_title"])
+    if params["new_title"] == ""
+          @figure.titles << Title.find_by_id(params[:figure][:title_ids])
+      else
+          @figure.titles << Title.create(name: params["new_title"])
     end
-    if params[:new_landmark] != ""
+    if params["new_landmark"] != ""
       @figure.landmarks << Landmark.create(name: params["new_landmark"] , year_completed:params["new_landmark_year_completed"])
+    end
+    if params[:figure][:landmark_ids] != nil
+      #binding.pry
+      @figure.landmarks << Landmark.find_by_id(params[:figure][:landmark_ids])
     end
 
     @figure.save
-    erb :'/figures/show'
+    redirect "/figures/#{@figure.id}"
 
   end
 
@@ -25,22 +30,33 @@ class FiguresController < ApplicationController
     erb :'/figures/index'
   end
 
-  get '/figures/:id' do
-    @figure = Figure.find_by_id(params[:id])
-    erb :'/figures/show'
-  end
+
 
   get "/figures/:id/edit" do
     @figure = Figure.find_by_id(params[:id])
     erb :'/figures/edit'
   end
 
+  get '/figures/:id' do
+    @figure = Figure.find_by_id(params[:id])
+    erb :'/figures/show'
+  end
+
   patch '/figures/:id' do
     @figure = Figure.find_by_id(params[:id])
-    @figure = Figure.update(name: params["figure_name"])
-
-    @figure.save
-    redirect '/figures/:id'
+     @figure.name = params["figure_name"]
+     if params["new_title"] != ""
+       @figure.titles << Title.find_or_create_by(name: params["new_title"])
+     end
+     if params["new_landmark"] != ""
+       @figure.landmarks << Landmark.find_or_create_by(name: params["new_landmark"] , year_completed:params["new_landmark_year_completed"])
+     end
+     if params[:figure][:landmark_ids] != nil
+       #binding.pry
+       @figure.landmarks << Landmark.find_by_id(params[:figure][:landmark_ids])
+     end
+     @figure.save
+     redirect "/figures/#{@figure.id}"
   end
 
 end

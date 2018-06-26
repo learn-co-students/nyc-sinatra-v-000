@@ -4,7 +4,7 @@ class LandmarksController < ApplicationController
     erb :'/landmarks/new'
   end
 
-  post '/landmarks/new' do
+  post '/landmarks' do
     @landmark = Landmark.create(name: params[:landmark][:name],
                                 year_completed: params[:landmark][:year_completed])
 
@@ -33,13 +33,8 @@ class LandmarksController < ApplicationController
                        year_completed: params[:landmark][:year_completed])
       @landmark.save
       redirect "/landmarks/#{@landmark.id}"
-    erb :'/landmarks/show'
+
   end
 
-  get '/landmarks/:id' do
-  end
-
-  get '/landmarks/:id/edit' do
-  end
 
 end
