@@ -10,14 +10,14 @@ class FiguresController < ApplicationController
     erb :'figures/new'
   end
 
-  get '/figures/:slug' do
-    @figure = Figure.find_by_slug(params[:slug])
+  get '/figures/:id' do
+    @figure = Figure.find_by_id(params[:id])
 
     erb :'figures/show'
   end
 
   post '/figures' do
-    @figure = Figure.create(:name => params["figure_name"])
+    @figure = Figure.create(params["figure"])
     if !params[:title][:name].empty?
       @figure.titles << Title.create(params[:title])
     end
@@ -27,7 +27,13 @@ class FiguresController < ApplicationController
     end
 
     @figure.save
+
     redirect("/figures/#{@figure.id}")
   end
 
+  get '/figures/:id/edit' do 
+    @figure = Figure.find_by_id(params[:id])
+
+    erb :'figures/edit'
+  end
 end
