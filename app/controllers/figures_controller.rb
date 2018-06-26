@@ -8,11 +8,21 @@ class FiguresController < ApplicationController
   
   post '/figures' do 
     @figure = Figure.create(params[:figure])
-    binding.pry
-    @figure.titles = Title.find_or_create_by(name: params[:title][:name])
-    @figure.landmarks = Landmark.find_or_create_by(name: params[:landmark][:name])
+    @figure.titles << Title.find_or_create_by(name: params[:title][:name])
+    @figure.landmarks << Landmark.find_or_create_by(name: params[:landmark][:name])
     @figure.save
   end
+  
+  get '/figures' do 
+    @figures = Figure.all
+    erb :'/figures/index'
+  end
+  
+  get '/figures/:id' do 
+    @figure = Figure.find_by(id: params[:id])
+    erb :'/figures/show'
+  end
+  
   
   
 end
