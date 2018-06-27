@@ -28,6 +28,7 @@ class FiguresController < ApplicationController
     @landmarks = Landmark.all 
     @titles = Title.all
     erb :'/figures/edit'
+    redirect to '/figures/:id'
   end
   
   patch '/figures/:id' do 
@@ -35,7 +36,6 @@ class FiguresController < ApplicationController
     @figure.titles << Title.find_or_create_by(name: params[:title_ids])
     @figure.landmarks << Landmark.find_or_create_by(id: params[:landmark_ids])
     @figure.save
-    redirect to '/figures/:id'
   end
   
   
