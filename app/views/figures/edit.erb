@@ -1,0 +1,8 @@
+<h4>Edit a Figure</h4>
+<form action="/songs/<%= @figure.id %>" method="POST">
+  <p>Figure Name:<input type="text" name="figure_name" id="figure_name" value="<%=@figure.name%>"></p>
+  <p>New Landmark:<input type="text" name="new_landmark" id="new_landmark" value="<%=@figure.landmark.name"
+
+
+  <input type="submit" value="Edit Figure">
+</form>

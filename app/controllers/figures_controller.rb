@@ -36,6 +36,15 @@ class FiguresController < ApplicationController
   end
 
   get '/figures/:figure_id' do
+    @figure = Figure.all.find_by(id: params[:figure_id])
+
+    erb :"figures/show"
+  end
+
+  get '/figures/:figure_id/edit' do
+    @figure = Figure.all.find_by(id: params[:figure_id])
+
+    erb :"figures/edit"
 
   end
 
