@@ -36,6 +36,7 @@ class FiguresController < ApplicationController
     @figure.titles << Title.find_or_create_by(name: params[:title_ids])
     @figure.landmarks << Landmark.find_or_create_by(id: params[:landmark_ids])
     @figure.save
+    erb :'/figures/show'
   end
   
   
