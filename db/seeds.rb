@@ -37,22 +37,7 @@ landmarks_list.each do |name, landmark_hash|
   p.save
 end
 
-figure_list = {
-    "Billy The Kid" => {
-    },
-    "Mark Zuckerberg" => {
-    },
-    "Ada Lovelace" => {
-    },
-    "Linus Torvalds" => { 
-    }
-  }
 
-figure_list.each do |name, figure_hash|
-  p = Figure.new
-  p.name = name
-  p.save
-end
 
 
 title_list = {
@@ -67,5 +52,24 @@ title_list = {
 title_list.each do |name, figure_hash|
   p = Title.new
   p.name = name
+  p.save
+end
+
+figure_list = {
+    "Billy The Kid" => {landmark: Landmark.find(1), title: Title.find(1)
+    },
+    "Mark Zuckerberg" => {landmark: Landmark.find(2), title: Title.find(2)
+    },
+    "Ada Lovelace" => {landmark: Landmark.find(3), title: Title.find(3)
+    },
+    "Linus Torvalds" => {landmark: Landmark.find(4), title: Title.find(1)
+    }
+  }
+
+figure_list.each do |name, figure_hash|
+  p = Figure.new
+  p.name = name
+  p.landmarks << figure_hash[:landmark]
+  p.titles << figure_hash[:title]
   p.save
 end
