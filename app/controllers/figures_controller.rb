@@ -33,8 +33,9 @@ class FiguresController < ApplicationController
   
   patch '/figures/:id' do 
     @figure = Figure.find_by(id: params[:id])
-    @figure.titles << Title.find_or_create_by(name: params[:title_ids])
-    @figure.landmarks << Landmark.find_or_create_by(id: params[:landmark_ids])
+    @figure.update(params[:figure])
+    @figure.title_ids = params[:titles]
+    @figure.landmark_ids = params[:landmarks]
     @figure.save
     erb :'/figures/show'
   end
