@@ -1,3 +1,8 @@
 <h1>Selected Figure</h1>
 
-<h4><%=@figure.name%></h4>
+<h4><%= @figure.name %></h4>
+
+<h4>Landmark(s):</h4>
+<% @figure.landmarks.each do |landmark| %>
+  <li> <%= landmark.name %></li>
+<% end %>
