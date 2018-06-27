@@ -28,16 +28,16 @@ class FiguresController < ApplicationController
     @landmarks = Landmark.all 
     @titles = Title.all
     erb :'/figures/edit'
-    redirect to '/figures/:id'
   end
   
   patch '/figures/:id' do 
+    binding.pry
     @figure = Figure.find_by(id: params[:id])
     @figure.update(params[:figure])
-    @figure.title_ids = params[:titles]
-    @figure.landmark_ids = params[:landmarks]
+    @figure.title_ids << params[:titles]
+    @figure.landmark_ids << params[:landmarks]
     @figure.save
-    erb :'/figures/show'
+    redirect to "/figures/#{@figure.id}"
   end
   
   
