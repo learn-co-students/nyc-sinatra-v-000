@@ -1,7 +1,6 @@
 class FiguresController < ApplicationController
 
   get '/figures/new' do
-
     erb :'/figures/new'
   end
 
@@ -40,6 +39,5 @@ class FiguresController < ApplicationController
     @figure.landmark = Landmark.find(name: params[:landmark][:name])
     @figure.save
     redirect "/figures/#{@figure.id}"
-
   end
 end

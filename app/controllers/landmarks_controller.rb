@@ -1,7 +1,6 @@
 class LandmarksController < ApplicationController
 
   get '/landmarks/new' do
-
     erb :'/landmarks/new'
   end
 
@@ -34,10 +33,8 @@ class LandmarksController < ApplicationController
     @landmark = Landmark.find(params[:id])
     @landmark.update(params[:landmark])
     @landmark.name = Landmark.find(name: params[:landmark][:name])
-    @landmark.year_completed = Landmark.find(year_completed: params[:landmark][:year]) 
+    @landmark.year_completed = Landmark.find(year_completed: params[:landmark][:year])
     @landmark.save
     redirect "/landmark/#{@landmark.id}"
-end
-
-
+  end
 end
