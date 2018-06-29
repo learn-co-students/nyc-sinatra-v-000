@@ -1,0 +1,8 @@
+<h1>Here are all the Figures of NY!</h1>
+<div class="figures">
+  <ul>
+    <% Figure.all.each do |figure| %>
+      <li><a href='/figures/<%= figure.id %>'><%= figure.name %></li>
+    <% end %>
+  </ul>
+</div>
