@@ -1,0 +1,11 @@
+<h1>Here are all the Landmarks of NY!</h1>
+<div class="landmarks">
+  
+    <% Landmark.all.each do |lm| %>
+    <ul>
+      <li><a href='/landmarks/<%= lm.id %>'><%= lm.name %></li>
+      <li><%= lm.year_completed %></li>
+    </ul>
+    <% end %>
+  
+</div>
