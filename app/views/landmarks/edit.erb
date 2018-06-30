@@ -1,0 +1,27 @@
+<h1>Update Landmark</h1>
+ 
+<form action="/landmarks/<%=@Landmark.id%>" method="POST">
+  <label>Name:</label>
+ 
+  <br></br>
+ 
+  <input type="text" name="Landmark[name]" id="landmark_name" value="<%=@landmark.name%>">
+ 
+  <br></br>
+ 
+
+<h4> Name </h4>
+  <input type ="text" name="figure[name]" id="figure_name"></br>
+  
+  <h5> Titles </h5></br>
+  <% Title.all.each do |title| %></br>
+    <input type="checkbox" name="figure[title_ids][]" value="<%=title.id%>" id="title_<%=title.id%>"><%='checked' if @figure.titles ==title %>><%=figure.name%></input>    <%= title.name %>
+    <%end%>
+
+  <br></br>
+ 
+ <label>name:</label>
+    <input  type="text" name="title[name]" id="title_name"></input>
+  <br></br>
+  <input type="submit" value="Update Landmark">
+</form>
