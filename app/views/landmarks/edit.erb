@@ -1,14 +1,14 @@
 <h1>Update Landmark</h1>
  
-<form action="/landmarks/<%=@Landmark.id%>" method="POST"> 
-    <h5> Landmarks </h5></br>
-  <% Landmark.all.each do |landmark| %></br>
-    <input type="checkbox" name="figure[landmark_ids][]" value="<%=landmark.id%>" id="landmark_<%=landmark.id%>"> <%='checked' if @figure.landmarks.include?(landmark) %>><%=landmark.name%></input>
-    <%end%>
+<form action="/landmarks/<%=@landmark.id%>" method="POST"> 
+   
   <br></br>
 <label> New Landmark:</label></br>
-  <input type="text" name="landmark[name]" id="landmark_name" value="<%=@landmark.name%>">
+  <input type="text" name="landmark[name]" id="name" 
+  value= <%=@landmark.name%>>
+    <input type="text" name="landmark[year_completed]" id="year_completed" 
+  value= <%=@landmark.year_completed%>>
  
   <br></br>
-  <input type="submit" value="Update Landmark">
+  <input type="submit" value="Edit Landmark">
 </form>
