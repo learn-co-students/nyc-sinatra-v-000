@@ -1,17 +1,5 @@
-<form action="/figures"method="POST">
+<form action="/landmarks"method="POST">
   
-  <h4> Name </h4>
-  <input type ="text" name="figure[name]" id="figure_name"></br>
-  
-  <h5> Titles </h5></br>
-  <% Title.all.each do |title| %></br>
-    <input type="checkbox" name="figure[title_ids][]" value="<%=title.id%>" id="title_<%=title.id%>"> 
-    <%= title.name %>
-    <%end%>
-
-  <h6> Create New Title </h6></br>
-    <input type ="text" name="title[name]" id="new_title">
-  </br>
 
   <h5> Landmarks </h5></br>
   <% Landmark.all.each do |landmark| %></br>

@@ -6,12 +6,11 @@
   <br></br>
  
   <input type="text" name="figure[name]" id="figure_name" value="<%=@figure.name%>">
- 
-  <br></br>
-  <label> Name </label>
-    <input type ="text" name="landmark[name]" id="new_landmark">
-  <label> Year </label>
-    <input type ="text" name="landmark[year_completed]"></br>
+   
+   <h5> Landmarks </h5></br>
+  <% Landmark.all.each do |landmark| %></br>
+    <input type="checkbox" name="figure[landmark_ids][]" value="<%=landmark.id%>" id="landmark_<%=landmark.id%>"> <%='checked' if @figure.landmarks.include?(landmark) %>><%=landmark.name%></input>
+    <%end%>
  
    <h5> Titles </h5></br>
   <% Title.all.each do |title| %></br>
