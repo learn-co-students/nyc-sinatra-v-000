@@ -1,5 +1,6 @@
-class Landmark < ActiveRecord::Base
+class FigureTitle < ActiveRecord::Base
   belongs_to :figure
+  belongs_to :title
 
 
   def slug
@@ -10,4 +11,4 @@ class Landmark < ActiveRecord::Base
     self.all.find{|s| s.slug == slug}
   end
 
-end #Landmark METHOD
+end #FigureTitle CLASS
