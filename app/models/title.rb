@@ -1,6 +1,6 @@
-class Landmark < ActiveRecord::Base
-  belongs_to :figure
-
+class Title < ActiveRecord::Base
+  has_many :figure_titles
+  has_many :figures, through: :figure_titles
 
   def slug
     self.name.downcase.gsub(" ", "-")
@@ -10,4 +10,4 @@ class Landmark < ActiveRecord::Base
     self.all.find{|s| s.slug == slug}
   end
 
-end #Landmark METHOD
+end #Title CLASS

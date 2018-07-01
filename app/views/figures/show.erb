@@ -1,0 +1,14 @@
+<p> FIGURE NAME: <%= @figure.name %></p>
+
+<p>
+  LANDMARKS:
+  <% @figure.landmarks.each do |landmark| %>
+      <%= landmark.name %><br>
+  <% end %>
+</p>
+
+<p>
+  TITLES:
+  <% @figure.titles.each do |title| %>
+      <%= title.name %><br>
+  <% end %>
