@@ -36,15 +36,19 @@ class LandmarksController < ApplicationController
   end
 
   get '/landmarks/:id/edit' do
-    @landmark = Landmark.find([params[:id]])
+    @landmark = Landmark.find_by_id([params[:id]])
+    # binding.pry
     @figures = Figure.all
 
     erb:'/landmarks/edit'
   end
 
   patch '/landmarks/:id' do
-    @landmark = Landmark.find(params[:id])
-    @landmark.update(params['landmark'])
+    # binding.pry
+    @landmark = Landmark.find_by_id(params[:id])
+    @landmark.name = params['landmark']['name']
+    @landmark.year_completed = params['landmark']['year_completed']
+    # @landmark.name =
 
     if params['titles']
       @title = Title.create(params['title'])
@@ -53,7 +57,7 @@ class LandmarksController < ApplicationController
 
     if params['figure']
       @figure = Figure.create(params['figure'])
-      @landmark.figures << @figure
+      @landmark.figure = @figure
     end
 
     @landmark.save
