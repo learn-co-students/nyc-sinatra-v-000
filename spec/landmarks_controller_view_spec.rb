@@ -44,36 +44,36 @@ describe LandmarksController do
     expect(last_response.body).to include("1961")
   end
 
-  # it "allows you to view the form to edit a single landmark" do
-  #   @landmark = Landmark.first
-  #   get "/landmarks/#{@landmark.id}/edit"
-  #
-  #   expect(last_response.status).to eq(200)
-  #   expect(last_response.body).to include('<form')
-  #   expect(last_response.body).to include('landmark[name]')
-  #   expect(last_response.body).to include('landmark[year_completed]')
-  #   expect(last_response.body).to include(@landmark.name)
-  #   expect(last_response.body).to include(@landmark.year_completed.to_s)
-  #
-  # end
+  it "allows you to view the form to edit a single landmark" do
+    @landmark = Landmark.first
+    get "/landmarks/#{@landmark.id}/edit"
+
+    expect(last_response.status).to eq(200)
+    expect(last_response.body).to include('<form')
+    expect(last_response.body).to include('landmark[name]')
+    expect(last_response.body).to include('landmark[year_completed]')
+    expect(last_response.body).to include(@landmark.name)
+    expect(last_response.body).to include(@landmark.year_completed.to_s)
+
+  end
 
 
-  # it "allows you to edit a single landmark" do
-  #   @original_landmark = Landmark.first
-  #
-  #   visit "/landmarks/#{@original_landmark.id}/edit"
-  #   fill_in :name, with: "BQE!!!!"
-  #   fill_in :year_completed, with: 9999
-  #   click_button "Edit Landmark"
-  #
-  #   expect(page.body).to include("BQE!!!!")
-  #   expect(page.body).to include("9999")
-  #
-  #   @updated_landmark = Landmark.first
-  #   expect(page.current_path).to eq("/landmarks/#{@original_landmark.id}")
-  #   expect(@updated_landmark.name).to eq("BQE!!!!")
-  #   expect(@updated_landmark.year_completed.to_s).to eq("9999")
-  # end
+  it "allows you to edit a single landmark" do
+    @original_landmark = Landmark.first
+
+    visit "/landmarks/#{@original_landmark.id}/edit"
+    fill_in :name, with: "BQE!!!!"
+    fill_in :year_completed, with: 9999
+    click_button "Edit Landmark"
+
+    expect(page.body).to include("BQE!!!!")
+    expect(page.body).to include("9999")
+
+    @updated_landmark = Landmark.first
+    expect(page.current_path).to eq("/landmarks/#{@original_landmark.id}")
+    expect(@updated_landmark.name).to eq("BQE!!!!")
+    expect(@updated_landmark.year_completed.to_s).to eq("9999")
+  end
 
   it "creates checkboxes for all the landmarks and titles created on the Figures new page" do
     Landmark.create(name: 'BQE', year_completed: 1961)
