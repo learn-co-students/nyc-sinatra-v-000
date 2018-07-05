@@ -1,6 +1,6 @@
 class CreateTitleFigures < ActiveRecord::Migration
   def change
-    create_table :figures do |t|
+    create_table :title_figures do |t|
       t.integer :title_id 
       t.integer :figure_id 
     end
