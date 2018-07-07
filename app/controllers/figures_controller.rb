@@ -17,9 +17,8 @@ class FiguresController < ApplicationController
 
     @figure = Figure.create(:name => fig_name)
     @landmark = Landmark.create(:name => land_name, :year_completed => land_year)
-    "#{@figure.name} #{@landmark.name} #{@landmark.year_completed} #{title_name}"
-    
-    # @title = Title.create(:name => title_name)
+    @title = Title.create(:name => title_name)
+    "#{@figure.name} #{@landmark.name} #{@landmark.year_completed} #{@title.name}"
     # redirect to "figures/#{@figure.id}"
   end
   
