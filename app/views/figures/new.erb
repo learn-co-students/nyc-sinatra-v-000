@@ -2,13 +2,15 @@
 
 <form method=POST action='/figures'>
   
-  <input type='text' name='figure[name]' value='figure' id='figure'>
+  <input type='text' name='figure[name]' value='figure_name' id='figure_name'>
+  
+  <input type='text' name='landmark[name]' value='landmark_name' id='landmark_name'>
+  
+  <input type='text' name='landmark[year]' value='landmark_year' id='landmark_year'>
+  
+  <input type='text' name='title[name]' value='title_name' id='title_name'>
+  
 
-  
-  <!--<% @titles.each do |title| %>-->
-  <!--  <p><input type='checkbox' name='figure[title_ids][]'><%= title.name %></p>-->
-  <!--<% end %>-->
-  
   
   <input type='submit' value='submit' id='submit'>
   

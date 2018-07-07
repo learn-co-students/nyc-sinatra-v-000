@@ -6,9 +6,21 @@ class FiguresController < ApplicationController
   end
   
   post '/figures' do 
-    name = params[:figure][:name]
-    @figure = Figure.create(:name => name)
-    redirect to "figures/#{@figure.id}"
+    # raise params.inspect
+    fig_name = params[:figure][:name]
+    land_name = params[:landmark][:name]
+    land_year = params[:landmark][:year]
+    title_name = params[:title][:name]
+    
+
+    
+
+    @figure = Figure.create(:name => fig_name)
+    @landmark = Landmark.create(:name => land_name, :year_completed => land_year)
+    "#{@figure.name} #{@landmark.name} #{@landmark.year_completed} #{title_name}"
+    
+    # @title = Title.create(:name => title_name)
+    # redirect to "figures/#{@figure.id}"
   end
   
   get '/figures/new' do 
