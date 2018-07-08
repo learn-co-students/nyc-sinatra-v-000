@@ -1,15 +1,14 @@
 <table>
-  <th>Person Name</th>
+  <th>Name</th>
+  <th>Year Completed</th>
   <tr>
-    <% @figures.each do |figure| %>
-      <td align="center"><a href="/figures/<%= figure.id %>"><%= figure.name %></a>
-      <ul>
-        <%figure.titles.each do |title|%>
-        <li><%=title.name%></li>
-        <%end%>
-      </ul>
-    </tr> </td>
+    <% @landmarks.each do |landmark| %>
+      <td align="center"><a href="/landmarks/<%= landmark.id%>"><%= landmark.name %></a></td>
+      <td align="center"><%= landmark.year_completed %></td>
+  </tr>
   <% end %>
 </table>
 <br>
-<a class="button" href="/">Go Home</a>
+
+<a class="button" href="landmarks/new">New Landmark Here</a>
+<a class="button" href="/figures">View Figures</a>
