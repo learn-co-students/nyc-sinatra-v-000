@@ -6,7 +6,7 @@ class FiguresController < ApplicationController
   end
   
   post '/figures' do 
-    # raise params.inspect
+    raise params.inspect
     fig_name = params[:figure][:name]
     land_name = params[:landmark][:name]
     land_year = params[:landmark][:year]
