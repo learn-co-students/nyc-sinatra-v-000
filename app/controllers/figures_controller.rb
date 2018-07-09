@@ -25,16 +25,22 @@ class FiguresController < ApplicationController
     @figure = Figure.create(:name => fig_name)
     
     land_ids = params[:figure][:landmark_ids]
+    land_ids.each do |id|
+      landmark = Landmark.find(id)
+      @figure.landmarks << landmark
+    end
+    
     land_name = params[:figure][:new_landmark][:name]
     land_year = params[:figure][:new_landmark][:year]
-    @landmark = Landmark.create(:name => land_name, :year_completed => land_year)
+    @figure.landmarks = Landmark.create(:name => land_name, :year_completed => land_year)
     
     title_ids = params[:figure][:title_ids]
     title_name = params[:figure][:new_title][:name]
-    @title = Title.create(:name => title_name)
+    @figure.title = Title.create(:name => title_name)
     
     @landmark.figure = @figure
-    @figure.figure_titles.build(title)
+    @figure.figure_titles.build(:title => @title)
+    
     
     @figure.save
     
