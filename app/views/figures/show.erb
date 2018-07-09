@@ -2,10 +2,12 @@
 
 <h1><%= @figure.name %></h1>
 
-<!--<h2><%= @title.name %></h2>-->
 
 <% @figure.landmarks.each do |landmark| %>
-<h2><%= landmark.name %></h2>
+  <h2><%= landmark.name %><%= landmark.year_completed %></h2>
 <% end %>
 
 
+<% @figure.titles.each do |titles| %>
+  <h2><%= title.name %></h2>
+<% end %>
