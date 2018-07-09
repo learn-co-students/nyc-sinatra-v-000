@@ -6,51 +6,48 @@ class FiguresController < ApplicationController
   end
   
   
-# {"figure"=>
-#   {"name"=>"butter", 
-#   "title_ids"=>["3"], 
-#   "new_title"=>{"name"=>"senior"}, 
-#   "landmark_ids"=>["2"], 
-#   "new_landmark"=>
-#     {
-#       "name"=>"dogpark", "year"=>"2012"
-#     }
-#   }
-# }
-  
-  
+
+ 
   post '/figures' do 
-    
+    # raise params.inspect
     fig_name = params[:figure][:name]
     @figure = Figure.create(:name => fig_name)
-    
+
     land_ids = params[:figure][:landmark_ids]
-    land_ids.each do |id|
-      landmark = Landmark.find(id)
-      @figure.landmarks << landmark
-      # @landmark.figure = @figure
+    if land_ids
+      land_ids.each do |id|
+        landmark = Landmark.find(id)
+        @figure.landmarks << landmark
+        # @landmark.figure = @figure
+      end
     end
     
     title_ids = params[:figure][:title_ids]
-    title_ids.each do |id|
-      title = Title.find(id)
-      @figure.titles<< title
-      # @title.figure = @figure
+    if title_ids
+      title_ids.each do |id|
+        title = Title.find(id)
+        @figure.titles<< title
+        # @title.figure = @figure
+      end
     end
     
-    land_name = params[:figure][:new_landmark][:name]
-    land_year = params[:figure][:new_landmark][:year]
+    # "#{@figure.name} #{@figure.landmarks.first.name} #{@figure.titles.first.name}"
+    
+    
+    land_name = params[:landmark][:name]
+    land_year = params[:landmark][:year]
     @figure.landmarks << Landmark.create(:name => land_name, :year_completed => land_year)
     
-    
-    title_name = params[:figure][:new_title][:name]
+
+    title_name = params[:title][:name]
     @figure.title << Title.create(:name => title_name)
     
-    # @figure.figure_titles.build(:title => @title)
+    "#{@figure.name} #{@figure.landmarks.first.name} #{@figure.landmarks.first.year_completed} #{@figure.titles.first}"
     
-    @figure.save
+    # # @figure.figure_titles.build(:title => @title)
     
-    # "#{@figure.name} #{@landmark.name} #{@landmark.year_completed} #{@title.name}"
+    # @figure.save
+    
     # redirect to "figures/#{@figure.id}"
   end
   
