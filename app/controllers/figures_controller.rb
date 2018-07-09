@@ -37,11 +37,7 @@ class FiguresController < ApplicationController
     @figure.titles << Title.create(:name => title_name)
     
     "#{@figure.name} #{@figure.landmarks.first.name} #{@figure.landmarks.first.year_completed} #{@figure.titles.first}"
-    
-    # # @figure.figure_titles.build(:title => @title)
-    
-    # @figure.save
-    
+
     redirect to "figures/#{@figure.id}"
   end
   
@@ -65,22 +61,56 @@ class FiguresController < ApplicationController
   end
   
 
+
+{"_method"=>"PATCH", 
+
+"figure"=>
+    {
+    "name"=>"The Kid", "title_ids"=>["1"], "landmark_ids"=>["6"]
+    }, 
+    
+"title"=>
+    {"name"=>"queen"}, 
+    
+"landmark"=>
+    {"name"=>"school", "year"=>"1995"}, 
+    
+"id"=>"1"}
+
   
   patch '/figures/:id' do 
-    raise params.inspect
+    # raise params.inspect
     @figure = Figure.find(params[:id])
+    new_name = params[:figure][:name]
+    if new_name 
+      @figure.name = new_name 
+    end
+    
+    new_landmark_name = params[:landmark][:name]
+    new_landmark_year = params[:landmark][:year]
+    new_landmark = Landmark.create(:name => new_landmark_name, :year_completed => new_landmark_year)
+    new_title = Title.create(:name => params[:title][:name])
 
-    # new_artist = params[:song][:artist]
-    # new_genre = Genre.find(params[:song][:genres])
+    land_ids = params[:figure][:landmark_ids]
+    if land_ids
+      land_ids.each do |id|
+        landmark = Landmark.find(id)
+        @figure.landmarks.clear
+        @figure.landmarks << landmark
+      end
+    end
     
-    # if @song.artist.name != new_artist
-    #   @song.artist = Artist.create(:name => new_artist)
-    # end
-    
-    # if new_genre
-    #   @song.genres = []
-    #   @song.genres << new_genre
-    # end
+    title_ids = params[:figure][:title_ids]
+    if title_ids
+      title_ids.each do |id|
+        title = Title.find(id)
+        @figure.titles.clear
+        @figure.titles << title
+      end
+    end
+
+    @figure.landmarks << new_landmark
+    @figure.titles << new_title
     
     @figure.save
     redirect "/figures/#{@figure.id}"

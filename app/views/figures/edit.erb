@@ -2,7 +2,7 @@
 
 <h1>Edit: <%=@figure.name%></h1>
 
-<form method="POST" action="/songs/<%= @figure.id %>">
+<form method="POST" action="/figures/<%= @figure.id %>">
   <input type="hidden" name="_method" value="PATCH" id="hidden">
   
   <p>
@@ -26,9 +26,9 @@
   
   <p><label>New Landmark</label><br>
   <input type="text" name="landmark[name]" id="new_landmark" value="name"></p>
-  <input type="text" name="landmark[name]" id="new_year" value="year completed"></p>
+  <input type="text" name="landmark[year]" id="new_year" value="year completed"></p>
   <br>
-    <input type="submit" value="Update Figure">
+    <input type="submit" value="Edit Figure">
     
 </form>
 
