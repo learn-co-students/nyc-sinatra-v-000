@@ -66,6 +66,7 @@ describe LandmarksController do
     fill_in :year_completed, with: 9999
     click_button "Edit Landmark"
 
+
     expect(page.body).to include("BQE!!!!")
     expect(page.body).to include("9999")
 
