@@ -64,10 +64,12 @@ class FiguresController < ApplicationController
     erb :'/figures/edit'
   end
   
+
   
   patch '/figures/:id' do 
-    @figure = Figure.find(params[:id])
     raise params.inspect
+    @figure = Figure.find(params[:id])
+
     # new_artist = params[:song][:artist]
     # new_genre = Genre.find(params[:song][:genres])
     
