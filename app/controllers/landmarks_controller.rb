@@ -8,11 +8,11 @@ class LandmarksController < ApplicationController
   
   post '/landmarks' do 
     raise params.inspect
-    landmark = Landmark.create(:name => params[:name])
+    landmark = Landmark.create(:name => params[:name], :year_completed => params[:year_completed])
   end
   
   get '/landmarks/new' do 
-    erb :'landmarks/new'
+    erb :'/landmarks/new'
   end
   
   get '/landmarks/:id' do 
