@@ -2,14 +2,38 @@
 
 <form method=POST action='/figures'>
   
+  <label for="figure_name">Name</label>
   <input type='text' name='figure[name]' value='figure_name' id='figure_name'>
+  <br>
   
+  <label for="landmark_name">Landmark Name</label>
   <input type='text' name='landmark[name]' value='landmark_name' id='landmark_name'>
+  <br>
   
+  <label for="year_completed">Year Completed</label>
   <input type='text' name='landmark[year]' value='landmark_year' id='landmark_year'>
+  <br>
   
+  <label for="title_name">Title</label>
   <input type='text' name='title[name]' value='title_name' id='title_name'>
+  <br>
   
+  <p>
+  <label for="titles[]">Title</label><br>
+  <% @titles.each do |title| %>
+    <input id="<%= title.name %>" type="checkbox" name="titles[]" value="<%= title.id %>"><%= title.name %></input><br>
+  <% end %>
+   </p>
+ 
+  <p>
+  <label for="landmarks[]">Landmark</label><br>
+  <% @landmarks.each do |landmark| %>
+    <input id="<%= landmark.name %>" type="checkbox" name="landmarks[name]" value="<%= landmark.id %>"><%= landmark.name %></input><br>
+  <% end %>
+  </p>
+  <br>
+  
+
 
   
   <input type='submit' value='submit' id='submit'>
@@ -18,7 +42,6 @@
 </form>
 
 
-    <!--expect(page.body).to include('<form')-->
     <!--expect(page.body).to include('figure[name]')-->
     <!--expect(page.body).to include('figure[title_ids][]')-->
     <!--expect(page.body).to include('figure[landmark_ids][]')-->

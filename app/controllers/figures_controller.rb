@@ -23,6 +23,9 @@ class FiguresController < ApplicationController
   end
   
   get '/figures/new' do 
+    @figures = Figure.all
+    @landmarks = Landmark.all
+    @titles = Title.all
     erb :'figures/new'
   end
   
@@ -33,8 +36,3 @@ class FiguresController < ApplicationController
   
 end
 
-
-  # allows you to create a new figure with a title (FAILED - 2)
-  # allows you to create a new figure with a landmark (FAILED - 3)
-  # allows you to create a new figure with a new title (FAILED - 4)
-  # allows you to create a new figure with a new landmark (FAILED - 5)
