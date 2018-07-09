@@ -52,11 +52,6 @@ class FiguresController < ApplicationController
   end
   
   
-  
-  
-  
-  
-  
   get '/figures/new' do 
     @figures = Figure.all
     @landmarks = Landmark.all
@@ -68,6 +63,28 @@ class FiguresController < ApplicationController
     @figure = Figure.find(params[:id])
     erb :'/figures/show'
   end
+  
+  
+  patch '/figures/:id' do 
+    @figure = Figure.find(params[:id])
+    # new_artist = params[:song][:artist]
+    # new_genre = Genre.find(params[:song][:genres])
+    
+    # if @song.artist.name != new_artist
+    #   @song.artist = Artist.create(:name => new_artist)
+    # end
+    
+    # if new_genre
+    #   @song.genres = []
+    #   @song.genres << new_genre
+    # end
+    
+    @figure.save
+    redirect "/figures/#{@figure.id}"
+  end
+  
+  
+  
   
 end
 
