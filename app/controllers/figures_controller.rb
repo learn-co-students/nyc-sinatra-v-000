@@ -40,7 +40,7 @@ class FiguresController < ApplicationController
     
 
     title_name = params[:title][:name]
-    @figure.title << Title.create(:name => title_name)
+    @figure.titles << Title.create(:name => title_name)
     
     "#{@figure.name} #{@figure.landmarks.first.name} #{@figure.landmarks.first.year_completed} #{@figure.titles.first}"
     
