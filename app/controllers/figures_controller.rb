@@ -16,7 +16,6 @@ class FiguresController < ApplicationController
       land_ids.each do |id|
         landmark = Landmark.find(id)
         @figure.landmarks << landmark
-        # @landmark.figure = @figure
       end
     end
     
@@ -25,7 +24,6 @@ class FiguresController < ApplicationController
       title_ids.each do |id|
         title = Title.find(id)
         @figure.titles<< title
-        # @title.figure = @figure
       end
     end
     
@@ -35,8 +33,6 @@ class FiguresController < ApplicationController
     
     title_name = params[:title][:name]
     @figure.titles << Title.create(:name => title_name)
-    
-    "#{@figure.name} #{@figure.landmarks.first.name} #{@figure.landmarks.first.year_completed} #{@figure.titles.first}"
 
     redirect to "figures/#{@figure.id}"
   end
@@ -59,27 +55,9 @@ class FiguresController < ApplicationController
     @figure = Figure.find(params[:id])
     erb :'/figures/edit'
   end
-  
-
-
-{"_method"=>"PATCH", 
-
-"figure"=>
-    {
-    "name"=>"The Kid", "title_ids"=>["1"], "landmark_ids"=>["6"]
-    }, 
-    
-"title"=>
-    {"name"=>"queen"}, 
-    
-"landmark"=>
-    {"name"=>"school", "year"=>"1995"}, 
-    
-"id"=>"1"}
 
   
   patch '/figures/:id' do 
-    # raise params.inspect
     @figure = Figure.find(params[:id])
     new_name = params[:figure][:name]
     if new_name 
@@ -115,9 +93,6 @@ class FiguresController < ApplicationController
     @figure.save
     redirect "/figures/#{@figure.id}"
   end
-  
-  
-  
   
 end
 
