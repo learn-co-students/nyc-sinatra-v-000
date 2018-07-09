@@ -8,16 +8,6 @@
   
   
   
-  {"figure"=>
-    {
-      "name"=>"name", "title_ids"=>["3"], 
-      "landmark_ids"=>["1"]
-    }, 
-      "new_title"=>{"name"=>"person"}, 
-      "new_landmark"=>{"name"=>"place"}, 
-      "_new_landmark"=>{"year"=>"560"}
-    }
-  
   <p>
   <label>Title</label><br>
   <% @titles.each do |title| %>
@@ -31,7 +21,7 @@
   
 
   <p>
-  <label for="figure[landmarks][name]">Landmarks</label><br>
+  <label>Landmarks</label><br>
   <% @landmarks.each do |landmark| %>
     <input id="<%= landmark.name %>" type="checkbox" name="figure[landmark_ids][]" value="<%= landmark.id %>"><%= landmark.name %></input><br>
   <% end %>
@@ -39,9 +29,9 @@
   
   <p>
   <label>Create New Landmark:</label><br>
-  <label for="new_landmark_name">Name:</label>
-  <input type='text' name='new_landmark[name]' id='new_landmark_name'>
-  <label for="new_landmark_year">Year:</label>
+  <label>Name:</label>
+  <input type='text' name='figure[new_landmark][name]' id='new_landmark_name'>
+  <label>Year:</label>
   <input type='text' name='figure[new_landmark][year]' id='new_landmark_year'>
   </p>
 

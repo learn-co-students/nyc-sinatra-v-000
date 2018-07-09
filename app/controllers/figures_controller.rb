@@ -6,34 +6,32 @@ class FiguresController < ApplicationController
   end
   
   
-  
-  {"figure"=>
-    {
-      "name"=>"name", "title_ids"=>["3"], 
-      "landmark_ids"=>["1"]
-    }, 
-      "new_title"=>{"name"=>"person"}, 
-      "new_landmark"=>{"name"=>"place"}, 
-      "_new_landmark"=>{"year"=>"560"}
-    }
+# {"figure"=>
+#   {"name"=>"butter", 
+#   "title_ids"=>["3"], 
+#   "new_title"=>{"name"=>"senior"}, 
+#   "landmark_ids"=>["2"], 
+#   "new_landmark"=>
+#     {
+#       "name"=>"dogpark", "year"=>"2012"
+#     }
+#   }
+# }
   
   
   post '/figures' do 
-    raise params.inspect
+    # raise params.inspect
     fig_name = params[:figure][:name]
-    land_name = params[:landmark][:name]
-    land_year = params[:landmark][:year]
-    title_name = params[:title][:name]
+    land_name = params[:figure][:new_landmark][:name]
+    land_year = params[:figure][:new_landmark][:year]
+    title_name = params[:figure][:new_title][:name]
 
     @figure = Figure.create(:name => fig_name)
     @landmark = Landmark.create(:name => land_name, :year_completed => land_year)
     @title = Title.create(:name => title_name)
-    "#{@figure.name} #{@landmark.name} #{@landmark.year_completed} #{@title.name}"
+    # "#{@figure.name} #{@landmark.name} #{@landmark.year_completed} #{@title.name}"
     # redirect to "figures/#{@figure.id}"
   end
-  
-  
-  {"figure"=>{"name"=>"ty", "title_ids"=>["1"], "landmark_ids"=>["3"]}, "title"=>{"name"=>"may"}, "landmark"=>{"name"=>"flat", "year"=>"1200"}}
   
   
   
