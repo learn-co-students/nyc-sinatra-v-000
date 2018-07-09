@@ -5,8 +5,6 @@ class FiguresController < ApplicationController
     erb :'/figures/index'
   end
   
-  
-
  
   post '/figures' do 
     # raise params.inspect
@@ -31,14 +29,10 @@ class FiguresController < ApplicationController
       end
     end
     
-    # "#{@figure.name} #{@figure.landmarks.first.name} #{@figure.titles.first.name}"
-    
-    
     land_name = params[:landmark][:name]
     land_year = params[:landmark][:year]
     @figure.landmarks << Landmark.create(:name => land_name, :year_completed => land_year)
     
-
     title_name = params[:title][:name]
     @figure.titles << Title.create(:name => title_name)
     
@@ -48,7 +42,7 @@ class FiguresController < ApplicationController
     
     # @figure.save
     
-    # redirect to "figures/#{@figure.id}"
+    redirect to "figures/#{@figure.id}"
   end
   
   
@@ -65,8 +59,15 @@ class FiguresController < ApplicationController
   end
   
   
+  get '/figures/:id/edit' do 
+    @figure = Figure.find(params[:id])
+    erb :'/figures/edit'
+  end
+  
+  
   patch '/figures/:id' do 
     @figure = Figure.find(params[:id])
+    raise params.inspect
     # new_artist = params[:song][:artist]
     # new_genre = Genre.find(params[:song][:genres])
     

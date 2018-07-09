@@ -1,52 +1,28 @@
 
 
-<h1>Edit: <%=@song.name%></h1>
+<h1>Edit: <%=@figure.name%></h1>
 
-<form method="POST" action="/songs/<%= @song.id %>">
+<form method="POST" action="/songs/<%= @figure.id %>">
   <input type="hidden" name="_method" value="PATCH" id="hidden">
   
+  <label>Name: </label>
+  <input type="text" name="figure[name]" id="figure_name">
+  
   <br>
-  <label>Artist Name:</label>
-  <input type="text" name="song[artist]" id="artist_name" value="<%=@song.artist.name%>">
+  <label>Title:</label>
+  <% Title.all.each do |title| %>
+    <p><input type="checkbox" name="figure[titles][]" id="<%= title.name %>"  value="<%= title.ids %>" <%='checked' if @figure.titles.include?(title) %>><%= title.name %></p>
+  <% end %>
   <br>
   
-  <label>Genres:</label>
-  <% Genre.all.each do |genre| %>
-    <p><input type="checkbox" name="song[genres][]" id="<%=genre.name%>"  value="<%=genre.id%>" <%='checked' if @song.genres.include?(genre) %>><%= genre.name %></p>
+  <label>Landmark:</label>
+  <% Landmark.all.each do |landmark| %>
+    <p><input type="checkbox" name="figure[landmarks][]" id="<%=landmark.name%>"  value="<%=landmark.ids%>" <%='checked' if @figure.landmarks.include?(landmark) %>><%= landmark.name %></p>
   <% end %>
   
   <br>
-    <input type="submit" value="Update Song">
+    <input type="submit" value="Update Figure">
     
 </form>
 
 
-
-
-  it "allows you to view form to edit a single figure" do
-    @figure = Figure.first
-    get "/figures/#{@figure.id}/edit"
-
-    expect(last_response.status).to eq(200)
-    expect(last_response.body).to include('<form')
-    expect(last_response.body).to include('figure[name]')
-    expect(last_response.body).to include('figure[title_ids]')
-    expect(last_response.body).to include(@figure.name)
-  end
-
-
-  it "allows you to edit a single figure" do
-    @original_figure = Figure.first
-    visit "/figures/#{@original_figure.id}/edit"
-    fill_in :figure_name, with: "Missy"
-    fill_in :new_landmark, with: "Big Tower"
-    click_button "Edit Figure"
-
-    expect(page.current_path).to eq("/figures/#{@original_figure.id}")
-    expect(page.body).to include("Missy")
-    expect(page.body).to include("Big Tower")
-
-    @updated_figure = Figure.first
-    expect(@updated_figure.name).to eq("Missy")
-  end
-end
