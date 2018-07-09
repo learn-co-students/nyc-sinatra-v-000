@@ -8,11 +8,11 @@
   
   <br>
   <label>Name:</label>
-  <input type="text" name="landmark[name]" id="landmark_name">
+  <input type="text" name="landmark[name]" id="landmark_name" value="<%= @landmark.name %>">
   <br>
   
   <label>Year Completed:</label>
-  <input type="text" name="landmark[year_completed]" id="landmark_year_completed">
+  <input type="text" name="landmark[year_completed]" id="landmark_year_completed" value="<%= @landmark.year_completed.to_s %>">
   <br>
 
   <br>
@@ -21,27 +21,3 @@
 </form>
 
 
-
-
-    expect(last_response.body).to include('landmark[name]')
-    expect(last_response.body).to include('landmark[year_completed]')
-    expect(last_response.body).to include(@landmark.name)
-    expect(last_response.body).to include(@landmark.year_completed.to_s)
-
-
-  it "allows you to edit a single landmark" do
-    @original_landmark = Landmark.first
-
-    visit "/landmarks/#{@original_landmark.id}/edit"
-    fill_in :name, with: "BQE!!!!"
-    fill_in :year_completed, with: 9999
-
-
-    expect(page.body).to include("BQE!!!!")
-    expect(page.body).to include("9999")
-
-    @updated_landmark = Landmark.first
-    expect(page.current_path).to eq("/landmarks/#{@original_landmark.id}")
-    expect(@updated_landmark.name).to eq("BQE!!!!")
-    expect(@updated_landmark.year_completed.to_s).to eq("9999")
-  end

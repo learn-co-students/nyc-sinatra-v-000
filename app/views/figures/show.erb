@@ -4,7 +4,7 @@
 
 
 <% @figure.landmarks.each do |landmark| %>
-  <h2><%= landmark.name %><%= landmark.year_completed %></h2>
+  <h2><%= landmark.name %><%= landmark.year_completed.to_s %></h2>
 <% end %>
 
 

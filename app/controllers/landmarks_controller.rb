@@ -29,23 +29,15 @@ class LandmarksController < ApplicationController
   
   patch '/landmarks/:id' do 
     @landmark = Landmark.find(params[:id])
-    # new_artist = params[:song][:artist]
-    # new_genre = Genre.find(params[:song][:genres])
+    new_name = params[:landmark][:artist]
+    new_year = params[:landmark][:year_completed]
     
-    # if @song.artist.name != new_artist
-    #   @song.artist = Artist.create(:name => new_artist)
-    # end
-    
-    # if new_genre
-    #   @song.genres = []
-    #   @song.genres << new_genre
-    # end
+    if new_name
+      @landmark = Landmark.create(:name => year_completed, :year_completed => new_year)
+    end
     
     @landmark.save
     redirect "/landmarks/#{@landmark.id}"
   end
   
-  
-  
-
 end
