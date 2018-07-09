@@ -6,6 +6,18 @@
   <input type='text' name='figure[name]' id='figure_name'>
   <br>
   
+  
+  
+  {"figure"=>
+    {
+      "name"=>"name", "title_ids"=>["3"], 
+      "landmark_ids"=>["1"]
+    }, 
+      "new_title"=>{"name"=>"person"}, 
+      "new_landmark"=>{"name"=>"place"}, 
+      "_new_landmark"=>{"year"=>"560"}
+    }
+  
   <p>
   <label>Title</label><br>
   <% @titles.each do |title| %>
@@ -13,24 +25,24 @@
   <% end %>
    </p>
    
-  <label for="title_name">Create New Title:</label><br>
-  <input type='text' name='title[name]' id='title_name'>
+  <label>Create New Title:</label><br>
+  <input type='text' name='figure[new_title][name]' id='new_title_name'>
   <br>
   
 
   <p>
-  <label for="landmarks[name]">Landmarks</label><br>
+  <label for="figure[landmarks][name]">Landmarks</label><br>
   <% @landmarks.each do |landmark| %>
     <input id="<%= landmark.name %>" type="checkbox" name="figure[landmark_ids][]" value="<%= landmark.id %>"><%= landmark.name %></input><br>
   <% end %>
   </p>
   
   <p>
-  <label for="landmark_name">Create New Landmark:</label><br>
-  <label for="landmark_name">Name:</label>
-  <input type='text' name='landmark[name]' id='landmark_name'>
-  <label for="landmark_year">Year:</label>
-  <input type='text' name='landmark[year]' id='landmark_year'>
+  <label>Create New Landmark:</label><br>
+  <label for="new_landmark_name">Name:</label>
+  <input type='text' name='new_landmark[name]' id='new_landmark_name'>
+  <label for="new_landmark_year">Year:</label>
+  <input type='text' name='figure[new_landmark][year]' id='new_landmark_year'>
   </p>
 
   
