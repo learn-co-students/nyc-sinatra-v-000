@@ -21,9 +21,9 @@ class LandmarksController < ApplicationController
   end
 
   post '/landmarks' do
-    landmark = Landmark.new(:name => params[:name])
+    landmark = Landmark.new(:name => params[:landmark][:name])
     landmark.figure_id = params[:figure_id]
-    landmark.year_completed = params[:year_completed]
+    landmark.year_completed = params[:landmark][:year_completed]
     if !params[:figure_name].empty?
       new_figure = Figure.create(:name => params[:figure_name])
       landmark.figure_id = new_figure.id
