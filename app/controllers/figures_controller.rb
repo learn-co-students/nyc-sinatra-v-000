@@ -10,32 +10,50 @@ class FiguresController < ApplicationController
     erb :"/figures/new"
   end
 
+  get '/figures/:id/edit' do
+    @figure = Figure.find(params[:id])
+    erb :"figures/edit"
+  end
+
   get '/figures/:id' do
     @figure = Figure.find(params[:id])
     erb :"figures/show"
   end
 
   post '/figures' do
-    #binding.pry
-    figure = Figure.new(:name => params[:figure][:name])
-
+    @figure = Figure.create(params[:figure])
+    params[:figure][:title_ids].each do |title_id|
+      @figure.titles << Title.find(title_id)
+    end
     if !params[:title][:name].empty?
-      new_Title.create(:name => params[:title][:name])
-      new_Title.figures << figure
+        @figure.titles << Title.create(params[:title])
     end
     params[:figure][:landmark_ids].each do |landmark|
-      #binding.pry
-      Landmark.find(landmark.values.first).figure_id = figure.id
+      @figure.landmarks << Landmark.find(landmark)
     end
-    if !params[:landmark[:name]].empty? && !params[:landmark][:year].empty?
-        new_landmark = Landmark.create(:name => params[:landmark_name], :year_completed => params[:landmark_year], :figure_id => figure.id)
+    if !params[:landmark][:name].empty?
+        @figure.landmarks << Landmark.create(params[:landmark])
     end
-    figure.save
-    redirect "/figures/#{figure.id}"
+    @figure.save
+    redirect "/figures/#{@figure.id}"
+  end
+
+  patch '/figures/:id' do
+    @figure = Figure.find(params[:id])
+    @figure.update(params[:figure])
+    params[:figure][:title_ids].each do |title_id|
+      @figure.titles << Title.find(title_id)
+    end
+    if !params[:title][:name].empty?
+        @figure.titles << Title.create(params[:title])
+    end
+    params[:figure][:landmark_ids].each do |landmark|
+      @figure.landmarks << Landmark.find(landmark)
+    end
+    if !params[:landmark][:name].empty?
+        @figure.landmarks << Landmark.create(params[:landmark])
+    end
+    @figure.save
+    redirect "/figures/#{@figure.id}"
   end
 end
-#<label for="landmark_name">Name: </label>
-#<input type="text" name="landmark[name]" id="landmark_name"></input>
-#<label for="landmark_year">Year: </label>
-#<input type="text" name="figure[landmark_year]" id="landmark_year"></input>
-#<input type="submit" id="Create New Figure" value="Create New Figure"></input>
