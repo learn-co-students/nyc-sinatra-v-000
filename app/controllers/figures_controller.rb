@@ -1,6 +1,5 @@
 class FiguresController < ApplicationController
   get '/figures/new' do
-    #erb :'landmarks/new'
-    "Hello World"
+    erb :'figures/new'
   end
 end
