@@ -33,7 +33,7 @@ class FiguresController < ApplicationController
     erb :'/figures/edit'
   end
 
-  patch '/figures/:id' do
+  post '/figures/:id' do
     #binding.pry
     @figure = Figure.find_by_id(params[:id])
     @figure.update(params[:figure])
