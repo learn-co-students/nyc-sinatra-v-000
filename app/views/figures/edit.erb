@@ -1,5 +1,4 @@
 edit figure
-<%=binding.pry%>
 <form action="/figures/<%=@figure.id%>" method="post">
   <%=@figure.name%>
   <input type="hidden" id="hidden" name="_method" value="patch">

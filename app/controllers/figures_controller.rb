@@ -36,9 +36,9 @@ class FiguresController < ApplicationController
     else
 
     end
-    @updated_figure.landmarks << params[:figure][:landmark]
+    @updated_figure.landmarks << Landmark.find_or_create_by(name: params[:figure][:landmark])
     @updated_figure.save
-    erb :single
+    redirect "/figures/#{@updated_figure.id}"
   end
 
 
