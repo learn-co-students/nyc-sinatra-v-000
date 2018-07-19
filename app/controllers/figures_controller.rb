@@ -16,6 +16,7 @@ class FiguresController < ApplicationController
     redirect "/figures"
   end
 
+
   get "/figures" do
     @figures = Figure.all
     erb :"/figures/show"
@@ -23,10 +24,22 @@ class FiguresController < ApplicationController
 
   get "/figures/:id/edit" do
     @figure = Figure.find_by(id: params[:id])
-    erb :"/figures/"
+    erb :"/figures/edit"
   end
 
+  patch "/figures/:id" do
+    @updated_figure = Figure.find_by(id: params[:id])
+    @updated_figure.name = params[:figure][:name]
+    title = Title.find_by(id: params[:figure][:title_ids])
+    if title
+      @updated_figure.titles << title
+    else
 
+    end
+    @updated_figure.landmarks << params[:figure][:landmark]
+    @updated_figure.save
+    erb :single
+  end
 
 
 end
