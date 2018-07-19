@@ -5,24 +5,23 @@ Form to create new figure
 <p><label for="figure_name">Name: </label></p><br>
 <input type="text" name="figure[name]" id="figure_name"><br>
 <h2>Titles</h2>
-<%binding.pry%>
 <%titles = Title.all%>
 <%titles.each do |title|%>
-<label for="title.name"><%=title.name%>: <input type="checkbox" name="figure[title_ids][]" id="title.name" value="title.id"><br>
+<label for="title_<%=title.id%>"><%=title.name%>: </label><input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id%>" value="<%=title.id%>"><br>
 <%end%>
 <h2>Create New Title:</h2>
-<p><label for="title_name">Name: </label></p><br>
-<input type="text" name="title[name]" id="title_name"><br>
+<p><label for="new_title">Name: </label></p><br>
+<input type="text" name="title[name]" id="new_title"><br>
 
 <h2>Landmarks</h2>
 <%landmarks = Landmark.all%>
 <%landmarks.each do |landmark|%>
-<label for="landmark.id"><%=landmark.name%>: </label><input type="checkbox" name="figure[landmark_ids][]" id="landmark.name" value="landmark.id"><br>
+<label for="landmark_<%=landmark.id%>"><%=landmark.name%>: </label><input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=landmark.id%>" value="<%=landmark.id%>"><br>
 <%end%>
 
 <h2>Create New Landmark:</h2>
-<label for="landmark_name">Name: </label>
-<input type="text" name="landmark[name]" id="landmark_name">
+<label for="new_landmark">Name: </label>
+<input type="text" name="landmark[name]" id="new_landmark">
 <label for="Year">Year: </label>
 <input type="text" name="Year" id="Year">
 <input type="submit" value="Create New Figure">
