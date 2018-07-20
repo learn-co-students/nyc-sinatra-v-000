@@ -12,23 +12,24 @@ class FiguresController < ApplicationController
 
   post '/figures' do #create and redirect
     @figure = Figure.create(params[:figure])
-
     if !params[:title][:name].empty? #hence user fills out new entry
       #creation handles id automatically
       @figure.titles << Title.create(name: params[:title][:name])
     end
-
     if !params[:landmark][:name].empty? #NOT empty
       @figure.landmarks << Landmark.create(name: params[:landmark][:name])
     end
-
     redirect "/figures/#{@figure.slug}"
   end
 
-  get '/figures/:slug' do #Show page request
-    @figure = Figure.find_by_slug(params[:slug])
-
+  get '/figures/:id' do #Show page request
+    @figure = Figure.find_by_id(params[:id])
     erb :"figures/show"
+  end
+
+  get '/figures/:id/edit' do #edit page request
+    @figure = Figure.find_by_id(params[:id])
+    erb :"/figures/edit"
   end
 
 end
