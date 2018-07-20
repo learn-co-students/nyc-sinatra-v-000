@@ -1,11 +1,11 @@
 <h1><%= @figure.name %> Display Page</h1>
 
-<h2>Figure Title:<h2>
-<p><% @figure.titles.each do |title| %></p>
-<%= title.name %>
+<h2>Figure Title(s):<h2>
+<% @figure.titles.each do |title| %>
+  <%= title.name %>
 <% end %>
 
-<h2>Figure Landmark(s):<h2>
+<h2>Figure Landmark(s):</h2>
 <% @figure.landmarks.each do |landmark| %>
-  <p><%= landmark.name %></p>
+  <%= landmark.name %>
 <% end %>
