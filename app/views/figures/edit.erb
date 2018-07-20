@@ -4,12 +4,17 @@
   <input type="hidden" id="hidden" name="_method" value="PATCH">
 
   <h3>NAME: </h3>
-  <input type="text" name="figure[name]"><br>
+  <input type="text" name="figure[name]" id="figure_name"><br>
 
   <h3>Title(s):</h3>
-  <% @figure.titles.each do |title| %>
-  <input type="checkbox" name="figure[title_ids]" value="<%= title.id %>">
+  <% Title.all.each do |title| %>
+    <input type="checkbox" name="figure[title_ids]" value="<%= title.id %>">
+    <%= title.name %><br>
   <% end %>
-  
-  <input type="submit" name="Edit">
+
+  <h3>Associate Landmark</h3>
+  Name: <input type="text" name="landmark[name]" id="new_landmark">
+  Year: <input type="text" name="landmark[year]" id="new_landmark_year">
+
+  <input type="submit" name="Edit Figure" id="Edit Figure">
 </form>

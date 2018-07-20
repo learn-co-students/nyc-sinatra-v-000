@@ -32,4 +32,11 @@ class FiguresController < ApplicationController
     erb :"/figures/edit"
   end
 
+  patch '/figures/:id' do #edit and redirect
+    @figure = Figure.find_by_id(params[:id])
+    @figure.update(params[:figure])
+    @landmark = Landmark.create(params[:landmark])
+    redirect :"/figures/#{@figure.id}"
+  end
+
 end
