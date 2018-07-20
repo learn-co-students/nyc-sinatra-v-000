@@ -3,7 +3,13 @@
 <form method="POST" action="/figures/<%= @figure.id %>">
   <input type="hidden" id="hidden" name="_method" value="PATCH">
 
-  <input type="text" name="figure[name]">
+  <h3>NAME: </h3>
+  <input type="text" name="figure[name]"><br>
 
+  <h3>Title(s):</h3>
+  <% @figure.titles.each do |title| %>
+  <input type="checkbox" name="figure[title_ids]" value="<%= title.id %>">
+  <% end %>
+  
   <input type="submit" name="Edit">
 </form>
