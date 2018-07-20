@@ -1,0 +1,7 @@
+<h1>Landmarks Main page</h1>
+
+<% @landmarks.each.with_index(1) do |landmark, i| %>
+  <h4><%= i %>: <%= landmark.name.upcase %></h4>
+  <p>Year Completed: <%= landmark.year_completed %></p>
+  <br>
+<% end %>
