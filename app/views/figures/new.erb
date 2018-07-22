@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <form method='POST' action='/figures'>
+    <%Landmark.all.each do |landmark|%>
+       <input type="checkbox" name="landmark.name" value="<%=landmark.name%>" ><%=landmark.name%></input>
+    <%end%>
+  </form>
+  </body>
+
+</html>
