@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
+
   </head>
   <body>
+    <h1>Create a New Figure</h1>
     <form method='POST' action='/figures'>
+      <h2>Figure Name:</h2><br>
+      <input type="text" name="Figure Name"><br>
+      <h2>Titles:</h2>
+      <%Title.all.each do |title|%>
+         <input type="checkbox" name="title.name" value="<%=title.name%>" ><%=title.name%></input><br>
+      <%end%>
+      <h2>Create New Title:</h2>
+      <input type="text" name="Title Name"><br>
+      <h2>Landmarks:</h2>
     <%Landmark.all.each do |landmark|%>
-       <input type="checkbox" name="landmark.name" value="<%=landmark.name%>" ><%=landmark.name%></input>
-    <%end%>
+       <input type="checkbox" name="landmark.name" value="<%=landmark.name%>" ><%=landmark.name%></input><br>
+       <%end%>
+       <h2>Create New Landmark:</h2>
+       <h3>Landmark Name:</h3>
+       <input type="text" name="Landmark Name">
+       <h3>Landmark Date:</h3>
+       <input type="text" name="Landmark Year"><br>
+       <br>
+       <input type="submit" value="Create Figure">
+
   </form>
   </body>
 
