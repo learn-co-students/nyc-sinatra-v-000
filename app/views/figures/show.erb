@@ -1,0 +1,18 @@
+<h4> Person Name: </h4>
+<a href="/figures/<%= @figure.id %>"><%= @figure.name %></a>
+<br></br>
+      <label> Landmarks: </label>
+        <%@figure.landmarks.each do |landmark|%>
+        <%= landmark.name %>
+        <%end%>
+
+        <br></br>
+
+      <label> Titles: </label>
+        <%@figure.titles.each do |title|%>
+        <%= title.name %>
+        <%end%>
+
+        <br></br>
+
+<a class="button" href="/">Go Home</a>
