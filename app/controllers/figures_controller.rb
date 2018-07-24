@@ -13,15 +13,25 @@ class FiguresController < ApplicationController
 
 
   post '/figures' do
-      @figure = Figure.create(:name => params["figure"]["name"])
-      if !params["title"]["name"].empty?
-      @title = Title.create(:name => params["title"]["name"])
-      @figure.title_id << @title.id
-    else
-     @figure.titles << Title.find_by(:name => params["title"]["name"])
-    end
-  @figure.save
+    @figure = Figure.create(params[:figure])
+    if !params[:title][:name].empty?
+    @figure.titles << Title.create(:name => params["title"]["name"])
+    @figure.save
+  end
+    if !params[:landmark][:name].empty?
+    @figure.landmarks << Landmark.create(:name => params["landmark"]["name"])
+  end
     erb :'figures/show'
   end
+
+  get '/figures/:id' do
+    @figure = Figure.find_by(params[:id])
+    erb :'/figures/show'
+  end
+
+get 'figures/:id/edit' do
+  erb :'/figures/edit'
+end
+
 
 end
