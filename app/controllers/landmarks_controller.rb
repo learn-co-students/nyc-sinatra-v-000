@@ -24,6 +24,10 @@ get '/landmarks/:id/edit' do
 end
 
 post '/landmarks/:id' do
+  @landmark = Landmark.find(params[:id])
+  @landmark.update(params[:landmark])
+  @landmark.save
+  redirect to "/landmarks/#{@landmark.id}"
 end
 
 
