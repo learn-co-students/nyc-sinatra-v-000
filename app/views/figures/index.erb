@@ -4,7 +4,10 @@
 
   </head>
   <body>
-    Learn 
+    <h1>These are historical figures.</h1>
+      <%@figures.each do |figure|%>
+      <h2><%=figure.name%></h2>
+      <%end%>
   </body>
 
 </html>
