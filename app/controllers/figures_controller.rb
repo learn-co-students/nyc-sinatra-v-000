@@ -14,7 +14,15 @@ class FiguresController < ApplicationController
   end
 
   post '/figures/new' do
-    @figure = Figure.create(:name => params["name"])
+    @figure = Figure.create(name: params[:figure][:name])
+
+    params[:figure][:title_ids].each do |ft|
+      @figure_title = FigureTitle.create(title_id: ft)
+      @figure_title.figure_id = @figure.id
+      @figure_title.save
+    end
+
+    binding.pry
 
   end
 
