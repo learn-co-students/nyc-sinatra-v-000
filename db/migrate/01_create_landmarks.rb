@@ -1,3 +1,6 @@
 class CreateLandmarks < ActiveRecord::Migration
-  raise 'Write CreateLandmarks migration here'
+  
+  
+  # name, figure_id, year_completed
+  
 end
