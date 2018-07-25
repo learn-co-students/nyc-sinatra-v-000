@@ -13,6 +13,12 @@ class FiguresController < ApplicationController
     erb :'/figures/new'
   end
 
+  get '/figures/:id' do
+    @figure = Figure.find(params[:id])
+
+    erb '/figures/show'
+  end
+
   post '/figures' do
     #@figure = Figure.create(name: params[:figure][:name])
     #params[:figure][:title_ids].each do |ft|
@@ -32,6 +38,8 @@ class FiguresController < ApplicationController
     end
 
     @figure.save # Determine if this is necessary
+
+    redirect to "/figures/#{@figure.id}"
   end
 
 end
