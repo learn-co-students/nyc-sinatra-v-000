@@ -31,7 +31,7 @@ class FiguresController < ApplicationController
       @figure.landmarks << Landmark.create(params["landmark"]) # params[:landmark] == params["landmark"]
     end
 
-    @figure.save
+    @figure.save # Determine if this is necessary
   end
 
 end
