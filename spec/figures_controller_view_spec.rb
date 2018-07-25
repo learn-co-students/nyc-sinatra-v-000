@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe FiguresController do
   before do
@@ -108,7 +109,6 @@ describe FiguresController do
     fill_in :figure_name, with: "Missy"
     fill_in :new_landmark, with: "Big Tower"
     click_button "Edit Figure"
-
     expect(page.current_path).to eq("/figures/#{@original_figure.id}")
     expect(page.body).to include("Missy")
     expect(page.body).to include("Big Tower")
