@@ -45,12 +45,9 @@ class FiguresController < ApplicationController
     erb :"/figures/edit"
   end
 
-  # patch "/figures/:id" do
   post "/figures/:id" do
     @figure = Figure.find(params[:id])
     @figure.update(params[:figure])
-
-    binding.pry
 
     if params[:title][:name] != ""
       @figure.titles << Title.find_or_create_by(name: params[:title][:name])

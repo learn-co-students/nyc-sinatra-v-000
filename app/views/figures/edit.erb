@@ -2,8 +2,6 @@
 <h1> Editing "<%= @figure.name %>"</h1>
 
 <form action="/figures/<%= @figure.id %>" method="post">
-  <!--input type="hidden" name="_method" value="PATCH" id="hidden"-->
-
   <label for="figure_name"> New Figure Name: </label>
   <input type="text" name="figure[name]" value="<%= @figure.name %>" id="figure_name">
 
