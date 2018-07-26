@@ -14,7 +14,22 @@ class FiguresController < ApplicationController
   end
 
   post "/figures" do
-    # create figure plus side operations
+    @figure = Figure.create(name: params[:figure][:name])
+
+    if params[:title][:name] != ""
+      @figure.titles << Title.find_or_create_by(name: params[:title][:name])
+    else
+      @figure.title_ids = params[:figure][:title_ids]
+    end
+
+    if params[:landmark][:name] != ""
+      @figure.landmarks << Landmark.find_or_create_by(name: params[:title][:name])
+    else
+      @figure.landmark_ids = params[:figure][:landmark_ids]
+    end
+
+    @figure.save
+
     redirect "/figures/#{@figure.id}"
   end
 
