@@ -23,7 +23,7 @@ class FiguresController < ApplicationController
     end
 
     if params[:landmark][:name] != ""
-      @figure.landmarks << Landmark.find_or_create_by(name: params[:title][:name])
+      @figure.landmarks << Landmark.find_or_create_by(name: params[:landmark][:name])
     else
       @figure.landmark_ids = params[:figure][:landmark_ids]
     end
@@ -40,12 +40,27 @@ class FiguresController < ApplicationController
 
   get "/figures/:id/edit" do
     @figure = Figure.find_by(id: params[:id])
-    # class.all for edit options
+    @titles = Title.all
+    @landmarks = Landmark.all
     erb :"/figures/edit"
   end
 
-  patch "/figures/:id" do
-    # grab params and update figure
+  # patch "/figures/:id" do
+  post "/figures/:id" do
+    @figure = Figure.find(params[:id])
+    @figure.update(params[:figure])
+
+    binding.pry
+
+    if params[:title][:name] != ""
+      @figure.titles << Title.find_or_create_by(name: params[:title][:name])
+    end
+
+    if params[:landmark][:name] != ""
+      @figure.landmarks << Landmark.find_or_create_by(name: params[:landmark][:name])
+    end
+
+    @figure.save
     redirect "/figures/#{@figure.id}"
   end
 
