@@ -50,4 +50,4 @@ class FiguresController < ApplicationController
 
     redirect to "/figures/#{@figure.id}"
   end
-end
+end # FiguresController
