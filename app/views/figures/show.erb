@@ -1,0 +1,19 @@
+
+<h4>Figures:</h4>
+<ul>
+
+  <li>Name :   <%=@figure.name%></a> </li>
+
+              <% if !@figure.titles.empty? %>
+  <li>Titles : <% @figure.titles.each do |title| %>
+               <%= title.name %>
+               <% end %></li>
+               <% end %>
+
+                 <% if !@figure.landmarks.empty? %>
+  <li>Landmarks : <% @figure.landmarks.each do |landmark| %>
+               <%= landmark.name %>
+               <%= landmark.year_completed %>
+               <% end %></li>
+               <%end%>
+</ul>
