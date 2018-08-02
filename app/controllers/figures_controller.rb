@@ -1,7 +1,8 @@
 class FiguresController < ApplicationController
 
   get '/figures' do
-    redirect '/figures/new'
+    @figures = Figure.all
+    erb :'/figures/index'
   end
 
   get '/figures/new' do
@@ -9,6 +10,12 @@ class FiguresController < ApplicationController
     @titles = Title.all
     @landmarks = Landmark.all
     erb :'/figures/new'
+  end
+
+  post '/figures' do
+    @figure = Figure.create(params[:figure])
+    @figure.save
+    erb :'/figures/index'
   end
 
 end
