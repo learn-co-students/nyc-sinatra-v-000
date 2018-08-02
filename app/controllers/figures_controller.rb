@@ -10,8 +10,9 @@ class FiguresController < ApplicationController
      end
 
      post '/figures' do
+       binding.pry
        @figure = Figure.create(name: params["figure"]["name"])
-       @figure.landmark = Figure.create(landmark: params["landmark"]["name"])
+       @figure.landmarks << Landmark.create(landmark: params["landmark"]["name"])
        @figure.title = Figure.create(title: params["title"]["name"])
        @figure.save
        end
