@@ -16,11 +16,13 @@ class FiguresController < ApplicationController
     @figure = Figure.create(params["figure"])
 
     if !params[:landmark][:name].empty?
-      @figure.landmarks << Landmark.create(params[:landmark])
+      @landmark = params[:landmark]
+      Landmark.create(:name => @landmark[:name], :figure_id => @figure.id, :year_completed => @landmark[:year_completed])
     end
 
-    if !params[:title][:name].empty?
-      @figure.title << Title.create(params[:title])
+    if !params["title"]["name"].empty?
+      @title = Title.create(params[:title])
+      FigureTitle.create(:title_id => @title.id, :figure_id => @figure.id)
     end
 
     @figure.save
