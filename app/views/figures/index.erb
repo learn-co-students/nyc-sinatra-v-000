@@ -1,0 +1,12 @@
+<h1>Person Name</h1>
+
+<% @figures.each do |figure| %>
+    <a href="/figures/<%= figure.id %>"><%= figure.name %></a>
+
+    <% figure.titles.each do |title| %>
+    <%= title.name %>
+    <% end %>
+<% end %>
+
+<br>
+<a class="button" href="/">Go Back</a>
