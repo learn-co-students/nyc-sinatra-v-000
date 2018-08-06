@@ -17,7 +17,7 @@ describe FiguresController do
   end
 
   it "allows you to view form to create a new figure" do
-    visit '/figures/new'
+    visit 'figures/new'
     expect(page.body).to include('<form')
     expect(page.body).to include('figure[name]')
     expect(page.body).to include('figure[title_ids][]')
