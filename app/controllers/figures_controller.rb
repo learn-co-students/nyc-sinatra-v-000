@@ -1,4 +1,3 @@
-require 'pry'
 class FiguresController < ApplicationController
 
   get '/figures' do

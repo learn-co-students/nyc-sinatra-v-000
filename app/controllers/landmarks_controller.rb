@@ -1,3 +1,4 @@
+require 'pry'
 class LandmarksController < ApplicationController
 
   get '/landmarks' do
@@ -28,11 +29,12 @@ class LandmarksController < ApplicationController
     erb :'/application/landmarks/edit'
   end
 
-  patch 'landmarks/:id/edit' do
+  patch '/landmarks/:id/edit' do
     @original_landmark = Landmark.find_by_id(params[:id])
     @original_landmark.name = params[:landmark][:name]
     @original_landmark.year_completed = params[:landmark][:year_completed]
     @original_landmark.save
+
 
     redirect "/landmarks/#{@original_landmark.id}"
   end
