@@ -14,31 +14,15 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-    @figure = Figure.create(name: params[:figure][:name])
-
-    if params[:figure][:title_ids]
-      params[:figure][:title_ids].each do |id|
-        @title = Title.find_by_id(id)
-        @figure.titles << @title
-      end
+    @figure = Figure.create(params[:figure])
+    if !params[:title][:name].empty?
+      @figure.titles << Title.create(params[:title])
     end
 
-    if params[:title][:name] != ""
-      @title = Title.create(name: params[:title][:name])
-      @figure.titles << @title
+    if !params[:landmark][:name].empty?
+      @figure.landmarks << Landmark.create(params[:landmark])
     end
 
-    if params[:figure][:landmark_ids]
-      params[:figure][:landmark_ids].each do |id|
-        @landmark = Landmark.find_by_id(id)
-        @figure.landmarks << @landmark
-      end
-    end
-
-    if params[:landmark][:name] != ""
-      @landmark = Landmark.create(name: params[:landmark][:name])
-      @figure.landmarks << @landmark
-    end
     @figure.save
 
     redirect "/figures/#{@figure.id}"
@@ -51,36 +35,17 @@ class FiguresController < ApplicationController
 
   patch '/figures/:id/edit' do
     @original_figure = Figure.find_by_id(params[:id])
-    @original_figure.name = params[:figure][:name]
-    @original_figure.titles.clear
-    @original_figure.landmarks.clear
+    @original_figure.update(params[:figure])
 
-    if params[:figure][:title_ids]
-      params[:figure][:title_ids].each do |id|
-        @title = Title.find_by_id(id)
-        @original_figure.titles << @title
-      end
+    if !params[:title][:name].empty?
+      @original_figure.titles << Title.create(params[:title])
     end
 
-
-    if params[:title][:name] != ""
-      @title = Title.create(name: params[:title][:name])
-      @original_figure.titles << @title
+    if !params[:landmark][:name].empty?
+      @original_figure.landmarks << Landmark.create(params[:landmark])
     end
-
-    if params[:figure][:landmark_ids]
-      params[:figure][:landmark_ids].each do |id|
-        @landmark = Landmark.find_by_id(id)
-        @original_figure.landmarks << @landmark
-      end
-    end
-
-    if params[:landmark][:name] != ""
-      @landmark = Landmark.create(name: params[:landmark][:name])
-      @original_figure.landmarks << @landmark
-    end
-
     @original_figure.save
+
     redirect "/figures/#{@original_figure.id}"
   end
 end
