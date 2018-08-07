@@ -2,7 +2,7 @@ require 'pry'
 class FiguresController < ApplicationController
 
   get '/figures' do
-    erb :"/application/index"
+    erb :"/application/figures/index"
   end
 
   get '/figures/new' do
