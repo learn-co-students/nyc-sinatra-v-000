@@ -1,1 +1,12 @@
-Landmarks Index
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Landmarks</title>
+  </head>
+  <body>
+    <% @landmarks.each do |landmark| %>
+      <a href="/landmarks/<%= landmark.id %>"><h1><%= landmark.name %></h1></a>
+    <% end %>
+  </body>
+</html>

@@ -17,7 +17,7 @@
 
     <h4>Titles:</h4>
     <% @figure.titles.each do |title| %>
-      <p><a href="/titles/<%= title.id %>"><%= title.name %></a></p>
+      <p><%= title.name %></p>
     <% end %>
     <% if @figure.titles.empty? %>
       <p>None</p>
