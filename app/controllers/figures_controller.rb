@@ -9,14 +9,14 @@ class FiguresController < ApplicationController
     erb :'figures/new'
   end
 
-  get '/figures/:id/edit' do
-    @figure = Figure.find_by(id: params[:id])
-    erb :'figures/edit'
-  end
-
   get '/figures/:id' do
     @figure = Figure.find_by(id: params[:id])
     erb :'figures/show'
+  end
+
+  get '/figures/:id/edit' do
+    @figure = Figure.find_by(id: params[:id])
+    erb :'figures/edit'
   end
 
   patch '/figures/:id' do
@@ -24,19 +24,16 @@ class FiguresController < ApplicationController
     figure = Figure.find_by(id: params[:id])
     figure.update(params[:figure])
     
-    # if a new title was added, create a new title and associate with figure
-    if params["title"]["name"] != ""
-      new_title = Title.create(params[:title])
-      
-      FigureTitle.create(title_id: new_title.id, figure_id: figure.id)
+    # if a new title was added, create a new title and add to figures
+    if !params["title"]["name"].empty?
+      figure.titles << Title.create(params[:title])
     end
     
-    # if a new landmark was added, create a new landmark and associate with figure
-    if params["landmark"]["name"] != ""
-      new_landmark = Landmark.new(params[:landmark])
-      new_landmark.figure_id = figure.id
-      new_landmark.save
+    # if a new landmark was added, create a new landmark and add to figures
+    if !params["landmark"]["name"].empty?
+      figure.landmarks << Landmark.create(params[:landmark])
     end
+    
     redirect to "/figures/#{figure.id}"
   end
 
@@ -44,18 +41,14 @@ class FiguresController < ApplicationController
     # create a new figure
     figure = Figure.create(params[:figure])
 
-    # if a new title was added, create a new title and associate with figure
-    if params["title"]["name"] != ""
-      new_title = Title.create(params[:title])
-      
-      FigureTitle.create(title_id: new_title.id, figure_id: figure.id)
+    # if a new title was added, create a new title add to figures
+    if !params["title"]["name"].empty?
+      figure.titles << Title.create(params[:title])
     end
 
-  # if a new landmark was added, create a new landmark and associate with figure
-  if params["landmark"]["name"] != ""
-    new_landmark = Landmark.new(params[:landmark])
-    new_landmark.figure_id = figure.id
-    new_landmark.save
+    # if a new landmark was added, create a new landmark and add to figures
+    if !params["landmark"]["name"].empty?
+      figure.landmarks << Landmark.create(params[:landmark])
     end
 
     redirect to "/figures/#{figure.id}"
