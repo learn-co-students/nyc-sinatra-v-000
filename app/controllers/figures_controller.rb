@@ -5,7 +5,7 @@ class FiguresController < ApplicationController
     @figures = Figure.all
     @titles = Title.all
     @landmarks = Landmark.all
-    binding.pry
+    
     erb :'/figures/new'
   end
 
