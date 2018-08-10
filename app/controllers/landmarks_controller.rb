@@ -17,7 +17,9 @@ class LandmarksController < ApplicationController
   end
 
   post '/landmarks' do
-    
+    #binding.pry
+    @landmark = Landmark.find_or_create_by(name: params[:landmark_name], year_completed: params[:landmark_year_completed])
+    @landmark.save
   end
 
 
