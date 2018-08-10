@@ -24,21 +24,30 @@ class FiguresController < ApplicationController
       params[:figure][:title_ids].each do |id|
        title = Title.find_by_id(id)
        titles << title
+       @figure.title = titles
+       @figure.save
      end
     else
-        params[:figure][:title_ids].each do |id|
-        title = Title.find_by_id(id)
-        titles << title
-      end
-      @figure.title = titles
+      #  params[:figure][:title_ids].each do |id|
+      #  title = Title.find_by_id(id)
+      #  titles << title
+      @figure.title_ids = params[:figure][:title_ids]
       @figure.save
+    #  end
+    #  @figure.title = titles
+    #  @figure.save
     end
 
+    binding.pry
+    if params[:landmark] != ""
+      landmark = Landmark.create(name:params[:landmark][:name], year: params[:landmark][:year])
+      @figure.landmark = landmark
+      @figure.save
 
 
-   binding.pry
     redirect to "/figures/#{@figure.id}"
   end
+
 
   post '/figures' do
     binding.pry
