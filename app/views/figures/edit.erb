@@ -1,0 +1,19 @@
+<h1>Edit Figure: <%=@figure.name%></h1>
+
+<form action="/figures/<%=@figure.id%>/edit" method="post">
+  <p>New Figure Name: <input type="text" name="figure[name]" id="figure_name"></p>
+
+  <p>Current Landmarks: </p>
+  <%@figure.landmarks.each do |land|%>
+  <p><input type="checkbox" name="figure[landmark_ids][]" value="<%=land.id%>" checked><%=land.name%></p>
+  <%end%>
+  <p>If you would like to add a new Landmark, do so here: <input type="text" name="landmark[name]" id="new_landmark"></p>
+
+  <p>Current Titles:</p>
+  <%@figure.titles.each do |title|%>
+  <p><input type="checkbox" name="figure[title_ids][]" value="<%=title.id%>" id="figure[title_ids]" checked><%=title.name%></p>
+  <%end%>
+  <p>If you would like to add a new Title, do so here: <input type="text" name="title[name]" id="figure[title_ids]"></p>
+
+  <input type="submit" value="Edit Figure">
+</form>
