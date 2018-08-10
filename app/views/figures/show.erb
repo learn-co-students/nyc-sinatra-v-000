@@ -2,7 +2,7 @@
 
 <h4>Landmarks:</h4>
 <%@figure.landmarks.each do |landmark|%>
-  <li><%=landmark.name%></li>
+  <li><a href="/landmarks/<%=landmark.id%>"><%=landmark.name%></a></li>
 <% end %>
 
 <h4>Titles:</h4>
