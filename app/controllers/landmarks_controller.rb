@@ -1,7 +1,9 @@
 require 'pry'
 class LandmarksController < ApplicationController
+
   get '/landmarks' do
     @landmarks = Landmark.all
+    @figure = Figure.all
     erb :'/landmarks/index'
   end
 
@@ -10,14 +12,29 @@ class LandmarksController < ApplicationController
   end
 
   post '/landmarks' do
-    @landmark = Landmark.create(params[:landmark])
-    redirect "landmarks/#{@landmark.id}"
+    @landmark = Landmark.new(name: params[:landmark][:name])
+    @landmark.year_completed = params[:landmark][:year_completed]
+    @landmark.save
+    erb :'/landmarks/show'
   end
 
   get '/landmarks/:id' do
-    binding.pry
     @landmark = Landmark.find(params[:id])
     erb :'/landmarks/show'
   end
+
+  get '/landmarks/:id/edit' do
+    @landmark = Landmark.find(params[:id])
+    erb :'landmarks/edit'
+  end
+
+  post '/landmarks/:id' do
+    @landmark = Landmark.find(params[:id])
+    @landmark.name = params["landmark"]["name"]
+    @landmark.year_completed = params["landmark"]["year_completed"]
+    @landmark.save
+    redirect to "/landmarks/#{@landmark.id}"
+  end
+
 
 end
