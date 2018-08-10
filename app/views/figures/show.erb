@@ -1,0 +1,14 @@
+<h1><%=@fig.name%></h1>
+
+<h3>Titles:</h3>
+<%@fig.titles.each do |title|%>
+<p><%=title.name%></p>
+<%end%>
+
+<h3>Landmarks: </h3>
+<%@fig.landmarks.each do |land|%>
+<p><%=land.name%></p>
+<%end%>
+
+<br>
+<a href="/figures">All Figures</a>

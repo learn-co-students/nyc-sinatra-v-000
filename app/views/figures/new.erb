@@ -1,0 +1,20 @@
+<h1>Create a new Figure:</h1>
+
+<form action="/figures/new" method="post">
+  <p>Figure Name: <input type="text" name="fig[name]"></p>
+  <%if !Title.all.empty?%>
+  <p>Please choose the appropriate Titles from the list below:</p>
+  <%Title.all.each do |title|%>
+  <p><input type="checkbox" name="fig[titles][]" value="<%=title.id%>"><%=title.name%></p>
+  <%end%>
+  <%end%>
+  <p>If needed, please enter new Title here: <input type="text" name="title[name]"></p>
+  <%if !Landmark.all.empty?%>
+  <p>Please choose the appropriate Landmakrs from the list below:</p>
+  <%Landmark.all.each do |land|%>
+  <p><input type="checkbox" name="fig[land][]" value="<%=land.id%>"><%=land.name%></p>
+  <%end%>
+  <%end%>
+  <p>If needed, please enter new Landmark here: <input type="text" name="land[name]"></p>
+  <input type="submit" name="Submit" value="Create">
+</form>
