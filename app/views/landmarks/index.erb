@@ -1,0 +1,8 @@
+<h1>Below are a list of all current Landmarks:</h1>
+
+<%Landmark.all.each do |land|%>
+<p><a href="/landmarks/<%=land.id%>"><%=land.name%></a></p>
+<%end%>
+
+<br>
+<a href="/landmarks/new">Create New Landmark</a>
