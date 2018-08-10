@@ -1,0 +1,8 @@
+<h1>Below are a list of all current Figures:</h1>
+
+<%Figure.all.each do |fig|%>
+<p><a href="/figures/<%=fig.id%>"><%=fig.name%></a></p>
+<%end%>
+
+<br>
+<a href="/figures/new">Create New Figure</a>
