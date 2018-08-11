@@ -38,7 +38,6 @@ class FiguresController < ApplicationController
     #  @figure.save
     end
 
-    binding.pry
     landmarks = []
     if params[:landmark] != ""
       new_landmark = Landmark.create(name:params[:landmark][:name], year: params[:landmark][:year])
@@ -49,6 +48,13 @@ class FiguresController < ApplicationController
       @figure.landmark = landmark
       @figure.save
     end
+  else
+    params[:landmark][:name].each do |name|
+      landmark = Landmark.find_by_name(name)
+      landmarks << landmark
+    @figure.landmark = landmark
+    @figure.save
+  end
   end
 
 
@@ -57,7 +63,7 @@ class FiguresController < ApplicationController
 
 
   post '/figures' do
-    binding.pry
+
   end
 
   get '/figures/edit' do
