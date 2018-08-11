@@ -1,11 +1,11 @@
 class FiguresController < ApplicationController
 
-  get '/figures' do
+  get '/figures' do  # load the index page
     @figures = Figure.all
     erb :'/figures/index'
   end
 
-  get '/figures/new' do
+  get '/figures/new' do  #load a new page with loaded data
 
     @figures = Figure.all
     @titles = Title.all
@@ -13,7 +13,7 @@ class FiguresController < ApplicationController
     erb :'/figures/new'
   end
 
-  post '/figures' do
+  post '/figures' do # create a figure
     titles =[]
     if params[:title][:name] != ""
         titles << Title.create(name: params[:title][:name])
@@ -37,13 +37,19 @@ class FiguresController < ApplicationController
     redirect to "/figures/#{@figure.id}"
   end
 
-
-  post '/figures' do
-
-  end
-
-  get '/figures/edit' do
+  get '/figures/edit' do # load the edit page with one figure
+    binding.pry
     @figure = Figure.find_by(params[:id])
-    erb :'figres/edit'
+    erb :'/figures/edit'
   end
+
+  get '/figures/show' do # load the show page with one figure
+    @figure = Figure.find_by(params[:id])
+    binding.pry
+    erb :'/figures/show'
+  end
+
+
+
+
 end
