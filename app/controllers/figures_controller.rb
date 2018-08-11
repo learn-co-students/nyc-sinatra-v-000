@@ -33,23 +33,18 @@ class FiguresController < ApplicationController
           landmarks << Landmark.find_by_id(id)
       end
     end
+
     @figure = Figure.create(titles: titles, name: params[:figure][:name], landmarks: landmarks)
     redirect to "/figures/#{@figure.id}"
   end
 
-  get '/figures/edit' do # load the edit page with one figure
-    binding.pry
+  get '/figures/:id' do # load the show page with one figure
     @figure = Figure.find_by(params[:id])
-    erb :'/figures/edit'
-  end
-
-  get '/figures/show' do # load the show page with one figure
-    @figure = Figure.find_by(params[:id])
-    binding.pry
     erb :'/figures/show'
   end
 
-
-
-
+  get '/figures/:id/edit' do # load the edit page with one figure
+    @figure = Figure.find_by(params[:id])
+    erb :'/figures/edit'
+  end
 end
