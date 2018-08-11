@@ -19,9 +19,14 @@ class LandmarksController < ApplicationController
     end
   end
 
-  get '/landmarks/show' do
-    binding.pry
+  get '/landmarks/:id' do
     @landmark = Landmark.find_by_id(params[:id])
     erb :'landmarks/show'
   end
+
+  get '/landmarks/:id/edit' do # load the edit page with one landmark
+    @landmark = Landmark.find_by(params[:id])
+    erb :'/landmarks/edit'
+  end
+
 end
