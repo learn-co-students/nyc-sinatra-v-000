@@ -14,50 +14,26 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-
-   @figure = Figure.create(name: params[:figure][:name])
-
     titles =[]
-   if params[:title][:name] != ""
-     new_title = Title.create(name: params[:title][:name])
-      titles << new_title
-      params[:figure][:title_ids].each do |id|
-       title = Title.find_by_id(id)
-       titles << title
-       @figure.title = titles
-       @figure.save
-     end
-    else
-      #  params[:figure][:title_ids].each do |id|
-      #  title = Title.find_by_id(id)
-      #  titles << title
-      @figure.title_ids = params[:figure][:title_ids]
-      @figure.save
-    #  end
-    #  @figure.title = titles
-    #  @figure.save
+    if params[:title][:name] != ""
+        titles << Title.create(name: params[:title][:name])
+    end
+    if params[:figure][:title_ids] && !params[:figure][:title_ids].empty?
+        params[:figure][:title_ids].each do |id|
+          titles << Title.find_by_id(id)
+      end
     end
 
-    landmarks = []
-    if params[:landmark] != ""
-      new_landmark = Landmark.create(name:params[:landmark][:name], year: params[:landmark][:year])
-      landmarks << new_landmark
-      params[:landmark][:name].each do |name|
-        landmark = Landmark.find_by_name(name)
-        landmarks << landmark
-      @figure.landmark = landmark
-      @figure.save
+    landmarks =[]
+    if params[:landmark][:name] != ""
+        landmarks << Landmark.create(name: params[:landmark][:name])
     end
-  else
-    params[:landmark][:name].each do |name|
-      landmark = Landmark.find_by_name(name)
-      landmarks << landmark
-    @figure.landmark = landmark
-    @figure.save
-  end
-  end
-
-
+    if  params[:figure][:landmark_ids] && !params[:figure][:landmark_ids].empty?
+        params[:figure][:landmark_ids].each do |id|
+          landmarks << Landmark.find_by_id(id)
+      end
+    end
+    @figure = Figure.create(titles: titles, name: params[:figure][:name], landmarks: landmarks)
     redirect to "/figures/#{@figure.id}"
   end
 
