@@ -31,6 +31,7 @@ class LandmarksController < ApplicationController
   end
 
   post '/landmarks/:id' do
+    binding.pry
     landmark = Landmark.update(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed])
     redirect to "/landmarks/#{@landmark.id}"
   end
