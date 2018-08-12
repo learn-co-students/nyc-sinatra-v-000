@@ -15,9 +15,9 @@ class LandmarksController < ApplicationController
 
   post '/landmarks' do #creates a new landmark
   #  binding.pry
-      if params[:landmark][:name] != ""
-          landmarks << Landmark.create(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed])
-    end
+
+    landmark = Landmark.create(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed])
+
   end
 
   get '/landmarks/:id' do
@@ -28,6 +28,11 @@ class LandmarksController < ApplicationController
   get '/landmarks/:id/edit' do # load the edit page with one landmark
     @landmark = Landmark.find_by(params[:id])
     erb :'/landmarks/edit'
+  end
+
+  post '/landmarks/:id' do
+    landmark = Landmark.update(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed])
+    redirect to "/landmarks/#{@landmark.id}"
   end
 
 end
