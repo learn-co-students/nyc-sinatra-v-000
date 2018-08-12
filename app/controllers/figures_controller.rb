@@ -49,7 +49,7 @@ class FiguresController < ApplicationController
   end
 
     post '/figures/:id' do #edit a figure
-
+      @figure = Figure.find_by(params[:id])
       titles =[]
       if params[:title][:name] != ""
           titles << Title.create(name: params[:title][:name])
@@ -70,8 +70,8 @@ class FiguresController < ApplicationController
             landmarks << Landmark.find_by_id(id)
         end
       end
-#binding.pry
-      @figure = Figure.update(titles: titles, name: params[:figure][:name], landmarks: landmarks)
+
+      @figure.update(titles: titles, name: params[:figure][:name], landmarks: landmarks)
       redirect to "/figures/#{@figure.id}"
     end
 end

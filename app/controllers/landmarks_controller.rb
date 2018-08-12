@@ -26,13 +26,14 @@ class LandmarksController < ApplicationController
   end
 
   get '/landmarks/:id/edit' do # load the edit page with one landmark
-    @landmark = Landmark.find_by(params[:id])
+    @landmark = Landmark.find(params[:id])
     erb :'/landmarks/edit'
   end
 
   post '/landmarks/:id' do
-    binding.pry
-    landmark = Landmark.update(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed])
+  #  binding.pry
+    @landmark = Landmark.find(params[:id])
+    @landmark.update(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed])
     redirect to "/landmarks/#{@landmark.id}"
   end
 
