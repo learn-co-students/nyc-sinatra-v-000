@@ -10,7 +10,7 @@ expect(last_response.body).to include(@figure.name) -->
 <form action="/figures" method="post">
   <input type="hidden" id="hidden" name="_method" value="patch">
   <input type="hidden" name="figure[id]" value="<%=@figure.id%>">
-  <p><strong>Figure Name:</strong> <input type="text" id="figure_name" name="figure[name]" value=""></p>
+  <p><strong>Update Figure Name to:</strong> <input type="text" id="figure_name" name="figure[name]" value=""></p>
 
   <h3>Titles (pick from existing):</h3>
     <%@titles.each do |title| %>
