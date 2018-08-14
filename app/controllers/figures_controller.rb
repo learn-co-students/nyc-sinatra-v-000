@@ -16,8 +16,17 @@ class FiguresController < ApplicationController
     # binding.pry
     @figure = Figure.new(params[:figure])
 
-    @figure.titles.build(params[:title]) if !params[:title].empty?
-    @figure.landmarks.build(params[:landmark]) if !params[:landmark].empty?
+    if !params[:title].empty? && !Title.find_by(params[:title])
+      @figure.titles.build(params[:title])
+    elsif title = Title.find_by(params[:title])
+      @figure.titles << title
+    end
+
+    if !params[:landmark].empty? && !Landmark.find_by(params[:landmark])
+      @figure.landmarks.build(params[:landmark])
+    elsif landmark = Landmark.find_by(params[:landmark])
+      @figure.landmarks << landmark
+    end
 
     @figure.save
     redirect "/figures/#{@figure.id}"
@@ -27,4 +36,34 @@ class FiguresController < ApplicationController
     @figure = Figure.find_by(id: params[:id])
     erb :'figures/show'
   end
+
+  get '/figures/:id/edit' do
+    @titles = Title.all
+    @landmarks = Landmark.all
+
+    @figure = Figure.find_by(id: params[:id])
+    erb :'figures/edit'
+  end
+
+  patch '/figures' do
+    @figure = Figure.find_by(params[:figure][:id])
+
+    @figure.update(name: params[:figure][:name])
+
+    if !params[:title].empty? && !Title.find_by(params[:title])
+      @figure.titles.build(params[:title])
+    elsif title = Title.find_by(params[:title])
+      @figure.titles << title
+    end
+
+    if !params[:landmark].empty? && !Landmark.find_by(params[:landmark])
+      @figure.landmarks.build(params[:landmark])
+    elsif landmark = Landmark.find_by(params[:landmark])
+      @figure.landmarks << landmark
+    end
+
+    @figure.save
+    redirect "/figures/#{@figure.id}"
+  end
+
 end
