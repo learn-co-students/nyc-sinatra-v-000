@@ -4,7 +4,7 @@
 <ul>
   <%@landmarks.each do |lm|%>
   <li>
-    <a href="/landmarks/<%=lm.slug%>"><%=lm.name%></a>
+    <a href="/landmarks/<%=lm.id%>"><%=lm.name%> - <%=lm.year_completed%></a>
   </li>
   <%end%>
 </ul>

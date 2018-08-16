@@ -8,8 +8,8 @@
   <tr>
     <td><%= @figure.name%></td>
     <td><%= "<ul> #{@figure.titles.map{|t|"<li>#{t.name}</li>"}.join(" ")} </ul>"%></td>
-    <td><%= @figure.landmarks.nil? ? "None" : @figure.landmarks.map{|lm|"<a href='/landmarks/#{lm.slug}'>#{lm.name}</a><br>"}.join(" ") %></td>
+    <td><%= @figure.landmarks.nil? ? "None" : @figure.landmarks.map{|lm|"<a href='/landmarks/#{lm.id}'>#{lm.name}</a><br>"}.join(" ") %></td>
   </tr>
 </table>
 
-<a href="/figures/<%=@figure.slug%>/edit">Edit</a>
+<a href="/figures/<%=@figure.id%>/edit">Edit</a>

@@ -1,3 +1,4 @@
+require_relative './concerns/slugify'
 class Landmark < ActiveRecord::Base
   extend Slugify::ClassMethods
   include Slugify::InstanceMethods
