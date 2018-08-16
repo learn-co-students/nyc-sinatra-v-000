@@ -1,0 +1,9 @@
+<h1>Figures</h1>
+<a href="/figures/new">Create New Figure</a>
+<ul>
+  <%@figures.each do |f|%>
+    <li>
+      <a href="figures/<%=f.slug%>"><%=f.name%></a>
+    </li>
+  <%end%>
+</ul>

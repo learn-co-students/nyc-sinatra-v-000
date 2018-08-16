@@ -1,0 +1,14 @@
+
+<h2>Create Landmark</h2>
+<form class="landmark" action="/landmarks" method="post">
+  <input type="text" name="landmark[name]" id="Landmark Name" placeholder="Landmark Name"><br>
+  <input type="text" name="landmark[year_completed]" id="Year Completed" placeholder="Year Completed">
+  <label>For Figure:</label><br>
+  <%@figures.each do |f|%>
+    <input type="radio" name="figure[id]" value="<%=f.id%>" id="<%=f.name%>">
+    <label for="<%=f.name%>"><%=f.name%></label><br>
+  <%end%>
+  <label>or create a figure:</label><br>
+  <input type="text" name="figure[name]" ="Figure Name" placeholder="Figure Name"><br>
+  <input type="submit" id="create" value="Create">
+</form>
