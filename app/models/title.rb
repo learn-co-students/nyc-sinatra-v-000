@@ -1,6 +1,7 @@
 require_relative './concerns/slugify'
-class Landmark < ActiveRecord::Base
+class Title < ActiveRecord::Base
   extend Slugify::ClassMethods
   include Slugify::InstanceMethods
-  belongs_to :figure
+  has_many :figure_titles
+  has_many :figures, through: :figure_titles
 end

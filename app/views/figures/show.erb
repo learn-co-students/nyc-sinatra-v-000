@@ -1,0 +1,15 @@
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Landmarks</th>
+  </tr>
+  <tr>
+    <td><%= @figure.name%></td>
+    <td><%= "<ul> #{@figure.titles.map{|t|"<li>#{t.name}</li>"}.join(" ")} </ul>"%></td>
+    <td><%= @figure.landmarks.nil? ? "None" : @figure.landmarks.map{|lm|"<a href='/landmarks/#{lm.id}'>#{lm.name}</a><br>"}.join(" ") %></td>
+  </tr>
+</table>
+
+<a href="/figures/<%=@figure.id%>/edit">Edit</a>
