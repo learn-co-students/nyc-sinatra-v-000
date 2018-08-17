@@ -1,0 +1,10 @@
+
+<%@landmarks.each do |landmark| %>
+
+  <h3>Landmark ID: <%=landmark.id%> </h3>
+  <h3>Landmark Name: <a href="landmarks/<%=landmark.id%>"> <%=landmark.name%> </a> </h3>
+  <p> Year Completed: <%=landmark.year_completed %> </p><br></br>
+
+<%end%> <%# @landmarks.each loop %>
+
+<a class="button" href="landmarks/new">New LANDMARK HERE</a>
