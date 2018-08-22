@@ -5,6 +5,7 @@
 
     <h3>Titles</h3>
     <% Title.all.each do |title| %>
+        <label><%= title.name %></label> <!-- allows text next to checkboxes -->
         <input type="checkbox" name="figure[title_ids][]" id="title_<%= title.id %>" value="<%= title.id %>">
     <% end %><br>
 
@@ -13,6 +14,7 @@
 
     <h3>Landmarks</h3>
     <% Landmark.all.each do |landmark| %>
+        <label><%= landmark.name %></label> <!-- allows text next to checkboxes -->
         <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%= landmark.id %>" value="<%= landmark.id %>">
     <% end %><br>
 

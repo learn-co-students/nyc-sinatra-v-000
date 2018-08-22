@@ -8,7 +8,7 @@
 
     <h3>Edit Titles</h3>
     <% Title.all.each do |title| %>
-        <input type="checkbox" name="figure[title_ids][]" id=" title.name %>" value="<%= title.id %>" <%='checked' if @figure.titles.include?(title) %>>
+        <input type="checkbox" name="figure[title_ids][]" id="<%= title.name %>" value="<%= title.id %>" <%='checked' if @figure.titles.include?(title) %>>
     <% end %><br>
 
     <h3>Add New Title</h3>
@@ -18,7 +18,7 @@
 
     <h3>Edit Landmarks</h3>
     <% Landmark.all.each do |landmark| %>
-        <input type="checkbox" name="figure[landmark_ids][]" id=" landmark.name %>" value="<%= landmark.id %>" <%='checked' if @figure.landmarks.include?(landmark) %>>
+        <input type="checkbox" name="figure[landmark_ids][]" id="<%= landmark.name %>" value="<%= landmark.id %>" <%='checked' if @figure.landmarks.include?(landmark) %>>
     <% end %><br>
 
     <h3>Add New Landmark:</h3>
