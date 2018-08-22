@@ -19,4 +19,11 @@ class FiguresController < ApplicationController
         redirect to "figures/#{@figure.id}"
     end
 
+    get '/figures' do # lists all figures
+        @figures = Figure.all
+        erb :'figures/index'
+    end
+
+
+
 end
