@@ -13,7 +13,6 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-    binding.pry
     @figure = Figure.create(name: params[:name])
     redirect "/figures/#{@figure.id}"
   end
@@ -23,4 +22,6 @@ class FiguresController < ApplicationController
     @figure = Figure.find_by_id(params[:id])
     erb :"figures/show"
   end
+
+
 end
