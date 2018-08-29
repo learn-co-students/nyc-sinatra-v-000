@@ -1,3 +1,5 @@
+require 'pry'
+
 class FiguresController < ApplicationController
   
   get '/figures' do
@@ -16,16 +18,10 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
+    @figure = Figure.create(:name => params[:figure][:name])
+    # binding.pry
+    @figure.title = Title.find_or_create_by(:name => params[:title][:name])
 
-    redirect to ('/figures/:id')
-  end
-
-  get '/figures/:id/edit' do
-    erb :'figures/edit'
-  end
-
-  patch '/figures/:id' do
-    
     redirect to ('/figures/:id')
   end
 end
