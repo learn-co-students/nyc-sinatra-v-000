@@ -5,7 +5,7 @@
 
     <!--figure name input -->
     <label>Name</label>
-    <input type="text" name="figure[name]" id="figure_name">
+    <input type="text" name="figure[name]" id="figure_name" value="<%= @figure.name %>">
     <br>
     <br>
     <br>
@@ -20,6 +20,15 @@
     <br>
     <br>
 
+    <!--landmarks name input-->
+   <label>Create New Landmark</label>
+    <br>
+    <br>
+    <label>Name: </label>
+    <input type="text" name="title[name]" id="new_title">
+    <label>Year: </label>
+    <input type="text" name="landmark[name]" id="new_landmark">
+    <input type="submit" value="Create New Figure">
 
    <input type="submit" value="Edit Figure">
     
