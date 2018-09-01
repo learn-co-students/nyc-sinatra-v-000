@@ -1,19 +1,16 @@
 class FiguresController < ApplicationController
 
-  get '/figures/new' do
-    @figures = Figure.all
-    erb :'figures/new'
-  end
-
-
   get '/figures' do
-    @figure = Figure.create(params[:name])
-   redirect 'figures/new'
+    @figures = Figure.all
+    erb :'/figures/index'
   end
 
-  get "/figures" do
-
+  get '/figures/new' do
+    @title = Title.all
+    @landmark = Landmark.all
+    erb :'/figures/new'
   end
+
 
 
 end
