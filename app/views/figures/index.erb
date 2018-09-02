@@ -1,1 +1,9 @@
-<h1>Welcome</h1>
+# index.erb
+
+<h1>Welcome to NYC Figures</h1>
+
+<label> <h1> Figures: </h1> </label>
+<% Figure.all.each do|figure| %>
+  <h3> <li> <a href="/figures/<%=figure.id%>"> <%=figure.name%></a></li></h3>
+  <% end %>
+  <br> </br>

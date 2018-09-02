@@ -1,0 +1,6 @@
+<h1> Welcome to NYC Landmarks </h1>
+
+<label> <h1>Landmarks: </h1> </label>
+<% Landmark.all.each do|landmark| %>
+<h3> <li> <a href="/landmark/<%=landmark.id%>"> <%=landmark.name%></a></li></h3>
+<% end %>
