@@ -1,19 +1,9 @@
 class FiguresController < ApplicationController
 
-  get '/figures' do
-    @figure = Figure.all
-    erb :'figures/index'
-  end
-
-  get '/figures' do
+get '/figures/new' do
     @titles = Title.all
     @landmarks = Landmark.all
     erb :'figures/new'
-  end
-
-  get '/figures/:id' do
-    @figure = Figure.find_by_id(params[:id])
-    erb :'/figures/show'
   end
 
   get '/figure/:id/edit' do
@@ -23,12 +13,22 @@ class FiguresController < ApplicationController
     erb :'figures/edit'
   end
 
+  get '/figures/:id' do
+    @figure = Figure.find_by_id(params[:id])
+    erb :'/figures/show'
+  end
+
+  get '/figures' do
+    @figures = Figure.all
+    erb :'figures/index'
+  end
+
   post '/figures' do
     @figure = Figure.create(params[:figure])
-      if !params[:title].empty?
+      if !params[:figure][:title].empty?
         @figure.titles << Title.create(params[:title])
       end
-      if !params[:landmark].empty?
+      if !params[:figure][:landmark].empty?
         @figure.landmarks << Landmark.create(params[:landmark])
       end
       @figure.save
@@ -37,17 +37,17 @@ class FiguresController < ApplicationController
 
   patch '/figures/:id' do
     @figure = Figure.find_by_id(params[:id])
-    @figure.update(params[:figure])
+    @figure.name = params[:figure][:name]
 
-    if !params[:landmark].empty?
-      @figure.landmark << Landmark.create(params[:landmark])
+    if form_contains_new_title?
+      create_new_title(params[:title])
     end
 
-    @figure.update(params[:figure])
-    if !params[:title].empty?
-      @figure.title << Title.create(params[:title])
-    end
-    redirect 'figures/#{@figure.id}'
+      if form_contains_new_landmarks?
+        create_new_landmark(params['landmark'])
+      end
+        @figure.save
+        redirect "/figures/#{@figure.id}"
   end
 
   get '/figures/:id/delete' do

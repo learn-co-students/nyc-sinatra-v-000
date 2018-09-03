@@ -2,12 +2,12 @@
 
 <h1> Update Figure </h1>
 
-<form action="/figures/<%=figure.id%>" method="post"
+<form action="/figures/<%=figure.id%>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
 
-  <label> New Figure Name: </label>
-  <input type="text" name="figure[name]" id="figure.name" value="<%=@figure.name%>"
-  <%=@figure.name%>
+  <label> New landmark Name: </label>
+  <input type="text" name="landmark[name]" id="landmark.name" value="<%=@landmark.name%>"
+  <%=@landmark.name%>
   <br> </br>
 
 <label>Choose an existing title:</label>

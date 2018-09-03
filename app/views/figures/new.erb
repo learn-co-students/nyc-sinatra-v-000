@@ -1,24 +1,24 @@
-# new.erb
+# figure.new.erb
 
-<label> <h1> Create a New Figure</h1> </label>
+<title> <h1> Create a New Figure</h1> </title>
   <form action='/figures' method='post'>
-    <label> <h3> Figure Name:  <input type="text" name="figure[name]" id="figure_name"></input></h3></label>
+    <label> <h3> Figure Name:  <input type="text" name="figure[name]" id="figure_name" ></input></h3></label>
+
+    <label> <h3> Select a Title: </h3></label>
+      <%Title.all.each do|title|%>
+        <input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id%>" value="<%=title.id%>"> <%=title.name%> </input>
+      <%end%>
+        <br> </br>
+
+      <label> <h3> Create a New Title: <input id="new_title" type="text" name="title[name]"></input> </h3> </label>
+      <br></br>
 
     <label> <h3> Landmark Name: </h3></label>
       <%Landmark.all.each do|landmark|%>
-        <input type="checkbox" name="figure[landmark_id][]" id="<%=landmark.id%>" value="<%=landmark.id%>"> <%=landmark.name%></input>
+        <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=landmark.id%>" value="<%=landmark.id%>"> <%=landmark.name%></input>
       <%end%>
 
-      <label> <h3> Create a New Landmark:  <input type="text" name="Landmark[name]" id="new_landmark" value="<%=new_landmark.id%>"></input></h3></label>
+      <label> <h3> Create a New Landmark:<input type="text" name="landmark[name]" id="new_landmark"></input></h3></label>
 
-      <label> <h3> Select a Title: </h3></label>
-        <%Title.all.each do|title|%>
-          <input type="checkbox" name="figure[title_ids][]" id="<%=title.id%>" value="<%=title.id%>"> <%=title.name%> </input>
-        <%end%>
-          <br> </br>
-
-        <label> <h3> Create a New Title:  <input type = "text" name="title[name]" id="new_title" value="<%=new_title.id%>"></input> </h3> </label>
-        <br></br>
-
-      <button> <input type="submit" value="Create New Figure"> </button>
-    </form>
+        <button> <input type="submit" value="Create New Figure"> </button>
+     </form>
