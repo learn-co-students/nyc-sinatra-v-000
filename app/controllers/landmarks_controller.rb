@@ -11,7 +11,7 @@ class LandmarksController < ApplicationController
   end
 
   get '/landmarks/:id' do
-    @landmark = landmark.find_by_id(params[:id])
+    @landmark = landmark.find(params[:id])
     erb :'/landmarks/show'
   end
 
@@ -20,5 +20,12 @@ class LandmarksController < ApplicationController
     @landmark.update([:landmark])
     redirect "/landmarks/#{landmark.id}"
   end
+
+#  get '/figure/:id/edit' do
+#    @landmark = Figure.find_by_id(params[:id])
+#    @titles = Title.all
+#    @figures = Figure.all
+#  erb :'figures/edit'
+#  end
 
 end
