@@ -1,9 +1,12 @@
-# show.erb
+<table>
+  <tr>
+    <th>Figure Name</th>
+    <th>Title Name</th>
+  </tr>
+  <tr>
+    <td><%= @figure.name %></td>
+    <td><%= @figure.title %></td>
+  </tr>
+<table>
 
-  <a href="/figures/<%=@figure_id%>"><%=@figure.name%></a>
-  <br> </br>
-
-
-<%@figure.landmarks.each do |landmark|%><%=@landmark.name%>
-  <a href="/landmarks/<%=landmark.id%>"><%=landmark.name%> </a>
-<% end %>
+  

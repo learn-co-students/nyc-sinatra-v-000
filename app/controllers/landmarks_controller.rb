@@ -1,17 +1,23 @@
 class LandmarksController < ApplicationController
 
-    post '/landmarks/new' do
-      @landmark = Landmark.create(params[:id])
-      erb :'landmarks/new'
-    end
-
   get '/landmarks' do
     @landmarks = Landmark.all
     erb :'landmarks/index'
   end
 
+  get '/landmarks/new' do
+    erb :'landmarks/new'
+  end
+
+  post '/landmarks'  do
+    @landmark=Landmark.create(params[:landmark])
+    if !params[:figure][:name].empty?
+      @landmark.figure=Figure.create(name: params[:figure][:name])
+    end
+  end
+
   get '/landmarks/:id' do
-    @landmark = landmark.find(params[:id])
+    @landmark = Landmark.find_by_id(params[:id])
     erb :'/landmarks/show'
   end
 
@@ -20,6 +26,7 @@ class LandmarksController < ApplicationController
     @landmark.update([:landmark])
     redirect "/landmarks/#{landmark.id}"
   end
+end
 
 #  get '/figure/:id/edit' do
 #    @landmark = Figure.find_by_id(params[:id])
@@ -27,5 +34,3 @@ class LandmarksController < ApplicationController
 #    @figures = Figure.all
 #  erb :'figures/edit'
 #  end
-
-end
