@@ -1,11 +1,36 @@
-<title><h1> Create a New Landmark</h1> </title>
-
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Landmark</title>
+</head>
+<body>
 <form action="/landmarks" method="post">
-  <label> <h3>New Landmark: <input type="text" name=":landmark[name]" id="landmark_name" </h3> </label>
-   <br> </br>
-  <label> <h3> Year Completed: <input type="sting" name="landmark[year_completed]" id="landmark_year_completed" </h3> </label>
-  <br> </br>
+<h1>Create a new Figure</h1>
+<p>Name:<input id="landmark_name" type="text" name="landmark[name]"></p>
+<p>Year Completed:<input id="landmark_year_completed" type="text" name="landmark[year_completed]"></p>
+ <input id="submit" type="submit" value="Create New Landmark">
+ </form>
+</body>
+</html>
 
-  <input type="submit" value="Create New Landmark">
 
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><h1> Create a New Landmark</h1> </title>
+  </head>
+    <body>
+      <form action="/landmarks" method="post">
+        <br> </br>
+        <label> <h3>New Landmark: <input type="text" name="landmark[name]" id="landmark.name"> </h3> </label>
+        <br> </br>
+        <label> <h3> Year Completed: <input type="text" name="landmark[year_completed]" id="landmark.year_completed"> </h3> </label>
+        <br> </br>
+
+  <button> <input type="submit" value="Create New Landmark" id="submit </button>
+  </body>
 </form>
