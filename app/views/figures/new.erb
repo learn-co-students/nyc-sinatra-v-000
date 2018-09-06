@@ -11,5 +11,13 @@
     <br></br>
   <% end %>
   <label>Create a New Title:</label>
-  <label>Title:</label><input type="text" name="title[name]" id="new_title">
+  <input type="text" name="title[name]" id="new_title">
   <br><br>
+
+  <label>Landmarks</label>
+  <br></br>
+  <% @landmarks.each do |landmark| %>
+  <input type='checkbox' name='figure[landmark_ids][]' value='<%= landmark.id>%' id='<%= landmark.id %>'>
+  <%= landmark.name %>
+  <br></br>
+  <%end%>
