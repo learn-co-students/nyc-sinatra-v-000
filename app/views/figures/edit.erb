@@ -1,0 +1,16 @@
+<h2><a href="/figures<%=@figure.id%>"></a></h2>
+<h2><%=@figure.name%></h2>
+<form action="/figures/<%= @figure.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+        <input type="text" name="figure[name]" id="figure_name" value="<%= @figure.name %>">
+        
+
+        <%@titles.each do |title| %>
+        <label for="<%=title.id%>"></label>
+        <input type="checkbox" id="<%=title.id%>" name="figure[title_ids][]" value="<%= title.id %>" <%="checked" if @figure.titles.include?(title)%>>
+        <% end %>
+    <input type="text" name="landmark[name]" id="new_landmark">
+    <input type="submit" value="Submit" id="Edit Figure">
+       
+    
+</form>
