@@ -11,7 +11,7 @@ class LandmarksController < ApplicationController
 
   get '/landmarks/:id' do
     @landmark = Landmark.find(params[:id])
-    erb :'/landmarks/show'
+    erb :'landmarks/show'
   end
 
   get '/landmarks/:id/edit' do
@@ -19,12 +19,12 @@ class LandmarksController < ApplicationController
     erb :'landmarks/edit'
   end
 
-#   post '/landmarks' do
-#     @landmark=Landmark.create(params[:landmark]
-#     redirect "/landmarks/#{@landmark.id}"
-#  end
+   post '/landmarks' do
+     @landmark = Landmark.create(params[:landmark])
+     redirect "/landmarks/#{@landmark.id}"
+  end
 
-  patch '/landmark/:id' do
+  post '/landmarks/:id' do
     @landmark = Landmark.find(params[:id])
     @landmark.update(params[:landmark])
     redirect "/landmarks/#{@landmark.id}"
