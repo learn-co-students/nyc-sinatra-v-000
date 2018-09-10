@@ -7,5 +7,13 @@ if defined?(ActiveRecord::Migrator) && ActiveRecord::Migrator.needs_migration?
   raise 'Migrations are pending run `rake db:migrate` to resolve the issue.'
 end
 
+require_relative 'app/controllers/figures_controller.rb'
+require_relative 'app/controllers/landmarks_controller.rb'
+
+
+use FiguresController
 use LandmarksController
+
+use Rack::MethodOverride
+
 run ApplicationController
