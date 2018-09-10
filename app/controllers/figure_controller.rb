@@ -12,16 +12,16 @@ get '/figures/new' do
     erb :'figures/new'
   end
 
+  get '/figures/:id/edit' do
+      @figure = Figure.find_by_id(params[:id])
+      @titles = Title.all
+      @landmarks = Landmark.all
+      erb :'figures/edit'
+    end
+
   get '/figures/:id' do
     @figure = Figure.find(params[:id])
     erb :'figures/show'
-  end
-
-get '/figures/:id/edit' do
-    @figure = Figure.find_by_id(params[:id])
-    @titles = Title.all
-    @landmarks = Landmark.all
-    erb :'figures/edit'
   end
 
   post '/figures' do
@@ -33,27 +33,19 @@ get '/figures/:id/edit' do
         @figure.landmarks << Landmark.create(params[:landmark])
         end
       @figure.save
+    redirect "/figures"
+  end
+
+  patch '/figures/:id' do
+    @figure = Figure.find(params[:id])
+    @figure.update(params[:figure])
+    @figure.save
     redirect "/figures/#{@figure.id}"
   end
 
-   patch '/figures/:id' do
-    @figure = Figure.find(params[:id])
-    @figure.update(params[:figure])
-
-      if !params[:title].empty?
-        @figure.titles << Title.create(params[:title])
-      end
-
-      if !params["landmark"].empty?
-        @figure.landmarks << Landmark.create(params[:landmark])
-      end
-      @figure.save
-      redirect "/figures/#{@figure.id}"
-  end
-
     get '/figures/:id/delete' do
-      @figure = Figure.destory.all
-      redirect '/figures'
+      @figure = Figure.destory
+    redirect '/figures'
     end
 
-  end
+end

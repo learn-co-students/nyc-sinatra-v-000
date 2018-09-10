@@ -6,7 +6,7 @@
     <h1> Welcome to NYC Landmarks </h1>
       <body>
         <form>
-        <label> <h1>Landmarks: </h1> </label>
+        <label> <h1>New Landmarks: </h1> </label>
           <%@landmarks.each do|landmark|%>
           <h3> <li> <a href="/landmarks/<%=landmark.id%>"> <%=landmark.name%> - <%=landmark.year_completed%></a></li></h3>
           <% end %>

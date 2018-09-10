@@ -1,27 +1,16 @@
-
 <!DOCTYPE html>
 <html>
   <head>
   </head>
     <body>
-
       <form>
-        <h3><label> Figure Name </label> </h3> <a href="/figures/<%=@figure.id%>"> <%=@figure.name %> </a>
-      <br> </br>
-
-        <h3><label> Title name: </label>
-          <%@figure.titles.each do|title|%>
-            <h3><%=title.name%></h3>
-            <a href="/figures/<%=title.id%>"> <%=title.name%></a>
-          <%end%>
-          <br> </br>
-
+        <h3><label> Figure Name: </label> </h3> <%=@figure.name%> </a>
+        <br> </br>
         <h3><label> Landmark: </label> </h3>
-          <%@figure.landmarks.each do|landmark|%>
-            <h3> <%=landmark.name %></h3>
-            <a href="/figures/<%=landmark.id%>"> <%=landmark.name%></a>
-          <%end%>
-      <form>
-
+        <%= @figure.name %>
+          <% @figure.landmarks.each do |landmark|%>
+            <h3> <%= landmark.name %></h3>
+            <% end %>
+      </form>
     </body>
 </html>
