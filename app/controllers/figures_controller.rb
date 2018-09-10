@@ -5,6 +5,12 @@ class FiguresController < ApplicationController
     erb :"/figures/index"
   end
 
+  get '/figures/new' do
+    @titles = Title.all
+    @landmarks = Landmark.all
+    erb :'figures/new'
+  end
+
   post '/figures' do
      @title = params[:title]
      @title_ids = params[:figure][:title_ids]
