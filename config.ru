@@ -1,19 +1,21 @@
 $:.unshift '.'
 require 'config/environment'
 
+
 use Rack::Static, :urls => ['/css'], :root => 'public' # Rack fix allows seeing the css folder.
 
 if defined?(ActiveRecord::Migrator) && ActiveRecord::Migrator.needs_migration?
   raise 'Migrations are pending run `rake db:migrate` to resolve the issue.'
 end
 
-require_relative 'app/controllers/figures_controller.rb'
-require_relative 'app/controllers/landmarks_controller.rb'
-
-
+#require_relative 'app/controllers/figures_controller.rb'
+#require_relative 'app/controllers/landmarks_controller.rb'
+#require_relative keeping tux from loading correctly
+use Rack::MethodOverride
+### *********** Rack::MethodOverride MUST BE MOUNTED BEFORE MOUNTING OTHER CONTROLLERS OR IT WILL NOT WORK
 use FiguresController
 use LandmarksController
 
-use Rack::MethodOverride
+
 
 run ApplicationController
