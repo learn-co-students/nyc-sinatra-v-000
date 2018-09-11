@@ -1,17 +1,17 @@
-<h1><%= @figures.name %></h1>
-<label>Titles:</label>
+<h1><%= @figure.name %></h1>
+<strong>Titles:</strong><br>
 <ul>
-  <% @figures.titles.each do |title| %>
+  <% @figure.titles.each do |title| %>
   <li><%= title.name %></li>
-  <%end%>
+  <% end %>
 </ul>
-<br>
-<label>Landmarks:</label>
-
+<br> <br>
+<strong>Landmarks:</strong><br>
 <ul>
-  <% @figures.landmarks.each do |landmark| %>
+  <% @figure.landmarks.each do |landmark| %>
   <li><%= landmark.name %></li>
-  <%end%>
+  <% end %>
 </ul>
 <br>
-<a href="/figures/<%= @figures.id %>/edit"><input type='button' value='Edit'></a>
+<br>
+<a href="/figures/<%= @figure.id %>/edit"><input type="button" value="Edit"></a>
