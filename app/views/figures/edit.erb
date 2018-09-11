@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <h1> Update Figure </h1>
+    <h1> Updating Figure </h1>
       <form action="/figures/<%=@figure.id%>" method="post">
         <input id="hidden" type="hidden" name="_method" value="patch">
         <br> <br>
         <label> Updating Figure Name: </label>
-          <input type="text" name="figure[name]" id="figure_name" value="<%=@figure.name%>"> 
-          <br> </br>
+          <input type="text" name="figure[name]" id="figure_name" value="<%=@figure.name%>">
 
-      <h1> Updating title:</h1>
-        <label> Title Name: </label>
-          <%@titles.each do|title|%>
-            <li> <input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id%>" value="<%=title.name%>"><%=title.name%></input> </li>
+    <h1> Updating title:</h1>
+      <label> Title Name: </label>
+        <%@titles.each do|title|%>
+           <input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id%>" value="<%=title.name%>"><%=title.name%></input> </li>
           <%end%>
-      <br> </br>
 
-      <label> Create a new title:</label>
-        <input type="text" name="title[name]" id="new_title"></input>
-        <br> </br>
+    <h1> <label> Create a new title:</label> </h1>
+      <input type="text" name="title[name]" id="new_title"></input>
 
-        <label>Updating landmark:</label>
-          <label> landmark Name: </label>
-          <%@landmarks.each do|landmark|%>
-            <li><input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=landmark.id%>" value="<%=landmark.id%>"> <%=landmark.name%></input></li>
-          <%end%>
-          <br> </br>
+    <h1><label><h1>Updating landmark:</label></h1>
+      <label> landmark Name: </label>
+        <%@landmarks.each do|landmark|%>
+          <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=landmark.id%>" value="<%=landmark.id%>"> <%=landmark.name%></input></li>
+        <%end%>
 
-        <label>Create a new landmark:</label>
-          <input type="text" name="landmark[name]" id="new_landmark"></input>
-          <br> </br>
+     <h1><label>Create a new landmark:</label> </h1>
+      <input type="text" name="new_landmark" id="new_landmark"></input>
 
     <input type = "submit" value="Edit Figure">
   </form>

@@ -39,6 +39,13 @@ get '/figures/new' do
   patch '/figures/:id' do
     @figure = Figure.find(params[:id])
     @figure.update(params[:figure])
+
+    if !params[:title].empty?
+      @figure.titles << Title.create(params[:title])
+    end
+    if !params[:landmark].empty?
+      @figure.landmarks << Landmark.create(params[:landmark])
+      end
     @figure.save
     redirect "/figures/#{@figure.id}"
   end
