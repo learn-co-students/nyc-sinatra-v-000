@@ -6,8 +6,7 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-    @figure = Figure.new(name: params[:figure[name]])
-    binding.pry
+    @figure = Figure.new(name: params[:figure][:name])
     if params[:new_title]
       @title = Title.create(name: params[:new_title])
       @figure.title = @title
@@ -24,6 +23,17 @@ class FiguresController < ApplicationController
   get '/figures/:id' do
     @figure = Figure.find_by(id: params[:id])
     erb :'/figures/show'
+  end
+
+  get '/figures/:id/edit' do
+    @figure = Figure.find_by_id(params[:id])
+    erb :'/figures/edit'
+  end
+
+  patch '/figures/:id' do
+    @figure = Figure.find_by_id(params[:id])
+    @figure.name = params[:figure][:name]
+    @figure.save
   end
 
 end
