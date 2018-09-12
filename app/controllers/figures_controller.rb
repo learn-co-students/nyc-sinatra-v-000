@@ -29,7 +29,7 @@ class FiguresController < ApplicationController
       @figure.landmarks << Landmark.create(params[:landmark])
     end
     @figure.save
-    redirect to '/figures/#{@figure.id}'
+    redirect to "/figures/#{@figure.id}"
   end
   
   patch '/figures/:id' do
@@ -42,7 +42,7 @@ class FiguresController < ApplicationController
       @figure.landmarks << Landmark.create(params[:landmark])
     end
     @figure.save
-    redirect to '/figures/#{@figure.id}'
+    redirect to  "/figures/#{@figure.id}"
   end
     
   
