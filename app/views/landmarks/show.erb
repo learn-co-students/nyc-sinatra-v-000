@@ -1,13 +1,19 @@
-<table>
+<h1>Landmark Show Page</h1>
+
+<% @historical_figure = "" %>
+<% @landmark.figure ? @historical_figure = @landmark.figure.name : @historical_figure = "none" %>
+
+<table border = "1">
   <tr>
-    <th>Name</th>
+    <th>Landmark Name</th>
     <th>Year Completed</th>
+    <th>Historical Figure</th>
   </tr>
-  <tr>
+  <tr align="center">
     <td><%= @landmark.name %></td>
     <td><%= @landmark.year_completed %></td>
+    <td><%= @historical_figure %></td>
   </tr>
 <table>
 
-<a class="button" href="/landmarks/<%= @landmark.id %>/edit">Edit Landmark</a>
-<a class="button" href="/landmarks">Landmarks</a>
+<h4><a href="/landmarks/<%=@landmark.id%>/edit">Edit</a></h4>
