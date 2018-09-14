@@ -1,0 +1,7 @@
+<h1><%=@one_figure.name%></h1>
+
+<%if @one_figure.landmarks != nil%>
+    <%@one_figure.landmarks.each do |landmark|%>
+        <h3><%=landmark.name%></h3>
+    <%end%>
+<%end%>
