@@ -1,3 +1,10 @@
 class FiguresController < ApplicationController
-  # add controller methods
+  get '/figures/new' do
+    erb :new
+  end
+
+  post '/figures/:id' do
+    @figure = Figure.find_by(params[:id])
+    erb :show
+  end
 end
