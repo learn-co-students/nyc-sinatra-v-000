@@ -8,6 +8,6 @@
 <% @figure.landmarks.each do |landmark| %>
   <a href="/landmarks/<% landmark.id %>"><%= landmark.name %></a>
 <% end %>
-
+<br>
 <a class="button" href="/figures/<%= @figure.id %>/edit">Edit Figure</a>
 <a class="button" href="/figures">Figures</a>
