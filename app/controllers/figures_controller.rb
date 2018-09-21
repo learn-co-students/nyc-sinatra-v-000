@@ -28,7 +28,7 @@ class FiguresController < ApplicationController
 
   patch '/figures/:id' do
     @figure = Figure.find_by(params[:id])
-    @figure.update(params[:figure][:name])
+    @figure.update(name: params[:figure][:name])
     @figure.landmarks << Landmark.create(params[:landmark]) unless params[:landmark][:name].blank?
     @figure.titles << Title.create(params[:title]) unless params[:title][:name].blank?
     @figure.save

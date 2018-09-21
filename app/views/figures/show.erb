@@ -1,5 +1,5 @@
 
-<h4><%= @figure.name %></h4>
+<h4>Name: <%= @figure.name %></h4>
 <p>Titles:</p>
 <% @figure.titles.each do |title| %>
   <a href="/titles/<% title.id %>"><%= title.name %></a>
