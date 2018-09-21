@@ -108,7 +108,7 @@ DEPENDENCIES
   activerecord (= 4.2.5)
   capybara
   pry
-  rack-test
+  rack-test (= 1.1.0)
   rake
   require_all
   rspec
@@ -121,4 +121,4 @@ DEPENDENCIES
   tux
 
 BUNDLED WITH
-   1.16.1
+   1.16.5
