@@ -29,6 +29,7 @@ class LandmarksController < ApplicationController
   patch '/landmarks/:id' do
     @landmark = Landmark.find_by(params[:id])
     @landmark.update(name: params[:landmark][:name])
+    @landmark.update(year_completed: params[:landmark][:year_completed])
     @landmark.figure = Figure.create(params[:figure]) unless params[:figure][:name].blank?
     # @figure.titles << Title.create(params[:title]) unless params[:title][:name].blank?
     @landmark.save
