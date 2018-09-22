@@ -1,0 +1,13 @@
+<h1> Welcome to the <%=@figure.name%> Page </h1>
+<% @figure.landmarks.each do |landmark|%>
+<ul>
+  <li><%=landmark.name%></li>
+  <li><%=landmark.year_completed%></li>
+  </ul>
+  <%end%>
+
+  <% @figure.titles.each do |title|%>
+  <ul>
+    <li><%=title.name%></li>
+    </ul>
+    <%end%>
