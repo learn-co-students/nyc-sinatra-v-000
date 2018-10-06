@@ -1,7 +1,7 @@
 <h2>All Historical Landmarks</h2>
 
 <%@landmarks.each do |landmark|%>
-  <a href="/landmarks/<%=landmark.id%>"><%=landmark.name%></a><br>
+  <a href="/landmarks/<%=landmark.id%>"><%=landmark.name%> - <%=landmark.year_completed%></a><br>
 <%end%>
 
 <a class="button" href="/landmarks">Landmarks</a>
