@@ -26,7 +26,7 @@
 
     <%@landmarks.each do |landmark|%>
       <input type="checkbox"
-      name="figure[landmark_ids]"
+      name="figure[landmark_ids][]"
       value="<%=landmark.id%>"
       id="<%=landmark.name%>"
       <%= 'checked' if @figure.landmarks.include?(landmark) %>>
