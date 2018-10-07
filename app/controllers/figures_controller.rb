@@ -54,7 +54,6 @@ class FiguresController < ApplicationController
   end
 
   patch '/figures/:id' do
-    #binding.pry
     @figure = Figure.find_by_id(params[:id])
     @figure.name = params["figure"]["name"]
     if !params["title"]["name"].empty?

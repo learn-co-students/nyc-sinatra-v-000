@@ -11,7 +11,7 @@
     Select Title From List:
       <%@titles.each do |title|%>
         <input type="checkbox"
-        name="figure[title_ids]"
+        name="figure[title_ids][]"
         value="<%=title.id%>"
         id="<%=title.name%>"
         <%= 'checked' if @figure.titles.include?(title) %>>
@@ -20,7 +20,7 @@
 
     Or Create New Title:
 
-    <input type="text" name="title[name]" id="title_name">
+    <input type="text" name="title[name]" id="new_title">
 
     Select Landmark From List:
 
