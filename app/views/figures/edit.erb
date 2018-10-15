@@ -1,5 +1,5 @@
-<h1>Edit <%= @figure.name %></h1>
-
+<h1>Edit Historical Figure</h1>
+<h1><%= @figure.name %></h1>
 <form method="POST" action="/figures/<%= @figure.id %>">
 <input type="hidden" name="_method" value="PATCH">
     <h2><label> Name </label><input type="text" name="figure[name]" id="figure_name"></h2>
@@ -20,3 +20,6 @@
 
     <input type="submit" value="Edit Figure">
 </form>
+
+<a class="button" href="/figures">Landmarks</a>
+<a class="button" href="/">Home</a>
