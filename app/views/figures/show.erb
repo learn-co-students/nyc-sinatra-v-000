@@ -1,14 +1,22 @@
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Titles</th>
-    <th>Landmarks</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td><%= @figure.name %></td>
-  </tr>
-<table>
+<h2><a href="/figures/<%= @figure.id %>"><%= @figure.name %></a></h2>
 
-<a class="button" href="/figures/<%= @figure.id %>/edit">Edit Landmark</a>
+<table>
+  <tr>
+    <th>Landmarks:</th>
+    <th>Titles:</th>
+  </tr>
+  <tr>
+    <td><ul><%@figure.landmarks.each do |landmark|%>
+        <li><%= landmark.name %></li>
+        <%end%>
+      </ul></td>
+      <td><ul>
+        <%@figure.titles.each do |title|%>
+        <li><%=title.name%></li>
+        <%end%>
+      </ul></td>
+  </tr>
+</table>
+
+<a class="button" href="/figures/<%= @figure.id %>/edit">Edit Figure</a>
 <a class="button" href="/landmarks">Landmarks</a>
