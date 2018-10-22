@@ -6,15 +6,16 @@
     <th>Titles:</th>
   </tr>
   <tr>
-    <td><ul><%@figure.landmarks.each do |landmark|%>
+    <td><ul>
+      <%@figure.landmarks.each do |landmark|%>
         <li><%= landmark.name %></li>
-        <%end%>
-      </ul></td>
-      <td><ul>
-        <%@figure.titles.each do |title|%>
+      <%end%>
+    </ul></td>
+    <td><ul>
+      <%@figure.titles.each do |title|%>
         <li><%=title.name%></li>
-        <%end%>
-      </ul></td>
+      <%end%>
+    </ul></td>
   </tr>
 </table>
 
