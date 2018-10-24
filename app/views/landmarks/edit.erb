@@ -12,7 +12,7 @@
   <b><label for="figure_name">Figure: </label></b>
   <br><br>
   <%Figure.all.each do |figure|%>
-  <input type="checkbox" name="landmark[figure_ids][]" id="figure_<%=figure.id%>" value="<%=figure.id%>"
+  <input type="checkbox" name="landmark[figure_id][]" id="figure_<%=figure.id%>" value="<%=figure.id%>"
   <%= 'checked' if @landmark.figure_id == figure.id %> ><%=figure.name%></input>
   <%end%>
   <br><br>

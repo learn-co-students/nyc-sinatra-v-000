@@ -31,7 +31,6 @@ class LandmarksController < ApplicationController
 
   post '/landmarks/:id' do
     @landmark = Landmark.find_by_id(params[:id])
-    binding.pry
     @landmark.update(params[:landmark])
     unless params[:figure].empty?
       @landmark.figure = Figure.find_or_create_by(params[:landmark])
