@@ -1,3 +1,4 @@
+require 'pry'
 class FiguresController < ApplicationController
   # add controller methods
 
@@ -13,6 +14,9 @@ class FiguresController < ApplicationController
   post '/figures' do
     binding.pry
     @figure = Figure.create(params[:figure])
+    if !params["landmark"]["name"].empty?
+    @figure.landmark = Landmark.find_or_create_by(name: params[:landmark][:name])
+  end
 
   end
 end
