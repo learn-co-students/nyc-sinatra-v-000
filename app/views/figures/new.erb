@@ -6,7 +6,7 @@
   <b><label for="landmarks">Landmarks: </label></b>
   <br><br>
   <%Landmark.all.each do |landmark|%>
-  <input type="checkbox" name="figure[landmark_ids][]" id="<%=landmark.name%>" value="<%=landmark.id%>"><%=landmark.name%></input>
+  <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=landmark.id%>" value="<%=landmark.name%>"><%=landmark.name%></input>
   <%end%>
   <br><br>
   Or create a new landmark: <input type="text" name="landmark[name]" id="landmarks">
@@ -14,11 +14,11 @@
   <b><label for="titles">Titles: </label></b>
   <br><br>
   <%Title.all.each do |title|%>
-  <input type="checkbox" name="figure[title_ids][]" id="<%=title.id%>" value="<%=title.name%>"><%=title.name%></input>
+  <input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id%>" value="<%=title.id%>"><%=title.name%></input>
   <%end%>
   <br><br>
   Or create a new Title: <input type="text" name="title[name]" id="titles">
   <br><br><br>
-  <input type="submit" value="Submit">
+  <input type="submit" value="Create New Figure">
 
 </form>
