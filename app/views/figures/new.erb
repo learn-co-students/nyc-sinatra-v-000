@@ -7,7 +7,7 @@
     <br></br>
     <% @titles.each do |title| %>
     <li>
-      <input type="checkbox" name="figure[title_ids][]" value="<%= title.id %>" id="title_<%= title.name %>"><%=title.name%></input>
+      <input type="checkbox" name="figure[title_ids][]" value="<%= title.id %>" id="title_<%= Title.first.id %>"><%=title.name%></input>
     </li>
     <% end %>
     <br></br>
@@ -17,12 +17,15 @@
     <label>Select from a landmark below:</label>
     <% @landmarks.each do |landmark|%>
     <li>
-      <input type="checkbox" name="figure[landmark_ids][]" value="<%= landmark.id %>" id="<%= landmark.id %>"><%=landmark.name%></input>
+      <input type="checkbox" name="figure[landmark_ids][]" value="<%= landmark.id %>" id="landmark_<%= Landmark.first.id %>"><%=landmark.name%></input>
     </li>
     <% end %>
     <br></br>
     <label>or Create a new Landmark below:</label>
     <input type="text" name="landmark[name]" id="new_landmark"></input>
+    <br></br>
+    <label>Enter the Year Landmark was Completed:</label>
+    <input type="text" name="landmark[year_completed]"></input>
     <br></br>
     <label>Click here to create a new Figure</label>
     <input type="submit" value="Create New Figure">
