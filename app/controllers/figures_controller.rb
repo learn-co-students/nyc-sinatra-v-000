@@ -22,11 +22,17 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     @figure = Figure.create(params[:figure])
-    @figure.titles = Title.find_or_create_by(params[:title])
-    @figure.landmarks = Landmark.find_or_create_by(params[:landmark])
+    @figure.titles << Title.find_or_create_by(params[:title])
+    @figure.landmarks << Landmark.find_or_create_by(params[:landmark])
 
     @figure.save
 
     redirect to :"/figures/#{@figure.id}"
+  end
+
+  get '/figures/:id/edit' do
+   @figure = Figure.find_by_id(params[:id])
+
+   erb :'/figures/edit'
   end
 end
