@@ -1,5 +1,5 @@
 <form>
-  <%=@figures%>
-
-
+  <%Figure.all.each do |figure|%>
+  <%=figure.name%><br></br>
+  <%end%>
 </form>
