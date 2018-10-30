@@ -1,6 +1,14 @@
 <h2>Edit Historical Landmark</h2>
 
-<!-- add content here -->
 
+<form action='/landmarks/<%=@landmarks.id%>' method="POST">
+  <input type="hidden" name="_method" value="patch">
+
+  <h3>Edit Name: <input type="text" id="name" name="landmark[name]" value="<%= @landmarks.name%>"></p>
+  </h3>
+   <h3>Edit Year Completed: <input type="text" id="year_completed" name="landmark[year_completed]" value="<%= @landmarks.year_completed%>"></p>
+  </h3>
+ <input type='submit' value="Edit Landmark">
+</form>
 <a class="button" href="/figures">Landmarks</a>
 <a class="button" href="/">Home</a>
