@@ -1,6 +1,11 @@
 <h2>All Historical Landmarks</h2>
 
 <!-- add content here -->
+  <form>
+    <%Landmark.all.each do |landmark|%>
+    <%=landmark.name%><br></br>
+    <%end%>
+  </form>
 
 <a class="button" href="/figures">Figures</a>
 <a class="button" href="/">Home</a>
