@@ -3,7 +3,8 @@
 <!-- add content here -->
   <form>
     <%Landmark.all.each do |landmark|%>
-    <%=landmark.name%><br></br>
+    <%=landmark.name%><br>
+    <%=landmark.year_completed%><br></br>
     <%end%>
   </form>
 
