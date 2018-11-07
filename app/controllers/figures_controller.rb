@@ -30,6 +30,15 @@ class FiguresController < ApplicationController
     erb :"figures/index"
   end
 
+  get '/figures/:id/edit' do
+
+    @figure = Figure.find_by(id: params["id"])
+    @titles = Title.all
+    @landmarks = Landmark.all
+
+    erb :"figures/edit"
+  end
+
   get '/figures/:id' do
     # binding.pry
     @figure = Figure.find_by(id: params["id"])
@@ -37,7 +46,21 @@ class FiguresController < ApplicationController
     erb :"figures/show"
   end
 
-  get 'figures/:id/edit' do
 
+  patch '/figures/:id' do
+    @figure = Figure.find_by(id: params["id"])
+    @figure.update(params["figure"])
+  
+    if params["title"]["name"] != ""
+      @title = Title.create(name: params["title"]["name"])
+      @figure.titles << @title
+    end
+
+    if params["landmark"]["name"] != ""
+      @landmark = Landmark.create(params["landmark"])
+      @figure.landmarks << @landmark
+    end
+
+    redirect "/figures/#{@figure.id}"
   end
 end
