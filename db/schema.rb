@@ -31,4 +31,5 @@ ActiveRecord::Schema.define(version: 20181112132049) do
   create_table "titles", force: :cascade do |t|
     t.string "name"
   end
+
 end
