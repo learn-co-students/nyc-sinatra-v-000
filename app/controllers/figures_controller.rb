@@ -25,57 +25,20 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     @figure = Figure.create(params[:figure])
-
-    if !params[:title].blank?
-      title = Title.create(params[:title])
-      @figure.titles << title
-    end
-
-    if !params[:landmark][:name].blank?
-      landmark = Landmark.create(params[:landmark])
-      @figure.landmarks << landmark
-    end
-
+    @figure.titles << Title.create(params[:title]) if !params[:title].blank?
+    @figure.landmarks << Landmark.create(params[:landmark]) if !params[:landmark][:name].blank?
     @figure.save
 
     redirect to "/figures/#{@figure.id}"
   end
 
   post '/figures/:id' do
-
     @figure = Figure.find(params[:id])
-    @figure.name = params[:figure][:name]
-
-    @figure.titles.clear
-    if !params[:figure][:title_ids].blank?
-      params[:figure][:title_ids].each do |e|
-        title = Title.find(e)
-        @figure.titles << title
-      end
-    end
-
-    if !params[:title].blank?
-      title = Title.create(params[:title])
-      @figure.titles << title
-    end
-
-    @figure.landmarks.clear
-    if !params[:figure][:landmark_ids].blank?
-      params[:figure][:landmark_ids].each do |e|
-        landmark = Landmark.find(e)
-        @figure.landmarks << landmark
-      end
-    end
-
-    if !params[:landmark][:name].blank?
-
-      landmark = Landmark.create(params[:landmark])
-      @figure.landmarks << landmark
-    end
-
+    @figure.update(params[:figure])
+    @figure.titles << Title.create(params[:title]) unless params[:title].blank?
+    @figure.landmarks << Landmark.create(params[:landmark]) unless params[:landmark][:name].blank?
     @figure.save
-    #binding.pry
-    #flash[:message] = "Successfully edited song."
+
     redirect to "/figures/#{@figure.id}"
   end
 
