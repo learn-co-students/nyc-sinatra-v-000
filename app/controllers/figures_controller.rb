@@ -10,9 +10,6 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     @figure = Figure.create(params[:figure])
-    # @figure.titles.create(params[:title]) if params[:title] !=""
-    # @figure.landmarks.create(name: params[:landmark][:name]) if params[:landmark][:name] !=""
-    # binding.pry
     if !!params[:figure][:landmark_ids]
       params[:figure][:landmark_ids].each{|landmark| @figure.landmarks << Landmark.find(landmark)}
     end
@@ -32,8 +29,6 @@ class FiguresController < ApplicationController
 
     @figure.save
 
-    @figure.save
-
     redirect "/figures/#{@figure.id}"
   end
 
@@ -44,14 +39,12 @@ class FiguresController < ApplicationController
 
   get '/figures/:id/edit' do
     @figure = Figure.find(params[:id])
-    # binding.pry
     erb :'figures/edit'
   end
 
   patch '/figures/:id' do
     @figure = Figure.find(params[:id])
     @figure.update({name: params[:figure][:name]})
-    # binding.pry
 
     @figure.landmarks.clear
     if !!params[:figure][:landmark_ids]
