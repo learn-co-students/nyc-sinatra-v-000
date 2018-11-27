@@ -10,7 +10,7 @@ describe FiguresController do
     bqe.save
   end
 
-  after do
+  after do 
     Figure.destroy_all
     Title.destroy_all
     Landmark.destroy_all
