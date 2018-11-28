@@ -11,6 +11,8 @@ class FiguresController < ApplicationController
    end
 
    post '/figures' do
+     @figure = Figure.create(Name: params['figure']['name'])
+     @figure.save
 
    end
 end
