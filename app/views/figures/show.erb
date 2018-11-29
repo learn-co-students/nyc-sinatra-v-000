@@ -1,9 +1,10 @@
-<%=@figure.name%></br>
+Figure Name: <%=@figure.name%></br>
 
+Number of titles: <%=@figure.landmarks.count%>
 <%@figure.titles.each do |title|%>
-  <%= title.name %>
+  Title Name: <%= title.name %>
 <% end %>
 
 <%@figure.landmarks.each do |landmark|%>
-  <%= landmark.name %></br>
+  Landmark Name: <%= landmark.name %>
 <% end %>

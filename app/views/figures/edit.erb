@@ -1,6 +1,6 @@
 <h1>Edit <%= @figure.name %></h1>
 
-<form method="post" action="/figures/<%=@figure.id%>">
+<form method="post" action="/figures/<%= @figure.id %>">
   <input type="hidden" name="_method" value="PATCH">
   <label>Name</lable>
   <input type="text" name="figure[name]" id="figure_name" value="<%=@figure.name%>">
@@ -22,7 +22,6 @@
 </br>
   <label>Create New Landmark</lable></br>
   Name:  <input type="text" name="landmark[name]" id="new_landmark"></br>
-  Year: <input type="integer" name="landmark[name]"></br>
 
     <input type="submit" value="Edit Figure">
 </form>
