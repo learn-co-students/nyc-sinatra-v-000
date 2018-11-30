@@ -1,0 +1,10 @@
+Figure Name: <%=@figure.name%></br>
+
+Number of titles: <%=@figure.landmarks.count%>
+<%@figure.titles.each do |title|%>
+  Title Name: <%= title.name %>
+<% end %>
+
+<%@figure.landmarks.each do |landmark|%>
+  Landmark Name: <%= landmark.name %>
+<% end %>
