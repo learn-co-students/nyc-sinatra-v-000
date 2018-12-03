@@ -3,7 +3,7 @@
 <form action="/figures" method="POST">
 
   <label> Historical Figure </label>
-  <input id="figure_name" type="text" name="Figure Name">
+  <input id="figure_name" type="text" name="Name">
   <br>
     <br><label> Title </label><br>
     <% Title.all.each do |title| %>
@@ -21,5 +21,12 @@
     <input id="<%= landmark.name %>" type="checkbox" name="landmarks[]" value=" <%= landmark.id %>"><%= landmark.name %></input><br>
   <%end%>
 
-  <input id="submit" type="submit" value="Create">
+  <br>
+  <label>Create New Landmark</label>
+  <label>Name:</label>
+  <input id="landmark_name" type="text" name="Landmark Name">
+  <label>Year:</label>
+  <input id="year_completed" type="text" name="Year Completed">
+
+  <input id="submit" type="submit" value="Create New Figure">
 </form>
