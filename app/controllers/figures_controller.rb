@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class FiguresController < ApplicationController
+use Rack::Flash
 
   get '/figures' do
     @figures = Figure.all
@@ -9,21 +12,45 @@ class FiguresController < ApplicationController
     erb :'figures/new'
   end
 
-  post '/figures' do
-    @figure = Figure.create(:name => params["Name"])
-    #some kind of logic that says if params of Title.find_or_create_by is "", then do the radio buttons
-    @figure.title_ids = params[:titles]
-    @figure.landmark_ids = params[:landmarks]
-    @figure.save
-    redirect "/figures/#{@figure.id}"
-  end
-
   get '/figures/:id' do
-    @figure = Figure.find_by_id(params[:id])
-    
+    @figure = Figure.find(params[:id])
     erb :'figures/show'
   end
 
+  get '/figures/:id/edit' do
+    @figure = Figure.find(params[:id])
+    erb :'figures/edit'
+  end
 
+  post '/figures' do
+    @figure = Figure.create(:name => params[:figure][:name])
+    unless params[:title][:name].empty?
+      @figure.titles << Title.create(params[:title])
+    end
+
+    unless params[:landmark][:name].empty?
+      @figure.landmarks << Landmark.create(params[:landmark])
+    end
+
+    @figure.save
+    flash[:message] = "Successfully created new Figure!"
+
+    redirect "/figures/#{@figure.id}"
+  end
+
+  patch '/figures/:id' do
+    @figure = Figure.find(params[:id])
+    @figure.update(params[:figure])
+    unless params[:title][:name].empty?
+      @figure.titles << Title.create(params[:title])
+    end
+
+    unless params[:landmark][:name].empty?
+      @figure.landmarks << Landmark.create(params[:landmark])
+    end
+    @figure.save
+    flash[:message] = "Successfully updated Figure."
+    redirect "figures/#{@figure.id}"
+  end
 
 end
