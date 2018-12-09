@@ -5,5 +5,7 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
+    @figure = Figure.create(params[:figure])
+    @figure.save
   end
 end
