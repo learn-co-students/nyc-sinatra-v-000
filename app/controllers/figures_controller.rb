@@ -4,6 +4,17 @@ class FiguresController < ApplicationController
     erb :'figures/new'
   end
 
+
+  get '/figures/:id/edit' do
+      @figure = Figure.find(params[:id])
+      erb :'/figures/edit'
+  end
+
+  get '/figures/:id' do
+    @figure = Figure.find(params[:id])
+    erb :'/figures/show'
+  end
+
   post '/figures' do
     @figure = Figure.create(params[:figure])
     unless params[:landmark][:name].empty?
@@ -19,6 +30,6 @@ class FiguresController < ApplicationController
 
   get '/figures' do
     @figures = Figure.all
-    erb :'/figures/show'
+    erb :'/figures/index'
   end
 end
