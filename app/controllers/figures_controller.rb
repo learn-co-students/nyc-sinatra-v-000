@@ -32,4 +32,8 @@ class FiguresController < ApplicationController
     @figures = Figure.all
     erb :'/figures/index'
   end
+
+  patch '/figures/:id' do
+    
+  end
 end
