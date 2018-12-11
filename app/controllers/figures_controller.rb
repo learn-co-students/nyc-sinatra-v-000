@@ -1,2 +1,3 @@
 class FiguresController < ApplicationController
+  
 end
