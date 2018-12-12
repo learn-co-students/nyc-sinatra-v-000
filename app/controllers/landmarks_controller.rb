@@ -25,4 +25,12 @@ class LandmarksController < ApplicationController
   get '/landmarks' do
     erb :'/landmarks/index'
   end
+
+  patch '/landmarks/:id' do
+    @landmark = Landmark.find_by_id(params[:id])
+    @landmark.update(params[:landmark])
+    @landmark.save
+
+    redirect to "/landmarks/#{landmark.id}"
+  end
 end
