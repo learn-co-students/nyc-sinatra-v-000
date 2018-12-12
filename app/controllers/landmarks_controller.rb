@@ -9,4 +9,8 @@ class LandmarksController < ApplicationController
     @landmark.save
     erb :'/landmarks/show'
   end
+
+  get '/landmarks' do
+    erb :'/landmarks/index'
+  end
 end
