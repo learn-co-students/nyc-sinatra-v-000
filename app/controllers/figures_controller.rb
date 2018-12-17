@@ -14,14 +14,10 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     @figure = Figure.create(params[:figure])
-    if !params[:title][:name]
-      @figure.titles = params[:figure][:titles]
-    else
+    if !!params[:title][:name]
       @figure.titles << Title.create(params[:title])
     end
-    if !params[:landmark][:name]
-      @figure.landmarks = params[:figure][:landmarks]
-    else
+    if !!params[:landmark][:name]
       @figure.landmarks << Landmark.create(params[:landmark])
     end
      @figure.save
@@ -43,7 +39,7 @@ class FiguresController < ApplicationController
 patch '/figures/:id' do
   @figure = Figure.find_by_id(params[:id])
   @figure.update(params[:figure])
-  @figure.landmarks.update(params[:landmark])
+  @figure.landmarks.update(params[:landmark][])
   redirect to "/figures/#{@figure.id}"
  end
 
