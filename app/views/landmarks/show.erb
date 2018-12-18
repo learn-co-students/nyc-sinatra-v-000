@@ -1,13 +1,9 @@
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Year Completed</th>
-  </tr>
-  <tr>
-    <td><%= @landmark.name %></td>
-    <td><%= @landmark.year_completed %></td>
-  </tr>
-<table>
-
-<a class="button" href="/landmarks/<%= @landmark.id %>/edit">Edit Landmark</a>
-<a class="button" href="/landmarks">Landmarks</a>
+<h2>View A Historical Figure</h2>
+<p>views/landmarks/index.erb</p>
+<a class="button" href="/">Home</a>
+<hr>
+<br>
+<h1><%=@landmark.name%></h1>
+<h4><%=@landmark.year_completed%></h4>
+<a href='/landmarks/<%=@landmark.id%>/edit'><input type="button" value="Edit">
+<br>

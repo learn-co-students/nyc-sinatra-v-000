@@ -1,0 +1,10 @@
+<h2>All Historical Figures</h2>
+<p>views/figures/index.erb</p>
+<a class="button" href="/">Home</a>
+<hr>
+<br>
+<% @figures.each do |figure| %>
+  <%= figure.name %>
+  <br>
+<% end %>
+<br>

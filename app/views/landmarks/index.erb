@@ -1,6 +1,12 @@
-<h2>All Historical Landmarks</h2>
-
-<!-- add content here -->
-
-<a class="button" href="/figures">Figures</a>
+<h2>View All Landmarks</h2>
+<p>views/landmarks/index.erb</p>
 <a class="button" href="/">Home</a>
+<hr>
+<br>
+
+<% @landmarks.each do |landmark| %>
+  <%= landmark.name %>
+  <%= landmark.year_completed %>
+  <br>
+<% end %>
+<br>

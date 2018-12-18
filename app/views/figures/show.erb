@@ -1,0 +1,26 @@
+<h2>Show a Historical Figure</h2>
+<p>views/figures/show.erb</p>
+<a class="button" href="/">Home</a>
+<hr>
+<br>
+
+<h1><%= @figure.name %></h1>
+Titles:
+<ul class="list-style:none">
+<% @figure.titles.each do |title| %>
+  <li>
+    <%= title.name %>
+  </li>
+<% end %>
+</ul>
+<hr>
+Landmarks:
+<ul class="list-style:none">
+<% @figure.landmarks.each do |landmark| %>
+  <li>
+    <%= landmark.name %>
+  </li>
+<% end %>
+</ul>
+<a href="figures/<%= @figure.id %>/edit"><input type="button" value="Edit"></a>
+<br>
