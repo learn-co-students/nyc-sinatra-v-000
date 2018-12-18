@@ -1,3 +1,8 @@
 class LandmarksController < ApplicationController
-  # add controller methods
+
+  get '/' do
+    @figures = Figure.all
+    erb :'/figures/index'
+  end
+  
 end
