@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Landmarks</th>
+  </tr>
+  <tr>
+    <td><%= @figure.name %></td>
+    <td><% @figure.landmarks.each do |l| %>
+              <%=l.name%>
+            <%end%>
+      <br></td>
+  </tr>
+<table>
+
+<a class="button" href="/figures/<%= @figure.id %>/edit">Edit Figure</a><br>
+<!-- <input type="submit" name="Edit Figure" value="Edit Figure"> -->
+<a class="button" href="/figure">Figures</a>
