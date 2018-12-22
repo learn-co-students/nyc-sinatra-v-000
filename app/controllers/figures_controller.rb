@@ -1,5 +1,15 @@
 class FiguresController < ApplicationController
 
+  get '/figures' do
+    @figures = Figure.all
+    erb :"figures/index"
+  end
+
+  get '/figures/:id' do
+    @figure = Figure.find(params[:id])
+    erb :"figures/show"
+  end
+
   get '/figures/new' do
     erb :"figures/new"
   end
@@ -10,16 +20,6 @@ class FiguresController < ApplicationController
     @landmark = Landmark.create(:name => params[:landmark][:name])
     @landmark.figure = @figure
     @figure.titles << @title
-  end
-
-  get '/figures' do
-    @figures = Figure.all
-    erb :"figures/index"
-  end
-
-  get '/figures/:id' do
-    @figures = Figure.all
-    erb :"figures/index"
   end
 
 end
