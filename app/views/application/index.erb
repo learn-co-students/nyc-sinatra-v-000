@@ -1,4 +1,36 @@
 <h1>NYC Sinatra Lab</h1>
+<form action="/figures" method="GET">
+  <input 
+  style="background-color: rgba(0,0,255, 0.5);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;"
+  type="submit" name="Historical Figures" value="Historical Figures">
+</form>
 
-<a class="button" href="/figures">Figures</a>
-<a class="button" href="/landmarks">Landmarks</a>
+
+<a style="color: blue; font: bold 14px Arial;" href="/figures">Historical Figures</a>
+<br></br>
+
+<form action="/landmarks" method="GET">
+  <input type="submit" 
+  style="background-color: rgba(200,50,50, 0.5);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;"
+  name="Landmarks" value="Landmarks">
+</form>
+
+<a style="color: salmon; font: bold 14px Arial;"href="/landmarks">Landmarks</a>
