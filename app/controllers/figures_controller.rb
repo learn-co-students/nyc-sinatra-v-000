@@ -30,9 +30,7 @@ class FiguresController < ApplicationController
         @titles << Title.find_by(id)
       end
     end
-    @landmark = Landmark.create(:name => params[:landmark][:name])
-    @landmark.figure = @figure
-    @figure.titles << @title
+    #Landmarks
   end
 
 end
