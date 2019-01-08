@@ -21,6 +21,8 @@ class FiguresController < ApplicationController
     #Titles
     @titles = []
     #Adding new titles
+    #Something is wrong with the form checkboxes.
+    #Not collecting all checkboxes
     if !params[:titles][:name].nil?
       @titles << Title.create(:name => params[:titles][:name])
     end
