@@ -14,8 +14,8 @@
 <!--Titles-->
 <h3>Title</h3>
 <label>Choose an existing title:</label><br>
-  <%@titles.all.each do |title|%>
-    <input type="checkbox" name="figure[title_ids]" id="<%=title.id%>" value="<%=title.id%>"><%=title.name%></input>
+  <%@titles.each do |title|%>
+    <input type="checkbox" name="figure[title_ids][]" id="<%=title.id%>" value="<%=title.id%>"><%=title.name%></input>
   <%end%>
 <br></br>
 <label>and/or, create a new title:</label><br>

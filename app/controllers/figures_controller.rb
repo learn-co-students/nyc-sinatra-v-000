@@ -18,20 +18,14 @@ class FiguresController < ApplicationController
   post '/figures' do
     binding.pry
     # Figure
-    @figure = Figure.create(:name => params[:figure][:name])
-    #Titles
-    @titles = []
+    @figure = Figure.create(:name => params[:figure])
     #Adding new titles
-    if !params[:titles][:name].nil?
-      @titles << Title.create(:name => params[:titles][:name])
+    if !params[:title][:name].empty?
+      @figure.titles << Title.create(:name => params[:title][:name])
     end
-    #Adding existing titles
-    if params[:titles][:title_ids] != []
-      params[:titles][:title_ids].each do |id|
-        @titles << Title.find_by(id)
-      end
-    end
+
     #Landmarks
+    redirect "figures/#{@figure.id}"
   end
 
 end
