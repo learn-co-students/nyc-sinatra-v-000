@@ -20,17 +20,19 @@ class FiguresController < ApplicationController
     # Figure
     @figure = Figure.create(:name => params[:figure][:name].split.map(&:capitalize)*' ')
     #Adding existing titles
-    params[:figure][:title_ids].each {|title_id| @figure.titles << Title.find_by(title_id) }
+    params[:figure][:title_ids].each {|title_id| @figure.titles << Title.find(title_id) }
     #Creating new titles
     if !params[:title][:name].empty?
       @figure.titles << Title.create(:name => params[:title][:name].split.map(&:capitalize)*' ')
     end
     #Adding existing landmarks
-    params[:figure][:landmark_ids].each {|landmark_id| @figure.landmarks << Landmark.find_by(landmark_id) }
+    params[:figure][:landmark_ids].each {|landmark_id| @figure.landmarks << Landmark.find(landmark_id) }
     #Creating new landmarks
     if !params[:landmark][:name].empty?
       @figure.landmarks << Landmark.create(:name => params[:landmark][:name].split.map(&:capitalize)*' ')
     end
+    binding.pry
+    @figure.save
     redirect "figures/#{@figure.id}"
   end
 
