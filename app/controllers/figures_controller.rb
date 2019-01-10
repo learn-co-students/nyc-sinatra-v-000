@@ -25,13 +25,14 @@ class FiguresController < ApplicationController
     if !params[:title][:name].empty?
       @figure.titles << Title.create(:name => params[:title][:name].split.map(&:capitalize)*' ')
     end
+
+    ## landmarks aren't getting persisted
     #Adding existing landmarks
     params[:figure][:landmark_ids].each {|landmark_id| @figure.landmarks << Landmark.find(landmark_id) }
     #Creating new landmarks
     if !params[:landmark][:name].empty?
       @figure.landmarks << Landmark.create(:name => params[:landmark][:name].split.map(&:capitalize)*' ')
     end
-    binding.pry
     @figure.save
     redirect "figures/#{@figure.id}"
   end
