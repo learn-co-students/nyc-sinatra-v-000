@@ -15,7 +15,7 @@
 <h3>Title</h3>
 <label>Choose an existing title:</label><br>
   <%@titles.each do |title|%>
-    <input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id%>" value="title_<%=title.id%>"><%=title.name%></input>
+    <input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id%>" value="<%=title.id%>"><%=title.name%></input>
   <%end%>
 <br></br>
 <label>and/or, create a new title:</label><br>
@@ -26,7 +26,7 @@
 <h3>Landmark</h3>
 <label>Choose an existing landmark:</label><br>
   <%@landmarks.each do |landmark|%>
-    <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=landmark.id%>" value="landmark_<%=landmark.id%>"><%=landmark.name%></input>
+    <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=landmark.id%>" value="<%=landmark.id%>"><%=landmark.name%></input>
   <%end%>
 <br></br>
 <label>and/or, create a new landmark:</label><br>

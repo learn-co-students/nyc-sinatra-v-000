@@ -18,14 +18,18 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     # Figure
-    @figure = Figure.create(:name => params[:figure])
+    @figure = Figure.create(:name => params[:figure][:name].split.map(&:capitalize)*' ')
+    #Adding existing titles
+    params[:figure][:title_ids].each {|title_id| @figure.titles << Title.find_by(title_id) }
     #Creating new titles
     if !params[:title][:name].empty?
-      @figure.titles << Title.create(:name => params[:title][:name])
+      @figure.titles << Title.create(:name => params[:title][:name].split.map(&:capitalize)*' ')
     end
+    #Adding existing landmarks
+    params[:figure][:landmark_ids].each {|landmark_id| @figure.landmarks << Landmark.find_by(landmark_id) }
     #Creating new landmarks
     if !params[:landmark][:name].empty?
-      @figure.landmarks << Landmark.create(:name => params[:landmark][:name])
+      @figure.landmarks << Landmark.create(:name => params[:landmark][:name].split.map(&:capitalize)*' ')
     end
     redirect "figures/#{@figure.id}"
   end
