@@ -10,9 +10,4 @@ describe "Title" do
   it "has a name" do 
     expect(@mayor.name).to eq("Mayor")
   end
-
-  it "has many figures" do 
-    @mayor.figures << @figure
-    expect(@mayor.figures).to include(@figure)
-  end
 end
