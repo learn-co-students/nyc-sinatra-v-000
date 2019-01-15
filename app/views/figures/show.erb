@@ -1,7 +1,25 @@
 <h1><%= @figure.name %></h1>
-<h3><%= @figure.title %>
-<ul>
-  <% @figure.landmarks.each do |landmark| %>
-    <%= landmark.name %>
+
+<h3>Titles:</h3>
+  <% if !@figure.titles.empty? %>
+    <ul>
+      <% @figure.titles.each do |title| %>
+        <li><%= title.name %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    There are no recorded titles for <%= @figure.name %>
   <% end %>
-</ul>
+
+<br><br>
+
+<h3>Landmarks:</h3>
+  <% if !@figure.landmarks.empty? %>
+    <ul>
+      <% @figure.landmarks.each do |landmark| %>
+        <li><%= landmark.name %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    There are no recorded landmarks for <%= @figure.name %>
+  <% end %>
