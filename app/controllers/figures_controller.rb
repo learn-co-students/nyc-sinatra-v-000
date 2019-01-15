@@ -18,17 +18,13 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     # Figure
-    @figure = Figure.create(:name => params[:figure][:name].split.map(&:capitalize)*' ')
-    #Adding existing titles
-    params[:figure][:title_ids].each {|title_id| @figure.titles << Title.find(title_id) }
+    @figure = Figure.create(:name => params["figure"]["name"].split.map(&:capitalize)*' ',
+    :title_ids => params["figure"]["title_ids"],
+    :landmark_ids => params["figure"]["landmark_ids"])
     #Creating new titles
     if !params[:title][:name].empty?
       @figure.titles << Title.create(:name => params[:title][:name].split.map(&:capitalize)*' ')
     end
-
-    ## landmarks aren't getting persisted
-    #Adding existing landmarks
-    params[:figure][:landmark_ids].each {|landmark_id| @figure.landmarks << Landmark.find(landmark_id) }
     #Creating new landmarks
     if !params[:landmark][:name].empty?
       @figure.landmarks << Landmark.create(:name => params[:landmark][:name].split.map(&:capitalize)*' ')
