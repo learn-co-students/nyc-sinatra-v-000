@@ -1,0 +1,9 @@
+<h1>Figures index page</h1>
+<h2>-list of all the figures</h2>
+  <% @figures.each do |figure|%>
+    <h3><li><a href="/figures/<%=figure.id%>"><%= figure.name %></a></li></h3>
+  <% end %>
+
+<h3><a href="/figures/new">new</a></h3>
+
+<a href="/">Back to Homepage</a>

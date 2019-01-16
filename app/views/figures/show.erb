@@ -1,0 +1,18 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+  <%end%>
+
+
+<h1> New Figure: <%= @figure.name %></h1>
+<% @figure.titles.each do |title| %>
+  <h2> Title: <%= title.name %> </h2>
+ <% end %>
+
+ <h3>Landmarks:</h3><br>
+ <% @figure.landmarks.each do |landmark| %>
+  <li><%= landmark.name %> - Est. <%= landmark.year_completed %><li>
+    <%end%>
+
+<h4><a href="/figures/<%=@figure.id%>/edit">edit</a></h4><br>
+<a href="/figures">Back To All Figures</a><br>
+<a href="/">Back to Homepage</a>
