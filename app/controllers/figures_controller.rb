@@ -13,9 +13,7 @@ class FiguresController < ApplicationController
     @title = Title.create(params[:title])
     @figure.titles << @title
 
-    if !params[:title][:name].empty?
-      binding.pry
-
+    if params[:title][:name].empty?
       @figure.titles.build(:name => params[:title][:name])
       @figure.save
     end
@@ -27,13 +25,29 @@ class FiguresController < ApplicationController
     redirect to "figures/#{@figure.id}"
   end
 
-  get '/figures/:id/edit' do
-    @figure = Figure.find(params[:id])
-    erb :'/figures/edit'
-  end
-
   get '/figures/:id' do
     @figure = Figure.find(params[:id])
-    erb :'/figures/show'
+    erb :"/figures/show"
+  end
+
+  get '/figures/:id/edit' do
+    @figure = Figure.find(params[:id])
+    erb :"/figures/edit"
+  end
+
+  patch '/figures/:id' do
+    @figure = Figure.find_by_id(params[:id])
+    @figure.update(params[:figure])
+
+    if params[:title][:name].empty?
+      @figure.titles.build(:name => params[:title][:name])
+      @figure.save
+    end
+
+    if !params[:landmark][:name].empty?
+      @figure.landmarks.build(:name => params[:landmark][:name])
+      @figure.save
+    end
+    redirect to "figures/#{@figure.id}"
   end
 end

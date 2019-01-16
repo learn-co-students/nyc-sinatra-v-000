@@ -6,18 +6,18 @@
 
   <h3>Existing Titles:</h3>
   <% Title.all.each do |title| %>
-    <input type="checkbox" name="figure[title_ids][]" value="<% title.id %>" id="title_<%=title.id%>"><%= title.name %></input>
+    <input type="checkbox" name="figure[title_ids][]" value="<%= title.id %>" id="title_<%=title.id%>"><%= title.name %></input>
   <% end %>
   <br>
 
-  <h3>New Title:</h3><br>
+  <h3>New Title</h3><br>
   <label for="new_title">Title Name</label>
   <input type="text" name="title[name]" id="new_title">
   <br>
 
   <h3>Existing Landmarks:</h3>
   <% Landmark.all.each do |landmark| %>
-    <input type="text" name="figure[landmark_ids][]" value="<% landmark.id %>" id="landmark_<%= landmark.id %>"><%= landmark.name %></input>
+    <input type="checkbox" name="figure[landmark_ids][]" value="<%= landmark.id %>" id="landmark_<%=landmark.id%>"><%= landmark.name %></input>
   <% end %>
   <br>
 
