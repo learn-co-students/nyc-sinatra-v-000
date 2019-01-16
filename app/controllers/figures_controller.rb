@@ -22,6 +22,7 @@ class FiguresController < ApplicationController
     :title_ids => params["figure"]["title_ids"],
     :landmark_ids => params["figure"]["landmark_ids"])
     #Creating new titles
+  
     if !params[:title][:name].empty?
       @figure.titles << Title.create(:name => params[:title][:name].split.map(&:capitalize)*' ')
     end
