@@ -1,6 +1,22 @@
 <h2>Create New Landmark</h2>
 
-<!-- add content here -->
+<h3>Name</h3>
+<form action="/landmarks" method="POST">
+  <label for="landmark_name">Name:</label>
+  <input type="text" name="landmark[name]" id="landmark_name"></input>
+  <br></br>
+
+<!--Titles-->
+<h3>Title</h3>
+<label>Choose an existing title:</label><br>
+  <%@titles.each do |title|%>
+    <input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id%>" value="<%=title.id%>"><%=title.name%></input>
+  <%end%>
+<br></br>
+and/or, create a new title:<br>
+New Title Name:<input type="text" name="title[name]" id="new_title" value="new_title"></input>
+<br></br>
+
 
 <a class="button" href="/figures">Landmarks</a>
 <a class="button" href="/">Home</a>
