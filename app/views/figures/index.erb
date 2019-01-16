@@ -1,4 +1,9 @@
 <h1>NYC Historical Figures</h1>
+
+<h3><a href="/figures/new">Create New Figure</a></h3>
+
+<br>
+
 <% @figures.each do |figure| %>
   <a href="/figures/<%= figure.id %>"><%= figure.name %></a>
   <br>

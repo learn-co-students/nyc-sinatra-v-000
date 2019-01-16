@@ -6,6 +6,8 @@ class FiguresController < ApplicationController
   end
 
   get '/figures/new' do
+    @titles = Title.all.sort { |a, b| a.name <=> b.name}
+    @landmarks = Landmark.all.sort { |a, b| a.name <=> b.name }
     erb :'/figures/new'
   end
 
@@ -34,6 +36,8 @@ class FiguresController < ApplicationController
 
   get '/figures/:id/edit' do
     @figure = Figure.find_by_id(params[:id])
+    @titles = Title.all.sort { |a, b| a.name <=> b.name}
+    @landmarks = Landmark.all.sort { |a, b| a.name <=> b.name }
     erb :'/figures/edit'
   end
 
