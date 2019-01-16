@@ -1,0 +1,21 @@
+<table>
+  <th>Name</th>
+  <tr>
+    <% @figures.all.each do |figure| %>
+      <a href="/figures/<%= figure.id %>"><%= figure.name %></a>
+
+      <ul>
+        <% figure.titles.each do |title| %>
+          <li><%= title.name %></li>
+        <% end %>
+      </ul>
+      <% end %>
+    </tr>
+  </th>
+</table>
+
+<br>
+
+<a href="figures/new" class="button">Create New Figure</a>
+<a href="/landmarks" class="button">View Landmarks</a>
+<a href="/" class="button">Home</a>
