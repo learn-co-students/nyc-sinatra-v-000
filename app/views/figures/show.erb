@@ -11,7 +11,7 @@
     There are no recorded titles for <%= @figure.name %>
   <% end %>
 
-<br><br>
+<br>
 
 <h3>Landmarks:</h3>
   <% if !@figure.landmarks.empty? %>
@@ -23,3 +23,7 @@
   <% else %>
     There are no recorded landmarks for <%= @figure.name %>
   <% end %>
+
+<br><br>
+
+<a href="/figures/<%= @figure.id %>/edit">Edit Figure</a>

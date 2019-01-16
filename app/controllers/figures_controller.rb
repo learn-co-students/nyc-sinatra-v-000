@@ -13,12 +13,12 @@ class FiguresController < ApplicationController
     @figure = Figure.create(params[:figure])
 
     @figure.title_ids = params[:figure][:title_ids]
-    if !params[:title].empty?
+    if !params[:title][:name].empty?
       @figure.titles << Title.create(params[:title])
     end
 
     @figure.landmark_ids = params[:figure][:landmark_ids]
-    if !params[:landmark].empty?
+    if !params[:landmark][:name].empty?
       @figure.landmarks << Landmark.create(params[:landmark])
     end
 
@@ -37,17 +37,17 @@ class FiguresController < ApplicationController
     erb :'/figures/edit'
   end
 
-  patch '/figures' do
+  patch '/figures/:id' do
     @figure = Figure.find_by_id(params[:id])
     @figure.update(params[:figure])
 
     @figure.title_ids = params[:figure][:title_ids]
-    if !params[:title].empty?
+    if !params[:title][:name].empty?
       @figure.titles << Title.create(params[:title])
     end
 
     @figure.landmark_ids = params[:figure][:landmark_ids]
-    if !params[:landmark].empty?
+    if !params[:landmark][:name].empty?
       @figure.landmarks << Landmark.create(params[:landmark])
     end
 
