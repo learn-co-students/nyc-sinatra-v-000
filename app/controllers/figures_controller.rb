@@ -13,17 +13,17 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     # Figure
-    @figure = Figure.create(:name => params["figure"]["name"].split.map(&:capitalize).join(' '),
+    @figure = Figure.create(:name => params["figure"]["name"],
     :title_ids => params["figure"]["title_ids"],
     :landmark_ids => params["figure"]["landmark_ids"])
     #Creating new titles
 
     if !params[:title][:name].empty?
-      @figure.titles << Title.create(:name => params[:title][:name].split.map(&:capitalize)*' ')
+      @figure.titles << Title.create(:name => params[:title][:name])
     end
     #Creating new landmarks
     if !params[:landmark][:name].empty?
-      @figure.landmarks << Landmark.create(:name => params[:landmark][:name].split.map(&:capitalize)*' ')
+      @figure.landmarks << Landmark.create(:name => params[:landmark][:name])
     end
     @figure.save
     redirect "figures/#{@figure.id}"
@@ -38,11 +38,10 @@ class FiguresController < ApplicationController
   end
 
   patch '/figures/:id' do
-    @figure = Figure.create(:name => params["figure"]["name"].split.map(&:capitalize).join(' '),
-    :title_ids => params["figure"]["title_ids"],
-    :landmark_ids => params["figure"]["landmark_ids"])
-    @figure.titles << Title.create(:name => params[:title][:name].split.map(&:capitalize)*' ')  if !params[:title][:name].empty?
-    @figure.landmarks << Landmark.create(:name => params[:landmark][:name].split.map(&:capitalize)*' ')  if !params[:landmark][:name].empty?
+    @figure = Figure.find_by_id(params[:id])
+    @figure.name = params["figure"]["name"]
+    @figure.titles << Title.create(:name => params[:title][:name])  if !params[:title][:name].empty?
+    @figure.landmarks << Landmark.create(:name => params[:landmark][:name])  if !params[:landmark][:name].empty?
     @figure.save
     redirect to "/figures/#{@figure.id}"
   end

@@ -6,10 +6,9 @@
 
 <!--Figure Name-->
 <form action="/figures/<%= @figure.id %>" method="post">
-<input id="hidden" type="hidden" name="_method" value="patch">
-
   <label for="figure_name">Name</label>
   <input type="text" name="figure[name]" id="figure_name"></input>
+  <input id="hidden" type="hidden" name="_method" value="patch">
   <br></br>
   <!--Titles-->
   <h3>Title</h3>
