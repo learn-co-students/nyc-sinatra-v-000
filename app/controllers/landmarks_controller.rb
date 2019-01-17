@@ -6,13 +6,12 @@ class LandmarksController < ApplicationController
   end
 
   get '/landmarks/new' do
-    @titles = Title.all
-    @figures = Figure.all
+    @landmarks = Landmark.all
     erb :"landmarks/new"
   end
 
   post '/landmarks' do
-    "hello"
+    binding.pry
   end
 
   get '/landmarks/:id' do
