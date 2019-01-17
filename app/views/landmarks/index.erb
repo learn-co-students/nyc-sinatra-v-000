@@ -3,5 +3,6 @@
 <h3><a href="/landmarks/new">Create New Landmark</a></h3>
 
 <% @landmarks.each do |landmark| %>
-  <a href="landmarks/<%= landmark.id %>"<%= landmark.name %>, <%= landmark.year_completed %></a>
+  <a href="landmarks/<%= landmark.id %>"><%= landmark.name %> - <%= landmark.year_completed %></a>
+  <br>
 <% end %>
