@@ -26,6 +26,7 @@ class LandmarksController < ApplicationController
 
   patch '/landmarks/:id' do
     @landmark = landmark.find_by_id(params[:id])
+    binding.pry
     @landmark.name = params["landmark"]["name"]
     @landmark.year_completed = params["landmark"]["year_completed"]
     @landmark.titles << Title.create(:name => params[:title][:name])  if !params[:title][:name].empty?

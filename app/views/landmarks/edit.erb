@@ -7,6 +7,7 @@
 <!--Landmark Name-->
 
 <form action='/landmarks/<%=@landmark.id%>' method='post'>
+<input id="hidden" type="hidden" name="_method" value="patch">
   <div>
     <label for='name'>Landmark name:</label>
     <input type='text' name='landmark[name]' id='name' value='<%=@landmark.name%>'>
