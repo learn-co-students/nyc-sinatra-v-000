@@ -1,0 +1,20 @@
+<h1>Figures</h1>
+<% @figures.each do |figure| %>
+  <h4>Name: <%=figure.name.capitalize%></h4>
+  <ul>
+  <li><b>Titles:</b>
+      <ol>
+      <%figure.titles.each do |title|%>
+      <li><%=title.name.capitalize%></li>
+      <%end%>
+      </ol>
+  </li>
+  <li><b>Landmarks:</b>
+      <ol>
+      <%figure.landmarks.each do |landmark|%>
+      <li><%=landmark.name.capitalize%></li>
+      <%end%>
+      </ol>
+  </li>
+  </ul>
+<%end %>
