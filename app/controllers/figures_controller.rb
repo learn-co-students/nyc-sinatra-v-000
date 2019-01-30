@@ -13,7 +13,9 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-    binding.pry
+    @figure = Figure.create(params[:figure])
+
+    
   end
 
   get '/figures/:id' do
