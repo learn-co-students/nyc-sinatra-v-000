@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--
+     Frank Sinatra
+
+  "The old crooner himself:"
+       QB"   .  . ....^FBQQBQBQ
+       #^   ..../,, ,/yyBQBDBt`"B
+     B"  ._L_yQ&Qy&&QQBQQDlL;S; (Q
+    B^   /DQQQBQQQQQQBQBDQQD1:   "B
+   Q~   ,GQBDQDQQQQQQBBQQDQ&EC    7B
+   D    lQQQQQBQBQQQQQQQQBBID('    {
+   E   .iDDBQQBQQQQBBBQBQQDQ1!:    (
+   3   .(BQBBQBBQQQQBBQBBBDBS'     }                     I'm
+   Q   '~~<MMBQQBBQBP"""<BD1EL.    Q                   dreaming
+   Q    LuL `7QBBB?../LL;.!JDL     Q                    of a
+  "  ,  ,__&L.DBBEEL1L_,'EylEE!  ,U                     white
+  1 :s&yyQQQ6-DQBBQ&QQQQQQQQJY!  lyB1Q                Christmas.
+  S  ?DDQQBD'.QQBDQDBQBQQQDD1<  LIQDG
+  Q   j8BQE2 LQQBE9EBBEBQQES{! /BQSE
+   Q_ 'TS7L  <#P~^,G1?TXC3({!  3PEy
+    Q, ,_>'.,___yBD1DU;,'('''  yQ
+     L "Qy,  'IIIZl',L/&;!;:  LQ
+     Q; FD(  (`IE2L/QDB&lY!   6Q
+      Q, (/. `!?"21iQDU&/~   L FB
+       Q_ (EL/&&QDBQBDJ"   ,y^  `FB
+        Qy 75EEBBQESf`   _yB^      "M
+        Q7  `'^""~`   _yQQM'         `"FQ
+        F;         _yQQQQF              Q
+  -->
+  </head>
+  <body>
+    <form action="/figures" method="POST">
+<label for="figure_name">Figure Name:</label><br>
+<input id="figure_name" type="text" name="figure[name]"><br><br>
+
+<label for="title_id">Titles:</label><br>
+    <input type="checkbox" name="figure[title_ids][]" value="210" id="title_210">Mayor</input>
+    <input type="checkbox" name="figure[title_ids][]" value="211" id="title_211">Councilman</input>
+    <input type="checkbox" name="figure[title_ids][]" value="212" id="title_212">Mayor</input>
+    <input type="checkbox" name="figure[title_ids][]" value="213" id="title_213">Councilman</input>
+    <input type="checkbox" name="figure[title_ids][]" value="214" id="title_214">Mayor</input>
+    <input type="checkbox" name="figure[title_ids][]" value="215" id="title_215">Councilman</input>
+    <input type="checkbox" name="figure[title_ids][]" value="216" id="title_216">Mayor</input>
+    <input type="checkbox" name="figure[title_ids][]" value="217" id="title_217">Mayor</input>
+    <input type="checkbox" name="figure[title_ids][]" value="218" id="title_218">Mr. President</input>
+<br><br>
+<label for="title_id">Create New Title:</label><br>
+<input id="title[name]" type="text" name="title_name"><br><br>
+
+<label for="landmark_id">Landmarks:</label><br>
+    <input type="checkbox" name="figure[landmark_ids][]" value=" 315" id="LG Airport">LG Airport</input>
+    <input type="checkbox" name="figure[landmark_ids][]" value=" 316" id="Library">Library</input>
+    <input type="checkbox" name="figure[landmark_ids][]" value=" 317" id="LG Airport">LG Airport</input>
+    <input type="checkbox" name="figure[landmark_ids][]" value=" 318" id="Library">Library</input>
+    <input type="checkbox" name="figure[landmark_ids][]" value=" 319" id="LG Airport">LG Airport</input>
+    <input type="checkbox" name="figure[landmark_ids][]" value=" 320" id="Library">Library</input>
+    <input type="checkbox" name="figure[landmark_ids][]" value=" 321" id="LG Airport">LG Airport</input>
+    <input type="checkbox" name="figure[landmark_ids][]" value=" 322" id="Library">Library</input>
+    <input type="checkbox" name="figure[landmark_ids][]" value=" 323" id="LG Airport">LG Airport</input>
+    <input type="checkbox" name="figure[landmark_ids][]" value=" 324" id="Library">Library</input>
+    <input type="checkbox" name="figure[landmark_ids][]" value=" 325" id="BQE">BQE</input>
+<br><br>
+<label for="landmark_id">Create New Landmark:</label><br>
+<input id="landmark[name]" type="text" name="landmark_name"><br><br>
+
+<input type=submit value="Create New Figure">
+</form>
+
+
+
+  </body>
+
+</html>

@@ -9,13 +9,11 @@ class FiguresController < ApplicationController
   get '/figures/new' do
     @landmarks = Landmark.all
     @titles = Title.all
-    #create new figures
     erb :'figures/new'
-
-    redirect '/figures/:id'
   end
 
   post '/figures' do
+    binding.pry
   end
 
   get '/figures/:id' do
