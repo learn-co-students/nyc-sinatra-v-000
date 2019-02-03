@@ -12,12 +12,8 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-    @figure = Figure.create(name: params[:figure][:name])
-    
-    @figure.titles << Title.find(params[:figure][:title_ids]) unless !params[:figure][:title_ids]
+    @figure = Figure.create(params[:figure])
     @figure.titles << Title.create(name: params[:title][:name]) unless params[:title][:name] == ""
-    
-    @figure.landmarks << Landmark.find(params[:figure][:landmark_ids]) unless !params[:figure][:landmark_ids]
     @figure.landmarks << Landmark.create(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed]) unless params[:landmark][:name] == ""
     
     @figure.save
@@ -38,14 +34,9 @@ class FiguresController < ApplicationController
 
   patch '/figures/:id' do
     @figure = Figure.find(params[:id])
-    @figure.update(name: params[:figure][:name])
-
-    @figure.titles.clear
-    @figure.titles << Title.find(params[:figure][:title_ids]) unless !params[:figure][:title_ids]
-    @figure.titles << Title.create(name: params[:title][:name]) unless params[:title][:name] == ""
     
-    @figure.landmarks.clear
-    @figure.landmarks << Landmark.find(params[:figure][:landmark_ids]) unless !params[:figure][:landmark_ids]
+    @figure.update(params[:figure])
+    @figure.titles << Title.create(name: params[:title][:name]) unless params[:title][:name] == ""
     @figure.landmarks << Landmark.create(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed]) unless params[:landmark][:name] == ""
     
     @figure.save
