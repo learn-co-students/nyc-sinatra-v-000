@@ -5,15 +5,15 @@ class LandmarksController < ApplicationController
     erb :'/landmark/index'
   end
 
-  get '/landmarks/:id' do
-    @landmark = Landmark.find_by(params[:id])
-    erb :'/landmark/show'
-  end
-
   get '/landmark/new' do
     @figures = Figure.all
     @titles = Title.all
     erb :'/landmark/new'
+  end
+
+  get '/landmarks/:id' do
+    @landmark = Landmark.find_by(params[:id])
+    erb :'/landmark/show'
   end
 
   post '/landmark' do
@@ -28,6 +28,7 @@ class LandmarksController < ApplicationController
 
   patch '/landmark/:id' do
     
+    redirect "landmarks/#{@landmark.id}"
   end
 
 end
