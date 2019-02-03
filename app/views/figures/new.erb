@@ -1,23 +1,40 @@
-<h2>Create New Figure</h2>
+<%# I know this is atrocious styling but I couldn't stand having to scroll to see my whole form. %>
+
+<h1>Create New Figure</h1>
+<br>
 
 <form method="POST" action="/figures">
-  <label for="figure[name]">Name </label><input id="figure_name" type="text" name="figure[name]"><br><br>
-  
-  <label for="figure[title_ids][]"><h3>Titles</h3></label>
-  <% @titles.each do |title| %>
-    <input id="title_<%= title.id %>" type="checkbox" name="figure[title_ids][]" value="<%= title.id %>"><%= title.name %></input><br>
-  <% end %><br>
-  
-  <label for="title[name]"><b>Create New Title:</b></label><br><br>
-  <input id="new_title" type="text" name="title[name]"><br><br>
-  
-  <label for="figure[landmark_ids][]"><h3>Landmarks</h3></label>
-  <% @landmarks.each do |landmark| %>
-    <input id="landmark_<%= landmark.id %>" type="checkbox" name="figure[landmark_ids][]" value="<%= landmark.id %>"><%= landmark.name %></input><br>
-  <% end %><br>
-  
-  <label><b>Create New Landmark:</b></label><br><br>
-  <label for="landmark[name]">Name: </label><input id="new_landmark" type="text" name="landmark[name]"><label for="landmark[year_completed]">  Year: </label><input type="text" name="landmark[year_completed]"><br><br>
-  
-  <input type="submit" value="Create New Figure">
+  <div class="top" style="display: block;">
+    <label for="figure[name]" style="font-size: 1.75rem; font-weight: bold; padding-right: 0.5em;">Figure Name</label><input id="figure_name" type="text" name="figure[name]"><br><br>
+  </div>
+
+  <br>
+  <div class="left-column" style="float: left; padding-right: 7.5%; display: inline;">
+    <label for="figure[title_ids][]" style="font-size: 1.5rem; font-weight: bold;">Titles</label><br><br>
+    <% @titles.each do |title| %>
+      <input id="title_<%= title.id %>" type="checkbox" name="figure[title_ids][]" value="<%= title.id %>"><%= title.name %></input><br>
+    <% end %><br><br>
+    
+    <label for="title[name]" style="font-size: 1.25rem; font-weight: bold;">Create New Title:</label><br><br>
+    <input id="new_title" type="text" name="title[name]">
+    </div>
+
+  <div class="right-column" style="clear: right; float: left; display: inline;">
+    <label for="figure[landmark_ids][]" style="font-size: 1.5rem; font-weight: bold;">Landmarks</label><br><br>
+    <% @landmarks.each do |landmark| %>
+      <input id="landmark_<%= landmark.id %>" type="checkbox" name="figure[landmark_ids][]" value="<%= landmark.id %>"><%= landmark.name %></input><br>
+    <% end %><br><br>
+    
+    <label style="font-size: 1.25rem; font-weight: bold;">Create New Landmark:</label><br><br>
+    <label for="landmark[name]">Name: </label><input id="new_landmark" type="text" name="landmark[name]"><label for="landmark[year_completed]">  Year: </label><input type="text" name="landmark[year_completed]">
+    </div>
+
+  <div class="bottom" style="clear: both;">
+    <br><br>
+    <input style="font-size: 1.5rem;" type="submit" value="Create New Figure">
+  </div>
 </form>
+
+<br>
+<h4><a class="button" href="/landmarks">Landmarks</a></h4>
+<h4><a class="button" href="/">Home</a></h4>
