@@ -1,0 +1,18 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+<h1>Figure Name: <%= @figure.name %> </h1>
+<br>
+
+<h2>Titles</h2>
+<% @figure.titles.each do |title| %>
+  <p><%= title.name %></p>
+<% end %>
+<br>
+
+<h2>Landmarks</h2>
+<% @figure.landmarks.each do |landmark| %>
+  <p><%= landmark.name %></p>
+<% end %>
+<br>
