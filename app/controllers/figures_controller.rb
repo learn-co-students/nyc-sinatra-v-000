@@ -81,7 +81,7 @@ class FiguresController < ApplicationController
     
     @figure.save
 
-    flash[:message] = "Successfully updated song."
+    flash[:message] = "Successfully updated figure."
     
     redirect("/figures/#{@figure.id}")
   end
