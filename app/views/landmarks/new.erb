@@ -5,16 +5,6 @@
 
   <br>
 
-  <h3>Select a Figure</h3>
-  <% Figure.all.each do |figure| %>
-    <%= figure.name + " " %><input type="radio" name="landmark[figure_id]" id="figure_<%= figure.id %>" value="<%= figure.id %>"><br>
-  <% end %>
-
-  <h3>Or, Create a New Figure</h3>
-  <label>Name: <input type="text" name="figure[name]" id="new_figure"></label><br>
-
-  <br>
-
   <input type="submit" id="Submit" value="Create New Landmark">
 </form>
 
