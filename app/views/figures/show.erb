@@ -1,0 +1,21 @@
+<h2><%= @figure.name %></h2>
+<br>
+
+<h3>Titles: </h3>
+<ul>
+  <% @figure.titles.each do |e| %>
+    <% if !e.name.to_s.empty? %>
+      <li><%= e.name%></li>
+    <% end %>
+  <% end %>
+</ul>
+<br>
+
+<h3>Landmarks: </h3>
+<ul>
+  <% @figure.landmarks.each do |e| %>
+    <% if !e.name.to_s.empty? %>
+      <li><%= e.name %></li>
+    <% end %>
+  <% end %>
+</ul>
