@@ -36,12 +36,6 @@ class FiguresController < ApplicationController
   end
 
   patch '/figures/:id' do
-    # binding.pry
-   # {"figure"=>{"name"=>"Missy", "landmark_ids"=>["200"]},
-   # "title"=>{"name"=>""},
-   # "landmark"=>{"name"=>"Big Tower", "year"=>""},
-   # "_method"=>"patch",
-   # "submit"=>"Edit Figure"}
    @figure = Figure.find(params[:id])
    @figure.update(params[:figure])
    @figure.titles << Title.create(params[:title]) if !params[:title][:name].empty?
