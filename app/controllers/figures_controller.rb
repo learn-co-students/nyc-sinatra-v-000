@@ -13,11 +13,6 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-    # binding.pry
-   #  {"figure"=>{"name"=>"Donald Trump", "title_ids"=>["3"], "landmark_ids"=>["1"]},
-   # "title"=>{"name"=>"Your Fired!"},
-   # "landmark"=>{"name"=>"Trump Tower", "year"=>"1974"},
-   # "submit"=>"Create New Figure"}
    @figure = Figure.create(params[:figure])
    @figure.titles << Title.create(params[:title])
    @figure.landmarks << Landmark.create(name: params[:landmark][:new_landmark], year_completed: params[:landmark][:year_completed])
@@ -33,11 +28,27 @@ class FiguresController < ApplicationController
   end
 
   get '/figures/:id/edit' do
+    @figure = Figure.find(params[:id])
+    @titles = Title.all
+    @landmarks = Landmark.all
 
+    erb :'/figures/edit'
   end
 
-  patch '/figures' do
+  patch '/figures/:id' do
+    # binding.pry
+   # {"figure"=>{"name"=>"Missy", "landmark_ids"=>["200"]},
+   # "title"=>{"name"=>""},
+   # "landmark"=>{"name"=>"Big Tower", "year"=>""},
+   # "_method"=>"patch",
+   # "submit"=>"Edit Figure"}
+   @figure = Figure.find(params[:id])
+   @figure.update(params[:figure])
+   @figure.titles << Title.create(params[:title]) if !params[:title][:name].empty?
+   @figure.landmarks << Landmark.create(name: params[:landmark][:name], year_completed: params[:landmark][:year]) if !params[:landmark][:name].empty?
+   @figure.save
 
+   redirect :"/figures/#{@figure.id}"
   end
 
 end
