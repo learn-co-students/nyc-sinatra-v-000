@@ -2,5 +2,11 @@
 
 <!-- add content here -->
 
+<ol>
+    <% @landmarks.all.each do |landmark| %>
+        <li><a href='/landmarks/<%=landmark.name %>'><%= landmark.name %></a></li>
+    <% end %>
+</ol>
+
 <a class="button" href="/figures">Figures</a>
 <a class="button" href="/">Home</a>
