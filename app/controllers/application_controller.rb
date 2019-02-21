@@ -5,6 +5,7 @@ class ApplicationController < Sinatra::Base
 
     enable :sessions
 
+
     get '/' do
         erb :"application/index"
     end
