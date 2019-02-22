@@ -1,6 +1,6 @@
-<h2>Edit Historical Landmark</h2>
+<h2>Edit Historical <%=@landmark.name %></h2>
 
-<form action="/landmarks/<%= @landmark.id %>">
+<form action="/landmarks/<%= @landmark.slug %>">
     <input type="hidden" name="_method" value="patch">
 
     <label for="name">Landmark Name: </label>

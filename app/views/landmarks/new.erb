@@ -1,5 +1,4 @@
 <h2>Create New Landmark</h2>
-
 </br>
 <form action="/landmarks" method="post">
 <label for="landmark_name">Landmark Name: </label>
@@ -9,7 +8,7 @@
 
 <h2>Figures</h2>
 <% Figure.all.each do |figure| %>
-<input type="checkbox" id="figure_<%= figure.id %>" name="landmark[figure_ids][]" value="<%= figure.id %>"><%= figure.name %></br>
+<input type="checkbox" id="figure_<%= figure.slug %>" name="landmark[figure_ids][]" value="<%= figure.slug %>"><%= figure.name %></br>
 <% end %>
 
 <h2>Create New Figure </h2>

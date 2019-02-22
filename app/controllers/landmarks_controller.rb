@@ -20,7 +20,7 @@ class LandmarksController < ApplicationController
       erb :'landmarks/show'
   end
 
-  patch '/landmarks/:id' do
+  patch '/landmarks/:slug' do
       @landmarks = Landmark.find_by_slug(params[:slug])
       @landmark.name = params[:landmark][:name]
       @landmark.year_completed = params[:landmark][:year_completed]
