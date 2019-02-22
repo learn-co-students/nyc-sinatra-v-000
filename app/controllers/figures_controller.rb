@@ -10,39 +10,34 @@ class FiguresController < ApplicationController
         erb :'figures/new'
     end
 
-    get '/figures/:id' do
-        @figure = Figure.find(params[:id])
+    post '/figures' do
+        @figure = Figure.create(name: params[:figure][:name])
+        @figure.landmark = Landmark.find_or_create_by(name: params[:figure][:landmark])
+        @figure.title = Title.create(name: params[:figure][:title])
+        @figure.save
+
+        redirect to ("/figures/#{@figure.slug}")
+    end
+
+    get '/figures/:slug' do
+        @figure = Figure.find_by_slug(params[:slug])
         erb :'figures/show'
     end
 
-    post '/figures' do
-        @figure = Figure.create(params[:figure])
-        if !params[:landmark][:name].empty?
-            @figure.landmarks << Landmark.create(params[:landmark])
-        end
-        if !params[:title][:name].empty?
-            @figure.titles << Title.create(params[:title])
-        end
+    patch '/figures/:slug' do
+        @figure = Figure.find_by_slug(params[:slug])
+        @figure.name = params[:figure][:name]
+        @figure.title = Title.find_or_create_by(name: params[:figure][:title])
+        #@figure.
+        @figure.landmark = Landmark.find_or_create_by(name: params[:figure][:landmark])
         @figure.save
-        redirect to("/figures/#{@figure.id}")
+        redirect to ("/figures/#{@figure.slug}")
     end
 
-    get '/figures/:id/edit' do
-        @figure = Figure.find_by(params[:id])
+    get '/figures/:slug/edit' do
+        @figure = Figure.find_by_slug(params[:slug])
         erb :'figures/edit'
     end
 
-    patch '/figures/:id' do
-        @figure = Figure.find_by_id(params[:id])
-        @figure.update(params[:figure])
-        if !params[:title][:name].empty?
-            @figure.titles << Title.create(params[:title])
-        end
-        if !params[:landmark][:name].empty?
-            @figure.landmarks << Landmark.create(params[:landmark])
-        end
-        @figure.save
-        redirect to "/figures/#{@figure.id}"
-    end
 
 end
