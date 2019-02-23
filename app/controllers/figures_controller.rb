@@ -28,12 +28,12 @@ class FiguresController < ApplicationController
     end
 
     patch '/figures/:slug' do
-        #@figure = Figure.find_by_slug(params[:slug])
-        #@figure.name = params[:figure][:name]
-        #@figure.title = Title.find_or_create_by(name: params[:figure][:title])
-        ##@figure.
-        #@figure.landmark = Landmark.find_or_create_by(name: params[:figure][:landmark])
-        #@figure.save
+        @figure = Figure.create(params[:figure])
+        @figure.update(name: params[:figure][:name])
+        @figure.landmarks << Landmark.create(params[:landmark]) unless params[:landmark][:name].blank?
+        @figure.titles << Title.create(params[:title]) unless params[:title][:name].blank?
+        @figure.save
+
         redirect to ("/figures/#{@figure.slug}")
     end
 
