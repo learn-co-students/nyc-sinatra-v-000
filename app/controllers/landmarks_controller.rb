@@ -6,7 +6,6 @@ class LandmarksController < ApplicationController
   end
 
   get '/landmarks/new' do
-      @figures = Figure.all
       erb :'landmarks/new'
   end
 
@@ -21,16 +20,16 @@ class LandmarksController < ApplicationController
   end
 
   patch '/landmarks/:slug' do
-      @landmarks = Landmark.find_by_slug(params[:slug])
+      @landmark = Landmark.find_by_slug(params[:slug])
       @landmark.name = params[:landmark][:name]
       @landmark.year_completed = params[:landmark][:year_completed]
       @landmark.save
       redirect to "/landmarks/#{landmark.slug}"
   end
 
-  get '/landmark/:slug/edit' do
+  get '/landmarks/:slug/edit' do
       @landmark = Landmark.find_by_slug(params[:slug])
-      erb :'landmarks/edit'
+      erb :'/landmarks/edit'
   end
 
 
