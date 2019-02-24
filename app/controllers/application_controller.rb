@@ -1,8 +1,12 @@
 class ApplicationController < Sinatra::Base
-  set :views, proc { File.join(root, '../views/') }
-  register Sinatra::Twitter::Bootstrap::Assets
+    set :sessions_secret, "my_application_secret"
+    set :views, proc { File.join(root, '../views/') }
+    register Sinatra::Twitter::Bootstrap::Assets
 
-  get '/' do
-    erb :"application/index"
-  end
+    enable :sessions
+
+
+    get '/' do
+        erb :"application/index"
+    end
 end

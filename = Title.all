@@ -1,0 +1,55 @@
+=> [[32m#<Landmark:0x0000000208c918[0m
+  id: [1;34m254[0m,
+  name: [31m[1;31m"[0m[31mLG Airport[1;31m"[0m[31m[0m,
+  year_completed: [1;36mnil[0m,
+  figure_id: [1;36mnil[0m[32m>[0m,
+ [32m#<Landmark:0x0000000208c580[0m
+  id: [1;34m255[0m,
+  name: [31m[1;31m"[0m[31mLibrary[1;31m"[0m[31m[0m,
+  year_completed: [1;36mnil[0m,
+  figure_id: [1;36mnil[0m[32m>[0m,
+ [32m#<Landmark:0x0000000208c378[0m
+  id: [1;34m256[0m,
+  name: [31m[1;31m"[0m[31mLG Airport[1;31m"[0m[31m[0m,
+  year_completed: [1;36mnil[0m,
+  figure_id: [1;34m329[0m[32m>[0m,
+ [32m#<Landmark:0x0000000208c0f8[0m
+  id: [1;34m257[0m,
+  name: [31m[1;31m"[0m[31mLibrary[1;31m"[0m[31m[0m,
+  year_completed: [1;36mnil[0m,
+  figure_id: [1;34m329[0m[32m>[0m,
+ [32m#<Landmark:0x0000000208c300[0m
+  id: [1;34m258[0m,
+  name: [31m[1;31m"[0m[31mLG Airport[1;31m"[0m[31m[0m,
+  year_completed: [1;36mnil[0m,
+  figure_id: [1;36mnil[0m[32m>[0m,
+ [32m#<Landmark:0x0000000208cc10[0m
+  id: [1;34m259[0m,
+  name: [31m[1;31m"[0m[31mLibrary[1;31m"[0m[31m[0m,
+  year_completed: [1;36mnil[0m,
+  figure_id: [1;36mnil[0m[32m>[0m,
+ [32m#<Landmark:0x0000000208de58[0m
+  id: [1;34m260[0m,
+  name: [31m[1;31m"[0m[31mLG Airport[1;31m"[0m[31m[0m,
+  year_completed: [1;34m1950[0m,
+  figure_id: [1;36mnil[0m[32m>[0m,
+ [32m#<Landmark:0x0000000208f550[0m
+  id: [1;34m261[0m,
+  name: [31m[1;31m"[0m[31mLibrary[1;31m"[0m[31m[0m,
+  year_completed: [1;36mnil[0m,
+  figure_id: [1;36mnil[0m[32m>[0m,
+ [32m#<Landmark:0x00000002097d68[0m
+  id: [1;34m262[0m,
+  name: [31m[1;31m"[0m[31mLG Airport[1;31m"[0m[31m[0m,
+  year_completed: [1;34m1950[0m,
+  figure_id: [1;34m332[0m[32m>[0m,
+ [32m#<Landmark:0x00000002097958[0m
+  id: [1;34m263[0m,
+  name: [31m[1;31m"[0m[31mLibrary[1;31m"[0m[31m[0m,
+  year_completed: [1;36mnil[0m,
+  figure_id: [1;36mnil[0m[32m>[0m,
+ [32m#<Landmark:0x00000002097070[0m
+  id: [1;34m264[0m,
+  name: [31m[1;31m"[0m[31mBQE[1;31m"[0m[31m[0m,
+  year_completed: [1;34m1961[0m,
+  figure_id: [1;34m335[0m[32m>[0m]
