@@ -11,24 +11,28 @@ class LandmarksController < ApplicationController
 
   post '/landmarks' do
       @landmark = Landmark.create(params[:landmark])
-      redirect "landmarks/#{@landmark.slug}"
+      @landmark.figure = Figure.create(params[:figure]) unless params[:figure][:name].empty?
+      @landmark.save
+      redirect "landmarks/#{@landmark.id}"
   end
 
-  get '/landmarks/:slug' do
-      @landmark = Landmark.find_by_slug(params[:slug])
+  get '/landmarks/:id' do
+      @landmark = Landmark.find(params[:id])
       erb :'landmarks/show'
   end
 
-  patch '/landmarks/:slug' do
-      @landmark = Landmark.find_by_slug(params[:slug])
-      @landmark.name = params[:landmark][:name]
-      @landmark.year_completed = params[:landmark][:year_completed]
+  patch '/landmarks/:id' do
+      @landmark = Landmark.find(params[:id])
+      @landmark.update(name: params[:landmark][:name])
+      @landmark.update(year_completed: params[:landmark][:year_completed])
+      @landmark.figure = Figure.create(params[:figure]) unless params[:figure][:name].empty?
+
       @landmark.save
-      redirect to "/landmarks/#{landmark.slug}"
+      redirect to "/landmarks/#{landmark.id}"
   end
 
-  get '/landmarks/:slug/edit' do
-      @landmark = Landmark.find_by_slug(params[:slug])
+  get '/landmarks/:id/edit' do
+      @landmark = Landmark.find(params[:id])
       erb :'/landmarks/edit'
   end
 

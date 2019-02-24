@@ -13,32 +13,31 @@ class FiguresController < ApplicationController
 #POST - create a new figure instance
     post '/figures' do
         @figure = Figure.create(params[:figure])
-        #@figure = Figure.create(name: params[:figure][:name])
-        #@figure.landmark = Landmark.find_or_create_by(name: params[:figure][:landmark])
-        #@figure.title = Title.create(name: params[:figure][:title])
-        #@figure.save
+        @figure.landmarks <<  Landmark.create(params[:landmark]) unless params[:landmark][:name].empty?
+        @figure.titles << Title.create(params[:title]) unless params[:title][:name].empty?
+        @figure.save
 
-        redirect to ("/figures/#{@figure.slug}")
+        redirect to ("/figures/#{@figure.id}")
     end
 
 # SHOW - find a particular figure and display it.
-    get '/figures/:slug' do
-        @figure = Figure.find_by_slug(params[:slug])
+    get '/figures/:id' do
+        @figure = Figure.find(params[:id])
         erb :'/figures/show'
     end
 
-    patch '/figures/:slug' do
+    patch '/figures/:id' do
         @figure = Figure.create(params[:figure])
         @figure.update(name: params[:figure][:name])
         @figure.landmarks << Landmark.create(params[:landmark]) unless params[:landmark][:name].blank?
         @figure.titles << Title.create(params[:title]) unless params[:title][:name].blank?
         @figure.save
 
-        redirect to ("/figures/#{@figure.slug}")
+        redirect to ("/figures/#{@figure.id}")
     end
 
-    get '/figures/:slug/edit' do
-        @figure = Figure.find_by_slug(params[:slug])
-        erb :'/figures/edit'
+    get '/figures/:id/edit' do
+        @figure = Figure.find(params[:id])
+        erb :'figures/edit'
     end
 end
