@@ -1,5 +1,4 @@
 class FiguresController < ApplicationController
-  # add controller methods
   get '/figures' do
     @figures = Figure.all
     erb :'figures/index'
@@ -20,12 +19,12 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-    @figure = Figure.create(params[:owner])
-    if !params[:landmark][:name].empty?
+    @figure = Figure.create(params['figure'])
+    unless params[:landmark][:name].empty?
       @figure.landmarks << Landmark.create(params[:landmark])
     end
 
-    if !params[:title][:name].empty?
+    unless params[:title][:name].empty?
       @figure.titles << Title.create(params[:title])
     end
 
@@ -36,11 +35,10 @@ class FiguresController < ApplicationController
   patch '/figures/:id' do
     @figure = Figure.find_by_id(params[:id])
     @figure.update(params[:figure])
-
-    if !params[:title][:name].empty?
+    unless params[:title][:name].empty?
       @figure.titles << Title.create(params[:title])
     end
-    if !params[:landmark][:name].empty?
+    unless params[:landmark][:name].empty?
       @figure.landmarks << Landmark.create(params[:landmark])
     end
     @figure.save
