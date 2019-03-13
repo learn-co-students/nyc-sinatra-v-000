@@ -24,4 +24,8 @@ class FiguresController < ApplicationController
     erb :'/figures/edit'
   end
 
+  patch '/figures/:slug' do
+    
+  end
+
 end

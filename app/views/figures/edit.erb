@@ -3,11 +3,20 @@
 <form action='/figure/:slug' method='post'>
   <input id="hidden" type="hidden" name="_method" value="patch">
 
-  <label>Name:</label>
+  <label>Name:</label><br>
   <input type='text' name='figure[name]' value='<%=@figure.name%>' id='figure_name'>
 
   <br><br>
 
-  
+  <label>Titles</label><br>
+    <% Title.all.each do |title| %>
+      <input type="checkbox" name="figure[title][]" value="<%=title.id%>"
+        <%='checked' if @figure.titles.include?(title) %>> <%=title.name%>
+      </input>
+    <%end%>
 
+
+
+    
+    <input type="submit" value="Save">
 </form>
