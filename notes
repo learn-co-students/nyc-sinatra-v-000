@@ -1,4 +1,4 @@
 rake db:migrate SINATRA_ENV=test
 rake db:migrate
 rake db:seed
-rspec spec/figures_controller_view_spec.rb
+rspec spec/figures_controller_view_spec.rb --f-f
