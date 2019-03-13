@@ -1,0 +1,13 @@
+<h3>Edit <%= @figure.name %></h3>
+
+<form action='/figure/:slug' method='post'>
+  <input id="hidden" type="hidden" name="_method" value="patch">
+
+  <label>Name:</label>
+  <input type='text' name='figure[name]' value='<%=@figure.name%>' id='figure_name'>
+
+  <br><br>
+
+  
+
+</form>
