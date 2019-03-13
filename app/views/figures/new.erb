@@ -12,7 +12,7 @@
     <%end%>
 
   <h3>Create a new Title:</h3>
-    <input type='text' name='figure[title]'>
+    <input type='text' name='title[name]'>
 
   <h3>Landmarks</h3>
     <% Landmark.all.each do |landmark| %>
@@ -23,9 +23,9 @@
 
   <h3>Create New Landmark:</h3>
     <label>Name:</label>
-      <input type='text' name='figure[landmark][name]'>
+      <input type='text' name='landmark[name]'>
     <label>Year:</label>
-      <input type='integer' name='figure[landmark][year]'>
+      <input type='integer' name='landmark[year]'>
   <br><br>
-  <input type="submit" value="Create">
+  <input type="submit" value="Create New Figure">
 </form>
