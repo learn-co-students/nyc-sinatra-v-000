@@ -12,7 +12,12 @@ class FiguresController < ApplicationController
       @figure.title_ids = Title.create(params[:title])
     end
     @figure.save
-    redirect '/figures/#{slug}'
+    redirect '/figures/#{@figure.slug}'
+  end
+
+  get '/figures/:slug' do
+    @figure = Figure.find_by_slug(params[:slug])
+    erb :'/figures/show'
   end
 
 
