@@ -16,7 +16,7 @@ class FiguresController < ApplicationController
     end
     @figure.landmarks = Landmark.where(id: params[:figure][:landmark_ids])
     if !params[:landmark].empty?
-          binding.pry
+          # binding.pry
       @figure.landmarks << Landmark.create(params[:landmark])
     end
 
