@@ -34,7 +34,21 @@ class FiguresController < ApplicationController
 
   patch '/figures/:id' do
     @figure = Figure.find(params[:id])
+    @figure.update(:name => params[:figure][:name], :landmark_ids => params[:figure][:landmark_ids])
+    if !params[:landmark].empty?
+      @figure.landmarks << Landmark.create(params[:landmark])
+    end
+    @figure.save
     erb :"/figures/#{@figure.id}"
   end
+  # update(id, attributes)
+  # Person.update(15, :user_name => 'Samuel', :group => 'expert')
+
+  # {"_method"=>"patch",
+  #  "figure"=>{"name"=>"Missy", "landmark_ids"=>["685"]},
+  #  "landmark"=>{"name"=>"Big Tower", "year_completed"=>""},
+  #  "id"=>"1080"}
+
+
 
 end
