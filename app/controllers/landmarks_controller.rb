@@ -19,9 +19,16 @@ class LandmarksController < ApplicationController
   end
 
   get '/landmarks/:id/edit' do
-    @landmark = Landmark.find(params[:id])
+    @land = Landmark.find(params[:id])
     erb :'/landmarks/edit'
   end
 
-
+  patch '/landmarks/:id' do
+    @land = Landmark.find(params[:id])
+    @land.update(:name => params[:landmark][:name], :year_completed => params[:landmark][:year_completed])
+    erb :"/landmarks/#{@land.id}"
+  end
+  # {"_method"=>"patch",
+  #  "landmark"=>{"name"=>"BQE!!!!", "year_completed"=>"9999"},
+  #  "id"=>"862"}
 end
