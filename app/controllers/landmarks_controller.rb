@@ -28,7 +28,5 @@ class LandmarksController < ApplicationController
     @land.update(:name => params[:landmark][:name], :year_completed => params[:landmark][:year_completed])
     erb :"/landmarks/#{@land.id}"
   end
-  # {"_method"=>"patch",
-  #  "landmark"=>{"name"=>"BQE!!!!", "year_completed"=>"9999"},
-  #  "id"=>"862"}
+  
 end
