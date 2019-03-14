@@ -13,6 +13,12 @@ class LandmarksController < ApplicationController
     erb :"/landmarks/#{@land.id}"
   end
 
-# {"landmark"=>{"name"=>"Arc de Triomphe", "year_completed"=>"1806"}}
+  get '/landmarks/:id' do
+    @land = Landmark.find(params[:id])
+    erb :'/landmarks/show'
+  end
+
+
+
 
 end
