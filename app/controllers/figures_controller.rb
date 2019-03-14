@@ -41,14 +41,5 @@ class FiguresController < ApplicationController
     @figure.save
     erb :"/figures/#{@figure.id}"
   end
-  # update(id, attributes)
-  # Person.update(15, :user_name => 'Samuel', :group => 'expert')
-
-  # {"_method"=>"patch",
-  #  "figure"=>{"name"=>"Missy", "landmark_ids"=>["685"]},
-  #  "landmark"=>{"name"=>"Big Tower", "year_completed"=>""},
-  #  "id"=>"1080"}
-
-
 
 end
