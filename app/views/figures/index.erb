@@ -3,7 +3,7 @@
 <ul>
   <% Figure.all.each do |figure| %>
     <li>
-      <%= figure.name %>
+      <a href='/figures/<%=figure.id%>'><%= figure.name %></a>
     </li>
   <% end %>
 </ul>

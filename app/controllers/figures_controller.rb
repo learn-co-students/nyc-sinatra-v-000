@@ -16,29 +16,23 @@ class FiguresController < ApplicationController
     end
     @figure.landmarks = Landmark.where(id: params[:figure][:landmark_ids])
     if !params[:landmark].empty?
-          # binding.pry
       @figure.landmarks << Landmark.create(params[:landmark])
     end
-
     @figure.save
     redirect "/figures/#{@figure.slug}"
   end
 
-  # {"figure"=>{"name"=>"Doctor Who", "title_ids"=>["63"]},
-  #  "title"=>{"name"=>""},
-  #  "landmark"=>{"name"=>"", "year"=>""}}
-
-  get '/figures/:slug' do
-    @figure = Figure.find_by_slug(params[:slug])
+  get '/figures/:id' do
+    @figure = Figure.find(params[:id])
     erb :'/figures/show'
   end
 
-  get '/figures/:slug/edit' do
-    @figure = Figure.find_by_slug(params[:slug])
+  get '/figures/:id/edit' do
+    @figure = Figure.find(params[:id])
     erb :'/figures/edit'
   end
 
-  patch '/figures/:slug' do
+  patch '/figures/:id' do
 
   end
 
