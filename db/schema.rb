@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190323063143) do
+ActiveRecord::Schema.define(version: 20190323065227) do
 
-  create_table "figurelandmarks", force: :cascade do |t|
+  create_table "figure_titles", force: :cascade do |t|
     t.integer "figure_id"
-    t.integer "genre_id"
+    t.integer "title_id"
   end
 
   create_table "figures", force: :cascade do |t|
