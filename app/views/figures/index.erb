@@ -1,0 +1,5 @@
+<h1>Choose An Historical Figure</h1>
+ <% @figures.each do |figure| %>
+  <h1><%= figure.name %></h1>
+  <h2><a href="/figures/<%= figure.id %>">Visit Page</h2>
+  <% end %>
