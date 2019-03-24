@@ -23,7 +23,7 @@ class LandmarksController < ApplicationController
     if !params["figure"]["name"].empty? && !Figure.find_by(name: params[:figure][:name])
       @figure = Figure.find_by(name: params["figure"]["name"])
     elsif Landmark.find_by(name: params["figure"]["name"])
-
+      
     end
   end
 
