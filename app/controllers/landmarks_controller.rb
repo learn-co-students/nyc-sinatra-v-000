@@ -21,8 +21,8 @@ class LandmarksController < ApplicationController
     binding.pry
     @landmark = figure.create(name: params["landmark_name"], year_completed: params["landmark_year_completed"])
     if !params["figure"]["name"].empty? && !Figure.find_by(name: params[:figure][:name])
-      @figure = Figure.find_by(name: params[:name])
-    else
+      @figure = Figure.find_by(name: params["figure"]["name"])
+    elsif Landmark.find_by(name:params["figure"]["name"])
 
     end
   end
