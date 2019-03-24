@@ -13,7 +13,8 @@ class LandmarksController < ApplicationController
   end
 
   get "/landmarks" do
-    
+    @landmarks = Landmark.all
+    erb :'/landmarks/index'
   end
 
   post "/landmarks" do
