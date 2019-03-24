@@ -12,7 +12,7 @@
 
   <br>
   <h2>Create New Title:</h2>
-  <input type="text" name="title_name" id="Title Name">
+  <input type="text" name="title[name]" id="Title Name"> <!-- Text types shouldn't have a value already in them on a new form-->
   <br>
   <h2>Landmarks</h2>
   <br>
@@ -22,9 +22,9 @@
 
   <h2>Create New Landmark:</h2>
   <label>Name</label>
-  <input type="input" name="landmark_name" value="landmark[name]">
+  <input type="input" name="landmark[name]" id="landmark_name">
   <label>Year</label>
-  <input type="input" name="landmark_year_completed" value="landmark[year_completed]">
+  <input type="input" name="landmark[year_completed]" id="landmark_year_completed">
   <input type="submit" name="Create New Landmark" value="Create New Landmark">
 </form>
 <a class="button" href="/figures">Landmarks</a>

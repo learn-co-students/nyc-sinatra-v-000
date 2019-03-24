@@ -14,16 +14,26 @@ class LandmarksController < ApplicationController
 
   get "/landmarks" do
     @landmarks = Landmark.all
+    binding.pry
     erb :'/landmarks/index'
   end
 
   post "/landmarks" do
-    binding.pry
-    @landmark = figure.create(name: params["landmark_name"], year_completed: params["landmark_year_completed"])
-    if !params["figure"]["name"].empty? && !Figure.find_by(name: params[:figure][:name])
-      @figure = Figure.find_by(name: params["figure"]["name"])
-    elsif Landmark.find_by(name: params["figure"]["name"])
-      
+    @landmark = Landmark.create(name: params["landmark_name"], year_completed: params["landmark_year_completed"])
+    if !params["title"]["name"].empty? && !Title.find_by(name: params["title"]["name"])
+      @title = Title.create(name: params["title"]["name"])
+      @landmark.titles << @title = Title.create(name: params["title"]["name"])
+      @landmark.save
+    elsif Title.find_by(name: params["title"]["name"])
+      @title = Title.find_by(name: params["title"]["name"])
+      @landmark.titles << @title = Title.create(name: params["title"]["name"])
+      @landmark.save
+    end
+
+    if !params["figure"]["name"].empty?
+      @figure = Figure.create(name: params["figure"]["name"])
+      @landmark.figure = @figure
+      @landmark.save
     end
   end
 
