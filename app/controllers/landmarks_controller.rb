@@ -13,7 +13,7 @@ class LandmarksController < ApplicationController
   end
 
   get "/landmarks" do
-    #remember the route isn't     its this ^ don't forget the seeds
+    #remember the route isn't     its this ^, also don't forget the seeds
     @landmarks = Landmark.all
     erb :'/landmarks/index' #this
   end

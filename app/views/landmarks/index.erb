@@ -4,6 +4,7 @@
 <% @landmarks.each do |landmark|%>
 <%= @landmark = landmark %>
 <li><%= @landmark.name %></li>
+<li><%= @landmark.year_completed %></li> <!-- 1969 was expected so it can be assumed -->
 <%end%>
 <a class="button" href="/figures">Figures</a>
 <a class="button" href="/">Home</a>
