@@ -1,12 +1,14 @@
 class LandmarksController < ApplicationController
   # add controller methods
   get "/landmarks/new" do
-    @landmarks = Figure.all
+    @landmarks = Landmark.all
+    @landmark = Landmark.first
     erb :'/landmarks/new'
   end
 
   get "/landmarks/:slug" do
     @landmark = Landmark.find_by_slug(params[:slug])
+    binding.pry
     @figure = @landmark.figure
     @titles = Title.all
     erb :'/landmarks/show'
