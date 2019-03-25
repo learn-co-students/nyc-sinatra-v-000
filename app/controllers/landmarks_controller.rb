@@ -13,9 +13,9 @@ class LandmarksController < ApplicationController
   end
 
   get "/landmarks" do
+    #remember the route isn't  its this ^
     @landmarks = Landmark.all
-    binding.pry
-    erb :'/landmarks/index'
+    erb :'/landmarks/index' #this
   end
 
   post "/landmarks" do
