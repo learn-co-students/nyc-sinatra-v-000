@@ -7,7 +7,8 @@ class LandmarksController < ApplicationController
   end
 
   get "/landmarks/:slug" do
-    @landmark = Landmark.find_by(id: params["slug"])
+    #@landmark = Landmark.find_by_slug(params["slug"])
+    @landmark = Landmark.find_by_id(params["slug"]) #params("slug") was an id.
     @figure = @landmark.figure
     @titles = Title.all
     erb :'/landmarks/show'
