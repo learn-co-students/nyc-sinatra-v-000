@@ -46,6 +46,7 @@ class LandmarksController < ApplicationController
     erb :"/landmarks/edit"
   end
 
+
   patch "/landmarks/:slug" do
     redirect to("/landsmarks/#{@landmark.slug}")
   end
