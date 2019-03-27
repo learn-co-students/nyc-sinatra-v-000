@@ -40,11 +40,14 @@ class LandmarksController < ApplicationController
   end
 
   get "/landmarks/:slug/edit" do
-    binding.pry
     @landmark = Landmark.find_by_id(params["slug"])
+    @figure = @landmark.figure
+    @titles = Title.all
     erb :"/landmarks/edit"
   end
 
   patch "/landmarks/:slug" do
+
+    redirect to("/landsmarks/#{@landmark.slug}")
   end
 end
