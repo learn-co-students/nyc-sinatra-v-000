@@ -2,25 +2,19 @@
 <!-- add content here -->
 <form class="" action="/landmarks/<%=@landmark.slug%>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <h2>Name</h2>
+  <h2>Edited Figured Name</h2>
   <input type="text" name="figure[name]"  id="Figure Name">
   <br>
-  <h2>Titles</h2>
+  <h2>Figure</h2>
   <br>
-  <% Title.all.each do |title| %>
-  <input type="checkbox" name="title[name]" value="<%=title.name%>" id="<%=title.name%>"><%= title.name %></input>
+  <% Figure.all.each do |figure| %>
+  <input type="radio" name="figure[name]" value="<%=figure.id%>" id="<%=figure.id%>"><%= figure.name %></input>
   <% end %>
-
-  <br>
-  <h2>Create New Title:</h2>
-  <input type="text" name="title[name]" id="Title Name"> <!-- Text types shouldn't have a value already in them on a new form-->
-  <br>
   <h2>Landmarks</h2>
   <br>
   <% Landmark.all.each do |landmark| %>
   <input type="checkbox" name="landmark[name]" value="<%=landmark.name%>" id="<%=landmark.name%>"><%= landmark.name %></input>
   <% end %>
-
   <h2>Change Landmark Attributes:</h2>
   <label>Change Name</label>
   <% @landmark.name %>

@@ -1,25 +1,21 @@
 <h2>Create New Landmark</h2>
 <!-- add content here -->
 <form class="" action="/landmarks" method="post">
-  <h2>Name</h2>
-  <input type="text" name="figure[name]"  id="Figure Name">
+  <h2>New Figure Name</h2>
+  <input type="text" name="figure_name"  id="Figure Name">
   <br>
-  <h2>Titles</h2>
+  <h2>Figure</h2>
   <br>
-  <% Title.all.each do |title| %>
-  <input type="checkbox" name="title[name]" value="<%=title.name%>" id="<%=title.name%>"><%= title.name %></input>
+  <% Figure.all.each do |figure| %>
+  <input type="radio" name="figure[name]" value="<%=figure.id%>" id="<%=figure.id%>"><%= figure.name %></input>
   <% end %>
-
-  <br>
-  <h2>Create New Title:</h2>
-  <input type="text" name="title[name]" id="Title Name"> <!-- Text types shouldn't have a value already in them on a new form-->
   <br>
   <h2>Landmarks</h2>
   <br>
   <% Landmark.all.each do |landmark| %>
   <input type="checkbox" name="landmark[name]" value="<%=landmark.name%>" id="<%=landmark.name%>"><%= landmark.name %></input>
   <% end %>
-
+  <br>
   <h2>Create New Landmark:</h2>
   <label>Name</label>
   <input type="input" name="landmark[name]" id="landmark_name">

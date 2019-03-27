@@ -1,6 +1,6 @@
 class LandmarksController < ApplicationController
   # add controller methods
-  get "/landmarks/new" do
+  get "/landmarks/new" do #landmark doesn't need a title - Isaac Villcana
     @landmarks = Landmark.all
     @landmark = Landmark.first
     erb :'/landmarks/new'
@@ -10,7 +10,6 @@ class LandmarksController < ApplicationController
     #@landmark = Landmark.find_by_slug(params["slug"])
     @landmark = Landmark.find_by_id(params["slug"]) #params("slug") was an id.
     @figure = @landmark.figure
-    @titles = Title.all
     erb :'/landmarks/show'
   end
 
@@ -21,20 +20,9 @@ class LandmarksController < ApplicationController
   end
 
   post "/landmarks" do
-    @landmark = Landmark.create(name: params["landmark_name"], year_completed: params["landmark_year_completed"])
-    if !params["title"]["name"].empty? && !Title.find_by(name: params["title"]["name"])
-      @title = Title.create(name: params["title"]["name"])
-      binding.pry
-      @landmark.titles << @title = Title.create(name: params["title"]["name"])
-      @landmark.save
-    elsif Title.find_by(name: params["title"]["name"])
-      @title = Title.find_by(name: params["title"]["name"])
-      binding.pry
-      @landmark.titles << @title = Title.create(name: params["title"]["name"])
-      @landmark.save
-    end
-
-    if !params["figure"]["name"].empty?
+    @landmark = Landmark.create(params[:landmark])
+    binding.pry
+    if !params["figure"]["name"].empty? && !Figure.find_by(name: params["figure"]["name"])
       @figure = Figure.create(name: params["figure"]["name"])
       @landmark.figure = @figure
       @landmark.save
