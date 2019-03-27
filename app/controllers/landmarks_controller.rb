@@ -26,6 +26,13 @@ class LandmarksController < ApplicationController
       @figure = Figure.create(name: params["figure"]["name"])
       @landmark.figure = @figure
       @landmark.save
+    else params["figure"]["name"].empty?
+      @figure = Figure.find_by_id(params["landmark"]["figure_id"])
+      @landmark.figure_id = params["landmark"]["figure_id"]
+      @landmark.figure = @figure
+      @landmark.save
+
+
     end
   end
 
