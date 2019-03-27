@@ -24,10 +24,12 @@ class LandmarksController < ApplicationController
     @landmark = Landmark.create(name: params["landmark_name"], year_completed: params["landmark_year_completed"])
     if !params["title"]["name"].empty? && !Title.find_by(name: params["title"]["name"])
       @title = Title.create(name: params["title"]["name"])
+      binding.pry
       @landmark.titles << @title = Title.create(name: params["title"]["name"])
       @landmark.save
     elsif Title.find_by(name: params["title"]["name"])
       @title = Title.find_by(name: params["title"]["name"])
+      binding.pry
       @landmark.titles << @title = Title.create(name: params["title"]["name"])
       @landmark.save
     end
