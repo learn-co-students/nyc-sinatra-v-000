@@ -2,5 +2,9 @@
 
 <!-- add content here -->
 
+<%@landmarks.all.each_with_index do |landmark, index|%>
+  <a href="/landmarks/<%=landmark.id%>"><%=index+1%>. <%=landmark.name%> <%=landmark.year_completed%></a><br>
+<%end%>
+
 <a class="button" href="/figures">Figures</a>
 <a class="button" href="/">Home</a>
