@@ -13,7 +13,7 @@ class FiguresController < ApplicationController
   end
 
   post "/figure" do
-    redirect to("/landmarks/#{@landmark.id}")
+    redirect to("/figures/#{@figure.id}")
   end
 
   get "/figure/:id/edit" do
@@ -21,6 +21,6 @@ class FiguresController < ApplicationController
   end
 
   patch "/figure/:id" do
-    redirect to("/landmarks/#{@landmark.id}")
+    redirect to("/figures/#{@figure.id}")
   end
 end
