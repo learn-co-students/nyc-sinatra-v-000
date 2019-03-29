@@ -15,7 +15,7 @@ class LandmarksController < ApplicationController
   get "/landmarks/:id" do #slug isn't needed because it isn't in the spec and the routes are numbers
     #@landmark = Landmark.find_by_slug(params["slug"])
     @landmark = Landmark.find_by_id(params["id"]) #params("slug") was an id.
-    @figure = @landmark.figure
+    #@figure = @landmark.figure
     erb :'/landmarks/show'
   end
 
@@ -36,6 +36,7 @@ class LandmarksController < ApplicationController
   end
 
   get "/landmarks/:id/edit" do
+    binding.pry
     @landmark = Landmark.find_by(id: params["id"])
     erb :"/landmarks/edit"
   end
