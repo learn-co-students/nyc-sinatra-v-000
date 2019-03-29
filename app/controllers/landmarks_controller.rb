@@ -21,22 +21,19 @@ class LandmarksController < ApplicationController
 
   post "/landmarks" do
     @landmark = Landmark.create(params[:landmark])
-    if !params["figure"]["name"].empty? && !Figure.find_by(name: params["figure"]["name"])
-      @figure = Figure.create(name: params["figure"]["name"])
-      @landmark.figure = @figure
-      @landmark.save
-    else params["figure"]["name"].empty?
-      @figure = Figure.find_by_id(params["landmark"]["figure_id"])
-      @landmark.figure_id = params["landmark"]["figure_id"]
-      @landmark.figure = @figure
-      @landmark.save
-
-
-    end
+    #if !params["figure"]["name"].empty? && !Figure.find_by(name: params["figure"]["name"])
+    #  @figure = Figure.create(name: params["figure"]["name"])
+    #  @landmark.figure = @figure
+    #  @landmark.save
+    #else params["figure"]["name"].empty?
+    #  @figure = Figure.find_by_id(params["landmark"]["figure_id"])
+    #  @landmark.figure_id = params["landmark"]["figure_id"]
+    #  @landmark.figure = @figure
+    #  @landmark.save
+    #end
   end
 
   get "/landmarks/:id/edit" do
-    binding.pry
     @landmark = Landmark.find_by(id: params["id"])
     erb :"/landmarks/edit"
   end
