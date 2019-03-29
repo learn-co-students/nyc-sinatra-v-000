@@ -10,11 +10,6 @@
   <% Figure.all.each do |figure| %>
   <input type="radio" name="landmark[figure_id]" value="<%=figure.id%>" id="<%=figure.id%>"><%= figure.name %></input>
   <% end %>
-  <h2>Landmarks</h2>
-  <br>
-  <% Landmark.all.each do |landmark| %>
-  <input type="checkbox" name="landmark[name]" value="<%=landmark.name%>" id="<%=landmark.name%>"><%= landmark.name %></input>
-  <% end %>
   <h2>Change Landmark Attributes:</h2>
   <label>Change Name</label>
   <%= @landmark.name %>
