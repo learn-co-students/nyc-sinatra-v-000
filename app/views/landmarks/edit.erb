@@ -17,10 +17,10 @@
   <% end %>
   <h2>Change Landmark Attributes:</h2>
   <label>Change Name</label>
-  <% @landmark.name %>
+  <%= @landmark.name %>
   <input type="input" name="landmark[name]" id="name">
   <label>Change Year Completed</label>
-  <% @landmark.year_completed.to_s %>
+  <%= @landmark.year_completed.to_s %>
   <input type="input" name="landmark[year_completed]" id="year_completed">
   <input type="submit" name="Edit Landmark" value="Edit Landmark">
 </form>

@@ -31,6 +31,7 @@ class LandmarksController < ApplicationController
     #  @landmark.figure = @figure
     #  @landmark.save
     #end
+    redirect to("/landmarks/#{@landmark.id}")
   end
 
   get "/landmarks/:id/edit" do
