@@ -6,18 +6,18 @@
   <br>
   <h2>Titles</h2>
   <% Title.all.each do |title| %>
-  <input type="radio" name="title[name]" value="<%=title.id%>" id="<%=title.id%>"><%= title.name %></input>
+  <input type="radio" name="figure[title_ids][]" value="<%=title.id%>" id="<%=title.id%>"><%= title.name %></input>
   <% end %>
   <h2>Create New Title:</h2>
   <input type="text" name="figure[title]"  id="Figure Name">
   <h2>Landmarks:</h2>
   <br>
   <% Landmark.all.each do |landmark| %>
-  <input type="radio" name="landmark[figure_id]" value="<%=landmark.id%>" id="<%=landmark.id%>"><%= figure.name %></input>
+  <input type="radio" name="figure[landmark_ids][]" value="<%=landmark.id%>" id="<%=landmark.id%>"><%= landmark.name %></input>
   <% end %>
   <br>
   <h2>Create New Title:</h2>
-  <input type="text" name="figure[name]"  id="Figure Name">
+  <input type="text" name="title[name]"  id="Title Name">
   <h2>Create New Landmark:</h2>
   <label>Name</label>
   <input type="input" name="landmark[name]" id="landmark_name">
