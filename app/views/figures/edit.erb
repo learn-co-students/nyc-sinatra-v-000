@@ -1,0 +1,27 @@
+<h2>Create New Figure</h2>
+<!-- add content here -->
+<form class="" action="/figures" method="post">
+  <h2>Edit Figure Name</h2>
+  <input type="text" name="figure[name]" value="figure_name" id="figure_name">
+  <br>
+  <h2>Titles</h2>
+  <% Title.all.each do |title| %>
+  <input type="radio" name="title[name]" value="<%=title.id%>" id="<%=title.id%>"><%= title.name %></input>
+  <% end %>
+  <h2>Edit Title:</h2>
+  <input type="text" name="figure[title]"  id="Figure Name">
+  <h2>Landmarks:</h2>
+  <br>
+  <% Landmark.all.each do |landmark| %>
+  <input type="radio" name="landmark[figure_id]" value="<%=landmark.id%>" id="<%=landmark.id%>"><%= figure.name %></input>
+  <% end %>
+  <br>
+  <h2>Create New Title:</h2>
+  <input type="text" name="figure[name]"  id="Figure Name">
+  <h2>Create New Landmark:</h2>
+  <label>Name</label>
+  <input type="input" name="landmark[name]" id="landmark_name">
+  <input type="submit" name="Create New Figure" value="Create New Figure">
+</form>
+<a class="button" href="/landmarks">Landmarks</a>
+<a class="button" href="/">Home</a>

@@ -3,9 +3,7 @@
 <!-- add content here -->
 <% @figures.each do |figure|%>
 <%= @figure = figure %>
-<li><%= @landmark.name %></li>
-<li><%= @landmark.year_completed %></li> <!-- 1969 was expected so it can be assumed -->
-<li><%= @landmark.id %></li>
+<li><%= @figure.name %></li>
 <%end%>
 <a class="button" href="/landmarks">Landmarks</a>
 <a class="button" href="/">Home</a>
