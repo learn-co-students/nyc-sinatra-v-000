@@ -2,18 +2,16 @@
 <!-- add content here -->
 <form class="" action="/figures" method="post">
   <h2>New Figure Name</h2>
-  <input type="text" name="figure[name]" value="figure_name" id="figure_name">
+  <input type="text" name="figure[name]" id="figure_name">
   <br>
   <h2>Titles</h2>
   <% Title.all.each do |title| %>
   <input type="radio" name="figure[title_ids][]" value="<%=title.id%>" id="<%=title.id%>"><%= title.name %></input>
   <% end %>
-  <h2>Create New Title:</h2>
-  <input type="text" name="figure[title]"  id="Figure Name">
   <h2>Landmarks:</h2>
   <br>
   <% Landmark.all.each do |landmark| %>
-  <input type="radio" name="figure[landmark_ids][]" value="<%=landmark.id%>" id="<%=landmark.id%>"><%= landmark.name %></input>
+  <input type="checklist" name="figure[landmark_ids][]" value="<%=landmark.id%>" id="<%=landmark.id%>"><%= landmark.name %></input>
   <% end %>
   <br>
   <h2>Create New Title:</h2>
@@ -21,6 +19,7 @@
   <h2>Create New Landmark:</h2>
   <label>Name</label>
   <input type="input" name="landmark[name]" id="landmark_name">
+    <input type="input" name="landmark[year_completed]" id="landmark_year_completed">
   <input type="submit" name="Create New Figure" value="Create New Figure">
 </form>
 <a class="button" href="/landmarks">Landmarks</a>
