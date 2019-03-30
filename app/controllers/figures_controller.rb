@@ -6,6 +6,8 @@ class FiguresController < ApplicationController
   end
 
   get "/figures/new" do
+    binding.pry
+    @figure =
     erb :'/figures/new'
   end
 
@@ -13,15 +15,17 @@ class FiguresController < ApplicationController
     erb :'/figures/show'
   end
 
-  post "/figure" do
+  post "/figures" do
+    binding.pry
+    @figure = Figure.find_by()
     redirect to("/figures/#{@figure.id}")
   end
 
-  get "/figure/:id/edit" do
-    erb :"/landmarks/edit"
+  get "/figures/:id/edit" do
+    erb :"/figures/edit"
   end
 
-  patch "/figure/:id" do
+  patch "/figures/:id" do
     redirect to("/figures/#{@figure.id}")
   end
 end
