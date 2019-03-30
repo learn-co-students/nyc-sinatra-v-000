@@ -14,8 +14,12 @@ class FiguresController < ApplicationController
   end
 
   post "/figures" do
+    @figure = Figure.create(params[:figure]) #no if else needed because there is no checklist for figure.
+    #New and Edit work on a singular figure.
+
     if !params[:landmark].empty? && !Landmark.find_by(name: params["landmark"]["name"]) || !Landmark.find_by(year_completed: params["landmark"]["year_completed"])
       @landmark = Landmark.create(params[:landmark])
+      @landmark.figure = @figure
       @landmark.save
     #else params[:landmark].empty?
     #  params["figure"]["landmark_ids"].each do |id|
@@ -24,25 +28,19 @@ class FiguresController < ApplicationController
     #  @landmark.save
     end
 
-    if !params[:title].empty? && !Title.find_by(name: params["title"]["name"]) || !Landmark.find_by(year_completed: params["landmark"]["year_completed"])
-      @title = Title.create(params[:title])
-      @title.save
-    else params["title"]["name"].empty?
-      binding.pry
-      @title = Title.find_by_id(params["figure"]["title_ids"].first)
-      @title.save
-    end
+    #if !params[:title].empty? && !Title.find_by(name: params["title"]["name"])
 
-    if !params["figure"]["name"].empty? && !Figure.find_by(name: params["figure"]["name"])
-      @figure = Figure.create(name: params["figure"]["name"])
-      @landmark.figure = @figure
-      @landmark.save
-    #else params["figure"]["name"].empty?
-    #  @figure = Figure.find_by_id(params["landmark"]["figure_id"])
-    #  @landmark.figure_id = params["landmark"]["figure_id"]
-    #  @landmark.figure = @figure
-    #  @landmark.save
+    #  @title = Title.create(params[:title])
+    #  @title.save
+    if !(params[:title][:name].empty?) #parenthesis help alot
+      binding.pry
+      @title = Title.create(params[:title])
+      @figure.titles << @title #many to many, more than one title
+      @figure.save
+    else
     end
+    #extra else stuff not needed for title
+
     redirect to("/figures/#{@figure.id}")
   end
 
