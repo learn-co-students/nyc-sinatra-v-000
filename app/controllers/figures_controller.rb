@@ -10,7 +10,7 @@ class FiguresController < ApplicationController
   end
 
   get "/figures/:id" do
-    @figure = Figure.find_by_id(id: params[:id])
+    @figure = Figure.find_by_id(params[:id])
     erb :'/figures/show'
   end
 
@@ -53,6 +53,8 @@ class FiguresController < ApplicationController
   end
 
   get "/figures/:id/edit" do
+    binding.pry
+    @figure = Figure.find_by_id(params[:id])
     erb :"/figures/edit"
   end
 
