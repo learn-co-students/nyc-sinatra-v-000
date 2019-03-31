@@ -1,9 +1,9 @@
 <h2>Create New Figure</h2>
 <!-- add content here -->
-<form class="" action="/figures" method="post">
+<form class="" action="/figures/<%=@figure.id%>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <h2>New Figure Name</h2>
-  <input type="text" name="figure[name]" id="figure_name">
+  <h2>Edit Figure Name</h2>
+  <input type="text" name="figure[name]" value="<%=@figure.name%>" id="figure_name">
   <br>
   <h2>Titles</h2>
   <% Title.all.each do |title| %>
@@ -24,7 +24,7 @@
   <!-- Failure/Error: fill_in :new_landmark, :with => "The Tardis" means id should be new_landmark not landmark_name -->
   <label>Year_Completed:</label>
     <input type="input" name="landmark[year_completed]" id="landmark_year_completed">
-  <input type="submit" name="Create New Figure" value="Create New Figure">
+  <input type="submit" name="Edit Figure" value="Edit Figure">
 </form>
 <a class="button" href="/figures">Figures</a>
 <a class="button" href="/">Home</a>
