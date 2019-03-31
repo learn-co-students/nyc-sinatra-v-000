@@ -10,6 +10,7 @@ class FiguresController < ApplicationController
   end
 
   get "/figures/:id" do
+    @figure = Figure.find_by_id(id: params[:id])
     erb :'/figures/show'
   end
 
@@ -36,10 +37,10 @@ class FiguresController < ApplicationController
     else
     end
     #extra else stuff not needed for title
-  #  if !(params[:landmark].empty?) #&& !(Landmark.find_by(name: params["figure"]["landmark_ids"][])) # || !Landmark.find_by(year_completed: params["landmark"]["year_completed"])
-  #    @landmark = Landmark.create(params[:landmark])
-  #    @figure.landmarks << @landmark
-  #    @figure.save
+    if !(params[:landmark].empty?) #&& !(Landmark.find_by(name: params["figure"]["landmark_ids"][])) # || !Landmark.find_by(year_completed: params["landmark"]["year_completed"])
+      @landmark = Landmark.create(params[:landmark])
+      @figure.landmarks << @landmark
+      @figure.save
   #  elsif params["figure"]["landmark_ids"].empty?
   #   params["figure"]["landmark_ids"].each do |id|
   #     @landmark = Landmark.find_by(id: id)
@@ -47,7 +48,7 @@ class FiguresController < ApplicationController
   #     @figure.save
   #   end
   #  else
-  #  end
+    end
     redirect to("/figures/#{@figure.id}")
   end
 
