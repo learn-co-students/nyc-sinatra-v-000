@@ -17,24 +17,30 @@ class FiguresController < ApplicationController
     @figure = Figure.create(params[:figure]) #no if else needed because there is no checklist for figure.
     #New and Edit work on a singular figure.
 
-    if !(params[:landmark].empty?) #&& !Landmark.find_by(name: params["landmark"]["name"]) || !Landmark.find_by(year_completed: params["landmark"]["year_completed"])
+    if !(params[:landmark].empty?) && !(Landmark.find_by(name: params["figure"]["landmark_ids"][])) # || !Landmark.find_by(year_completed: params["landmark"]["year_completed"])
       @landmark = Landmark.create(params[:landmark])
       @figure.landmarks << @landmark
-    #else params[:landmark].empty?
-    #  params["figure"]["landmark_ids"].each do |id|
-    #  landmark_figures = []
-    #  @landmark = Landmark.find_by()
-    #  @landmark.save
+    elsif params["figure"]["landmark_ids"].empty?
+     #params["figure"]["landmark_ids"].each do |id|
+     @landmark = Landmark.find_by()
+     @landmark.save
     end
 
     #if !params[:title].empty? && !Title.find_by(name: params["title"]["name"])
 
     #  @title = Title.create(params[:title])
     #  @title.save
-    if !(params[:title][:name].empty?) #parenthesis helps alot
+    if !(params[:title][:name].empty?) && !(Title.find_by(id: params["figure"]["title_ids"][])) #parenthesis helps alot
       @title = Title.create(params[:title])
       @figure.titles << @title #many to many, more than one title
       @figure.save
+    elsif Title.find_by(id: params["figure"]["title_ids"].first)
+      params["figure"]["title_ids"].each do |id|
+        binding.pry
+        @title = Title.find_by(id: id)
+        @figure.titles << @title #many to many, more than one title
+        @figure.save
+      end
     else
     end
     #extra else stuff not needed for title
