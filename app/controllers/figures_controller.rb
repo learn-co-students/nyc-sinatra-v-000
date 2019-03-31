@@ -17,10 +17,9 @@ class FiguresController < ApplicationController
     @figure = Figure.create(params[:figure]) #no if else needed because there is no checklist for figure.
     #New and Edit work on a singular figure.
 
-    if !params[:landmark].empty? && !Landmark.find_by(name: params["landmark"]["name"]) || !Landmark.find_by(year_completed: params["landmark"]["year_completed"])
+    if !(params[:landmark].empty?) #&& !Landmark.find_by(name: params["landmark"]["name"]) || !Landmark.find_by(year_completed: params["landmark"]["year_completed"])
       @landmark = Landmark.create(params[:landmark])
-      @landmark.figure = @figure
-      @landmark.save
+      @figure.landmarks << @landmark
     #else params[:landmark].empty?
     #  params["figure"]["landmark_ids"].each do |id|
     #  landmark_figures = []
@@ -32,8 +31,7 @@ class FiguresController < ApplicationController
 
     #  @title = Title.create(params[:title])
     #  @title.save
-    if !(params[:title][:name].empty?) #parenthesis help alot
-      binding.pry
+    if !(params[:title][:name].empty?) #parenthesis helps alot
       @title = Title.create(params[:title])
       @figure.titles << @title #many to many, more than one title
       @figure.save
