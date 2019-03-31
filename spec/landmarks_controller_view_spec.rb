@@ -10,6 +10,8 @@ describe LandmarksController do
 
   after do
     Landmark.destroy_all
+    Figure.destroy_all #Added due to issue with unlimited Beyonce.
+    #"it is not like you are changing the tests so you don't have to fulfill the requirements of the lab" - Dominique De León
   end
 
   it "allows you to view form to create a new landmark" do
