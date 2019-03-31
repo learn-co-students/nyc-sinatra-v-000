@@ -1,27 +1,30 @@
 <h2>Create New Figure</h2>
 <!-- add content here -->
-<form class="" action="/figures/<%=@figure.id%>" method="post">
-  <h2>Edit Figure Name</h2>
-  <input type="text" name="figure[name]" value="figure_name" id="figure_name">
+<form class="" action="/figures" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <h2>New Figure Name</h2>
+  <input type="text" name="figure[name]" id="figure_name">
   <br>
   <h2>Titles</h2>
   <% Title.all.each do |title| %>
-  <input type="checkbox" name="title[name]" value="<%=title.id%>" id="<%=title.id%>"><%= title.name %></input>
+  <input type="checkbox" name="figure[title_ids][]" value="<%=title.id%>" id="title_<%=title.id%>"><%= title.name %></input>
+  <!-- Failure/Error: check "title_#{Title.first.id}" means change id to include erb tags to implement ruby -->
   <% end %>
-  <h2>Edit Title:</h2>
-  <input type="text" name="figure[title]"  id="Figure Name">
   <h2>Landmarks:</h2>
   <br>
   <% Landmark.all.each do |landmark| %>
-  <input type="checkbox" name="landmark[figure_id]" value="<%=landmark.id%>" id="<%=landmark.id%>"><%= figure.name %></input>
+  <input type="checkbox" name="figure[landmark_ids][]" value="<%=landmark.id%>" id="landmark_<%=landmark.id%>"><%= landmark.name %></input>
   <% end %>
   <br>
   <h2>Create New Title:</h2>
-  <input type="text" name="figure[name]"  id="Figure Name">
+  <input type="text" name="title[name]"  id="new_title">
   <h2>Create New Landmark:</h2>
-  <label>Name</label>
-  <input type="input" name="landmark[name]" id="landmark_name">
+  <label>Name:</label>
+  <input type="input" name="landmark[name]" id="new_landmark">
+  <!-- Failure/Error: fill_in :new_landmark, :with => "The Tardis" means id should be new_landmark not landmark_name -->
+  <label>Year_Completed:</label>
+    <input type="input" name="landmark[year_completed]" id="landmark_year_completed">
   <input type="submit" name="Create New Figure" value="Create New Figure">
 </form>
-<a class="button" href="/landmarks">Landmarks</a>
+<a class="button" href="/figures">Figures</a>
 <a class="button" href="/">Home</a>
