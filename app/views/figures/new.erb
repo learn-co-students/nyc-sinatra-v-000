@@ -1,0 +1,30 @@
+<h2>Create New Historical Figure</h2>
+
+<form action="/figures" method="POST">
+  <label>Name: </label><input type="text" id="figure_name" name="figure[name]"><br>
+
+  <h2>Titles</h2>
+  <% Title.all.each do |title| %>
+    <input type="checkbox" id="title_<%= title.id %>" name="figure[title_ids][]" value="<%= title.id %>">
+    <label><%= title.name %></label><br>
+  <% end %>
+  <br>
+
+  <h3>Add new Title: </h3>
+  <label>Title: </label><input type="text" id="new_title" name="title[name]"><br>
+
+  <h2>Landmarks</h2>
+  <% Landmark.all.each do |landmark| %>
+    <input type="checkbox" id="landmark_<%= landmark.id %>" name="figure[landmark_ids][]" value="<%= landmark.id %>">
+    <label><%= landmark.name %></label><br>
+    <% end %>
+
+  <h3>Add new Landmark: </h3>
+  <label>Landmark Name: </label><input type="text" id="new_landmark" name="landmark[name]"><br>
+  <label>Completion Year: </label><input type="text" id="landmark_year_completed" name="landmark[year_completed]"><br><br>
+
+  <input type="submit" id="submit" value="Create New Figure">
+</form><br>
+
+<a class="button" href="/figures">Landmarks</a>
+<a class="button" href="/">Home</a>
