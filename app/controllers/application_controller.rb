@@ -6,5 +6,4 @@ class ApplicationController < Sinatra::Base
     erb :'application/index'
     end
   end
-
 end

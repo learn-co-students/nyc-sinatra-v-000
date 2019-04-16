@@ -1,38 +1,47 @@
 class LandmarksController < ApplicationController
 
   get '/landmarks' do
+    @landmarks = Landmark.all|
+    @figures = Figure.application_controller
     erb :'landmarks/index'
   end
 
 
-  get
+  get '/landmarks/new' do
+    erb :'landmarks/new'
   end
 
 
 
-  post
+  post '/landmarks' do
+    redirect
   end
 
 
 
-  get
+  get '/landmarks/:id' do
+    erb :
   end
 
 
-  get
+  get '/landmarks/:id/edit'do
+    erb :
   end
 
 
 
-  patch
+  patch '/landmarks/:id'do
+    erb :
   end
 
 
-  put
+  put '/landmarks/id' do
+    erb :
   end
 
 
-  delete
+  delete '/landmarks/:id' do
+    erb :
   end
 
 
