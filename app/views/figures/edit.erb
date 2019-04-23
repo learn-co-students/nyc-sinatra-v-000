@@ -1,5 +1,6 @@
-<h2>Create New Figure</h2>
-<form action="/figures" method="POST">
+<h2>Edit <%= @figure.name %></h2>
+<form action="/figures/<%= @figure.id %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
   <h3><label for="figure_name">Name:</label></h3>
   <input type="text" name="figure[name]" id="figure_name">
 
@@ -23,6 +24,6 @@
   <label for="landmark_year">Year:</label>
   <input type="text" name="landmark[year_completed]" id="landmark_year">
 
-  <input type="submit" value="Create New Figure" id="Create New Figures">
+  <input type="submit" value="Edit Figure" id="Edit Figure">
 
 </form>
