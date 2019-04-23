@@ -4,11 +4,11 @@
   <input type="text" name="figure[name]" id="figure_name">
 
   <h3><label>Titles</label></h3>
-  <% Figure.all.each do |figure| %>
-    <input type="checkbox" name="figure[title_ids][]" value="<%= figure.id %>" id="<%= figure.id %>"><%= figure.name %></input><br>
+  <% Title.all.each do |title| %>
+    <input type="checkbox" name="figure[title_ids][]" value="<%= title.id %>" id="<%= title.id %>"><%= title.name %></input><br>
   <% end %>
 
-  <h3><label for="title_name">Create New Title:</label></h3>
+  <h3><label>Create New Title:</label></h3>
   <input type="text" name="title[name]" id="title_name">
 
   <h3><label for="figure_landmarks">Landmarks</label></h3>
@@ -23,6 +23,6 @@
   <label for="landmark_year">Year:</label>
   <input type="text" name="landmark[year_completed]" id="landmark_year">
 
-  <input type="submit" value="Create New Figure">
+  <input type="submit" value="Create New Figure" id="Create New Figures">
 
 </form>
