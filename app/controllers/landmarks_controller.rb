@@ -10,12 +10,6 @@ class LandmarksController < ApplicationController
 
   post '/landmarks' do
     @landmark = Landmark.create(params[:landmark])
-    if params[:landmark][:name] != ""
-      @landmark.name = params[:landmark][:name]
-    end
-    if params[:landmark][:year_completed] != ""
-      @landmark.year_completed = params[:landmark][:year_completed]
-    end
     redirect "/landmarks/#{@landmark.id}"
   end
 
