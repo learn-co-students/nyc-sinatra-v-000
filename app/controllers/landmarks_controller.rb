@@ -45,6 +45,7 @@ class LandmarksController < ApplicationController
    if !params[:figure][:name].empty?
      @landmark.figures << Figure.update(params[:figure])
    end
+   binding.pry
     redirect to "/landmarks/#{@landmark.id}"
   end
 end
