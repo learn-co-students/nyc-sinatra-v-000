@@ -1,0 +1,7 @@
+<h2>All Figures</h2>
+
+<%@figures.each do |figure|%>
+  <h2><%=figure.name%></h2>
+  <br>
+  Visit Page <a href="/figures/<%= figure.id %>">
+<%end%>
