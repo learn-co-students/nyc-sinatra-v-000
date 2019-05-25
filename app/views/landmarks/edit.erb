@@ -3,23 +3,21 @@
 
 <h2>Edit Historical Landmark</h2>
 <br>
-Name <input type="text" id="landmark-name" name="landmark[name]" value="<%=@landmark.name%>">
+Name <input type="text" id="name" name="landmark[name]" value="<%=@landmark.name%>">
+<br>
+Name <input type="text" id="year_completed" name="landmark[year_completed]" value="<%=@landmark.year_completed%>">
 <br>
 Edit Figures:
 <br>
 <%Figure.all.each do |figure|%>
   <%=figure.name%>
-  <input type="checkbox" name="landmark[figure_ids][]" value="<%=figure.id%>" <%='checked' if @landmark.figures.include?(figure) %>>
+
 <%end%>
 
 Add New: <input type="text" id="new_figure" name="figure[name]">
 <br>
 Edit Titles
 <br>
-<%Title.all.each do |title|%>
-  <%=title.name%>
-  <input type="checkbox" name="landmark[title_ids][]" value="<%= title.id%>" id="<%=title.name%>" <%='checked' if @landmark.titles.include?(title)%>>
-<%end%>
 <br>
 Add New Title: <input type="text" id="new_title" name="title[name]">
 <br>

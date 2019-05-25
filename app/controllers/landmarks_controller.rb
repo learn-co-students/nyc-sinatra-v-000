@@ -30,13 +30,14 @@ class LandmarksController < ApplicationController
     redirect to "/landmarks/#{@landmark.id}"
   end
 
-  get 'landmarks/:id/edit' do
+  get '/landmarks/:id/edit' do
     @landmark = Landmark.find(params[:id])
     erb :'/landmarks/edit'
   end
 
   patch '/landmarks/:id' do
-    @landmark = landmark.find(params[:id])
+    # binding.pry
+    @landmark = Landmark.find(params[:id])
 
     @landmark.update(params[:landmark])
 
@@ -46,6 +47,7 @@ class LandmarksController < ApplicationController
    if !params[:figure][:name].empty?
      @landmark.figures << Figure.update(params[:figure])
    end
+   @landmark.save
 
     redirect to "/landmarks/#{@landmark.id}"
   end
