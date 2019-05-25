@@ -8,9 +8,9 @@
   Select a Figure
   <br>
   <%@figures.each do |figure|%>
-    <input type="checkbox" name="landmark[figure_ids]" id="figure_<%=figure.id%>" value="<%=figure.id%>">
-    <%=figure.name%>
-    <%end%>
+     <input type="checkbox" name="landmark[figure_ids]" id="figure_<%=figure.id%>" value="<%=figure.id%>">
+     <%=figure.name%>
+     <%end%>
 
 <br>
     Or Create a New Figure <input type="text" name="figure[name]" id="figure_id">
@@ -29,7 +29,8 @@
 <br>
 <br>
 
-<input type="button" value="Create New Landmark" >
+<input type="submit" value="Create New Landmark" >
+
 <a class="button" href="/landmarks">Landmarks</a>
 <a class="button" href="/">Home</a>
 </form>
