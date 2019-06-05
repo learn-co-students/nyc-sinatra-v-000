@@ -14,7 +14,7 @@ describe LandmarksController do
 
   it "allows you to view form to create a new landmark" do
     visit '/landmarks/new'
-    expect(page.body).to include('<form>')
+    expect(page.body).to include('<form')
     expect(page.body).to include('landmark[name]')
     expect(page.body).to include('landmark[year_completed]')
   end
