@@ -42,14 +42,18 @@ class FiguresController < ApplicationController
     @figure.landmarks.clear
     @figure.titles.clear
 
-    params[:figure][:landmark_ids].each do |landmark_id|
-      landmark = Landmark.find(landmark_id)
-      @figure.landmarks << landmark
+    if params[:figure][:landmark_ids]
+      params[:figure][:landmark_ids].each do |landmark_id|
+        landmark = Landmark.find(landmark_id)
+        @figure.landmarks << landmark
+      end
     end
 
-    params[:figure][:title_ids].each do |title_id|
-      title = Title.find(title_id)
-      @figure.titles << title
+    if params[:figure][:title_ids]
+      params[:figure][:title_ids].each do |title_id|
+        title = Title.find(title_id)
+        @figure.titles << title
+      end
     end
 
     if !params[:title][:name].empty?
