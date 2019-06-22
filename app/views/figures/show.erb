@@ -1,0 +1,15 @@
+<h1>Selected Figure</h1>
+
+<h2><%= @figure.name %></h2>
+
+<h3>Titles</h3>
+
+<% @figure.titles.uniq.each do |title| %>
+    <li><%= title.name %></li>
+<% end %>
+
+<h3>Landmarks</h3>
+
+<% @figure.landmarks.each do |landmark| %>
+    <li><%= landmark.name %>, created in <%= landmark.year_completed %></li>
+<% end %>
