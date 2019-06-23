@@ -13,7 +13,13 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     @figure = Figure.create(params[:figure])
-    title = Title.create(params[:title])
+    title_ids = params[:figure]["title_ids"]
+    title_ids.each do |id|
+      title = Title.find(id)
+      @figure.titles << title
+      @figure.figure_titles.create(title: title)
+    end
+    title = Title.find_or_create_by(name: params[:title]["name"])
     @figure.titles << title
     landmark = Landmark.create(params[:landmark])
     @figure.landmarks << landmark
@@ -33,10 +39,13 @@ class FiguresController < ApplicationController
     erb :'/figures/edit'
   end
 
-  patch '/figures' do
+  patch '/figures/:id' do
     @figure = Figure.find(params[:id])
+    @figure.update(name: params[:figure]["name"])
+    @figure.save
     @figure.titles.destroy_all
     @figure.landmarks.destroy_all
+    @figure.name = 
     title = Title.create(params[:title])
     @figure.titles << title
     landmark = Landmark.create(params[:landmark])
