@@ -19,7 +19,7 @@ Title <input type="text" name="title[name]" id="new_title"><br>
 <h2>Select one or more landmarks:</h2>
 
 <% @landmarks.each do |landmark| %>
-    <%= landmark.name %> <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%= landmark.id %>"><br>
+    <%= landmark.name %> <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%= landmark.id %>" value="<%= landmark.id %>"><br>
 <% end %>
 
 <h2>Or enter a new landmark:</h2>
