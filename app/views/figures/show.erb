@@ -13,3 +13,5 @@
 <% @figure.landmarks.each do |landmark| %>
     <li><%= landmark.name %>, created in <%= landmark.year_completed %></li>
 <% end %>
+
+<a href="/figures/<%= @figure.id %>/edit">Edit Figure</a>
