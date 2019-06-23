@@ -34,6 +34,14 @@ class FiguresController < ApplicationController
   end
 
   patch '/figures' do
-
+    @figure = Figure.find(params[:id])
+    @figure.titles.destroy_all
+    @figure.landmarks.destroy_all
+    title = Title.create(params[:title])
+    @figure.titles << title
+    landmark = Landmark.create(params[:landmark])
+    @figure.landmarks << landmark
+    @figure.figure_titles.create(title: title)
+    redirect "/figures/#{@figure.id}"
   end
 end
