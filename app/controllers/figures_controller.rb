@@ -3,15 +3,17 @@ class FiguresController < ApplicationController
 
   get '/figures' do
     @figures = Figure.all
-    erb :'figures/index'
+    #binding.pry
+    erb :'/figures/index'
   end
 
   get '/figures/new' do
-    erb :'figures/new'
+    erb :'/figures/new'
   end
  
   get '/figures/:id' do
     @figure = Figure.find(params[:id])
+   # binding.pry
     erb :'figures/show'
   end
 
