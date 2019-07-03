@@ -20,6 +20,8 @@ class FiguresController < ApplicationController
     if !params[:landmark][:name].empty?
       @figure.landmarks << Landmark.find_or_create_by(name: params[:landmark][:name])
     end
+    
+    @figure.save
 
     redirect to "/figures/#{@figure.id}"
   end
@@ -40,15 +42,19 @@ class FiguresController < ApplicationController
 
   patch '/figures/:id' do
     @figure = Figure.find_by_id(params[:id])
-    # binding.pry
 
     @figure.update(params[:figure])
-    @landmark = Landmark.find_or_create_by(params[:landmark])
-    if !@figure.landmarks.include?(@landmark)
-      @figure.landmarks << @landmark
+
+    if !params[:landmark][:name].empty?
+      @figure.landmarks << Landmark.create(params[:landmark])
     end
 
-    # @title = Title.find_or_create_by(params)
+    if !params[:title][:name].empty?
+      @figure.titles << Title.create(params[:title])
+    end 
+    
+    @figure.save
+
     redirect to "/figures/#{@figure.id}"
   end
   
