@@ -24,24 +24,24 @@ class FiguresController < ApplicationController
     @figure.landmarks << @landmark
     redirect "/figures/#{@figure.id}"
   end
-  #
-  # get "/figures/#{@figure.id}" do
-  #   @figure = Figure.find_by_id(params[:id])
-  #   erb :"figures/show"
-  # end
-  #
-  # get "/figures/#{@figure.id}/edit" do
-  #   @figure = Figure.find_by_id(params[:id])
-  #   erb :"figures/edit"
-  # end
-  #
-  # patch "/figures/#{@figure.id}" do
-  #   @figure = Figure.find_by_id(params[:id])
-  #   @figure.name = params[:figure_name]
-  #   @figure.landmark = params[:new_landmark]
-  #   @figure.save
-  #   redirect "/figures/#{@figure.id}"
-  # end
+
+  get "/figures/:id" do
+    @figure = Figure.find_by_id(params[:id])
+    erb :"figures/show"
+  end
+
+  get "/figures/:id/edit" do
+    @figure = Figure.find_by_id(params[:id])
+    erb :"figures/edit"
+  end
+
+  patch "/figures/:id" do
+    @figure = Figure.find_by_id(params[:id])
+    # @figure.name = params[:figure_name]
+    # @figure.landmark = params[:new_landmark]
+    # @figure.save
+    redirect "/figures/#{@figure.id}"
+  end
 
 
 end
