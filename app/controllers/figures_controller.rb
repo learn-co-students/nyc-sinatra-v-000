@@ -5,8 +5,11 @@ class FiguresController < ApplicationController
     erb :'/figures/index'
   end 
   
-  get "/figuress/new" do 
-    erb :'/figuress/new'
+  get "/figures/new" do 
+    erb :'/figures/new'
+  end
+  
+  post "/figures" do 
   end
   
   get "/figures/:id" do 
