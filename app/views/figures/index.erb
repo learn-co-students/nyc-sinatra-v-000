@@ -1,0 +1,8 @@
+<h2>All Figures</h2>
+<!-- add content here -->
+<% Figure.all.each do |figure| %>
+  <li><%= figure.name %>
+<% end %>
+<a class="button" href="/figures">Figures</a> |
+<a class="button" href="/landmarks">Landmarks</a>
+<a class="button" href="/">Home</a>
