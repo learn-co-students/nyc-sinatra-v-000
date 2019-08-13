@@ -12,6 +12,7 @@
   <label>Select An Existing Title:</label>
   <br>
   <% Title.all.each do |title| %>
+    <label><%=title.name%></label>
     <input type="checkbox" id="title_<%=title.id%>" name="figure[title_ids][]"  value="<%= title.id %>">
     <br>
   <% end %>
@@ -25,6 +26,7 @@
   <label>Select An Existing Landmark:</label>
   <br>
   <% Landmark.all.each do |landmark| %>
+    <label><%=landmark.name%></label>
     <input type="checkbox" id="landmark_<%=landmark.id%>" name="figure[landmark_ids][]" value="<%= landmark.id %>">
     <br>
   <% end %>
