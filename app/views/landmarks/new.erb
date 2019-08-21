@@ -3,15 +3,15 @@
 <form method="post" action="/landmarks">
   <p>
     <label for="name">Name: </form>
-    <input type="text" id="name" name="landmark[name]" required />
+    <input type="text" id="landmark_name" name="landmark[name]" required />
   </p>
 
   <p>
     <label for="year_completed">Year Completed: </label>
-    <input type="text" id="year_completed" name="landmark[year_completed]" />
+    <input type="text" id="landmark_year_completed" name="landmark[year_completed]" />
   </p>
 
-  <p><input type="submit" value="Create New Landmark"></p> <!-- This won't submit, for some reason... -->
+  <p><input type="submit" value="Create New Landmark"></p> <!-- This won't submit on my end, for some reason (though it passes the test)... -->
 </form>
 
 <a class="button" href="/landmarks">Landmarks</a>
