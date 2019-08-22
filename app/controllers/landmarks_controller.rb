@@ -11,7 +11,8 @@ class LandmarksController < ApplicationController
   post '/landmarks' do
     landmark = Landmark.new(params[:landmark])
     landmark.save unless Landmark.all.detect{|l| l.name == landmark.name}
-    "The landmark has been built!"
+
+    redirect to "/landmarks/#{landmark.id}"
   end
   
   get '/landmarks/:id' do
@@ -22,5 +23,11 @@ class LandmarksController < ApplicationController
   get '/landmarks/:id/edit' do
     @landmark = Landmark.find_by_id(params[:id])
     erb :"landmarks/edit"
+  end
+
+  patch '/landmarks/:id' do
+    landmark = Landmark.find_by_id(params[:id])
+    landmark.update(params[:landmark])
+    redirect to "/landmarks/#{landmark.id}"
   end
 end
