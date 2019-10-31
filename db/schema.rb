@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,26 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191017230102) do
+ActiveRecord::Schema.define(version: 2019_10_17_230102) do
+
+  create_table "figure_titles", force: :cascade do |t|
+    t.integer "figure_id"
+    t.integer "title_id"
+  end
 
   create_table "figures", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "figures_titles", id: false, force: :cascade do |t|
-    t.integer "figure_id", null: false
-    t.integer "title_id",  null: false
-  end
-
-  add_index "figures_titles", ["figure_id"], name: "index_figures_titles_on_figure_id"
-  add_index "figures_titles", ["title_id"], name: "index_figures_titles_on_title_id"
-
   create_table "landmarks", force: :cascade do |t|
-    t.string  "name"
+    t.string "name"
+    t.integer "figure_id"
     t.integer "year_completed"
   end
-
-  add_index "landmarks", [nil], name: "index_landmarks_on_figure_id"
 
   create_table "titles", force: :cascade do |t|
     t.string "name"

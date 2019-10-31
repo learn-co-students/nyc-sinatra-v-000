@@ -40,11 +40,11 @@ end
 figure_list = {
     "Billy The Kid" => {
     },
-    "Mark Zuckerberg" => {
+    "Dracula" => {
     },
     "Ada Lovelace" => {
     },
-    "Linus Torvalds" => { 
+    "Linus Torvalds" => {
     }
   }
 
