@@ -4,7 +4,6 @@
 <h2>All Historical Landmarks</h2>
 
 <% @landmarks.each do |landmark|%>
-  <p><%= landmark.name %></p>
+  <p><%= landmark.name %> | <%= landmark.year_completed %></p>
 <% end %>
 <br><br>
-<a href="/landmarks/new">Create Landmark</a>
