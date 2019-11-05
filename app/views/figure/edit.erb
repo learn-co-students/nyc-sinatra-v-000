@@ -1,0 +1,28 @@
+<form action="/fugures/<%= @figure.id %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+
+  <label for="name">Name</label>
+  <input type="text" name="figure[name]" id="figure_name" value="<%= @figure.name %>">
+
+  <label> Edit Landmarks: </label>
+  <% Landmark.all.each do |landmark| %>
+    <label><%= landmark.name %></label>
+    <input type="checkbox" name="figure[landmar_ids][]" value="<%= landmark.id %>" id="<%= landmark.name %>" <%='checked' if @figure.landmarks.include?(landmark) %>>
+  <% end %>
+
+  <label> ADD NEW: </label>
+  <input type="text" name="landmark[name]" id="new_landmark">
+
+  <label> EDIT Tittle: </label>
+   <% Title.all.each do |t| %>
+    <label><%= t.name %></label>
+    <input type="checkbox" name="t[title_ids][]" value="<%= t.id %>" id="<%= t.name %>" <%='checked' if @figure.t.include?(t) %>>
+   <% end %>
+
+  <label> Add New Title:  </label>
+  <input type="text" name="title[name]" id="new_title">
+
+
+
+  <input type="submit" value="Save">
+</form>
