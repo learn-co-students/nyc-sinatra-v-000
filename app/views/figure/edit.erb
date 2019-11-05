@@ -1,28 +1,30 @@
-<form action="/fugures/<%= @figure.id %>" method="POST">
+<form action="/figures/<%= @figure.id %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
 
-  <label for="name">Name</label>
-  <input type="text" name="figure[name]" id="figure_name" value="<%= @figure.name %>">
+<label> Name: </label>
+  <input type="text" id="figure_name" name="figure[name]" value="<%= @figure.name %>">
 
-  <label> Edit Landmarks: </label>
-  <% Landmark.all.each do |landmark| %>
+ <label> Edit Landmarks: </label>
+  <% Landmark.each do |landmark| %>
     <label><%= landmark.name %></label>
+
     <input type="checkbox" name="figure[landmar_ids][]" value="<%= landmark.id %>" id="<%= landmark.name %>" <%='checked' if @figure.landmarks.include?(landmark) %>>
   <% end %>
 
   <label> ADD NEW: </label>
-  <input type="text" name="landmark[name]" id="new_landmark">
+  <input type="text" id="new_landmark" name="landmark[name]"><br></br>
 
-  <label> EDIT Tittle: </label>
-   <% Title.all.each do |t| %>
-    <label><%= t.name %></label>
-    <input type="checkbox" name="t[title_ids][]" value="<%= t.id %>" id="<%= t.name %>" <%='checked' if @figure.t.include?(t) %>>
-   <% end %>
-
-  <label> Add New Title:  </label>
-  <input type="text" name="title[name]" id="new_title">
-
+  <label>Edit Titles</label><br>
+   <% Title.all.each do |title| %>
+      <label><%= title.name %></label>
+      <input type="checkbox" name="figure[title_ids][]" value="<%= title.id %>" id="<%= title.name %>" <%='checked' if @figure.titles.include?(title) %>>
+    <% end %></br>
+   <label>Add New Title:</label>
+   <input type="text" id="new_title" name="title[name]"><br></br>
 
 
-  <input type="submit" value="Save">
-</form>
+
+
+    <input type="submit" value="Edit Figure">
+
+  </form>
