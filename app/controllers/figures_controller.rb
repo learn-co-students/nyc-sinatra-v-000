@@ -1,3 +1,34 @@
 class FiguresController < ApplicationController
-  # add controller methods
+
+  get "/figures" do
+    @figures = Figure.all
+    erb :"/figures/index"
+  end
+
+  get "/figures/new" do
+    @titles = Title.all
+    @landmarks = Landmark.all
+    erb :"/figures/new"
+  end
+
+  post '/figures' do
+    @figure = Figure.new(params[:figure])
+
+    if !params[:title][:name].empty?
+      @figure.titles.build(name: params[:title][:name])
+    end
+
+    if !params[:landmark][:name].empty?
+      @figure.landmarks.build(name: params[:landmark][:name])
+    end
+
+    @figure.save
+    redirect to "figures/#{@figure.id}"
+  end
+
+  get "/figures/:id" do
+    erb :"/figures/show"
+  end
+
+
 end
