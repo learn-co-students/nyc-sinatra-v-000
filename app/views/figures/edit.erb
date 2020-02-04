@@ -1,6 +1,5 @@
 <h2>Edit Figure</h2>
 
-<!-- add content here -->
 <form action="/figures/<%= @figure.id %>" method="POST">
 <input id="hidden" type="hidden" name="_method" value="patch">
 
@@ -31,10 +30,6 @@
 <input type="text" name="landmark[year_completed]">
 
 <input type="submit" value="Edit Figure" >
-<br>
-<br>
-<br>
-<br>
 
 
 <a class="button" href="/figures">Figures</a>
