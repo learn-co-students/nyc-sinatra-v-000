@@ -1,0 +1,41 @@
+<h2>Edit Figure</h2>
+
+<!-- add content here -->
+<form action="/figures/<%= @figure.id %>" method="POST">
+<input id="hidden" type="hidden" name="_method" value="patch">
+
+<label>Name:
+<input type="text" name="figure[name]" id="figure_name" value="<%= @figure.name %>">
+</label>
+
+<h2> Titles </h2>
+<% Title.all.each do |t| %>
+    <%= t.name %> <input type="checkbox" id= "title_<%=t.id%>" name = "figure[title_ids][]" value = "title_<%=t.id%>" <%= 'checked' if @figure.titles.include?(t) %>><br>
+<% end %>
+
+<h2> Create New Title: </h2>
+<input type="text" name="title[name]" id="new_title">
+
+<h2> Landmarks </h2>
+<% Landmark.all.each do |l| %>
+    <%= l.name %> <input type="checkbox" id= "landmark_<%= l.id %>" name = "figure[landmark_ids][]" value = "landmark_<%= l.id %>" <%= 'checked' if @figure.landmarks.include?(l) %>><br>
+<% end %>
+
+<h2> Create New Landmark: </h2>
+
+<label>Name:
+<input type="text" name="landmark[name]" id="new_landmark">
+</label>
+
+<label>Year:
+<input type="text" name="landmark[year_completed]">
+
+<input type="submit" value="Edit Figure" >
+<br>
+<br>
+<br>
+<br>
+
+
+<a class="button" href="/figures">Figures</a>
+<a class="button" href="/">Home</a>
