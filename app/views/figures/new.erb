@@ -1,0 +1,21 @@
+
+
+<form action="/figures/new" method="POST">
+    <label for="figure_name">Figure Name</label>
+    <input type="text" name="figure[name]" id="figure_name">
+
+    <label for="figure_title_id">Figure Title ID</label>
+    <input type="text" name="figure[title_ids][]" id="figure_title_id">
+
+    <label for="figure_landmark_id">Figure Landmark ID</label>
+    <input type="text" name="figure[landmark_ids][]" id="figure_landmark_id">
+
+    <label for="landmark_name">Landmark Name</label>
+    <input type="text" name="landmark[name]" id="landmark_name">
+
+    <label for="title_name">Title Name</label>
+    <input type="text" name="title[name]" id="title_name">
+
+    <input type="submit" value="Create New Figure">
+
+</form>
