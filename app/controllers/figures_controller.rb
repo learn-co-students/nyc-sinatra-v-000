@@ -9,7 +9,7 @@ class FiguresController < ApplicationController
 
   post '/figures/new' do
     binding.pry
-    @figure = Figure.create(params[:title_id])
+    @figure = Figure.create(params[:figure_title_id])
 
   end
 
