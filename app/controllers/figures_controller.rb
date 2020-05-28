@@ -5,9 +5,12 @@ class FiguresController < ApplicationController
    
     erb :"/figures/new"
   end
+  
 
   post '/figures/new' do
-    @figure = Figure.create(params[:figure_name])
+    binding.pry
+    @figure = Figure.create(params[:title_id])
+
   end
 
 end
