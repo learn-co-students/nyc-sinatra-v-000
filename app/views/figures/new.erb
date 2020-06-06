@@ -1,7 +1,7 @@
 
 <form action="/figures" method="POST">
-  <lable>Name</label>
-    <input type="text" id="figure_name" name="figure[name]"><br></br>
+  <label>Name</label>
+    <input type="text" id="figure_name" name="figure[name]"><br><br>
 
   <label><h4>Titles</h4></label>
     <% Title.all.each do |title| %>
@@ -16,7 +16,7 @@
       <label><%= landmark.name %></label>
       <input type="checkbox" id="landmark_<%=landmark.id%>" name="figure[landmark_ids][]" value="<%= landmark.id %>"><br>
     <% end %>
-    
+
  <label><h4>Create New Landmark:</h4></label>
  <label>Name:</label>
   <input type="text" id="new_landmark" name="landmark[name]">
