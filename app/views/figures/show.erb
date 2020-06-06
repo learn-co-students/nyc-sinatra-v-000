@@ -2,3 +2,7 @@
 <h3>This is figure: </h3>
 
 <a href="/figures/<%=@figure.id%>"> <%= @figure.name %> </a>
+
+<%@figure.landmarks.each do |figure|%>
+<%=figure.name%>
+<%end%>

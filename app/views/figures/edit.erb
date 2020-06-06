@@ -8,10 +8,30 @@
 <label for="figure.name">Name</label>
 <input type="text" name="figure[name]" id="figure_name" value="<%=@figure.name%>">
 
-<label for="figure.titles">Title</label>
-<input type="text" name="figure[title_ids]" id="figure_id" value="<%=@figure.id%>">
+<%Landmark.all.each do |landmark| %>
+    <label for="landmark.name"><%=landmark.name%></label>
+    <input type="checkbox"
+     name="figure[landmark_ids][]"
+     id="<%=landmark.name%>" 
+     value="<%=landmark.id%>" 
+     <%='checked' if @figure.landmarks.include?(landmark)%>>
+    <%end%>
 
- <input type="text" id="new_landmark" name="landmark[name]">
+
+<label>Add New Landmark</label>
+<input type="text" name="landmark[name]" id="new_landmark">
+
+<%Title.all.each do |title| %>
+    <label><%=title.name%></label>
+    <input type="checkbox"
+     name="figure[title_ids][]"
+     id="<%=title.name%>" 
+     value="<%=title.id%>" 
+     <%='checked' if @figure.titles.include?(title)%>>
+    <%end%>
+
+<label>Edit Title</label>
+<input type="text" name="title[name]" id="new_title">
 
  <input type="submit" value="Edit Figure">
 
