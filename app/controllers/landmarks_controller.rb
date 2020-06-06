@@ -21,7 +21,7 @@ class LandmarksController < ApplicationController
   end
   
   post '/landmarks' do
-    # binding.pry
+    # # binding.pry
     # @landmark = Landmark.create(params['landmark_name'])
     #     if !params[:landmark][:name].empty?
       @landmark.name = Landmark.create(params[:name])
@@ -33,4 +33,5 @@ class LandmarksController < ApplicationController
     @landmark.save
     redirect to "/landmarks/#{@landmark.id}"
   end
+
 end
