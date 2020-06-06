@@ -3,7 +3,7 @@
 <!-- add content here -->
 <form>
 
-<form action="/landmarks/<%=@figure.id%>" method="POST">
+<form action="/landmarks<%=@figure.id%>" method="POST">
 <input id="hidden" type="hidden" name="_method" value="patch">
 
 <label for="landmark.name">Name</label>
