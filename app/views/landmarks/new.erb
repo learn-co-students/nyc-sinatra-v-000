@@ -1,29 +1,15 @@
 <h2>Create New Landmark</h2>
 
-<!-- add content here -->
-<form action="/pets" method="POST">
+<form action='/landmarks' method='POST'>
+  <label for="landmark_name">Landmark Name:</label>
+  <input type="text" id="landmark_name" name="landmark[name]">
 
-  <input type="text" name="landmark[name]" id="landmark_name">
-  <input type="text" name="landmark[year_completed]" id="year_completed">
+  <label for="landmark_year_completed">Landmark Year</label>
+  <input type="text" id="landmark_year_completed" name="landmark[year_completed]">
 
-  <br>
-  <p>Select an existing figure or create a new one below.</p>
+  <br><input type="submit" value="Create New Landmark">
 
-  <h3>Existing Figures</h3>
-  <% @figures.each do |owner| %>
-    <input type="checkboxes" name="figures[figure_id]" id="<%= figures.id %>" value="<%= figures.id %>"><%= figures.name %><br>
-  <% end %>
-  <br>
-
-  <h3>New Figure</h3>
-  <label>Figure Name: </label>
-  <br>
-  <input type="text" name="figures[name]" id="figures_name"></input>
-  <br><br>
-
-  <input type="submit" value="Create Landmark">
 </form>
-
 
 <a class="button" href="/landmarks">Landmarks</a>
 <a class="button" href="/">Home</a>

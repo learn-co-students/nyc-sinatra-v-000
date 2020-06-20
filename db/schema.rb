@@ -11,12 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 1) do
+ActiveRecord::Schema.define(version: 3) do
+
+  create_table "figures", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "landmarks", force: :cascade do |t|
     t.string  "name"
     t.integer "year_completed"
     t.integer "figure_id"
+  end
+
+  create_table "titles", force: :cascade do |t|
+    t.string "name"
   end
 
 end
