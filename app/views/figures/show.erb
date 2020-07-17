@@ -1,0 +1,5 @@
+<h2>Figure: <%= @figure.name %></h2>
+<p>Landmarks:</p>
+<% @figure.landmarks.each_with_index do | l, i | %>
+  <%= @figure.landmarks[i].name %></p>
+<% end %>
