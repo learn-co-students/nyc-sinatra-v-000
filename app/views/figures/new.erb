@@ -1,0 +1,42 @@
+<h2>Create a New Figure</h2>
+
+<form action="/figures" method="POST">
+  <label>Name of New Figure:</label>
+  <input type= "text" name="figure[name]" id= "figure_name"></br>
+  </br>
+  <label>Titles</label><br>
+  
+  <p>Choose an existing Title:</p>
+   <%Title.all.each do |title|%>
+    <input type="checkbox" name="figure[title_ids][]" value="<%=title.id%>" id="title_<%=title.id%>"><%=title.name%></input>
+<%end%>
+<br>
+<label>and/or, Create a New Title:</label>
+    <br>
+    <label>Name:</label>
+      <input  type="text" name="title[name]" id="new_title"></input>
+    <br>
+    <br>
+ 
+  Landmarks<br>
+  <p>Choose an existing Landmark:</p>
+   <%Landmark.all.each do |landmark|%>
+    <input type="checkbox" name="figure[landmark_ids][]" value="<%=landmark.id%>" id="landmark_<%=landmark.id%>"><%=landmark.name%></input>
+<%end%>
+<br>
+<br>
+
+<label>and/or, Create a New Landmark:</label>
+    <br>
+    <label>Name:</label>
+      <input  type="text" id="new_landmark" name="landmark[name]"></input>
+    <br>
+    <label>Year:</label>
+    <input type="text" name="landmark[year_completed]"></input>
+ 
+ 
+   <input type="submit" value="Create New Figure">
+</form>
+
+<a class="button" href="/figures">Figures</a>
+<a class="button" href="/">Home</a>
