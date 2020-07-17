@@ -18,6 +18,7 @@ describe FiguresController do
 
   it "allows you to view form to create a new figure" do
     visit '/figures/new'
+    #save_and_open_page
     expect(page.body).to include('<form')
     expect(page.body).to include('figure[name]')
     expect(page.body).to include('figure[title_ids][]')
