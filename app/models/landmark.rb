@@ -1,3 +1,5 @@
 class Landmark < ActiveRecord::Base
-  # add relationships here
+  #landmark belongs to a figure
+  belongs_to :figure
+
 end
