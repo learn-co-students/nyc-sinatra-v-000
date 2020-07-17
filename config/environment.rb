@@ -1,3 +1,5 @@
+require_relative '../config/environment
+
 require 'bundler/setup'
 Bundler.require
 
