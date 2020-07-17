@@ -1,0 +1,68 @@
+D, [2018-12-05T21:32:34.291134 #1087] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Run options: include {:focus=>true}
+
+All examples were filtered out; ignoring {:focus=>true}
+
+FiguresController
+  allows you to view form to create a new figure (FAILED - 1)
+
+Failures:
+
+  1) FiguresController allows you to view form to create a new figure
+     Failure/Error: expect(page.body).to include('figure[title_ids][]')
+
+       expected "<!DOCTYPE html>\n<html>\n  <head>\n    <!--\n     Frank Sinatra\n\n  \"The old crooner himself:\"\n ..."figure[name]\"/>\n    <input type=\"submit\" value=\"Create\"/>\n</form>\n\n  </body>\n\n</html>\n" to include "figure[title_ids][]"
+       Diff:
+       @@ -1,2 +1,43 @@
+       -figure[title_ids][]
+       +<!DOCTYPE html>
+       +<html>
+       +  <head>
+       +    <!--
+       +     Frank Sinatra
+       +
+       +  "The old crooner himself:"
+       +       QB"   .  . ....^FBQQBQBQ
+       +       #^   ..../,, ,/yyBQBDBt`"B
+       +     B"  ._L_yQ&Qy&&QQBQQDlL;S; (Q
+       +    B^   /DQQQBQQQQQQBQBDQQD1:   "B
+       +   Q~   ,GQBDQDQQQQQQBBQQDQ&EC    7B
+       +   D    lQQQQQBQBQQQQQQQQBBID('    {
+       +   E   .iDDBQQBQQQQBBBQBQQDQ1!:    (
+       +   3   .(BQBBQBBQQQQBBQBBBDBS'     }                     I'm
+       +   Q   '~~<MMBQQBBQBP"""<BD1EL.    Q                   dreaming
+       +   Q    LuL `7QBBB?../LL;.!JDL     Q                    of a
+       +  "  ,  ,__&L.DBBEEL1L_,'EylEE!  ,U                     white
+       +  1 :s&yyQQQ6-DQBBQ&QQQQQQQQJY!  lyB1Q                Christmas.
+       +  S  ?DDQQBD'.QQBDQDBQBQQQDD1<  LIQDG
+       +  Q   j8BQE2 LQQBE9EBBEBQQES{! /BQSE
+       +   Q_ 'TS7L  <#P~^,G1?TXC3({!  3PEy
+       +    Q, ,_>'.,___yBD1DU;,'('''  yQ
+       +     L "Qy,  'IIIZl',L/&;!;:  LQ
+       +     Q; FD(  (`IE2L/QDB&lY!   6Q
+       +      Q, (/. `!?"21iQDU&/~   L FB
+       +       Q_ (EL/&&QDBQBDJ"   ,y^  `FB
+       +        Qy 75EEBBQESf`   _yB^      "M
+       +        Q7  `'^""~`   _yQQM'         `"FQ
+       +        F;         _yQQQQF              Q
+       +  -->
+       +  </head>
+       +  <body>
+       +    <h1>Create a new figure</h1>
+       +<form method="POST" action="/figures">
+       +  <label>Figure Name: <input type="text" name="figure[name]"/>
+       +    <input type="submit" value="Create"/>
+       +</form>
+       +
+       +  </body>
+       +
+       +</html>
+     # ./spec/figures_controller_view_spec.rb:23:in `block (2 levels) in <top (required)>'
+
+Finished in 0.2794 seconds (files took 0.97451 seconds to load)
+1 example, 1 failure
+
+Failed examples:
+
+rspec ./spec/figures_controller_view_spec.rb:19 # FiguresController allows you to view form to create a new figure
+
