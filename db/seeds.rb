@@ -69,3 +69,5 @@ title_list.each do |name, figure_hash|
   p.name = name
   p.save
 end
+
+puts "You did it you crazy son of a bitch, you did it!"
