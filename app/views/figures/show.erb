@@ -1,0 +1,10 @@
+<%=@showfigure.name%>
+<ul>
+<%@showfigure.titles.each do |sf|%>
+    <li><%=sf.name%> </li>
+<%end%>
+
+<%@showfigure.landmarks.each do |lm|%>
+    <li><%=lm.name%> </li>
+<%end%>
+</ul>
