@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Figure index page</title>
+</head>
+
+<body>
+
+All historical figures:
+
+<% @figures.each do |figure| %>
+<li><a href="/figures/<%= figure.id %>"> <%= figure.name %></a></li>
+<% end %>
+</body>
+
+</html>
